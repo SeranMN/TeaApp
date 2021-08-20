@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
      <Header/>
-     <h1>Gangasiri</h1>
+     <h1>Appointment Management</h1>
      <Footer/>
      
     </div>
