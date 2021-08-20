@@ -2,11 +2,12 @@ import Header from './component/Header';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from './component/Footer';
+import EmployeeTable from './component/EmployeeTable';
 function App() {
   return (
     <div className="App">
      <Header/>
-     <h1>Gangasiri</h1>
+     <EmployeeTable/>
      <Footer/>
      
     </div>
