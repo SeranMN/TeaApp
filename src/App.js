@@ -7,6 +7,7 @@ function App() {
     <div className="App">
      <Header/>
      <h1>Gangasiri</h1>
+     <h1>Ashen</h1>
      <Footer/>
      
     </div>
