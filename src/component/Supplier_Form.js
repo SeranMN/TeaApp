@@ -2,7 +2,6 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Row, Col } from "react-bootstrap"
 import { useState } from "react";
-import { FaTimes } from "react-icons/fa";
 
 const SupplierForm = () => {
   const [validated, setvalidated] = useState(false)
@@ -100,6 +99,9 @@ const SupplierForm = () => {
           title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
           required
         />
+        <Form.Control.Feedback type="valid">
+          Looks Good!
+        </Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group controlId="formFile" className="mb-3">
@@ -111,13 +113,15 @@ const SupplierForm = () => {
           required
         />
         {selectedImage && (
-          <div style={{
-            marginTop: 10,
-            display: "flex",
-            flexDirection: "column",
-            maxWidth: "10%",
-            maxHeight: "10%",
-          }}>
+          <div
+            style={{
+              marginTop: 10,
+              display: "flex",
+              flexDirection: "column",
+              maxWidth: "10%",
+              maxHeight: "10%",
+            }}
+          >
             <img src={URL.createObjectURL(selectedImage)} alt="Profile" />
           </div>
         )}

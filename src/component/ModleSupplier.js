@@ -2,7 +2,7 @@ import Modal from 'react-bootstrap/Modal'
 import { Button, ModalBody } from 'react-bootstrap'
 import SupplierForm from './Supplier_Form'
 
-const Modle = (props) => {
+const ModleSupplier = (props) => {
     return (
         <Modal
             {...props}
@@ -26,4 +26,4 @@ const Modle = (props) => {
     )
 }
 
-export default Modle
+export default ModleSupplier

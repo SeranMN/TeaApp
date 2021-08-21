@@ -2,14 +2,14 @@ import Table from "react-bootstrap/Table";
 import {FaFileAlt,FaPencilAlt,FaTrash,} from "react-icons/fa";
 import SupplierBtn from "./Supplier_Btn";
 import { useState } from "react";
-import Modal from "./Modle";
+import ModleSupplier from "./ModleSupplier";
 
 const SuppliersTable = () => {
   const [modalShow, setModalShow] = useState(false);
   return (
     <div>
       <SupplierBtn onclick={() => setModalShow(true)} />
-          <Modal show={modalShow} onHide={() => setModalShow(false)} />
+          <ModleSupplier show={modalShow} onHide={() => setModalShow(false)} />
           
       <Table striped bordered hover>
         <thead>
