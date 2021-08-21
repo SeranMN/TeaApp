@@ -1,18 +1,16 @@
-import Table from 'react-bootstrap/Table'
-import Empbtn from './Empbtn'
-import { useState } from 'react';
-import Modle from './Modle';
+import Table from "react-bootstrap/Table";
+import Modle from "./Modle";
+import { MdDelete } from "react-icons/md"
+import { MdCreate } from "react-icons/md"
+import { useState } from "react";
 
-
-const EmployeeTable = () => {
-    const [modalShow, setModalShow] = useState(false);
-    return (
-        <div>
-        <Empbtn onClick = {()=>setModalShow(true)}/>
-        <Modle show ={modalShow}
-        onHide={() => setModalShow(false)}/>
-        <Table striped bordered hover>
-    
+const EmployeeTable = ({empID,employee,onClick}) => {
+  const[showModle,setShowMoodle] = useState(false)
+  console.log(employee)
+  return (
+    <div>
+      
+      <Table striped bordered hover>
         <thead>
           <tr>
             <th>empID</th>
@@ -24,38 +22,29 @@ const EmployeeTable = () => {
             <th>Salary</th>
           </tr>
         </thead>
-        <tbody>
+        
+         <tbody>
           <tr>
-            <td>emp2015</td>
-            <td>857896545V</td>
-            <td>Shamali Perera</td>
-            <td>Matara</td>
-            <td>Shamaliperera@gmail.com</td>
-            <td>Manager</td>
-            <td>50000.00</td>
+            <td>{empID}</td>
+            <td>{employee.nic}</td>
+            <td>{employee.Name }</td>
+            <td>{employee.Address }</td>
+            <td>{employee.Email}</td>
+            <td>{employee.Des}</td>
+            <td>{employee.Salary }</td>
+            <td><MdCreate onClick={() => setShowMoodle(true)} style={{ cursor: 'pointer' }} />
+              <Modle show={showModle} onHide={() => setShowMoodle(false)} empDet={employee} />
+              {' '}
+              <MdDelete style color="red" onClick={() => console.log("Delete Icon")}
+                style={{ cursor: 'pointer' }} />
+             
+            </td>
           </tr>
-          <tr>
-            <td>emp2015</td>
-            <td>857896545V</td>
-            <td>Shamali Perera</td>
-            <td>Matara</td>
-            <td>Shamaliperera@gmail.com</td>
-            <td>Manager</td>
-            <td>50000.00</td>
-          </tr>
-          <tr>
-            <td>emp2015</td>
-            <td>857896545V</td>
-            <td>Shamali Perera</td>
-            <td>Matara</td>
-            <td>Shamaliperera@gmail.com</td>
-            <td>Manager</td>
-            <td>50000.00</td>
-          </tr>
-        </tbody>
+        
+        </tbody> 
       </Table>
-      </div>
-    )
-}
+    </div>
+  );
+};
 
-export default EmployeeTable
+export default EmployeeTable;
