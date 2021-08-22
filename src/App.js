@@ -1,16 +1,35 @@
-import Header from './component/Header';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Footer from './component/Footer';
+
+import Navbar from './component/Navbar';
+import Dashboard from './component/Pages/Dashboard';
+import Addstock from './component/Pages/Addstock';
+import In from './component/Pages/In';
+
+
+
+
+
 function App() {
   return (
-    <div className="App">
-     <Header/>
-     <h1>Gangasiri hi</h1>
-     <Footer/>
-     
-    </div>
-  );
+    <>
+    <Router>
+      <Navbar/>
+      <switch>
+        <Route path='/' exact component={Dashboard}/>
+        <Route path='/Addstock' exact component={Addstock}/>
+        <Route path='/In' exact component={In}/>
+
+
+        
+
+      </switch>
+    </Router>
+ 
+   </>
+   );
 }
 
 export default App;
