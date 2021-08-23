@@ -2,14 +2,17 @@ import Header from './component/Header';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from './component/Footer';
-import SuppliersTable from './component/Supplier_Table';
-import DailySupplyTable from './component/DailySupply_Table';
+import Supplier from './component/Supplier';
+import DailySupply from './component/DailySupply';
+import RegEmpSupBtn from './component/RegEmpSup_Btn';
+
 function App() {
   return (
     <div className="App">
-     <Header/>
-      {/* <SuppliersTable/> */}
-      <DailySupplyTable/>
+      <Header />
+      <Supplier/>
+      {/* <DailySupply/>
+      <RegEmpSupBtn/> */}
      <Footer/>
      
     </div>

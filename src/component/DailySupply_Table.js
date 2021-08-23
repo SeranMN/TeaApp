@@ -1,16 +1,42 @@
 import Table from "react-bootstrap/Table";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
-import DailySupplyBtn from "./DailySupply_Btn";
 import { useState } from "react";
 import ModleDaily from "./ModleDaily";
+import ModleDelete from "./ModleDelete";
 
-const DailySupplyTable = () => {
+const DailySupplyTable = ({ SupplierID, dailySupply, onClick }) => {
   const [modalShow, setModalShow] = useState(false);
+  const [modaldelete, setModalDelete] = useState(false)
+  const [dailysuplies, setDailySuply] = useState([
+    {
+      SupplierID: "S001",
+      Date: "2021-08-21",
+      Weight: "50",
+      DeliveredVehicle: "LY-3654",
+      DataEntryOfficer: "DE002",
+    },
+
+    {
+      SupplierID: "S002",
+      Date: "2021-08-21",
+      Weight: "150",
+      DeliveredVehicle: "LA-8546",
+      DataEntryOfficer: "DE002",
+    },
+
+    {
+      SupplierID: "S003",
+      Date: "2021-08-21",
+      Weight: "80",
+      DeliveredVehicle: "LY-3654",
+      DataEntryOfficer: "DE001",
+    },
+  ]);
+  const [dailysupplyDet, setDailySupplyDet] = useState('')
+  const [dailysupplyDelete, setDailySupplyDelete] = useState('')
+  //console.log(dailySupply)
   return (
     <div>
-      <DailySupplyBtn onclick={() => setModalShow(true)} />
-      <ModleDaily show={modalShow} onHide={() => setModalShow(false)} />
-
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -22,87 +48,49 @@ const DailySupplyTable = () => {
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>S001</td>
-            <td>2021-08-21</td>
-            <td>50</td>
-            <td>LY-3654</td>
-            <td>DE002</td>
-            <td>
-              <div>
-                <span>
-                  <FaPencilAlt
-                    onClick={() => console.log("Edit")}
-                    style={{ cursor: "pointer" }}
-                    title="Edit Record"
-                  />
-                </span>
-                &nbsp;&nbsp;&nbsp;
-                <span>
-                  <FaTrash
-                    onClick={() => console.log("Delete")}
-                    style={{ cursor: "pointer", color: "red" }}
-                    title="Delete Record"
-                  />
-                </span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>S001</td>
-            <td>2021-08-21</td>
-            <td>50</td>
-            <td>LY-3654</td>
-            <td>DE002</td>
-            <td>
-              <div>
-                <span>
-                  <FaPencilAlt
-                    onClick={() => console.log("Edit")}
-                    style={{ cursor: "pointer" }}
-                    title="Edit Record"
-                  />
-                </span>
-                &nbsp;&nbsp;&nbsp;
-                <span>
-                  <FaTrash
-                    onClick={() => console.log("Delete")}
-                    style={{ cursor: "pointer", color: "red" }}
-                    title="Delete Record"
-                  />
-                </span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>S001</td>
-            <td>2021-08-21</td>
-            <td>50</td>
-            <td>LY-3654</td>
-            <td>DE002</td>
-            <td>
-              <div>
-                <span>
-                  <FaPencilAlt
-                    onClick={() => console.log("Edit")}
-                    style={{ cursor: "pointer" }}
-                    title="Edit Record"
-                  />
-                </span>
-                &nbsp;&nbsp;&nbsp;
-                <span>
-                  <FaTrash
-                    onClick={() => console.log("Delete")}
-                    style={{ cursor: "pointer", color: "red" }}
-                    title="Delete Record"
-                  />
-                </span>
-              </div>
-            </td>
-          </tr>
-        </tbody>
+        {dailysuplies.map((dailySupply) => (
+          <tbody key={dailySupply.SupplierID}>
+            <tr>
+              <td>{dailySupply.SupplierID}</td>
+              <td>{dailySupply.Date}</td>
+              <td>{dailySupply.Weight}</td>
+              <td>{dailySupply.DeliveredVehicle}</td>
+              <td>{dailySupply.DataEntryOfficer}</td>
+              <td>
+                <div>
+                  <span>
+                    <FaPencilAlt
+                      onClick={() => {
+                        setModalShow(true);
+                        setDailySupplyDet(dailySupply);
+                      }}
+                      style={{ cursor: "pointer" }}
+                      title="Edit Record"
+                    />
+                  </span>
+                  &nbsp;&nbsp;&nbsp;
+                  <span>
+                    <FaTrash
+                      onClick={() => { setModalDelete(true); setDailySupplyDelete(dailySupply) }}
+                      style={{ cursor: "pointer", color: "red" }}
+                      title="Delete Record"
+                    />
+                  </span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        ))}
       </Table>
+      <ModleDaily
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        supplyDet={dailysupplyDet}
+      />
+      <ModleDelete show={modaldelete}
+        onHide={() => setModalDelete(false)}
+        dailysupplyDelete={dailysupplyDelete}/>
+      
     </div>
   );
 };

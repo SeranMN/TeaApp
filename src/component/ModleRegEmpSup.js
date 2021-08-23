@@ -1,22 +1,22 @@
 import Modal from "react-bootstrap/Modal";
 import { ModalBody } from "react-bootstrap";
-import DailySupplyForm from "./DailySupply_Form";
+import RegEmpSupForm from "./RegEmpSup_Form";
 
-const ModleDaily = (props) => {
+const ModleRegEmpSup = (props) => {
   return (
     <Modal
       {...props}
-      size=""
+      size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          {props.supplyDet != null ? "Edit Supply" : "Add New Supply"}
+          Register
         </Modal.Title>
       </Modal.Header>
       <ModalBody>
-        <DailySupplyForm det={props.supplyDet} />
+        <RegEmpSupForm/>
       </ModalBody>
 
       <Modal.Footer></Modal.Footer>
@@ -24,4 +24,4 @@ const ModleDaily = (props) => {
   );
 };
 
-export default ModleDaily;
+export default ModleRegEmpSup;
