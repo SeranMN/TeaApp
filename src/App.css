@@ -36,3 +36,58 @@
     transform: rotate(360deg);
   }
 }
+
+/*.regform {
+  height: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}*/
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+
+.loginform {
+  height: 435px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*.editform {
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}*/
+
+/*.feedbackform {
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}*/
+
+.profile {
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.report {
+  height: 80px;
+  width : 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 550px;
+}
