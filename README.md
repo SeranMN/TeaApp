@@ -1,9 +1,9 @@
 Please go under edit and edit this file as needed for your project
 
-# Project Name - Tea Factory App
-# Batch - Y2_S2_B01
-### Group Leader - IT20021566 - Seran M.N. (SeranMN)
-### Member 2 - 
+# Project Name - 
+# Batch - 
+### Group Leader - IT20212232 - Mr. Asiri Gamage (IT20212232)
+### Member 2 - IT20154080 - Dayarathna H.R.N.C(navod99)
 ### Member 3 - 
 ### Member 4 - 
 ### Member 5 - 
@@ -12,7 +12,7 @@ Please go under edit and edit this file as needed for your project
 ### Member 8 - 
 
 #### Brief Description of Project - 
-#### Technologies used - React, Node, Mongo DB
+#### Technologies used - 
 
 Note - The student's github account should be given in brackets e.g. (IT20212232), this ideally should be your student id 
 
