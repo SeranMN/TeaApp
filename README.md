@@ -2,7 +2,7 @@ Please go under edit and edit this file as needed for your project
 
 # Project Name - Tea Factory App
 # Batch - Y2_S2_B01
-### Group Leader - IT20021566 - Seran M.N. (IT20021566)
+### Group Leader - IT20021566 - Seran M.N. (SeranMN)
 ### Member 2 - 
 ### Member 3 - 
 ### Member 4 - 
