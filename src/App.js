@@ -5,14 +5,16 @@ import Footer from './component/Footer';
 import Supplier from './component/Supplier';
 import DailySupply from './component/DailySupply';
 import RegEmpSupBtn from './component/RegEmpSup_Btn';
+import SupplierProfile from './component/SupplierProfile';
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Supplier/>
-      {/* <DailySupply/>
+      {/* <Supplier/>
+      <DailySupply/>
       <RegEmpSupBtn/> */}
+      <SupplierProfile/>
      <Footer/>
      
     </div>

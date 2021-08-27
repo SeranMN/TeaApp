@@ -43,7 +43,7 @@ const DailySupplyForm = ({ det }) => {
           type="text"
           placeholder="Enter Supplier ID"
           value={supID}
-          onchange={(e) => setSupID(e.target.value)}
+          onChange={(e) => setSupID(e.target.value)}
           required
         />
         <Form.Control.Feedback type="invalid">
@@ -85,7 +85,6 @@ const DailySupplyForm = ({ det }) => {
       <Form.Group className="mb-4" controlId="formVehicle">
         <Form.Label>Delivered Vehicle</Form.Label>
         <Form.Select
-          placeholder="Select Vehicle Number"
           aria-label="Floating label select example"
           value={vehicle}
           onChange={(e) => setVehicle(e.target.value)}

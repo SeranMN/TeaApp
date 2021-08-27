@@ -3,11 +3,14 @@ import {FaFileAlt,FaPencilAlt,FaTrash,} from "react-icons/fa";
 import { useState } from "react";
 import ModleSupplier from "./ModleSupplier";
 import ModleDelete from "./ModleDelete";
+import ModleReport from "./ModleReport";
+import SupplierProfileSideBar from "./SupplierProfile_SideBar";
 
 
 const SuppliersTable = ({ SupplierID, supplier, onClick }) => {
   const [modalShow, setModalShow] = useState(false);
   const [modaldelete, setModalDelete] = useState(false);
+  const [modalreport, setModalReport] = useState(false);
   const [suppliers, setSupplier] = useState([
     {
       SupplierID: "S001",
@@ -44,6 +47,7 @@ const SuppliersTable = ({ SupplierID, supplier, onClick }) => {
   ]);
   const [supplierDet, setSupplierDet] = useState('')
   const [supplierDelete, setSupplierDelete] = useState('')
+  const [supplierreport, setSupplierReport] = useState('')
   //console.log(supplier)
   return (
     <div>
@@ -93,7 +97,7 @@ const SuppliersTable = ({ SupplierID, supplier, onClick }) => {
                   &nbsp;&nbsp;&nbsp;
                   <span>
                     <FaFileAlt
-                      onClick={() => console.log("Genarate")}
+                      onClick={() => { setModalReport(true); setSupplierReport(supplier.SupplierID)}}
                       style={{ cursor: "pointer", color: "green" }}
                       title="Generate Report"
                     />
@@ -114,6 +118,11 @@ const SuppliersTable = ({ SupplierID, supplier, onClick }) => {
         onHide={() => setModalDelete(false)}
         supplierDelete={supplierDelete}
       />
+      <ModleReport
+        show={modalreport}
+        onHide={() => setModalReport(false)}
+        supplierreport={supplierreport} />
+   
     </div>
   );
 };

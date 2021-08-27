@@ -44,7 +44,7 @@ const SupplierForm = ({det}) => {
           type="text"
           placeholder="Enter Name"
           value={name}
-          onchange={(e) => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
           required
         />
       </Form.Group>
@@ -119,7 +119,7 @@ const SupplierForm = ({det}) => {
         <Form.Control
           type="email"
           placeholder="Enter email"
-          pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$"
+          pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-z]{2,}|[.][\w-]{2,}[.][a-z]{2,})$"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required

@@ -8,20 +8,28 @@ const RegEmpSupForm = ({det}) => {
     const [username, setUserName] = useState(det != null ? (det.UserName) : (""));
   const [newpassword, setNewPassword] = useState(det != null ? (det.NewPassword) : (""));
   // const [confirmpassword, setConfirmPassword] = useState(det != null ? (det.ConfirmPassword) : (""));
+    
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+      var v1 = document.getElementById("formPassword").value;
+      var v2 = document.getElementById("formrePassword").value;
+
+      if ((v1 == v2) && v1 != null && v2 != null) {
+        alert("Success");
+      } else {
+        alert("Password Missmatch");
+    };
   
-    const handleSubmit = (event) => {
-      const form = event.currentTarget;
-      //const password = event.currentTarget;
-      // if (newpassword !== confirmpassword) {
-      //   alert("Passwords don't Match")
-      // }
+      
         if (form.checkValidity() === false) {
           event.preventDefault();
           event.stopPropagation();
         }
-        setvalidated(true);
-      
-    };
+        setvalidated(true);    
+  };
+
+  
+  
 
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
@@ -46,7 +54,6 @@ const RegEmpSupForm = ({det}) => {
           type="password"
           placeholder="Create Password"
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-          id="pw"
           title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
           value={newpassword}
           onChange={(e) => setNewPassword(e.target.value)}
@@ -60,9 +67,6 @@ const RegEmpSupForm = ({det}) => {
         <Form.Control
           type="password"
           placeholder="Re Enter Password"
-          id="rpw"
-          // value={confirmpassword}
-          // onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
       </Form.Group>

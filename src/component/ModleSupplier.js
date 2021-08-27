@@ -1,5 +1,5 @@
 import Modal from 'react-bootstrap/Modal'
-import {ModalBody } from 'react-bootstrap'
+import { ModalBody } from 'react-bootstrap'
 import SupplierForm from './Supplier_Form'
 
 const ModleSupplier = (props) => {
