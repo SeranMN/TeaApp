@@ -9,7 +9,7 @@ Please go under edit and edit this file as needed for your project
 ### Member 5 - IT20385064 - Abeywickrama C.P. (chathumipa)
 ### Member 6 - IT20077488 - Risina Rasmith R.K.A. (RisinaR)
 ### Member 7 - IT20142896 - Chamindu Hansana K.G. (Hansana1999)
-### Member 8 - 
+### Member 8 - IT20105198 - Weththasinghe A.S. (Athindusw)
 
 #### Brief Description of Project - 
 #### Technologies used - 
