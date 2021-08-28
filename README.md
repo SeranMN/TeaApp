@@ -4,7 +4,7 @@ Please go under edit and edit this file as needed for your project
 # Batch - 
 ### Group Leader - IT20021566 - Seran M.N. (SeranMN)
 ### Member 2 - IT20154080 - Dayarathna H.R.N.C(navod99)
-### Member 3 - 
+### Member 3 -IT20148386 - A.I.R Hettiarachchi (AshenIR) 
 ### Member 4 - 
 ### Member 5 - 
 ### Member 6 - 
