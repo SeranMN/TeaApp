@@ -5,7 +5,7 @@ const Modle = (props) => {
   return (
     <Modal
       {...props}
-      size="lg"
+      size="sm"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -15,11 +15,11 @@ const Modle = (props) => {
         </Modal.Title>
       </Modal.Header>
       <ModalBody>
-        <EmpForm det = {props.empDet} />
+        <EmpForm det = {props.employee} />
       </ModalBody>
 
       <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
+        
       </Modal.Footer>
     </Modal>
   );

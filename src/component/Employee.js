@@ -1,20 +1,68 @@
-import React from 'react'
+import React from "react";
 import Empbtn from "./Empbtn";
 import { useState } from "react";
 import Modle from "./Modle";
-import EmployeeDetails from './EmployeeDetails';
-const Employee = () => {
-    const [modalShow, setModalShow] = useState(false);
-    
-    return (
-        <div>
-        <Empbtn onClick={() => setModalShow(true)} /><br/>
-            <Modle show={modalShow} onHide={() => setModalShow(false)} />
-            
-            <EmployeeDetails />
-            
-        </div>
-    )
-}
 
-export default Employee
+import { Button } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
+import { Card } from "react-bootstrap";
+import EmployeeDetails from "./EmployeeDetails";
+import Sidenavbar from "./Sidenavbar"
+import Offcanvas from "react-bootstrap/Offcanvas";
+const Employee = () => {
+  const [modalShow, setModalShow] = useState(false);
+  const [totEmp, setTot] = useState(1);
+
+  
+  return (
+    <>
+     
+     <Row>
+        <Col sm = {2}></Col>
+        <Col xl={10}>
+  
+      <div style={{ margin: "20px" }}>
+      <Row>
+          <Col>
+            <Card>
+              <Card.Body>
+                <Card.Title> Total Employees </Card.Title>
+                <Card.Text>
+                  <h2>{totEmp}</h2>4
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col>
+            <Card>
+              <Card.Body>
+                <Card.Title> Today Attendance </Card.Title>
+                <Card.Text>
+                  <h2>35</h2>4
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+        
+      </div>
+
+    
+        
+        <div style={{ margin: "20px" }}>
+        
+            <Empbtn onClick={() => setModalShow(true)} />
+        
+        </div>
+        <br />
+        <Modle show={modalShow} onHide={() => setModalShow(false)} />
+
+        <EmployeeDetails tot={setTot} />
+        </Col>
+       </Row>
+       
+    </>
+  );
+};
+
+export default Employee;

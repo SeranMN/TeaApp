@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import EmployeeTable from './EmployeeTable'
 
-const EmployeeDetails = ({ onClick }) => {
+const EmployeeDetails = ({ onClick,tot }) => {
     const [employees, setEmployee] = useState([
         {
             empID: 'EM20156',
@@ -43,10 +43,7 @@ const EmployeeDetails = ({ onClick }) => {
 
     return (
         <>
-            {employees.map((employee) => (<EmployeeTable empID={employee.empID} employee={employee}
-                
-                />))
-             }
+           <EmployeeTable employees = {employees} totEmp = {tot}  />
             
         </>
     )
