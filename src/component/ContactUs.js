@@ -2,21 +2,28 @@ import React from 'react'
 import Formbtn from './Formbtn'
 import { useState } from 'react';
 import BtnModal from './BtnModal';
-import ViewBtn from './ViewBtn';
+import ContactUsView from './ContactUsView';
+import { BrowserRouter as Router, Route, Link} from 'react-router-dom'
+
 
 
 const ContactUs = () => {
   const [modalShow, setModalShow] = useState(false);
 
   return (
+    <Router>
     <div>
-      
-      <Formbtn onClick={() => setModalShow(true)} />
-      <BtnModal show = {modalShow} onHide = {() => setModalShow(false)} />
-      {/*<ViewBtn/>*/}
-        
-      
+    <Route path='/' exact render={(props) =>(
+       <>
+         <Formbtn onClick={() => setModalShow(true)} />
+         <BtnModal show = {modalShow} onHide = {() => setModalShow(false)} />
+         <Link to="/ContactUsView">View</Link>   
+
+       </>
+     )}/>
+    <Route path="/ContactUsView" component={ContactUsView} />      
     </div>
+    </Router>
     
   )
 }

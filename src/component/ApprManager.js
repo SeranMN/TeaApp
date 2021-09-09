@@ -9,11 +9,9 @@ import { Button } from 'react-bootstrap'
 import {Form} from 'react-bootstrap'
 import DeleteModal from './DeleteModal';
 
-
-
-const ApprTable = () => {
-  const [modaldelete, setModalDelete] = useState(false)
-  const [appointments, setAppointment] = useState([
+const ApprManager = () => {
+    const [modaldelete, setModalDelete] = useState(false)
+    const [appointments, setAppointment] = useState([
     {
       AppointmentID: "001",
       AppointersName: "Dishan Pahan",
@@ -41,12 +39,12 @@ const ApprTable = () => {
       Time: "10.30 AM",
       Concern: "To discuss about payments",
     },
-  ]);
-  const [AppDelete, setAppDelete] = useState('')
+    ]);
+    const [AppDelete, setAppDelete] = useState('')
 
   return (
     
-    <div style={{ marginLeft: "220px", marginTop: "20px", marginRight: "10px"}}>
+    <div>
       <br/>
       <SearchBar/>
       <br/>
@@ -101,26 +99,10 @@ const ApprTable = () => {
 
       <br/>
       <br/>
-      <div className="RepGe">
-        <InputGroup className="mb-3">
-        <Form.Select
-                aria-label="Floating label select example"
-                required>
-                  
-                <option>General Manager</option>
-                <option value="1">CR Manager</option>
-                <option value="2">HR Manager</option>
-                <option value="3">Financial Manager</option>
-            </Form.Select>
-        <Button variant="outline-secondary" id="button-addon2">
-          Generate Report
-        </Button>
-        </InputGroup>
-      </div>
       <br/>
       <br/>
     </div>
   )
 }
 
-export default ApprTable
+export default ApprManager
