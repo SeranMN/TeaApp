@@ -56,8 +56,10 @@ const EmployeeTable = ({ empID, employee, onClick, employees,totEmp}) => {
   const [showModle, setShowMoodle] = useState(false)
   const [empDet,setEmpDet] = useState ('')
   const [editForm, showEditForm] = useState(false);
+  const [type, settype] = useState("")
+  
   return (
-    <div>
+    <div style={{ margin:"20px"}}>
       
       <Table striped bordered hover>
         <thead>
@@ -83,16 +85,22 @@ const EmployeeTable = ({ empID, employee, onClick, employees,totEmp}) => {
             <td>{employee.Des}</td>
            
                <td><MdAccountCircle onClick={() => {
-                 setShowMoodle(true)
+                 showEditForm(true)
                  setEmpDet(employee)
+                  settype("Details")
                }} style={{ cursor: 'pointer' }} /> {'  '}
                  <MdCreate fontSize="large" onClick={() => {
                  showEditForm(true)
-                 setEmpDet(employee)
+                   setEmpDet(employee)
+                   settype("Update")
                }} style={{ cursor: 'pointer' }}></MdCreate>
               
               {' '}
-              <MdDelete  style color="red" onClick={() => console.log("Delete Icon")}
+                 <MdDelete style color="red" onClick={() => {
+                   showEditForm(true)
+                   setEmpDet(employee)
+                   settype("Delete")
+                 } }
                 style={{ cursor: 'pointer' }} />
              
             </td>
@@ -100,8 +108,8 @@ const EmployeeTable = ({ empID, employee, onClick, employees,totEmp}) => {
          
         </tbody> ))}
       </Table>
-      <EmpprofMoodle show={showModle} onHide={() => setShowMoodle(false)} employee={empDet} />
-      <Modle show={editForm} onHide={() => showEditForm(false)} employee = {empDet} />
+      {/* <EmpprofMoodle show={showModle} onHide={() => setShowMoodle(false)} employee={empDet} /> */}
+      <Modle show={editForm} onHide={() => showEditForm(false)} employee = {empDet} type = {type} />
       
     </div>
   );

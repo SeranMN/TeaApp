@@ -1,23 +1,23 @@
-import Header from './component/Header';
+
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Footer from './component/Footer';
+
 import Employee from './component/Employee';
-import AdminDashBoard from './component/AdminDashBoard';
-import EmpMngDash from './component/EmpMngDash';
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import Sidenavbar from "./component/Sidenavbar"
-import { Row,Col } from 'react-bootstrap';
+
 import Salary from './component/Salary';
 import Attendance from './component/Attendance';
 import FormerEmp from './component/FormerEmp';
+import AttendanceMark from './component/AttendanceMark';
 function App() {
   return (
     <Router>
       <div className="App">
         <Sidenavbar />
        
-       <div >   
+         
         <Switch>
           <Route exact path = "/">
             <Employee/>
@@ -35,10 +35,14 @@ function App() {
             <FormerEmp/>
           
           </Route>
+           <Route path = "/AttendanceMark.js">
+            <AttendanceMark/>
+          
+          </Route>
       </Switch>
      {/* <Footer/> */}
     </div>
-      </div>
+     
       </Router>
   );
 }

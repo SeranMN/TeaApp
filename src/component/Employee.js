@@ -15,11 +15,11 @@ const Employee = () => {
 
   
   return (
-    <>
+    <div style={{ marginLeft: "220px",marginTop:'20px',marginRight:'50px' }}>
      
      <Row>
-        <Col sm = {2}></Col>
-        <Col xl={10}>
+        
+        
   
       <div style={{ margin: "20px" }}>
       <Row>
@@ -51,17 +51,17 @@ const Employee = () => {
         
         <div style={{ margin: "20px" }}>
         
-            <Empbtn onClick={() => setModalShow(true)} />
+          <Empbtn onClick={() => setModalShow(true) } />
         
         </div>
         <br />
-        <Modle show={modalShow} onHide={() => setModalShow(false)} />
+        <Modle show={modalShow} onHide={() => setModalShow(false) } type = {"ADD"} />
 
         <EmployeeDetails tot={setTot} />
-        </Col>
+       
        </Row>
        
-    </>
+    </div>
   );
 };
 

@@ -1,30 +1,16 @@
 import React from "react";
 import { Row, Col, Button, Table } from "react-bootstrap";
 import Clock from "./Clock";
-
+import { Link } from "react-router-dom";
 const Attendance = () => {
   return (
     <>
-      <div style={{ margin: "2px" }}>
-        <Row>
-          <Col md={2}></Col>
-          <Col>
+      <div style={{ marginLeft: "220px",marginTop:'20px',marginRight:'20px' }}>
+       
             <Clock /> <br />
-          </Col>
-              </Row>
-              <Row>
-                  <Col md = {2}> </Col>
-        <Col md = {4} >
-                      <Button> Mark Attendance</Button>
-                      
-                  </Col>{" "}
-               
-              </Row>
-              <Row>
-              <Col md = {2}></Col>
-                  <Col xs ={10}>
-                       <br />  
-        <Table striped bordered hover size="sm">
+                     <Link to = "AttendanceMark.js"> <Button> Mark Attendance</Button> </Link>
+                     <br/>
+        <Table striped bordered hover >
           <thead>
             <tr>
               <th>#</th>
@@ -42,8 +28,7 @@ const Attendance = () => {
             </tr>
           </tbody>
         </Table>
-        </Col>
-        </Row>
+       
       </div>
     </>
   );

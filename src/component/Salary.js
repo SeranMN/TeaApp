@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Col, Row } from "react-bootstrap";
-import Sidenavbar from "./Sidenavbar";
+
 import { Form, FormControl, InputGroup, Button } from "react-bootstrap";
 const Salary = () => {
   const [validated, setValidated] = useState(false);
