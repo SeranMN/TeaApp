@@ -9,12 +9,21 @@ const Supplier = () => {
     const [showModal, setShowModal] = useState(false)
 
     return (
-        <div>
-            <SupplierBtn onclick={() => setShowModal(true)} /><br />
-            <ModleSupplier show={showModal} onHide={() => setShowModal(false)} />
-            <SuppliersTable/>
-        </div>
-    )
+      <div
+        style={{ marginLeft: "220px", marginTop: "20px", marginRight: "10px" }}
+      >
+        <h1>
+          <i>
+            <u>All Suppliers</u>
+          </i>
+        </h1>
+        <br />
+        <SupplierBtn onclick={() => setShowModal(true)} />
+        <br/><br/>
+        <ModleSupplier show={showModal} onHide={() => setShowModal(false)} />
+        <SuppliersTable />
+      </div>
+    );
 }
 
 export default Supplier;

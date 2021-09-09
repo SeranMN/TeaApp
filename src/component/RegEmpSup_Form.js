@@ -14,7 +14,7 @@ const RegEmpSupForm = ({det}) => {
       var v1 = document.getElementById("formPassword").value;
       var v2 = document.getElementById("formrePassword").value;
 
-      if ((v1 == v2) && v1 != null && v2 != null) {
+      if ((v1 === v2) && v1 != null && v2 != null) {
         alert("Success");
       } else {
         alert("Password Missmatch");
@@ -67,6 +67,7 @@ const RegEmpSupForm = ({det}) => {
         <Form.Control
           type="password"
           placeholder="Re Enter Password"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
           required
         />
       </Form.Group>

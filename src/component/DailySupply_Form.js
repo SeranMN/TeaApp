@@ -62,7 +62,7 @@ const DailySupplyForm = ({ det }) => {
           required
         />
         <Form.Control.Feedback type="invalid">
-          Please insert Delivery Date
+          Please insert Suppliying Date
         </Form.Control.Feedback>
       </Form.Group>
 
