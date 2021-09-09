@@ -5,6 +5,7 @@ import Modalnew from './component/Modalnew.js';
 import Profile from './component/Profile.js';
 import ModalFeedback from './component/ModalFeedback.js'
 import Modalpassword from './component/Modalpassword.js'
+import Modaldelete from './component/Modaldelete.js';
 
 
 
@@ -13,6 +14,7 @@ const CusProfile = () => {
             const [modalShow, setModalShow] = React.useState(false);
             const [modalFeedback, setModalFeedback] = React.useState(false);
             const [modalPassword, setModalPassword] = React.useState(false);
+            const [modalDelete, setModalDelete] = React.useState(false);
             
             return (
             <div>
@@ -24,7 +26,9 @@ const CusProfile = () => {
                     Update Details
                 </Button>
                 &nbsp;&nbsp;
-                <Button variant="warning">Delete Account</Button>
+                <Button variant="warning" onClick={() => setModalDelete(true)}>
+                    Delete Account
+                </Button>
                 &nbsp;&nbsp;
                 <Button variant="success" onClick={() => setModalFeedback(true)}>
                     Give a Feedback
@@ -37,6 +41,10 @@ const CusProfile = () => {
                 <Modalnew
                 show={modalShow}
                 onHide={() => setModalShow(false)}
+                />
+                <Modaldelete
+                show={modalDelete}
+                onHide={() => setModalDelete(false)}
                 />
                 <ModalFeedback
                 show={modalFeedback}

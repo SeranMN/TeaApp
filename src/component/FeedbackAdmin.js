@@ -7,9 +7,11 @@ import { FormControl } from 'react-bootstrap'
 
 const FeedbackAdmin = () => {
     return (
-        <div className="feedbacktable">
+        <div style={{marginLeft: "220px", marginRight: "10px"}}>
         <br/> 
-        <div className="report">
+        <h3>Feedbacks</h3>
+        <br />
+        <div className="report" style={{marginLeft: "400px"}}>
         <InputGroup className="mb-3">
             <FormControl
                 placeholder="Enter Product ID"
@@ -21,8 +23,6 @@ const FeedbackAdmin = () => {
             </Button>
         </InputGroup>
         </div>
-        <br />
-        <h3>Feedbacks</h3>
         <br />
         <Table striped bordered hover>
             <thead>

@@ -4,7 +4,9 @@ import Search from './Search'
 
 const CusTable = () => {
     return (
-        <div className="custable">
+        <div className="custable" style={{marginLeft: "220px", marginRight: "10px"}}>
+        <br />
+        <h3>Customer Details </h3>
         <br/>
         <Search /> 
         <br/>

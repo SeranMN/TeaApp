@@ -37,12 +37,6 @@
   }
 }
 
-/*.regform {
-  height: 1000px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}*/
 
 .visually-hidden {
   clip: rect(0 0 0 0);
@@ -62,19 +56,6 @@
   align-items: center;
 }
 
-/*.editform {
-  height: 700px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}*/
-
-/*.feedbackform {
-  height: 600px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}*/
 
 .profile {
   height: 800px;

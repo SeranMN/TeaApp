@@ -18,7 +18,7 @@ const Profile = () => {
                 <Card.Body>lasalt@gmail.com</Card.Body>
             </Card>
             <Card>
-                <Card.Body>No.32, Samanala Mawatha, Akuressa, Matara.</Card.Body>
+                <Card.Body>No.32, Samanala Mawatha, Thihagoda, Matara.</Card.Body>
             </Card>
             <Card>
                 <Card.Body>982746890V</Card.Body>
