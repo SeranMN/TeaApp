@@ -30,7 +30,7 @@ export const sidebarData = [
 },
 {
     title:'Out',
-    path:'/out',
+    path:'/Out',
     icon:<ImExit/>,
     cName:'nav-text'
 },

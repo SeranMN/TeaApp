@@ -1,11 +1,29 @@
-import React from 'react'
+import React,{useState} from 'react'
+import Addstockmodel from './Addstockmodel';
+import Card1 from './Card1';
+import Button from '@material-ui/core/Button';
 
-function Addstock() {
+    
+  const Addstock = ({}) => {
+        
+    
+
+     
+
+       
     return (
-        <div className='addstock'>
+
+        <>
             
-        </div>
+            
+         <Addstockmodel />
+       <center> <Card1 /></center>
+           
+                    
+                        
+        </>
     )
 }
+ 
 
 export default Addstock

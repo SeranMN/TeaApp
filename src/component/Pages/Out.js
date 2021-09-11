@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   
 
 
-const In = ({}) => {
+const Out = ({}) => {
     const classes = useStyles();
     const[productID,setproductID] = useState('')
     const[Amount,setAmount] = useState('')
@@ -56,7 +56,7 @@ const In = ({}) => {
              <Box p={3} width="1000px"  marginBottom="40px" bgcolor="grey.300">   
         <form  className='add-form' onSubmit={onSubmit} >
             
-            <div className='title'>Stock In </div>
+            <div className='title'>Stock Out </div>
             <div className='formcontrol'>
                  
                     <label className='form-label'>
@@ -149,4 +149,4 @@ const In = ({}) => {
     )
 }
 
-export default In
+export default Out
