@@ -4,7 +4,7 @@ import { MdDelete } from "react-icons/md"
 import { MdAccountCircle } from "react-icons/md";
 import { MdCreate } from "react-icons/md";
 import { useState } from "react";
-import EmpprofMoodle from "./EmpprofMoodle";
+
 
 const EmployeeTable = ({ empID, employee, onClick, employees,totEmp}) => {
 //     const [employees, setEmployee] = useState([

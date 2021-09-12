@@ -39,9 +39,9 @@ const DeleteForm = ({ employee }) => {
           <Form.Label>Reason to Delete</Form.Label>
           <Form.Control
             required
-            type="text-field"
+            type="text"
             placeholder="Enter Reason"
-            value={""}
+           
           />
           <Form.Control.Feedback type="invalid">
             Please provide Reason.

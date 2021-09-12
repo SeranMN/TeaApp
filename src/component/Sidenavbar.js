@@ -21,9 +21,7 @@ function Navbar() {
         <nav className={"nav-menu active" }>
           <ul className="nav-menu-items" >
             <li className="navbar-toggle">
-              {/* <Link to="#" className="menu-bars">
-                <AiOutlineClose />
-              </Link> */}
+             
             </li>
             {sidebarData.map((item, index) => {
               return (
