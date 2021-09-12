@@ -82,7 +82,7 @@ const Card1 = ({handleClose,handleShow,setShow,show})=> {
           component="img"
           alt="Tea"
           height="140"
-          image="./product.jpg"
+          image={"./src/Img/product.jpg"}
           title={product.productName}
         />
         <CardContent>
