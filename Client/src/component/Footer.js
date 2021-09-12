@@ -2,7 +2,7 @@ import React from 'react'
 import Card from 'react-bootstrap/Card'
 const Footer = () => {
     return (
-        <Card className="text-center">
+        <Card className="text-center" fixed="bottom">
         <Card.Header>Gangasiri Tea</Card.Header>
         <Card.Body>
           <Card.Title>Special title treatment</Card.Title>
