@@ -1,6 +1,6 @@
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import ModalRegister from './component/ModalRegister.js'
+import ModalRegister from './ModalRegister.js'
 import { useState } from 'react';
 
 

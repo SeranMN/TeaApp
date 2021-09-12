@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Button } from "react-bootstrap";
 import { useState } from 'react';
-import Modalnew from './component/Modalnew.js';
-import Profile from './component/Profile.js';
-import ModalFeedback from './component/ModalFeedback.js'
-import Modalpassword from './component/Modalpassword.js'
-import Modaldelete from './component/Modaldelete.js';
+import Modalnew from './Modalnew.js';
+import Profile from './Profile.js';
+import ModalFeedback from './ModalFeedback.js'
+import Modalpassword from './Modalpassword.js'
+import Modaldelete from './Modaldelete.js';
 
 
 
