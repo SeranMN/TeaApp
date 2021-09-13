@@ -17,7 +17,11 @@ connectDB();
 app.get("/", (req, res) => {
     res.send("Hello Node!");
 });
+const employeeApi = require("./src/api/employee.api");
+app.use("/employee", employeeApi());
 
 app.listen(PORT, () => {
   console.log(`App listening at http://localhost:${PORT}`);
 });
+
+
