@@ -1,5 +1,5 @@
 const Employee = require('../modal/Employee');
-
+const mongoose = require('mongoose')
 //create employees
 
 const createEmployee = async (req, res) => {
@@ -21,7 +21,8 @@ const getAllEmployee = async (req, res) => {
         .catch(error => {
             res.send(error);
         });
-       
+
+     
     
 }
 

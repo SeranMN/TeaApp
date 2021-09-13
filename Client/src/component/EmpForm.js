@@ -1,21 +1,49 @@
 import { Col, Form, Row } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useState } from "react";
+import axios from "axios";
+
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 const EmpForm = ({ det }) => {
   const [nic, setNic] = useState(det != null ? det.nic : "");
-  const [name, setName] = useState(det != null ? det.Name : "");
-  const [address, setAddress] = useState(det != null ? det.Address : "");
-  const [email, setEmail] = useState(det != null ? det.Email : "");
-  const [validated, setValidated] = useState(false);
-  const [date, setDate] = useState(det != null ? det.date : "");
-const [type, settype] = useState(det != null ? det.Des: "");
+  const [name, setName] = useState(det != null ? det.name : "");
+  const [address, setAddress] = useState(det != null ? det.address : "");
+  const [email, setEmail] = useState(det != null ? det.email : "");
+  const [date, setDate] = useState(det != null ? det.joinedDate : "");
+  const [type, settype] = useState(det != null ? det.type : "");
+  const [mobNo, setmobNo] = useState(det != null ? det.mobno : "");
+  const [password, setPassword] = useState(det != null ? det.password : "");
+   const [validated, setValidated] = useState(false);
   const handleSubmit = (event) => {
+    const newEmployee = {
+     "name":name,
+    "nic": nic,
+    "address":address,
+    "email":email,
+    "mobno":mobNo,
+    "joinedDate":date,
+    "type":type,
+    "password":password,
+    }
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+    
+    } else {
+      if (det == null) {
+        axios.post("http://localhost:5000/employee/add", newEmployee).then
+          (() => alert("Employee added")).catch((err) => alert(err))
+      }
+      else {
+        axios.put(`http://localhost:5000/employee/update/:${det._ID}`, newEmployee).then
+          (() => alert("Employee added")).catch((err) => alert(err))
+      }
+      
     }
+   
+
+   
 
     setValidated(true);
   };
@@ -58,7 +86,7 @@ const [type, settype] = useState(det != null ? det.Des: "");
               <Form.Control
                 required
                 as="textarea"
-                placeholder="Enter email"
+                placeholder="Enter Address"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
               />
@@ -76,13 +104,25 @@ const [type, settype] = useState(det != null ? det.Des: "");
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Mobile No</Form.Label>
+              <Form.Control
+                required
+                type="Number"
+                placeholder="Enter mobile No"
+                value={mobNo}
+                onChange={(e) => setmobNo(e.target.value)}
+              />
+            </Form.Group>
           </Col>
           <Col>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Joined Date</Form.Label>
-              <Form.Control type="date" value={date} onChange={(e) =>setDate(e.target.value)} />
+              <Form.Control reqiured type="date" value={date} onChange={(e) =>setDate(e.target.value)} />
             </Form.Group>
-            <Form.Select aria-label="Select Employee Type" value={type}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+               <Form.Label>Type</Form.Label>
+              <Form.Select aria-label="Select Employee Type" value={type} onChange={(e) => settype(e.target.value)}>
               <option>Employee</option>
               <option value="General Manager">General Manager</option>
               <option value="Supliar Manager">Supliar Manager</option>
@@ -91,6 +131,7 @@ const [type, settype] = useState(det != null ? det.Des: "");
               <option value="Stock Keeper">Stock Keeper</option>
               <option value="Data Entry Operator">Data Entry Operator</option>
             </Form.Select>
+            </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Password</Form.Label>
@@ -98,7 +139,7 @@ const [type, settype] = useState(det != null ? det.Des: "");
                 required
                 type="password"
                 placeholder="password"
-                onChange={(e) => setAddress(e.target.value)}
+                onChange={(e) => setPassword  (e.target.value)}
               />
 
               <Form.Control.Feedback type="invalid">

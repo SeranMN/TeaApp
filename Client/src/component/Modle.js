@@ -12,29 +12,30 @@ const Modle = (props) => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-           {(props.type == "ADD"&&("Add Data"))}
-          {(props.type == "Update" && ("Update Data"))}
-          {(props.type == "Delete" && ("Delete Data"))}
-           {(props.type == "Details"&&("Details"))}
+          {props.type == "ADD" && "Add Data"}
+          {props.type == "Update" && "Update Data"}
+          {props.type == "Delete" && "Delete Data"}
+          {props.type == "Details" && "Details"}
         </Modal.Title>
       </Modal.Header>
       <ModalBody>
-         { (props.type == "ADD" ) && (<EmpForm det={props.employee} />)}
-        { (props.type == "Update" ) && (<EmpForm det={props.employee} />)}
-        {(props.type == "Details" &&(
+        {props.type == "ADD" && <EmpForm det={props.employee} />}
+        {props.type == "Update" && <EmpForm det={props.employee} />}
+        {props.type == "Details" && (
           <>
-            <h4> Name : {props.employee.Name}</h4>
-        <h6>NIC : {props.employee.nic}</h6>
-        <h6>Address : {props.employee.Address}</h6>
-        <h6>Email : {props.employee.Email}</h6>
-            <h6>Designation : {props.employee.Des}</h6>
-          </>))}
-         { (props.type == "Delete" ) && (<DeleteForm employee={props.employee} />)}
+            <h4> Name : {props.employee.name}</h4>
+            <h6>NIC : {props.employee.nic}</h6>
+            <h6>Address : {props.employee.address}</h6>
+            <h6>Email : {props.employee.email}</h6>
+            <h6>Designation : {props.employee.type}</h6>
+            <h6>Mobile No : {props.employee.mobno}</h6>
+            <h6>joinedDate : {props.employee.joinedDate}</h6>
+          </>
+        )}
+        {props.type == "Delete" && <DeleteForm employee={props.employee} />}
       </ModalBody>
 
-      <Modal.Footer>
-        
-      </Modal.Footer>
+      <Modal.Footer></Modal.Footer>
     </Modal>
   );
 };

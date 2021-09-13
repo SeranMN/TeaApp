@@ -3,56 +3,11 @@ import Modle from "./Modle";
 import { MdDelete } from "react-icons/md"
 import { MdAccountCircle } from "react-icons/md";
 import { MdCreate } from "react-icons/md";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
-
-const EmployeeTable = ({ empID, employee, onClick, employees,totEmp}) => {
-//     const [employees, setEmployee] = useState([
-//         {
-//             empID: 'EM20156',
-//             nic:'857896545V',
-//             Name: 'Shamali Perera',
-//             Address: 'Matara',
-//             Email:'shamaliperera@gmail.com',
-//             Des:'Manager',
-//         Salary: 50000,
-            
-//         },
-//          {
-//             empID: 'EM20157',
-//             nic:'857896545V',
-//             Name: 'Navod Gamage',
-//             Address: 'Matara',
-//             Email:'shamaliperera@gmail.com',
-//             Des:'Manager',
-//         Salary: 50000,
-            
-//         },
-//          {
-//             empID: 'EM20158',
-//             nic:'857896545V',
-//             Name: 'Dishan Abeywikrama',
-//             Address: 'Matara',
-//             Email:'shamaliperera@gmail.com',
-//             Des:'Manager',
-//         Salary: 50000,
-            
-//       },
-//          {
-//             empID: 'EM20159',
-//             nic:'857896545V',
-//             Name: 'Nisq',
-//             Address: 'Matara',
-//             Email:'shamaliperera@gmail.com',
-//             Des:'Manager',
-//         Salary: 50000,
-            
-//         }
-
-
-
-
-//     ])
+import axios from "axios";
+const EmployeeTable = ({ employees }) => {
+  
   const [showModle, setShowMoodle] = useState(false)
   const [empDet,setEmpDet] = useState ('')
   const [editForm, showEditForm] = useState(false);
@@ -74,15 +29,15 @@ const EmployeeTable = ({ empID, employee, onClick, employees,totEmp}) => {
           </tr>
         </thead>
          {employees.map((employee) => (
-         <tbody key = {employee.empID}>
+         <tbody key = {employee._ID}>
           <tr>
            
-              <td>{employee.empID}</td>
+             
            
-            <td>{employee.Name }</td>
+            <td>{employee.name }</td>
             
         
-            <td>{employee.Des}</td>
+            <td>{employee.type}</td>
            
                <td><MdAccountCircle onClick={() => {
                  showEditForm(true)

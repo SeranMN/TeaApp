@@ -2,6 +2,7 @@ import React from "react";
 import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useState } from "react";
+import axios from "axios";
 const DeleteForm = ({ employee }) => {
   const [validated, setValidated] = useState(false);
 
@@ -10,6 +11,12 @@ const DeleteForm = ({ employee }) => {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+    } else {
+      axios.delete(`http://localhost:5000/employee/delete/:${employee._id}`).then(() => {
+        alert("Deleted")
+      }).catch((err) => {
+        alert(err)
+      })
     }
 
     setValidated(true);
@@ -32,7 +39,7 @@ const DeleteForm = ({ employee }) => {
             disabled="disabled"
             type="text"
             placeholder="Enter Name"
-            value={employee.Name}
+            value={employee.name}
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
