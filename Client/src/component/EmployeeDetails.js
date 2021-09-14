@@ -11,7 +11,7 @@ const EmployeeDetails = ({ onClick, tot }) => {
     
       axios.get("http://localhost:5000/employee").then((res) => {
        setEmployee(res.data)
-        console.log(res.data)
+        
       }).catch((err) => {
         alert(err.msg)
       })
