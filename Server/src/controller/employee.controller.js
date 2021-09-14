@@ -41,14 +41,13 @@ const updateEmployee = async (req, res) => {
     }
 }
 const deleteEmployee = async (req, res) => {
-    if (req.params.id) {
-        //delete proposal data
-        await Employee.findByIdAndDelete(req.params.id, (err, result) => {
-            if (err) return res.status(500).send(err);
-            return res.status(200).send(result);
-        });
-    }
+   
+    await Employee.findByIdAndDelete(req.params.id)
+        .then((data) => { res.status(200).send(data) })
+        .catch((err) => { res.status(500).send(err) })
 }
+            
+
 
 
 
