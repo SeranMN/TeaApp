@@ -34,7 +34,9 @@ function Navbar() {
               );
             })}
           </ul>
+          <Link to = "/"> Home </Link>
         </nav>
+        
       </IconContext.Provider>
     </>
   );
