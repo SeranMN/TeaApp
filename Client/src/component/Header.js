@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
+import { Link } from 'react-router-dom'
 const Header = () => {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -16,8 +17,10 @@ const Header = () => {
     </Nav>
     <Nav>
      
-      <Nav.Link eventKey={2} href="#memes">
+              <Nav.Link eventKey={2} >
+                <Link to ="/Admin.js">
         Login
+        </Link>
       </Nav.Link>
     </Nav>
   </Navbar.Collapse>

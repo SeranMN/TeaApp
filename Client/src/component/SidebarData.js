@@ -12,7 +12,7 @@ import { FiSettings } from "react-icons/fi";
 export const sidebarData = [
 {
     title:'Dashboard',
-    path:'/',
+    path:'/Employee.js',
     icon:<AiFillHome/>,
     cName:'nav-text'
 },

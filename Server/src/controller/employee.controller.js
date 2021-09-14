@@ -1,5 +1,6 @@
 const Employee = require('../modal/Employee');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const { db } = require('../modal/Employee');
 //create employees
 
 const createEmployee = async (req, res) => {
@@ -49,10 +50,13 @@ const deleteEmployee = async (req, res) => {
     }
 }
 
+
+
     module.exports = {
         createEmployee,
         getAllEmployee,
         updateEmployee,
         deleteEmployee,
+        
 
     }

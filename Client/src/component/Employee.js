@@ -9,6 +9,7 @@ import { Card } from "react-bootstrap";
 import EmployeeDetails from "./EmployeeDetails";
 import Sidenavbar from "./Sidenavbar"
 import Offcanvas from "react-bootstrap/Offcanvas";
+
 const Employee = () => {
   const [modalShow, setModalShow] = useState(false);
   const [totEmp, setTot] = useState(1);
@@ -25,6 +26,8 @@ const Employee = () => {
   })
   
   return (
+    <>
+        <Sidenavbar />
     <div style={{ marginLeft: "220px",marginTop:'20px',marginRight:'50px' }}>
      
      <Row>
@@ -71,7 +74,8 @@ const Employee = () => {
        
        </Row>
        
-    </div>
+      </div>
+      </>
   );
 };
 

@@ -5,6 +5,7 @@ module.exports = function () {
     router.post("/add", employeeController.createEmployee);
     router.put("/update/:id", employeeController.updateEmployee);
     router.delete("/delete/:id", employeeController.deleteEmployee);
+   
     return router
 }
 
