@@ -4,6 +4,7 @@ import { useState } from "react";
 import { FaFileAlt } from "react-icons/fa";
 import ModleReport from "./ModleReport";
 import SearchBar from "./SearchBar";
+import SideNavBar from "./SideNavBar";
 
 const ReportTable = ({ SupplierID, invoice, onClick }) => {
   const [modalreport, setModalReport] = useState(false);
@@ -25,6 +26,8 @@ const ReportTable = ({ SupplierID, invoice, onClick }) => {
   ]);
   const [supplierreport, setSupplierReport] = useState("");
   return (
+    <>
+      <SideNavBar/>
     <div
       style={{ marginLeft: "420px", marginTop: "20px", marginRight: "220px" }}
     >
@@ -72,7 +75,8 @@ const ReportTable = ({ SupplierID, invoice, onClick }) => {
         onHide={() => setModalReport(false)}
         supplierreport={supplierreport}
       />
-    </div>
+      </div>
+      </>
   );
 };
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from "react";
 import Table from "react-bootstrap/Table";
+import SideNavBar from './SideNavBar';
 
 const FormerSuppliers = ({SupplierID, formersupplier, onClick}) => {
     const [formersuppliers, setFormerSupplier] = useState([
@@ -34,7 +35,9 @@ const FormerSuppliers = ({SupplierID, formersupplier, onClick}) => {
         Email: "seranmn@gmail.com",
       },
     ]);
-    return (
+  return (
+      <>
+      <SideNavBar/>
       <div
         style={{ marginLeft: "220px", marginTop: "20px", marginRight: "10px" }}
       >
@@ -71,6 +74,7 @@ const FormerSuppliers = ({SupplierID, formersupplier, onClick}) => {
           ))}
         </Table>
       </div>
+      </>
     );
 }
 

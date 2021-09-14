@@ -9,8 +9,6 @@ import RegEmpSupBtn from "./component/RegEmpSup_Btn";
 import SupplierProfile from "./component/SupplierProfile";
 import ReportTable from "./component/Report_Table";
 import FormerSuppliers from "./component/FormerSuppliers";
-import SideNavBar from "./component/SideNavBar";
-import SuppliersTable from "./component/Supplier_Table";
 
 function App() {
   return (
@@ -18,7 +16,6 @@ function App() {
       <Router>
         <div className="App">
           {/* <Header /> */}
-          <SideNavBar />
           <div>
             <Switch>
               <Route exact path="/">
