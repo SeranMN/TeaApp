@@ -17,6 +17,10 @@ connectDB();
 app.get("/", (req, res) => {
     res.send("Hello Node!");
 });
+
+const supplierAPI = require("./src/api/Supplier.api");
+app.use("/supplier", supplierAPI());
+
 const employeeApi = require("./src/api/employee.api");
 app.use("/employee", employeeApi());
 

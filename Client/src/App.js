@@ -1,27 +1,50 @@
-
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Header from "./component/Header";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Footer from "./component/Footer";
+import Supplier from "./component/Supplier";
+import DailySupply from "./component/DailySupply";
+import RegEmpSupBtn from "./component/RegEmpSup_Btn";
+import SupplierProfile from "./component/SupplierProfile";
+import ReportTable from "./component/Report_Table";
+import FormerSuppliers from "./component/FormerSuppliers";
 import Employee from './component/Employee';
 import Home from './component/Home'
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
-import Sidenavbar from "./component/Sidenavbar"
 import AdminDashBoard from "./component/AdminDashBoard"
 import Salary from './component/Salary';
 import Attendance from './component/Attendance';
 import FormerEmp from './component/FormerEmp';
 import AttendanceMark from './component/AttendanceMark';
+
 function App() {
   return (
-    <Router>
-      <div className="App">
-    
-       
-         
-        <Switch>
-          <Route exact path = "/">
+    <div>
+      <Router>
+        <div className="App">
+          <Switch>
+            
+            <Route exact path = "/">
             <Home/>
-          </Route>
+            </Route>
+            
+              <Route exact path="/Supplier.js">
+                <Supplier/>
+              </Route>
+
+              <Route path="/Report_Table.js">
+                <ReportTable />
+              </Route>
+
+              <Route path="/Report_Table.js">
+                <ReportTable/>
+              </Route>
+
+              <Route path="/FormerSuppliers.js">
+                <FormerSuppliers />
+              </Route>
+            
+           
           <Route exact path = "/Admin.js">
             <AdminDashBoard/>
             </Route>
@@ -46,7 +69,8 @@ function App() {
      {/* <Footer/> */}
     </div>
      
-      </Router>
+      </Router >
+        </div>
   );
 }
 

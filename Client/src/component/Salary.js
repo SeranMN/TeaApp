@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Col, Row } from "react-bootstrap";
-import Sidenavbar from './Sidenavbar';
+import EmpSideNavBar from "./EmpSideNavBar";
 
 import { Form, FormControl, InputGroup, Button } from "react-bootstrap";
 const Salary = () => {
@@ -16,7 +16,7 @@ const Salary = () => {
   };
   return (
     <>
-      <Sidenavbar/>
+      <EmpSideNavBar/>
       <Row>
         <Col sm={2}></Col>
         <Col sm={4}>

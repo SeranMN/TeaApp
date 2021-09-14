@@ -1,9 +1,9 @@
 import React from 'react'
-import Sidenavbar from "./Sidenavbar";
+import EmpSideNavBar from './EmpSideNavBar'
 const FormerEmp = () => {
     return (
         <>
-         <Sidenavbar/>
+         <EmpSideNavBar/>
         </>
     )
 }
