@@ -18,6 +18,9 @@ app.get("/", (req, res) => {
     res.send("Hello Node!");
 });
 
+const supplierAPI = require("./src/api/Supplier.api");
+app.use("/supplier", supplierAPI());
+
 app.listen(PORT, () => {
   console.log(`App listening at http://localhost:${PORT}`);
 });
