@@ -3,7 +3,7 @@ import SupplierBtn from './Supplier_Btn';
 import { useState } from 'react';
 import ModleSupplier from './ModleSupplier';
 import SuppliersTable from './Supplier_Table';
-import SideNavBar from './SideNavBar';
+import SideNavBar from './SupSideNavBar';
 
 
 const Supplier = () => {

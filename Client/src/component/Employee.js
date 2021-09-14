@@ -1,13 +1,13 @@
 import React from "react";
 import Empbtn from "./Empbtn";
 import { useState,useEffect } from "react";
-import Modle from "./Modle";
+import Modle from "./EmpModle";
 import axios from "axios";
 import { Button } from "react-bootstrap";
 import { Col, Row } from "react-bootstrap";
 import { Card } from "react-bootstrap";
 import EmployeeDetails from "./EmployeeDetails";
-import Sidenavbar from "./Sidenavbar"
+import EmpSideNavBar from "./EmpSideNavBar";
 import Offcanvas from "react-bootstrap/Offcanvas";
 
 const Employee = () => {
@@ -27,7 +27,7 @@ const Employee = () => {
   
   return (
     <>
-        <Sidenavbar />
+        <EmpSideNavBar />
     <div style={{ marginLeft: "220px",marginTop:'20px',marginRight:'50px' }}>
      
      <Row>

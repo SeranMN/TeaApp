@@ -1,25 +1,44 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { Row, Col } from "react-bootstrap"
 import { useState } from "react";
+import axios from "axios";
 
-const SupplierForm = ({det}) => {
+const SupplierForm = ({ det }) => {
+  
   const [validated, setvalidated] = useState(false)
-  const [name, setName] = useState(det != null ? (det.Name) : (''))
-  const [home, setHome] = useState(det != null ? (det.Home) : (''))
-  const [street, setStreet] = useState(det != null ? (det.Street) : (''))
-  const [city, setCity] = useState(det != null ? (det.City) : (''))
-  const [nic, setNic] = useState(det != null ? (det.NIC) : (''))
-  const [mobile, setMobile] = useState(det != null ? (det.Mobile) : (''))
-  const [email, setEmail] = useState(det != null ? (det.Email) : (''))
+  const [name, setName] = useState(det != null ? (det.name) : (''))
+  const [address, setAddress] = useState(det != null ? (det.address) : (''))
+  const [nic, setNic] = useState(det != null ? (det.nic) : (''))
+  const [mobile, setMobile] = useState(det != null ? (det.mobile) : (''))
+  const [email, setEmail] = useState(det != null ? (det.email) : (''))
   const [image, setImage] = useState(det != null ? (det.Image) : (''))
   const [selectedImage, setSelectedImage] = useState();
 
   const handleSubmit = (event) => {
+    const newSupplier = {
+      name: name,
+      address:address,
+      nic: nic,
+      mobile: mobile,
+      email: email,
+    };
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+    }
+    else {
+      if (det == null) {
+        axios
+          .post("http://localhost:5000/supplier/add", newSupplier)
+          .then(() => alert("Supplier Added"))
+          .catch((err) => alert(err));
+      } else {
+        axios
+          .put(`http://localhost:5000/supplier/update/${det._id}`, newSupplier)
+          .then(() => alert("Supplier Updated"))
+          .catch((err) => alert(err));
+      }
     }
     setvalidated(true);
   };
@@ -49,39 +68,16 @@ const SupplierForm = ({det}) => {
         />
       </Form.Group>
 
-      <Row className="mb-3" controlId="formAddress">
-        <Form.Group as={Col} md="3" controlId="FormAddressHome">
-          <Form.Label>House Name or Number</Form.Label>
+      
+        <Form.Group className="mb-3" controlId="FormAddress">
+          <Form.Label>Address</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Name or Number"
-            value={home}
-            onChange={(e) => setHome(e.target.value)}
+            placeholder="Residental Address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
           />
-        </Form.Group>
-
-        <Form.Group as={Col} md="5" controlId="FormAddressStreet">
-          <Form.Label>Street</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Street"
-            value={street}
-            onChange={(e) => setStreet(e.target.value)}
-            required
-          />
-        </Form.Group>
-
-        <Form.Group as={Col} md="3" controlId="FormAdddressCity">
-          <Form.Label>City</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="City"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            required
-          />
-        </Form.Group>
-      </Row>
+        </Form.Group>      
 
       <Form.Group className="mb-3" controlId="formNIC">
         <Form.Label>NIC Number</Form.Label>
@@ -136,7 +132,7 @@ const SupplierForm = ({det}) => {
           accept="image/*"
           value={image}
           onChange={imageChange}
-          required
+          
         />
         {selectedImage && (
           <div

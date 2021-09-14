@@ -29,13 +29,15 @@ const AdminDashBoard = () => {
           </Card>
           </Link>
         </Col>
-        <Col>
+          <Col>
+            <Link to = "/Supplier.js">
           <Card bg="success" text="light" style={{ width: "18rem", height :"25rem" }}>
             <Card.Img variant="top" src={sup} />
             <Card.Body>
               <Card.Title>Supplier Management </Card.Title>
             </Card.Body>
           </Card>
+          </Link>
         </Col>
         <Col>
           <Card bg="success" text="light" style={{ width: "18rem", height :"25rem" }}>

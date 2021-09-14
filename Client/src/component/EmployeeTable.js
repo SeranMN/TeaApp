@@ -1,5 +1,5 @@
 import Table from "react-bootstrap/Table";
-import Modle from "./Modle";
+import Modle from "./EmpModle";
 import { MdDelete } from "react-icons/md"
 import { MdAccountCircle } from "react-icons/md";
 import { MdCreate } from "react-icons/md";

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from "react";
 import Table from "react-bootstrap/Table";
-import SideNavBar from './SideNavBar';
+import SideNavBar from './SupSideNavBar';
 
 const FormerSuppliers = ({SupplierID, formersupplier, onClick}) => {
     const [formersuppliers, setFormerSupplier] = useState([

@@ -2,12 +2,12 @@ import React from "react";
 import { Row, Col, Button, Table } from "react-bootstrap";
 import Clock from "./Clock";
 import { Link } from "react-router-dom";
-import Sidenavbar from './Sidenavbar';
+import EmpSideNavBar from "./EmpSideNavBar";
 
 const Attendance = () => {
   return (
     <>
-          <Sidenavbar />
+          <EmpSideNavBar />
       
       <div style={{ marginLeft: "220px",marginTop:'20px',marginRight:'20px' }}>
        

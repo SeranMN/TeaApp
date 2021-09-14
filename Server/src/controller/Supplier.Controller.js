@@ -44,12 +44,13 @@ const updateSupplier = async (req, res) => {
 
 //Delete Supplier
 const deleteSupplier = async (req, res) => {
-  if (req.params.id) {
-    await Supplier.findByIdAndDelete(req.params.id, (err, result) => {
-      if (err) return res.status(500).send(err);
-      return res.status(200).send(result);
+  await Supplier.findByIdAndDelete(req.params.id)
+    .then(() => {
+      res.status(200).send({ status: "Deleted" });
+    })
+    .catch((err) => {
+      res.status(500).send(err);
     });
-  }
 };
 
 module.exports = {

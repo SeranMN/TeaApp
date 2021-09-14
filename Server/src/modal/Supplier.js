@@ -15,7 +15,7 @@ const supplierSchema = new Schema({
     required: true,
   },
   mobile: {
-    type: Number,
+    type: String,
     required: true,
   },
   email: {

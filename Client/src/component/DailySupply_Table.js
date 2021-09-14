@@ -1,8 +1,8 @@
 import Table from "react-bootstrap/Table";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
 import { useState } from "react";
-import ModleDaily from "./ModleDaily";
-import ModleDelete from "./ModleDelete";
+import ModleDaily from "./SupModleDaily";
+import ModleDelete from "./SupModleDelete";
 
 const DailySupplyTable = ({ SupplierID, dailySupply, onClick }) => {
   const [modalShow, setModalShow] = useState(false);

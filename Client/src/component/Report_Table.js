@@ -2,9 +2,9 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 import { useState } from "react";
 import { FaFileAlt } from "react-icons/fa";
-import ModleReport from "./ModleReport";
-import SearchBar from "./SearchBar";
-import SideNavBar from "./SideNavBar";
+import ModleReport from "./SupModleReport";
+import SearchBar from "./SupSearchBar";
+import SideNavBar from "./SupSideNavBar";
 
 const ReportTable = ({ SupplierID, invoice, onClick }) => {
   const [modalreport, setModalReport] = useState(false);
