@@ -9,16 +9,26 @@ import RegEmpSupBtn from "./component/RegEmpSup_Btn";
 import SupplierProfile from "./component/SupplierProfile";
 import ReportTable from "./component/Report_Table";
 import FormerSuppliers from "./component/FormerSuppliers";
+import Employee from './component/Employee';
+import Home from './component/Home'
+import AdminDashBoard from "./component/AdminDashBoard"
+import Salary from './component/Salary';
+import Attendance from './component/Attendance';
+import FormerEmp from './component/FormerEmp';
+import AttendanceMark from './component/AttendanceMark';
 
 function App() {
   return (
     <div>
       <Router>
         <div className="App">
-          {/* <Header /> */}
-          <div>
-            <Switch>
-              <Route exact path="/">
+          <Switch>
+            
+            <Route exact path = "/">
+            <Home/>
+            </Route>
+            
+              <Route exact path="/Supplier.js">
                 <Supplier/>
               </Route>
 
@@ -33,12 +43,34 @@ function App() {
               <Route path="/FormerSuppliers.js">
                 <FormerSuppliers />
               </Route>
-            </Switch>
-            {/* <Footer/> */}
-          </div>
-        </div>
-      </Router>
+            
+           
+          <Route exact path = "/Admin.js">
+            <AdminDashBoard/>
+            </Route>
+          <Route path = "/Employee.js">
+            <Employee/>
+          </Route>
+          <Route path = "/Salary.js">
+            <Salary/>
+          </Route>
+          <Route path = "/Attendance.js">
+            <Attendance/>
+          </Route>
+          <Route path = "/FormerEmp.js">
+            <FormerEmp/>
+          
+          </Route>
+           <Route path = "/AttendanceMark.js">
+            <AttendanceMark/>
+          
+          </Route>
+      </Switch>
+     {/* <Footer/> */}
     </div>
+     
+      </Router >
+        </div>
   );
 }
 
