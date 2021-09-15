@@ -1,4 +1,4 @@
-import {React,useState} from 'react'
+import {React,useState,useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -13,7 +13,7 @@ import Box from '@material-ui/core/Box';
 import ListItem from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List';
 import DeleteIcon from '@material-ui/icons/Delete';
-
+import axios from 'axios'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -28,39 +28,20 @@ const useStyles = makeStyles((theme) => ({
 
 const Card1 = ({handleClose,handleShow,setShow,show})=> {
   const classes = useStyles();
-  const[products,setproducts]=useState([
-    {productID : 'pr001',
-     productName:'Green tea',
-     sectinNo :'A1',
-     Initialamount:'12',
-     Date:'2021-09-14'
-    },
-    {productID : 'pr002',
-    productName:'black tea',
-    sectinNo :'B1',
-    Initialamount:'20',
-    Date:'2021-09-14'
-   },
-   {productID : 'pr003',
-   productName:'White tea',
-   sectinNo :'c1',
-   Initialamount:'32',
-   Date:'2021-09-14'
-  },
-  {productID : 'pr003',
-  productName:'White tea',
-  sectinNo :'c1',
-  Initialamount:'32',
-  Date:'2021-09-14'
- }, {productID : 'pr003',
- productName:'White tea',
- sectinNo :'c1',
- Initialamount:'32',
- Date:'2021-09-14'
-},
+  const[products,setproducts]=useState([])
 
+  useEffect(()=>{
+    function getstocks(){
+    axios.get("http://localhost:5000/stock/").then((res)=>{
+      console.log(res.data);
+      setproducts(res.data);
+    }).catch((err)=> { 
+      alert(err.message);
+    })
+  }
+  getstocks()
 
-])
+  },[products])
   return (
     <>
   
@@ -82,7 +63,7 @@ const Card1 = ({handleClose,handleShow,setShow,show})=> {
           component="img"
           alt="Tea"
           height="140"
-          image={"/src/Img/product.jpg"}
+          image={"/product.jpg"}
           title={product.productName}
         />
         <CardContent>
@@ -93,8 +74,8 @@ const Card1 = ({handleClose,handleShow,setShow,show})=> {
           <Typography variant="body2" color="textSecondary" component="p">
           <List style={{color:"black"}}>
           <ListItem> Product ID : {product.productID}</ListItem>
-          <ListItem>  Product Name : {product.productName}</ListItem>
-          <ListItem>  Section No : {product.sectinNo}</ListItem>
+          <ListItem>  Product Name : {product.ProductName}</ListItem>
+          <ListItem>  Section No : {product.SectionNo}</ListItem>
           <ListItem> Date : {product.Date}</ListItem>
           </List>
           </Typography>

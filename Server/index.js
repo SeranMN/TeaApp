@@ -18,6 +18,9 @@ app.get("/", (req, res) => {
     res.send("Hello Node!");
 });
 
+const stockApi = require("./src/api/stock.api");
+app.use("/stock", stockApi());
+
 app.listen(PORT, () => {
   console.log(`App listening at http://localhost:${PORT}`);
 });

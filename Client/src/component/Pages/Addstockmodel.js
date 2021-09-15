@@ -11,6 +11,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import List from '@material-ui/core/List';
 import EditIcon from '@material-ui/icons/Edit';
 import { FormGroup } from '@material-ui/core';
+import axios from "axios";
 
 
 
@@ -59,16 +60,45 @@ import { FormGroup } from '@material-ui/core';
         const onsubmit =(e) =>{
             e.preventDefault()
 
-        console.log(productID,productName,sectionNo,amount,date)
 
+        console.log(productID,productName,sectionNo,amount,date)
+      
+            const newstock={
+            "productID":productID,
+            "ProductName":productName,
+            "SectionNo":sectionNo,
+            "amount":amount,
+            "Date":date
+        }
+
+        if(!product){
+        
+        axios.post("http://localhost:5000/stock/add",newstock).then(()=>{
+            alert("stock.added")
+            setproductID("");
+            setproductName("");
+            setsectionNo("");
+            setdate("");
+            setamount("")
+        }).catch((err)=>{alert(err)
+           
+        })}
+       else if(product){
+        axios.put(`http://localhost:5000/stock/update/:${product._ID}`, newstock).then(() => 
+        alert("stock added")).catch((err) => alert(err))
+
+
+       } 
+ 
+        
         }
         useEffect(() => {
             console.log(product)
             if(product){
                 setproductID(product.productID) 
-                setproductName(product.productName)
-                setsectionNo(product.sectinNo)
-                setdate(product.date)
+                setproductName(product.ProductName)
+                setsectionNo(product.SectionNo)
+                setdate(product.Date)
              }
         }, [])
     return (
@@ -165,9 +195,14 @@ import { FormGroup } from '@material-ui/core';
   }
                    
                     
-                      <center> <Button fullWidth style={{marginTop:"15px"}}  type='submit' variant="contained" color="secondary"> 
-                            Add
-                        </Button></center>
+                       <Button  fullWidth style={{marginTop:"15px"}}  type='submit' variant="contained" color="secondary"> 
+                           {product?
+                            "Edit" 
+                           :
+                           "Add"
+                           }
+                        </Button>
+                    
                         </form>
                 </Modal.Body>
 
