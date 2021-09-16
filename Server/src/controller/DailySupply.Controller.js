@@ -1,11 +1,11 @@
-const Supplier = require("../modal/Supplier");
+const dailySupply = require("../modal/DailySupply");
 const mongoose = require("mongoose");
 
-//Add New Supplier
-const addSupplier = async (req, res) => {
+//Add New Supply
+const addSupply = async (req, res) => {
   if (req.body) {
-    const supplier = new Supplier(req.body);
-    await supplier
+    const supply = new dailySupply(req.body);
+    await supply
       .save()
       .then((data) => {
         res.status(200).send({ data: data });
@@ -16,9 +16,10 @@ const addSupplier = async (req, res) => {
   }
 };
 
-//View All Suppliers
-const getallSuppliers = async (req, res) => {
-  await Supplier.find()
+//View All Supplies
+const getallSupplies = async (req, res) => {
+  await dailySupply
+    .find()
     .then((data) => {
       res.status(200).send(data);
     })
@@ -28,9 +29,10 @@ const getallSuppliers = async (req, res) => {
 };
 
 //View particular supplier
-const getoneSupplier = async (req, res) => {
-  let supID = req.params.id;
-  await Supplier.findById(supID)
+const getoneSupply = async (req, res) => {
+  let supplyID = req.params.id;
+  await dailySupply
+    .findById(supplyID)
     .then((data) => {
       res.status(200).send(data);
     })
@@ -40,11 +42,12 @@ const getoneSupplier = async (req, res) => {
 };
 
 //Update Supplier
-const updateSupplier = async (req, res) => {
+const updateSupply = async (req, res) => {
   console.log(req.body);
   if (req.body) {
     let id = req.params.id;
-    await Supplier.findByIdAndUpdate(id, req.body)
+    await dailySupply
+      .findByIdAndUpdate(id, req.body)
       .then((data) => {
         res.status(200).send(data);
       })
@@ -55,8 +58,9 @@ const updateSupplier = async (req, res) => {
 };
 
 //Delete Supplier
-const deleteSupplier = async (req, res) => {
-  await Supplier.findByIdAndDelete(req.params.id)
+const deleteSupply = async (req, res) => {
+  await dailySupply
+    .findByIdAndDelete(req.params.id)
     .then(() => {
       res.status(200).send({ status: "Deleted" });
     })
@@ -66,9 +70,9 @@ const deleteSupplier = async (req, res) => {
 };
 
 module.exports = {
-  addSupplier,
-  getallSuppliers,
-  getoneSupplier,
-  updateSupplier,
-  deleteSupplier,
+  addSupply,
+  getallSupplies,
+  getoneSupply,
+  updateSupply,
+  deleteSupply,
 };

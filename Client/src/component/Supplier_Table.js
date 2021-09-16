@@ -13,17 +13,6 @@ const SuppliersTable = ({ SupplierID, supplier, onClick }) => {
   const [supplierDet, setSupplierDet] = useState('')
   const [supplierdelete, setSupplierDelete] = useState('')
 
-  // const onDelete = () => {
-  //   axios
-  //     .delete(`http://localhost:5000/supplier/delete/${supplierDelete}`)
-  //     .then(() => {
-  //       alert("Deleted");
-  //     })
-  //     .catch((err) => {
-  //       alert(err);
-  //     });
-  // };
-
   useEffect(() => {
     const getSuppliers = () => {
       axios
@@ -38,7 +27,7 @@ const SuppliersTable = ({ SupplierID, supplier, onClick }) => {
     };
     getSuppliers();
   });
-  //console.log(supplier)
+  
   return (
     <div>
       <Table striped bordered hover>
