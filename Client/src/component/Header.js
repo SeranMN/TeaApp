@@ -16,12 +16,13 @@ const Header = () => {
       
     </Nav>
     <Nav>
-     
-              <Nav.Link eventKey={2} >
-                <Link to ="/Admin.js">
+      <Link to ="/Admin.js">
+              <Nav.Link href ="/Admin.js" eventKey={2} >
+               
         Login
-        </Link>
+        
       </Nav.Link>
+      </Link>
     </Nav>
   </Navbar.Collapse>
   </Container>
