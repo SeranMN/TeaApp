@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Button} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 
-const Create = () => {
+const Delivery = () => {
     const [users, setUsers] = useContext(UserContext);
     const [id,setId] = useState("");
     const [name,setName] = useState("");
@@ -88,4 +88,4 @@ const Create = () => {
     )
 }
 
-export default Create;
+export default Delivery;

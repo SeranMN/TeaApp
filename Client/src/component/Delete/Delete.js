@@ -21,9 +21,9 @@ const Delete = () => {
     
     return (
         <div>
-            <Modal.Dialog>
+            <Modal.Dialog >
                 <Modal.Header closeButton>
-                    <Modal.Title>Are You Sure?</Modal.Title>
+                    <Modal.Title>Are You sure, you want to delete this file?</Modal.Title>
                 </Modal.Header>
                 <ModalFooter>
                     <Link to="/">

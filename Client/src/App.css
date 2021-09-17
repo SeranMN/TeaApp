@@ -3,6 +3,36 @@
   margin: auto;
 }
 
+.Navbar{
+  background-color: #021E39;
+  width: 100%;
+  height: 80px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+}
+
+.Navbar .leftSide{
+  flex: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Navbar .leftSide .links{
+  max-height: 80px;
+}
+
+.Navbar .leftSide .links a {
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+  margin-left: 15px;
+}
+
+.Navbar .rightSide{
+  flex: 50%;
+}
+
 
 
 

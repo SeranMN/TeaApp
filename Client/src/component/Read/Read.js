@@ -11,7 +11,7 @@ const Read= () => {
     const [users, setUsers] = useContext(UserContext);
     const {id} = useParams();
 
-    const user = users.filter(user => user.id !== id);
+    const user = users.filter(user => user.id == id);
     //console.log(user)
     return (
         <div className="read">

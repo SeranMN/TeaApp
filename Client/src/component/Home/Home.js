@@ -4,24 +4,25 @@ import { UserContext } from '../UserContext/UserContext';
 import "./Home.css"
 import { Link } from 'react-router-dom';
 
+
 const Home = () => {
     const [users, setUsers] = useContext(UserContext);
 
     console.log(users);
     return (
         <div>
-            <h1> I am Home</h1>
+            
             <Link to="/create">
             <Button className="create_btn" varient="primary">Create Vehicle</Button>
             </Link>
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Salary</th>
-                        <th>Action</th>
+                        <th width="5">ID</th>
+                        <th width="110">Name</th>
+                        <th width="110">Position</th>
+                        <th width="100">Salary</th>
+                        <th width="200">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,7 +34,9 @@ const Home = () => {
                                 <td>{user.position}</td>
                                 <td>{user.salary}</td>
                                 <td>
+                                    <Link to={"/edit/"+user.id}>
                                     <Button className="action_btn" variant="info">Edit</Button>
+                                    </Link>
                                     <Link to={"/delete/"+user.id}>
                                     <Button className="action_btn" variant="danger">Delete</Button>
                                     </Link>
