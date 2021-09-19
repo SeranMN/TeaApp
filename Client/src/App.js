@@ -47,7 +47,7 @@ function App() {
                 <Route path="/home2"> <Home2 /> </Route>
                 
                  <Route path="/navb"><Navbar2/></Route> 
-
+ 
                 <Route path="/home2/"><Home2 /></Route>
 
                 {/* <Route path="/deli/"><Delivery/></Route> */}

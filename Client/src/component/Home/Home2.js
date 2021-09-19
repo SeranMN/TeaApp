@@ -22,8 +22,8 @@ const Home2 = () => {
                         <th width="11">Name</th>
                         <th width="110">Position</th>
                         <th width="100">Salary</th>
-                        {/* <th width="100">Distance</th>
-                        <th width="100">Driver</th> */}
+                        <th width="100">Distance</th>
+                        <th width="100">Driver</th>
                         <th width="200">Action</th>
                     </tr>
                 </thead>
@@ -35,8 +35,8 @@ const Home2 = () => {
                                 <td>{user.name}</td>
                                 <td>{user.position}</td>
                                 <td>{user.salary}</td>
-                                {/* <td>{user.distance}</td>
-                                <td>{user.driver}</td> */}
+                                <td>{user.distance}</td>
+                                <td>{user.driver}</td>
                                 <td>
                                     <Link to={"/edit/"+user.id}>
                                     <Button className="action_btn" variant="info">Edit</Button>

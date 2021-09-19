@@ -16,11 +16,12 @@ const Read= () => {
     return (
         <div className="read">
             <h1>ID: {user[0].id}</h1>
-            <h1>Name: {user[0].name}</h1>
+            <h1>Name: {user[0].vtype}</h1>
             <h1>Position: {user[0].position}</h1>
             <h1>Salary: {user[0].salary}</h1>
             <h1>Owner: {user[0].owner}</h1>
-            <Link to ="/home1">
+            <h1>Owner: {user[0].driver}</h1>
+            <Link to ="/">
                 <Button variant ="info">Back to Home</Button>
             </Link>
 

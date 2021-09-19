@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const Create = () => {
     const [users, setUsers] = useContext(UserContext);
     const [id,setId] = useState("");
-    const [vtype,setName] = useState("");
+    const [name,setName] = useState("");
     const [position,setPosition] = useState("");
     const [salary,setSalary] = useState("");
     const [owner,setOwner] = useState("");
@@ -31,7 +31,7 @@ const Create = () => {
     }
     const addUser= (e) =>{
         e.preventDefault();
-        setUsers([...users, {id:id, vtype:vtype, position:position, salary:salary, owner:owner}])
+        setUsers([...users, {id:id, name:name, position:position, salary:salary, owner:owner}])
     }
 
     return (
@@ -54,8 +54,8 @@ const Create = () => {
                     <Form.Label>Name</Form.Label>
                     <Form.Control
                     type="text"
-                    name="vtype"
-                    value={vtype}
+                    name="name"
+                    value={name}
                     onChange={updateName}
                     placeholder="Enter Name" 
                     />
@@ -91,9 +91,9 @@ const Create = () => {
                     />
                 </FormGroup>
                 <br/>
-                <Link to="/home1">
-                <Button className="action_btn" variant="primary" type="submit">Register Vehicle</Button>
                 
+                <Button className="action_btn" variant="primary" type="submit">Register Vehicle</Button>
+                <Link to="/home1">
                 <Button className="action_btn" variant="info">Back to Home </Button>
                 </Link>
             </Form>

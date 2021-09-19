@@ -22,7 +22,7 @@ const Home = () => {
                         <th width="115">Vehicle Type</th>
                         <th width="110">Vehicle Model</th>
                         <th width="100">Fuel Type</th>
-                        <th width="105">Owner</th>
+                        <th width="105">Owner</th> 
                         <th width="200">Action</th>
                         
                     </tr>
@@ -32,7 +32,7 @@ const Home = () => {
                         users.map(user =>
                             <tr>
                                 <td>{user.id}</td>
-                                <td>{user.vtype}</td>
+                                <td>{user.name}</td>
                                 <td>{user.position}</td>
                                 <td>{user.salary}</td>
                                 <td>{user.owner}</td>

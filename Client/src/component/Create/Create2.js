@@ -1,16 +1,19 @@
 import React, { useContext } from 'react';
 import { Form, FormGroup } from 'react-bootstrap';
-import { UserContext } from '../UserContext/UserContext';
+//import { UserContext } from '../UserContext/UserContext';
+import { DeliveryContext} from '../UserContext/DeliveryContext';
 import { useState } from 'react';
 import { Button} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 
 const Create2 = () => {
-    const [users, setUsers] = useContext(UserContext);
+    const [users, setUsers] = useContext(DeliveryContext);
     const [id,setId] = useState("");
     const [name,setName] = useState("");
     const [position,setPosition] = useState("");
     const [salary,setSalary] = useState("");
+    const [distance,setDistance] = useState("");
+    const [driver,setDriver] = useState("");
 
     const updateId = (e) => {
         setId(e.target.value);
@@ -25,9 +28,15 @@ const Create2 = () => {
     const updateSalary = (e) => {
         setSalary(e.target.value);
     }
+    const updateDistance = (e) => {
+        setDistance(e.target.value);
+    }
+    const updateDriver = (e) => {
+        setDriver(e.target.value);
+    } 
     const addUser= (e) =>{
         e.preventDefault();
-        setUsers([...users, {id:id, name:name, position:position, salary:salary}])
+        setUsers([...users, {id:id, name:name, position:position, salary:salary, distance:distance, driver:driver}])
     }
 
     return (
@@ -74,6 +83,26 @@ const Create2 = () => {
                     value={salary}
                     onChange={updateSalary}
                     placeholder="Enter Salary"
+                    />
+                </FormGroup>
+                <FormGroup>
+                    <Form.Label>Distance</Form.Label>
+                    <Form.Control
+                    type="text"
+                    name="distance"
+                    value={distance}
+                    onChange={updateDistance}
+                    placeholder="Enter Distance" 
+                    />
+                </FormGroup>
+                <FormGroup>
+                    <Form.Label>Driver</Form.Label>
+                    <Form.Control
+                    type="text"
+                    name="driver"
+                    value={driver}
+                    onChange={updateDriver}
+                    placeholder="Enter Driver" 
                     />
                 </FormGroup>
                 <br/>

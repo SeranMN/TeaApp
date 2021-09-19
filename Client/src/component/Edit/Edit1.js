@@ -14,6 +14,8 @@ const Edit1 = () => {
     const [name, setName] = useState(user[0].name);
     const [position, setPosition] = useState(user[0].position);
     const [salary, setSalary] = useState(user[0].salary);
+    const [distance, setDistance] = useState(user[0].distance);
+    const [driver, setDriver] = useState(user[0].driver);
 
     const editName = (e) =>{
         setName(e.target.value);
@@ -29,6 +31,16 @@ const Edit1 = () => {
         setSalary(e.target.value);
         const edited_salary = salary;
         user[0].salary = edited_salary;
+    }
+    const editDistance = (e) => {
+        setDistance(e.target.value);
+        const edited_distance = distance;
+        user[0].distance = edited_distance;
+    }
+    const editDriver = (e) => {
+        setDriver(e.target.value);
+        const edited_driver = driver;
+        user[0].driver = edited_driver;
     }
     const editUser = (e) =>{
         e.preventDefault();
@@ -60,7 +72,7 @@ const Edit1 = () => {
                     <Form.Control
                     type="text"
                     name="position"
-                   //value={position}
+                   value={position}
                     onChange={editPosition}
                     placeholder={user[0].position}
                     />
@@ -71,15 +83,35 @@ const Edit1 = () => {
                     <Form.Control
                     type="text"
                     name="salary"
-                    //value={salary}
+                    value={salary}
                     onChange={editSalary}
                     placeholder={user[0].salary} />
                 </Form.Group>
 
-                <Link to="/">
+               <Form.Group>
+                    <Form.Label>Distance</Form.Label>
+                    <Form.Control
+                    type="text"
+                    name="distance"
+                    value={distance}
+                    onChange={editDistance}
+                    placeholder={user[0].distance} />
+                </Form.Group>
+
+                <Form.Group>
+                    <Form.Label>Driver</Form.Label>
+                    <Form.Control
+                    type="text"
+                    name="driver"
+                    value={driver}
+                    onChange={editDriver}
+                    placeholder={user[0].driver} />
+                </Form.Group>
+
+               
                     <Button  onSubmit={()=>editUser} variant="primary" type="submit">Edit Vehicle</Button>
-                    </Link>
-                    <Link to="/">
+                    
+                    <Link to="/home2">
                     <Button className = "actin_btn" variant="info">Back to Home</Button>
                 </Link>
             </Form>
