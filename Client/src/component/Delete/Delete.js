@@ -26,7 +26,7 @@ const Delete = () => {
                     <Modal.Title>Are You sure, you want to delete this file?</Modal.Title>
                 </Modal.Header>
                 <ModalFooter>
-                    <Link to="/">
+                    <Link to="/home1">
                         <Button className="delete_btn" variant="info">Cancel</Button>
                         <Button onClick={() => deleteUser(id)} variant="danger">Delete</Button>
                     </Link>

@@ -33,7 +33,7 @@ const Delivery = () => {
     return (
         <div>
            
-            <h1>Register New Vehicle</h1>
+            <h1>Register New Machine</h1>
             <br/>
             <Form onSubmit= {addUser}>
                 <FormGroup>
@@ -77,6 +77,7 @@ const Delivery = () => {
                     />
                 </FormGroup>
                 <br/>
+                
                 <Button className="action_btn" variant="primary" type="submit">Register Vehicle</Button>
                 <Link to="/">
                 <Button className="action_btn" variant="info">Back to Home </Button>

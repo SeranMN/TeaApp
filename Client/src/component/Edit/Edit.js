@@ -10,14 +10,15 @@ const Edit = () => {
     const {id} = useParams();
     const user = users.filter(user => user.id == id);
 
-    const [name,setName] = useState(user[0].name);
+    const [vtype,setName] = useState(user[0].vtype);
     const [position,setPosition] = useState(user[0].position);
     const [salary,setSalary] = useState(user[0].salary);
+    const [owner,setOwner] = useState(user[0].owner);
 
     const editName = (e) =>{
         setName(e.target.value);
-        const edited_name = name;
-        user[0].name = edited_name;
+        const edited_name = vtype;
+        user[0].vtype = edited_name;
     }
     const editPosition = (e) =>{
         setPosition(e.target.value);
@@ -29,6 +30,11 @@ const Edit = () => {
         const edited_salary = salary;
         user[0].salary = edited_salary;
     }
+    const editOwner = (e) =>{
+        setOwner(e.target.value);
+        const edited_owner = owner;
+        user[0].owner = edited_owner;
+    } 
     const editUser = (e) => {
         e.preventDefault();
         setUsers([...users]);
@@ -47,10 +53,10 @@ const Edit = () => {
                     <Form.Label>Name</Form.Label>
                     <Form.Control
                     type="text"
-                    name="name"
-                    value={name}
+                    name="vtype"
+                    value={vtype}
                     onChange={editName}
-                    placeholder={user[0].name}
+                    placeholder={user[0].vtype}
                     />
                 </FormGroup>
                 <FormGroup>
@@ -73,8 +79,18 @@ const Edit = () => {
                     placeholder={user[0].salary}
                     />
                 </FormGroup>
+                <FormGroup>
+                    <Form.Label>Owner</Form.Label>
+                    <Form.Control 
+                    type="text"
+                    name="owner"
+                    value={owner}
+                    onChange={editOwner}
+                    placeholder={user[0].owner}
+                    />
+                </FormGroup>
                 <br/>
-                <Link to="/">
+                <Link to="/home1">
                 <Button onSubmit={() =>editUser} variant="primary" type="submit">Edit Vehicle</Button>
                 
                 <Button className="action_btn" variant="info">Back to Home </Button>

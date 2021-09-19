@@ -9,10 +9,12 @@ import { UserProvider } from "./component/UserContext/UserContext"
 import Delete from './component/Delete/Delete';
 import Read from './component/Read/Read';
 import Create from './component/Create/Create';
+import Create2 from './component/Create/Create2';
 import Navbar2 from './component/Navbar2';
 import Edit from './component/Edit/Edit';
 import Home2 from './component/Home/Home2';
 import Navbar from './component/Navbar';
+//import Delivery from './component/Create/Delivery';
 //import Edit1 from './component/Edit/Edit1';
 //import Edit from './component/Edit/Edit';
 
@@ -21,13 +23,11 @@ function App() {
   return (
     <div>
       <Header />
-      <Navbar />
-
+  
       <br/>
-    
       <div className="app">
         <br />
-        <Navbar2/>
+        <Navbar />
         <br/>
         <div className="container">
           <UserProvider>
@@ -35,6 +35,7 @@ function App() {
               <Switch>
 
                 <Route path="/create/"> <Create /> </Route>
+                <Route path="/create2/"> <Create2 /> </Route>
 
                 <Route path="/read/:id"> <Read /> </Route>
 
@@ -42,14 +43,14 @@ function App() {
 
                 <Route path="/delete/:id"> <Delete /> </Route>
 
-                <Route path="/"> <Home /> </Route>
+                <Route path="/home1"> <Home /> </Route>
+                <Route path="/home2"> <Home2 /> </Route>
                 
-
                  <Route path="/navb"><Navbar2/></Route> 
 
-                <Route path="/home2">
-                  <Home2 />
-                </Route>
+                <Route path="/home2/"><Home2 /></Route>
+
+                {/* <Route path="/deli/"><Delivery/></Route> */}
 
 
 

@@ -8,13 +8,17 @@ const Navbar = () => {
 
             <div className="leftSide">
                 <div className="links">
-                    <a href="/create/">Home</a>
+                    <a href="/home1">Vehicles</a>
+                    &nbsp
                     <a href="/home2">Delivery</a>
-                    <a href="/home2">Delivery</a>
-                    <a href="/home2">Delivery</a>
+                    
                 </div>
             </div>
-            <div className="rightSide"></div>
+            <div className="rightSide">
+                <input type="text" placeholder="search.." />
+                <button>Search</button>
+
+            </div>
 
         </div>
 

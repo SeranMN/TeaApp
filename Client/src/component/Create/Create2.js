@@ -5,13 +5,12 @@ import { useState } from 'react';
 import { Button} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 
-const Create = () => {
+const Create2 = () => {
     const [users, setUsers] = useContext(UserContext);
     const [id,setId] = useState("");
-    const [vtype,setName] = useState("");
+    const [name,setName] = useState("");
     const [position,setPosition] = useState("");
     const [salary,setSalary] = useState("");
-    const [owner,setOwner] = useState("");
 
     const updateId = (e) => {
         setId(e.target.value);
@@ -26,18 +25,15 @@ const Create = () => {
     const updateSalary = (e) => {
         setSalary(e.target.value);
     }
-    const updateOwner = (e) => {
-        setOwner(e.target.value);
-    }
     const addUser= (e) =>{
         e.preventDefault();
-        setUsers([...users, {id:id, vtype:vtype, position:position, salary:salary, owner:owner}])
+        setUsers([...users, {id:id, name:name, position:position, salary:salary}])
     }
 
     return (
         <div>
            
-            <h1>Register New Vehicle</h1>
+            <h1>Add New Delivery </h1>
             <br/>
             <Form onSubmit= {addUser}>
                 <FormGroup>
@@ -54,8 +50,8 @@ const Create = () => {
                     <Form.Label>Name</Form.Label>
                     <Form.Control
                     type="text"
-                    name="vtype"
-                    value={vtype}
+                    name="name"
+                    value={name}
                     onChange={updateName}
                     placeholder="Enter Name" 
                     />
@@ -80,19 +76,9 @@ const Create = () => {
                     placeholder="Enter Salary"
                     />
                 </FormGroup>
-                <FormGroup>
-                    <Form.Label>Owner</Form.Label>
-                    <Form.Control 
-                    type="text"
-                    name="owner"
-                    value={owner}
-                    onChange={updateOwner}
-                    placeholder="Enter Owner"
-                    />
-                </FormGroup>
                 <br/>
-                <Link to="/home1">
-                <Button className="action_btn" variant="primary" type="submit">Register Vehicle</Button>
+                <Link to="/home2">
+                <Button className="action_btn" variant="primary" type="submit">Add Delivery</Button>
                 
                 <Button className="action_btn" variant="info">Back to Home </Button>
                 </Link>
@@ -103,4 +89,4 @@ const Create = () => {
     )
 }
 
-export default Create;
+export default Create2;

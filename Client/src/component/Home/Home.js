@@ -13,16 +13,18 @@ const Home = () => {
         <div>
             
             <Link to="/create">
-            <Button className="create_btn" varient="primary">Create Vehicle</Button>
+            <Button className="create_btn" varient="primary">Add Vehicle</Button>
             </Link>
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th width="5">ID</th>
-                        <th width="110">Name</th>
-                        <th width="110">Position</th>
-                        <th width="100">Salary</th>
+                        <th width="100">Registration No</th>
+                        <th width="115">Vehicle Type</th>
+                        <th width="110">Vehicle Model</th>
+                        <th width="100">Fuel Type</th>
+                        <th width="105">Owner</th>
                         <th width="200">Action</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -30,9 +32,10 @@ const Home = () => {
                         users.map(user =>
                             <tr>
                                 <td>{user.id}</td>
-                                <td>{user.name}</td>
+                                <td>{user.vtype}</td>
                                 <td>{user.position}</td>
                                 <td>{user.salary}</td>
+                                <td>{user.owner}</td>
                                 <td>
                                     <Link to={"/edit/"+user.id}>
                                     <Button className="action_btn" variant="info">Edit</Button>
