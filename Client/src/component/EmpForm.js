@@ -2,8 +2,8 @@ import { Col, Form, Row } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
-
-import FloatingLabel from "react-bootstrap/FloatingLabel";
+import bcrypt from 'bcryptjs';
+//import FloatingLabel from "react-bootstrap/FloatingLabel";
 const EmpForm = ({ det }) => {
   const [nic, setNic] = useState(det != null ? det.nic : "");
   const [name, setName] = useState(det != null ? det.name : "");
@@ -23,7 +23,7 @@ const EmpForm = ({ det }) => {
     "mobno":mobNo,
     "joinedDate":date,
     "type":type,
-    "password":password,
+    "password":bcrypt.hashSync(password, bcrypt.genSaltSync()),
     }
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
