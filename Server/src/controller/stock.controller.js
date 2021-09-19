@@ -30,10 +30,11 @@ const getAllStock = async (req, res) => {
 }
 
 const updateStock = async (req, res) => {
-    console.log(req.body)
+   console.log("req",req)
     if (req.body) {
         let id = req.params.id;
-        await Stock.findOneAndUpdate(id, req.body)
+        console.log(id+"sc")
+        await Stock.findByIdAndUpdate(id, req.body)
             .then(data => {
                 res.status(200).send(data);
             })
@@ -46,10 +47,8 @@ const updateStock = async (req, res) => {
 const deleteStock = async (req, res) => {
     if (req.params.id) {
         //delete proposal data
-        await Stock.findByIdAndDelete(req.params.id, (err, result) => {
-            if (err) return res.status(500).send(err);
-            return res.status(200).send(result);
-        });
+        await Stock.findByIdAndDelete(req.params.id).then((data) => { res.status(200).send(data) })
+        .catch((err) => { res.status(500).send(err) })
     }
 }
 

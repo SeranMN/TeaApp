@@ -10,6 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
+import Navbar from '../Navbarnavod';
 
 
 
@@ -49,6 +50,7 @@ const In = ({}) => {
     
     return (
         <div>
+            <Navbar/>
             <Box display="flex"style={{width:"1200px"}}    marginLeft="230px" padding="3rem"  flexDirection="row" bgcolor="background.paper" >
             <Box p={3}  marginBottom="40px"  bgcolor="grey.300"> 
             <div className='form-content-left'><img className='image-container' src="/teah.jpg" alt="Logo" /></div> 

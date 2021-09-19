@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 
 
-import Navbar from './component/Navbar';
+import Navbar from './component/Navbarnavod';
 import Dashboard from './component/Pages/Dashboard';
 import Addstock from './component/Pages/Addstock';
 import In from './component/Pages/In';
@@ -17,7 +17,7 @@ function App() {
   return (
     <>
     <Router>
-      <Navbar/>
+      
       <switch>
         <Route path='/' exact component={Dashboard}/>
         <Route path='/Addstock' exact component={Addstock}/>

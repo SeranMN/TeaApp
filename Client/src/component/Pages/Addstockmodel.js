@@ -12,9 +12,14 @@ import List from '@material-ui/core/List';
 import EditIcon from '@material-ui/icons/Edit';
 import { FormGroup } from '@material-ui/core';
 import axios from "axios";
+import DeleteIcon from '@material-ui/icons/Delete';
+import Confirmationbox from './Confirmationbox';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
-
-
+    const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+     });
     const useStyles = makeStyles({
         field:{
             marginTop:20,
@@ -41,7 +46,7 @@ import axios from "axios";
        
     })
    
-  const Addstockmodel = ({product}) => {
+  const Addstockmodel = ({product,deleteProduct}) => {
         
 
         const classes=useStyles()
@@ -51,11 +56,28 @@ import axios from "axios";
         const[sectionNo,setsectionNo]=useState('')
         const[amount,setamount]=useState('')
         const[date,setdate]=useState('')
+        const[pid,setPID]=useState('')
+        const[confirm,setConfirm]=useState(false)
+        const [open, setOpen] = React.useState(false);
+        const [open1, setOpen1] = React.useState(false);
+
         
         const [show, setShow] = useState(false);
   
         const handleClose = () => setShow(false);
         const handleShow = () => setShow(true);
+
+        const handleClick = () => {
+            setOpen1(true);
+          };
+
+        const handleClose1 = (event, reason) => {
+            if (reason === 'clickaway') {
+              return;
+            }
+        
+            setOpen1(false);
+        };
 
         const onsubmit =(e) =>{
             e.preventDefault()
@@ -74,7 +96,7 @@ import axios from "axios";
         if(!product){
         
         axios.post("http://localhost:5000/stock/add",newstock).then(()=>{
-            alert("stock.added")
+            handleClick()
             setproductID("");
             setproductName("");
             setsectionNo("");
@@ -84,8 +106,11 @@ import axios from "axios";
            
         })}
        else if(product){
-        axios.put(`http://localhost:5000/stock/update/:${product._ID}`, newstock).then(() => 
-        alert("stock added")).catch((err) => alert(err))
+           
+           console.log(pid)
+           console.log(newstock)
+        axios.put(`http://localhost:5000/stock/update/${pid}`, newstock).then(() => 
+        handleClick()).catch((err) => alert(err))
 
 
        } 
@@ -95,24 +120,60 @@ import axios from "axios";
         useEffect(() => {
             console.log(product)
             if(product){
+                setPID(product._id)
                 setproductID(product.productID) 
                 setproductName(product.ProductName)
                 setsectionNo(product.SectionNo)
                 setdate(product.Date)
              }
         }, [])
+
+      
+       
+       
     return (
 
         <>
+        
+        <Snackbar open={open1} autoHideDuration={3000} onClose={handleClose1} anchorOrigin={{
+            vertical: "top",
+            horizontal: "center"
+        }}>
+                    
+                    <Alert onClose={handleClose1} severity="success" sx={{ width: '100%' }}>
+                    {product?
+                            `Sucessfully Edited!`
+                            :
+                            `Sucessfully Added!`
+                    }
+                    </Alert>
+                   
+                   
 
-           {product? <Button variant="contained" id="edt" size="small" color="primary" startIcon={<EditIcon />} onClick={handleShow}>
+  
+        </Snackbar>
+
+        <Confirmationbox product={product} open={open} handleClose={()=>setOpen(false)} deleteProduct={deleteProduct}/>
+        {product? 
+           <Button variant="contained" id="edt" size="small" color="primary" startIcon={<EditIcon />} onClick={handleShow}>
                 Edit
-            </Button>
+           </Button>
+            
+              
+            
             :
           <center>
             <Button style={{position:"absolute",marginTop:"10px"}} className={classes.btn1}   variant="contained" color="primary"onClick={handleShow}>
             Add New Stock
-            </Button></center>}
+            </Button>
+            
+            
+            </center>}
+         {product&&
+            <Button variant="contained" size="small" color="secondary" startIcon={<DeleteIcon />} onClick={()=>{setOpen(true)}}   >
+              Delete
+            </Button>}
+           
             
        <Modal dialogClassName="modal-90w" show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -195,21 +256,25 @@ import axios from "axios";
   }
                    
                     
-                       <Button  fullWidth style={{marginTop:"15px"}}  type='submit' variant="contained" color="secondary"> 
+                       <Button  fullWidth style={{marginTop:"15px"}}  type='submit' variant="contained" color="secondary" onClick={handleClose} > 
                            {product?
                             "Edit" 
                            :
                            "Add"
                            }
                         </Button>
+
+                        
                     
                         </form>
                 </Modal.Body>
 
                
             </Modal>
-                    
-                        
+            
+      
+                
+                            
         </>
     )
 }

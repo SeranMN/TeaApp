@@ -1,4 +1,4 @@
-import {React,useState,useEffect} from 'react'
+import React,{useState,useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -14,6 +14,12 @@ import ListItem from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List';
 import DeleteIcon from '@material-ui/icons/Delete';
 import axios from 'axios'
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+   });   
 
 
 const useStyles = makeStyles((theme) => ({
@@ -28,12 +34,33 @@ const useStyles = makeStyles((theme) => ({
 
 const Card1 = ({handleClose,handleShow,setShow,show})=> {
   const classes = useStyles();
-  const[products,setproducts]=useState([])
+  const[products,setproducts]=useState([]);
+  const [open2, setOpen2] = useState(false);
+
+
+  const handleClick1 = () => {
+    setOpen2(true);
+    console.log("sacsasc")
+    
+  };
+
+const handleClose2 = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen2(false);
+};
+
+  
+  
+
+  
 
   useEffect(()=>{
     function getstocks(){
     axios.get("http://localhost:5000/stock/").then((res)=>{
-      console.log(res.data);
+      
       setproducts(res.data);
     }).catch((err)=> { 
       alert(err.message);
@@ -42,9 +69,39 @@ const Card1 = ({handleClose,handleShow,setShow,show})=> {
   getstocks()
 
   },[products])
+
+  
+  const deleteProduct=(product)=>{
+     
+    axios.delete(`http://localhost:5000/stock/delete/${product._id}`).then(() => 
+      handleClick1()).catch((err) => alert(err))
+      console.log(product._id)
+    
+
+}
+
+
+ 
+
+  
   return (
     <>
+   <Snackbar open={open2} autoHideDuration={3000} onClose={handleClose2} anchorOrigin={{
+            vertical: "top",
+            horizontal: "center"
+        }}>
+                    
+                    <Alert onClose={handleClose2} severity="success" sx={{ width: '100%' }}>
+                   
+                            Sucessfully Deleted!
+                           
+               
+                    </Alert>
+                   
+                   
+
   
+    </Snackbar>
     {/* <div   style={{ display:"flex",marginLeft:"250px",padding:"3rem",flexWrap:"wrap"}}  >     */}
     <Box display="flex" flexWrap="wrap" marginLeft="260px" padding="3rem"  flexDirection="row" bgcolor="background.paper" >
     {products.map((product)=>
@@ -58,6 +115,7 @@ const Card1 = ({handleClose,handleShow,setShow,show})=> {
         
         
     <Card className={classes.root}>
+   
       <CardActionArea>
         <CardMedia
           component="img"
@@ -83,10 +141,8 @@ const Card1 = ({handleClose,handleShow,setShow,show})=> {
       </CardActionArea>
       <CardActions>
         
-       <Addstockmodel product={product}  />
-        <Button variant="contained" size="small" color="secondary" startIcon={<DeleteIcon />}>
-          Delete
-        </Button>
+       <Addstockmodel product={product} deleteProduct={deleteProduct} />
+        
       </CardActions>
     </Card>
     </Box>
