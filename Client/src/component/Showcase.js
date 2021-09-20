@@ -4,10 +4,9 @@ const Showcase = () => {
   return (
     <section className='showcase'>
       <div className='showcase-overlay'>
-        <h1>Showcase Travel Agency</h1>
+        <h1>Gangasiri Tea Factory</h1>
         <p>
-          Get to tour the world in style. Select a destination, book your
-          flight, and off you go!
+        A cup of tea would restore your normality.
         </p>
       </div>
     </section>
