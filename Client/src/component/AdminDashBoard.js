@@ -11,12 +11,10 @@ import product from '../Img/product.png'
 import order from '../Img/order.png'
 import appointment from '../Img/appointment.png'
 import { Link } from "react-router-dom"
-import Header from "./Header";
 
 const AdminDashBoard = () => {
   return (
     <div>
-      <Header/>
     <Container>
       <Row md={1} md={4} className="g-4" >
           <Col>

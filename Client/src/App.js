@@ -8,7 +8,6 @@ import SupplierProfile from "./component/SupplierProfile";
 import ReportTable from "./component/Report_Table";
 import FormerSuppliers from "./component/FormerSuppliers";
 import Employee from "./component/Employee";
-import Home from "./component/Home";
 import AdminDashBoard from "./component/AdminDashBoard";
 import Salary from "./component/Salary";
 import Attendance from "./component/Attendance";
@@ -23,7 +22,6 @@ function App() {
           <Switch>
             
             <Route exact path="/">
-              <Home />
             </Route>
 
             <Route exact path="/Supplier.js">
