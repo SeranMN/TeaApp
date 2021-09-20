@@ -72,3 +72,17 @@
   align-items: center;
   margin-left: 550px;
 }
+.profComo{
+  display: flex;
+  flex-direction: row;
+}
+
+.profTable{
+  width:60%;
+  margin-top: 20px;
+}
+
+.list-group-flush{
+  border: black;
+  border-style: none ;
+}
