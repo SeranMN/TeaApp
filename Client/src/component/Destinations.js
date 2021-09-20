@@ -1,37 +1,34 @@
 import React from 'react'
-// import image1 from '../assets/image-1.jpg'
+// import teagrow from './teagrow.jpg'
 // import image2 from '../assets/image-2.jpg'
 // import image3 from '../assets/image-3.jpg'
 
 const Destinations = () => {
   return (
     <section className='destinations'>
-      <h3>Now available in 46 countries!</h3>
+      <h3>Welcome to Gangasiri</h3>
       <div className='grid'>
         <div>
-          {/* <img src={image1} alt='destination-1' /> */}
-          <h3>Fly to Aruba</h3>
+        <img src="/teagrow.jpg"/>
+          <h3>We are Tea Growers</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Dignissimos, ab nesciunt? Molestias rem qui sequi!
+          A small tea grower with big dreams; bringing Ceylon Tea – the finest in the world- direct to tea lovers.
           </p>
         </div>
 
         <div>
-          {/* <img src={image2} alt='destination-2' /> */}
-          <h3>Experience Mombasa</h3>
+        <img src="/ethics.jpg"/>
+          <h3>We Believe Integrity & Ethics</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Dignissimos, ab nesciunt? Molestias rem qui sequi!
+          Maintains its founding commitment to integrity & ethics. 
           </p>
         </div>
 
         <div>
-          {/* <img src={image3} alt='destination-3' /> */}
-          <h3>Savour Hawaii</h3>
+        <img src="/teacup.jpg"/>
+          <h3>Our Teas, For Lovers of Tea</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Dignissimos, ab nesciunt? Molestias rem qui sequi!
+          Bringing a luxury tea experience for the tea aficionados around the world.
           </p>
         </div>
       </div>

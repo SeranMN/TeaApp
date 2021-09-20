@@ -58,12 +58,14 @@ const AdminDashBoard = () => {
      
         
         <Col >
+         <Link to = "/Dashboard">
           <Card bg="success" text="light" style={{ width: "18rem" , height :"25rem"}}>
               <Card.Img variant="top" src={stock} />
             <Card.Body>
               <Card.Title>Stock Management</Card.Title>
             </Card.Body>
           </Card>
+          </Link>
           </Col>
           <Col >
           <Card bg="success" text="light" style={{ width: "18rem", height :"25rem" }}>
