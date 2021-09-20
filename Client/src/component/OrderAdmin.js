@@ -3,24 +3,19 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import axios from 'axios'
 import { useEffect } from 'react';
-import CardGroup from 'react-bootstrap/CardGroup'
+// import { Navbar } from 'react-bootstrap';
+import Navbar from './Navbar';
 import Box from '@material-ui/core/Box';
-import PlaceOrder from './PlaceOrder';
-import { confirmAlert } from 'react-confirm-alert'; 
-import 'react-confirm-alert/src/react-confirm-alert.css';
 
 
-const OrderDetails = () => {
+const OrderAdmin = () => {
 
-  const [show, setShow] = useState(false);
+    const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
-  const [orders, setOrders] = useState([]);
-
-  const [number, setNumber] = useState(1);
-  
+    const [orders, setOrders] = useState([]);
   
   useEffect(()=>{
 
@@ -42,28 +37,20 @@ const OrderDetails = () => {
 
   getOrders()
 
-  },[orders])
+  },[])
 
-  const submit = (order) => {
-    console.log(order)
-          axios.delete(`http://localhost:5000/order/delete/${order._id}`).then(() => 
-            alert("Successfully Deleted")).catch((err) => alert(err))
-        }
-          // console.log(product._id)
-        
-      
-  useEffect(() => {
-   console.log(order)
-  }, [])
- 
-  return (
-    <div>
-      {orders.map((order) => 
-      
+
+    return (
+        <div>
+
+          <Navbar/>
+
+        {orders.map((order) => 
+
       <Card className="text-center" style={{marginLeft:"300px"}}>
-        
-      <Card.Header>Order {number} </Card.Header>
-      
+
+     <Card.Header>Order </Card.Header>
+     
     <Card.Body >
 
     <Box display="flex" justifyContent="left" m={1} p={1} bgcolor="background.paper" width="100%"> 
@@ -85,35 +72,32 @@ const OrderDetails = () => {
       <h6> {order.city} </h6>
       <h6> {order.region} </h6>
       <h6> {order.postalCode} </h6>
-    
+
     </Card.Text>
-    
-    <Box  p={1} display="flex" justifyContent="space-between">
+     <Box  p={1} display="flex" justifyContent="space-between">
     <Box  p={1} display="flex"  >
-    <Button variant="secondary" onClick={submit}>
+    <Button variant="secondary" onClick={handleClose}>
             Delete
           </Button>
           </Box>
 
           <Box  p={1} display="flex"  >
-          <PlaceOrder order={order}/>
+          { order&&
+          <Button variant="primary" onClick={handleClose}>
+            Edit
+          </Button>
+          }
           </Box>
           </Box>
           </Box>
           </Box>
   </Card.Body>
-  
   <Card.Footer className="text-muted">2 days ago</Card.Footer>
- 
 </Card>
-
-
-      
-      )}
-    </div>
-  )
+        
+        )}   
+        </div>
+    )
 }
 
-export default OrderDetails
-
-
+export default OrderAdmin

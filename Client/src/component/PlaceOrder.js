@@ -10,18 +10,19 @@ import { useEffect } from 'react';
 import { FiPlusCircle } from 'react-icons/fi';
 import { FiMinusCircle} from 'react-icons/fi';
 import Box from '@material-ui/core/Box';
+import axios from 'axios';
+import OrderDetails from './OrderDetails';
 
 
-
-const PlaceOrder = ({product}) => {
+const PlaceOrder = ({product, order}) => {
 
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const ProductName = product.productName
-    const UnitPrice = product.unitPrice
+    // const ProductName = product.productName
+    // const UnitPrice = product.unitPrice
 
 
     const [Email, setEmail] = useState("")
@@ -33,12 +34,69 @@ const PlaceOrder = ({product}) => {
     const [Region, setRegion] = useState("")
     const [PostalCode, setPostalCode] = useState("")
     const [Quantity, setQuantity] = useState(1)
+    const[SubTotal, setSubTotal] = useState()
     const [Color, setColor] = useState("grey")
+    const[OrderId, setOrderId] = useState("")
 
     const onSubmit = (e) => {
       e.preventDefault()
       console.log(Email,FirstName,LastName,Address,ContactNo,City,Region,PostalCode)
+
+      const Order = {"firstName":FirstName,
+                      "lastName":LastName,
+                      "email":Email,
+                      "address":Address,
+                      "contactNo":ContactNo,
+                      "city":City,
+                      "region":Region,
+                      "postalCode":PostalCode,
+                      "quantity":Quantity,
+                      "subTotal":SubTotal }
+  
+    if(!order) {
+
+    axios.post("http://localhost:5000/order/add", Order).then (()=>{
+    
+      alert("order.added")
+
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setAddress("");
+      setContactNo("");
+      setCity("");
+      setRegion("");
+      setPostalCode("");
+      setQuantity("");
+      setSubTotal("");
+
+  }).catch((err)=>{alert(err)
+
+  })
+}
+
+    else if(order){
+      axios.put(`http://localhost:5000/order/update/${OrderId}`, Order).then(() => 
+
+        alert("Succesfully Updated")).catch((err) => alert(err))
     }
+    }
+
+    useEffect(() => {
+      if(order){
+      setOrderId(order._id);
+      setFirstName(order.firstName);
+      setLastName(order.lastName);
+      setEmail(order.email);
+      setAddress(order.address);
+      setContactNo(order.contactNo);
+      setCity(order.city);
+      setRegion(order.region);
+      setPostalCode(order.postalCode);
+      setQuantity(order.quantity);
+      setSubTotal(order.subTotal);
+      }
+    }, [])
 
     const decrease = () => {
     
@@ -54,14 +112,18 @@ const PlaceOrder = ({product}) => {
     
     return (
         <div>
-         
-       
-       
-        
-        
+
+        { order?
+          <Button variant="primary" onClick={handleShow}>
+          Edit
+        </Button>
+          
+          
+          :
             <Button variant="primary" onClick={handleShow} >
             Add to Cart
             </Button> 
+          }
 
         <Modal size="xl" show={show} onHide={handleClose} >
         <Modal.Header closeButton>
@@ -77,8 +139,8 @@ const PlaceOrder = ({product}) => {
         <Box p={1}  padding="3rem" bgcolor="grey.300" width="60%">
           
         
-            <h5>Product Name : {ProductName}</h5>
-            <h5>Unit Price : Rs.{UnitPrice}</h5>
+            {/* <h5>Product Name : {ProductName}</h5>
+            <h5>Unit Price : Rs.{UnitPrice}</h5> */}
             
            
             <Form.Label>Quantity</Form.Label>
@@ -95,7 +157,7 @@ const PlaceOrder = ({product}) => {
             
             <Form.Group as={Col} >
             <Form.Label>Sub Total</Form.Label>
-            <Form.Control type={Number}  value={"Rs. "+Quantity*UnitPrice} disabled="disabled"/>
+            <Form.Control type={Number}  value={"Rs. "+Quantity}  onChange={(e)=>setSubTotal(e.target.value)} disabled="disabled"/>
             </Form.Group>
             </Box>
             
