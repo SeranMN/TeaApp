@@ -1,11 +1,25 @@
 const Supplier = require("../modal/Supplier");
+const express = require("express");
+const multer = require("multer");
 const mongoose = require("mongoose");
+
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, "./Client/public/uploads/");
+  },
+  filename: (req, file, callback) => {
+    callback(null, file.originalname);
+  }
+})
+
+const upload = multer({ storage: storage });
 
 //Add New Supplier
 const addSupplier = async (req, res) => {
   if (req.body) {
-    const supplier = new Supplier(req.body);
-    await supplier
+    // const supplier = new Supplier(req.body);
+    // const image = new Supplier(req.file)
+    await Supplier(req.body)
       .save()
       .then((data) => {
         res.status(200).send({ data: data });
@@ -71,4 +85,5 @@ module.exports = {
   getoneSupplier,
   updateSupplier,
   deleteSupplier,
+  // upload,
 };

@@ -27,6 +27,9 @@ app.use("/employee", employeeApi());
 const dailySupplyAPI = require("./src/api/DailySupply.api");
 app.use("/dailysupply", dailySupplyAPI());
 
+const formerSupplierAPI = require("./src/api/FormerSupplier.api");
+app.use("/formersupplier", formerSupplierAPI());
+
 app.listen(PORT, () => {
   console.log(`App listening at http://localhost:${PORT}`);
 });

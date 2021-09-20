@@ -3,6 +3,7 @@ import {FaPencilAlt,FaTrash,} from "react-icons/fa";
 import { useState, useEffect } from "react";
 import ModleSupplier from "./ModleSupplier";
 import ModleDelete from "./SupModleDelete";
+import SupplierProfileSideBar from "./SupplierProfile_SideBar";
 import axios from "axios";
 
 
@@ -90,6 +91,9 @@ const SuppliersTable = ({ SupplierID, supplier, onClick }) => {
         onHide={() => setModalDelete(false)}
         supplierdelete={supplierdelete}
       />
+      {/* <SupplierProfileSideBar
+        supplierDet={supplierDet}
+      /> */}
     </div>
   );
 };

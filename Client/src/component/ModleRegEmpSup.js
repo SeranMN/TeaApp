@@ -11,12 +11,10 @@ const ModleRegEmpSup = (props) => {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Register
-        </Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">Register</Modal.Title>
       </Modal.Header>
       <ModalBody>
-        <RegEmpSupForm/>
+        <RegEmpSupForm />
       </ModalBody>
 
       <Modal.Footer></Modal.Footer>

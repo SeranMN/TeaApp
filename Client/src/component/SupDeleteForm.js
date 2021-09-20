@@ -7,6 +7,13 @@ import axios from "axios";
 const SupDeleteForm = ({supplier,supply }) => {
   const [validated, setValidated] = useState(false);
 
+  const newFormerSupplier = {
+    name: supplier.name,
+    address: supplier.address,
+    mobile: supplier.mobile,
+    email: supplier.email,
+  };
+
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -22,6 +29,11 @@ const SupDeleteForm = ({supplier,supply }) => {
           .catch((err) => {
             alert(err);
           });
+        
+         axios
+           .post("http://localhost:5000/formersupplier/add", newFormerSupplier)
+           .then(() => alert("Former Supplier Added"))
+           .catch((err) => alert(err));
       }
       else {
          axios
@@ -40,32 +52,11 @@ const SupDeleteForm = ({supplier,supply }) => {
   return (
     <>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
-        {/* <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Supplier ID</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter NIC"
-            value={supplier.nic}
-            disabled="disabled"
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            disabled="disabled"
-            type="text"
-            placeholder="Enter Name"
-            value={supplier.name}
-          />
-        </Form.Group> */}
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>
-            Are You Sure, Do You Want to Delete this Record?{" "}
+            Are You Sure, Do You Want to Delete this Record?
           </Form.Label>
-          {/* <Form.Control required type="text" placeholder="Enter Reason" />
-          <Form.Control.Feedback type="invalid">
-            Please provide Reason.
-          </Form.Control.Feedback> */}
+          
         </Form.Group>
         <Button variant="danger" type="submit">
           Delete
