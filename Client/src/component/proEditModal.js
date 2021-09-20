@@ -2,7 +2,7 @@
  import Modal from 'react-bootstrap/Modal'
  import { ModalBody } from 'react-bootstrap'
  
-import Edit from './Edit'
+import Edit from './proEdit'
  
 const AModal = (props) => {
   return (
@@ -13,12 +13,12 @@ const AModal = (props) => {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Edit Product
+        <Modal.Title id="contained-modal-title-vcenter"> {props.productDet != null ? ("Edit Supplier") : ("Add Supplier")}
+           {/* Edit Product */}
         </Modal.Title>
       </Modal.Header>
       <ModalBody>
-        <Edit/>
+        <Edit det={props.productDet}/>
       </ModalBody>
       <Modal.Footer>
         

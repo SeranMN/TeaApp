@@ -1,23 +1,23 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal'
 import { ModalBody } from 'react-bootstrap'
-import ProductStock from './ProductStock'
+import Sadd from './proStockadd'
  
-const PsModal = (props) => {
+const SaddModal = (props) => {
   return (
     <Modal
       {...props}
-      size=""
+      size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title >
-          Add Product
+        <Modal.Title id="contained-modal-title-vcenter">
+          Add Product Stock
         </Modal.Title>
       </Modal.Header>
       <ModalBody>
-        <ProductStock/>
+        <Sadd/>
       </ModalBody>
       <Modal.Footer>
         
@@ -26,5 +26,5 @@ const PsModal = (props) => {
   )
 }
  
-export default PsModal
+export default SaddModal
 

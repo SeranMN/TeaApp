@@ -1,9 +1,9 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal'
 import { ModalBody } from 'react-bootstrap'
-import Sadd from './Sadd'
+import Add from './proAdd'
  
-const SaddModal = (props) => {
+const AddModal = (props) => {
   return (
     <Modal
       {...props}
@@ -13,11 +13,11 @@ const SaddModal = (props) => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Add Product Stock
+          Add Product
         </Modal.Title>
       </Modal.Header>
       <ModalBody>
-        <Sadd/>
+        <Add/>
       </ModalBody>
       <Modal.Footer>
         
@@ -26,5 +26,5 @@ const SaddModal = (props) => {
   )
 }
  
-export default SaddModal
+export default AddModal
 

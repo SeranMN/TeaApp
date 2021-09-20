@@ -3,23 +3,23 @@ import React from 'react';
 import { AiFillHome } from "react-icons/ai";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { ImEnter } from "react-icons/im";
-import { ImExit } from "react-icons/im";
-// import { TiDocumentText } from "react-icons/ti";
+// import {HiDocumentReport} from "react-icons/ai";
+ import { TiDocumentText } from "react-icons/ti";
 // import { FiSettings } from "react-icons/fi";
 
 
 
 export const sidebarData = [
 
-{
-    title:'Dashboard',
-    path:'./MainContent2.js',
-    icon:<AiFillHome/>,
-    cName:'nav-text'
-},
+// {
+//     title:'Dashboard',
+//     path:'./CusProductView.js',
+//     icon:<AiFillHome/>,
+//     cName:'nav-text'
+// },
 {
     title:'PRODUCT',
-    path:'/',
+    path:'./',
     icon:<AiFillPlusCircle/>,
     cName:'nav-text'
 },
@@ -31,8 +31,9 @@ export const sidebarData = [
 },
 {
     title:'REPORT',
-    path:'/Reportpage.js',
-    icon:<ImExit/>,
+    path:'/proReportpage.js',
+    icon:<
+    TiDocumentText/>,
     cName:'nav-text'
 },
 

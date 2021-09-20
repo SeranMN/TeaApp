@@ -1,27 +1,30 @@
 import React from 'react';
-import Header from './component/Header';
+//import Header from './component/Header';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import MainContent2 from './component/MainContent2';
-import Footer from './component/Footer';
+import MainContent from './component/CusProductView';
+import MainContent2 from './component/AdmnProductView';
+//import Footer from './component/Footer';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
-import Sidenavbar from "./component/Sidenavbar"
+import Sidenavbar from "./component/ProductSidenavbar"
 import { Row,Col } from 'react-bootstrap'
 import ProductStock from './component/ProductStock';
-import Reportpage from './component/Reportpage';
+import Reportpage from './component/proReportpage';
 
 
 
 function App() {
   return (
+     
+     
+     
      <Router>
     <div className="App">
-      {/* <Header/>
-      <MainContent/>
-     <ProductStock/>
-      <Footer/>  */}
+      
+      {/* <MainContent/> */}
+     
+      
      
      <Sidenavbar />
        
@@ -30,13 +33,13 @@ function App() {
           <Route exact path = "/">
             <MainContent2/>
           </Route>
-          <Route path = "/MainContent2.js">
-            <MainContent2/>
-          </Route>
+          {/* <Route path = "/CusProductView.js">
+            <MainContent/>
+          </Route> */}
           <Route path = "/ProductStock.js">
             <ProductStock/>
           </Route>
-           <Route path = "/Reportpage.js">
+           <Route path = "/proReportpage.js">
              <Reportpage/>
            </Route>
           
