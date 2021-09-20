@@ -60,7 +60,9 @@ function Dashboard() {
       
     return (
         <div className='dashboard'>
+
           <Navbar/>
+          <h1>Dashboard</h1>
          
              <TableContainer component={Paper}>
       <Table   className={classes.table} aria-label="customized table">
