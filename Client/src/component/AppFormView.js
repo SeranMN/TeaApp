@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap'
 import ContactUs from './ContactUs'
 import { useState } from 'react'
 import { FaTrash } from "react-icons/fa";
+import bcrypt from 'bcryptjs';
 
 
 
@@ -35,7 +36,7 @@ const AppFormView = ({upd}) => {
     };
 
   return (
-    <Form noValidate validated={validated} onSubmit={onSubmit}>
+    <Form noValidate validated={validated}>
     <Form.Group className="mb-3" controlId="formName">
         <Form.Label>Name</Form.Label>
         <Form.Control 
@@ -44,7 +45,6 @@ const AppFormView = ({upd}) => {
         value={name}
         onChange={(e) => setName(e.target.value)}
         disabled />
-        <Form.Control.Feedback type="invalid">Enter Name</Form.Control.Feedback>
     </Form.Group>
 
     <Form.Group className="mb-3" controlId="formEmail">
@@ -56,7 +56,6 @@ const AppFormView = ({upd}) => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         disabled />
-        <Form.Control.Feedback type="invalid">Enter Valid Email Address</Form.Control.Feedback>
     </Form.Group>
 
     <Form.Group className="mb-3" controlId="formPosition">
@@ -67,12 +66,11 @@ const AppFormView = ({upd}) => {
             onChange={(e) => setPosition(e.target.value)}
             disabled
         >
-            <option>General Manager</option>
-            <option value="1">CR Manager</option>
-            <option value="2">HR Manager</option>
-            <option value="3">Financial Manager</option>
+            <option value="" selected disabled hidden>Post</option>
+                <option>CR Manager</option>
+                <option>HR Manager</option>
+                <option>Financial Manager</option>
         </Form.Select>
-        <Form.Control.Feedback type="invalid">Select One</Form.Control.Feedback>
     </Form.Group>
 
     <Form.Group className="mb-3" controlId="formDate">
@@ -83,7 +81,6 @@ const AppFormView = ({upd}) => {
         value={date}
         onChange={(e) => setDate(e.target.value)}
         disabled/>
-        <Form.Control.Feedback type="invalid">Select Date</Form.Control.Feedback>
     </Form.Group>
 
     <Form.Group className="mb-3" controlId="formTime">
@@ -93,7 +90,6 @@ const AppFormView = ({upd}) => {
         value={time}
         onChange={(e) => setTime(e.target.value)} 
         disabled/>
-        <Form.Control.Feedback type="invalid">Select Time</Form.Control.Feedback>
     </Form.Group>
 
     <Form.Group className="mb-3" controlId="formConcern">
@@ -104,7 +100,6 @@ const AppFormView = ({upd}) => {
         value={concern}
         onChange={(e) => setConcern(e.target.value)}
         disabled />
-        <Form.Control.Feedback type="invalid">Your Concern</Form.Control.Feedback>
     </Form.Group>
     
   <Button variant="primary" type="submit">

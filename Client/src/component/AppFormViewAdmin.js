@@ -3,24 +3,16 @@ import { Form } from 'react-bootstrap'
 import { Button } from 'react-bootstrap'
 import ContactUs from './ContactUs'
 import { useState } from 'react'
+import Sidenavbar from './AppSidenavbar'
 
-const AppFormViewAdmin = ({upd}) => {
+const AppFormViewAdmin = ({view}) => {
     const [validated, setvalidated] = useState(false);
-    const [name, setName] = useState(upd != null ? (upd.AppointersName) : (''))
-    const [email, setEmail] = useState(upd != null ? (upd.Email) : (''))
-    const [position, setPosition] = useState(upd != null ? (upd.OfficersPosition) : (''))
-    const [date, setDate] = useState(upd != null ? (upd.Date) : (''))
-    const [time, setTime] = useState(upd != null ? (upd.Time) : (''))
-    const [concern, setConcern] = useState(upd != null ? (upd.Concern) : (''))
-
-    const onSubmit = (e) => {
-        const form = e.currentTarget;
-        if (form.checkValidity() === false) {
-          e.preventDefault();
-          e.stopPropagation();
-        }
-        setvalidated(true);
-    }
+    const [name, setName] = useState(view.name)
+    const [email, setEmail] = useState(view.email)
+    const [position, setPosition] = useState(view.position)
+    const [date, setDate] = useState(view.date)
+    const [time, setTime] = useState(view.time)
+    const [concern, setConcern] = useState(view.concern)
     
     const disablePastDays = () => {
         const today = new Date();
@@ -31,7 +23,8 @@ const AppFormViewAdmin = ({upd}) => {
     };
 
   return (
-    <Form noValidate validated={validated} onSubmit={onSubmit}>
+      
+    <Form noValidate validated={validated}>
     <Form.Group className="mb-3" controlId="formName">
         <Form.Label>Name</Form.Label>
         <Form.Control 
@@ -40,7 +33,6 @@ const AppFormViewAdmin = ({upd}) => {
         value={name}
         onChange={(e) => setName(e.target.value)}
         disabled />
-        <Form.Control.Feedback type="invalid">Enter Name</Form.Control.Feedback>
     </Form.Group>
 
     <Form.Group className="mb-3" controlId="formEmail">
@@ -52,23 +44,16 @@ const AppFormViewAdmin = ({upd}) => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         disabled />
-        <Form.Control.Feedback type="invalid">Enter Valid Email Address</Form.Control.Feedback>
     </Form.Group>
 
     <Form.Group className="mb-3" controlId="formPosition">
         <Form.Label>Officer's Position</Form.Label>
-        <Form.Select
-            aria-label="Floating label select example"
-            value={position}
-            onChange={(e) => setPosition(e.target.value)}
-            disabled
-        >
-            <option>General Manager</option>
-            <option value="1">CR Manager</option>
-            <option value="2">HR Manager</option>
-            <option value="3">Financial Manager</option>
-        </Form.Select>
-        <Form.Control.Feedback type="invalid">Select One</Form.Control.Feedback>
+        <Form.Control 
+        type="text" 
+        placeholder="Name" 
+        value={position}
+        onChange={(e) => setPosition(e.target.value)}
+        disabled />
     </Form.Group>
 
     <Form.Group className="mb-3" controlId="formDate">
@@ -79,7 +64,6 @@ const AppFormViewAdmin = ({upd}) => {
         value={date}
         onChange={(e) => setDate(e.target.value)}
         disabled/>
-        <Form.Control.Feedback type="invalid">Select Date</Form.Control.Feedback>
     </Form.Group>
 
     <Form.Group className="mb-3" controlId="formTime">
@@ -89,7 +73,6 @@ const AppFormViewAdmin = ({upd}) => {
         value={time}
         onChange={(e) => setTime(e.target.value)} 
         disabled/>
-        <Form.Control.Feedback type="invalid">Select Time</Form.Control.Feedback>
     </Form.Group>
 
     <Form.Group className="mb-3" controlId="formConcern">
@@ -100,7 +83,6 @@ const AppFormViewAdmin = ({upd}) => {
         value={concern}
         onChange={(e) => setConcern(e.target.value)}
         disabled />
-        <Form.Control.Feedback type="invalid">Your Concern</Form.Control.Feedback>
     </Form.Group>
 </Form>
   )

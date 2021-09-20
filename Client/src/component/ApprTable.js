@@ -1,52 +1,43 @@
 import React from 'react'
 import Table from "react-bootstrap/Table";
 import { FaTrash } from "react-icons/fa";
-import { useState } from "react";
-import SearchBar from './SearchBar';
+import { useState , useEffect} from "react";
+import SearchBar from './AppSearchBar';
 import InputGroup from 'react-bootstrap/InputGroup'
 import { FormControl } from 'react-bootstrap';
 import { Button } from 'react-bootstrap'
 import {Form} from 'react-bootstrap'
-import DeleteModal from './DeleteModal';
+import AppDeleteModal from './AppDeleteModal';
+import axios from 'axios';
+import Sidenavbar from './AppSidenavbar';
 
 
 
 const ApprTable = () => {
   const [modaldelete, setModalDelete] = useState(false)
-  const [appointments, setAppointment] = useState([
-    {
-      AppointmentID: "001",
-      AppointersName: "Dishan Pahan",
-      Email: "dishanp@gmail.com",
-      OfficersPosition: "General Manager",
-      Date: "08/23/2021",
-      Time: "11.30 AM",
-      Concern: "To discuss about payments",
-    },
-    {
-      AppointmentID: "002",
-      AppointersName: "Navindu Seran",
-      Email: "serann@gmail.com",
-      OfficersPosition: "CR Manager",
-      Date: "09/20/2021",
-      Time: "3.30 PM",
-      Concern: "To discuss about supplements",
-    },
-    {
-      AppointmentID: "003",
-      AppointersName: "Risina Rasmith",
-      Email: "rrisina@gmail.com",
-      OfficersPosition: "HR Manager",
-      Date: "10/19/2021",
-      Time: "10.30 AM",
-      Concern: "To discuss about payments",
-    },
-  ]);
-  const [AppDelete, setAppDelete] = useState('')
+  const [appointments, setAppointments] = useState([]);
+  const [DeleteAppointment, setDeleteAppointment] = useState('');
+
+  useEffect(() => {
+    const getAppointments = () => {
+      axios
+        .get("http://localhost:5000/appointment")
+        .then((res) => {
+          setAppointments(res.data);
+          console.log(res.data);
+        })
+        .catch((err) => {
+          alert(err.msg);
+        });
+    };
+    getAppointments();
+  });
 
   return (
-    
+    <div>
+      {/*<Sidenavbar/>*/}
     <div style={{ marginLeft: "220px", marginTop: "20px", marginRight: "10px"}}>
+
       <br/>
       <SearchBar/>
       <br/>
@@ -58,7 +49,7 @@ const ApprTable = () => {
             <th>AppointmentID</th>
             <th>AppointersName</th>
             <th>Email</th>
-            <th>OfficersPosition</th>
+            <th>Officer's Position</th>
             <th>Date</th>
             <th>Time</th>
             <th>Concern</th>
@@ -67,15 +58,15 @@ const ApprTable = () => {
           </tr>
         </thead>
         {appointments.map((appointment) => (
-        <tbody key={appointment.AppointmentID}>
+        <tbody key={appointment._id}>
           <tr>
-            <td>{appointment.AppointmentID}</td>
-            <td>{appointment.AppointersName}</td>
-            <td>{appointment.Email}</td>
-            <td>{appointment.OfficersPosition}</td>
-            <td>{appointment.Date}</td>
-            <td>{appointment.Time}</td>
-            <td>{appointment.Concern}</td>
+            <td>{appointment._id}</td>
+            <td>{appointment.name}</td>
+            <td>{appointment.email}</td>
+            <td>{appointment.position}</td>
+            <td>{appointment.date}</td>
+            <td>{appointment.time}</td>
+            <td>{appointment.concern}</td>
             <td>
               <input type="checkbox" />
             </td>
@@ -84,7 +75,7 @@ const ApprTable = () => {
                 &nbsp;&nbsp;&nbsp;
                 <span>
                   <FaTrash
-                    onClick={() => {setModalDelete(true);setAppDelete(appointment.AppointmentID)}}
+                    onClick={() => {setModalDelete(true);setDeleteAppointment(appointment);}}
                     style={{ cursor: "pointer", color: "red" }}
                     title="Delete Record"
                   />
@@ -95,9 +86,9 @@ const ApprTable = () => {
         </tbody>
         ))}
       </Table>
-      <DeleteModal show={modaldelete}
+      <AppDeleteModal show={modaldelete}
         onHide={() => setModalDelete(false)}
-        AppDelete={AppDelete}/>
+        DeleteAppointment={DeleteAppointment}/>
 
       <br/>
       <br/>
@@ -119,6 +110,7 @@ const ApprTable = () => {
       </div>
       <br/>
       <br/>
+    </div>
     </div>
   )
 }

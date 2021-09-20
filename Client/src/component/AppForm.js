@@ -5,28 +5,22 @@ import { Form } from 'react-bootstrap'
 import { Button } from 'react-bootstrap'
 //import ContactUs from './ContactUs'
 import { useState } from 'react'
+import axios from "axios";
+import bcrypt from 'bcryptjs';
 
 
 
-const AppForm = (upd) => {
+
+const AppForm = ({ upd }) => {
 
     const [validated, setvalidated] = useState(false);
-    const [name, setName] = useState(upd != null ? (upd.AppointersName) : (''))
-    const [email, setEmail] = useState(upd != null ? (upd.Email) : (''))
-    const [position, setPosition] = useState(upd != null ? (upd.OfficersPosition) : (''))
-    const [date, setDate] = useState(upd != null ? (upd.Date) : (''))
-    const [time, setTime] = useState(upd != null ? (upd.Time) : (''))
-    const [concern, setConcern] = useState(upd != null ? (upd.Concern) : (''))
+    const [name, setName] = useState(upd != null ? (upd.name) : (''));
+    const [email, setEmail] = useState(upd != null ? (upd.email) : (''));
+    const [position, setPosition] = useState(upd != null ? (upd.position) : (''));
+    const [date, setDate] = useState(upd != null ? (upd.date) : (''));
+    const [time, setTime] = useState(upd != null ? (upd.time) : (''));
+    const [concern, setConcern] = useState(upd != null ? (upd.concern) : (''));
 
-
-const onSubmit = (e) => {
-    const form = e.currentTarget;
-    if (form.checkValidity() === false) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    setvalidated(true);
-}
 
 const disablePastDays = () => {
     const today = new Date();
@@ -35,6 +29,37 @@ const disablePastDays = () => {
     const yyyy = today.getFullYear();
     return yyyy + "-" + mm + "-" + dd;
   };
+
+  const onSubmit = (event) => {
+    const newAppointment = {
+        "name": name,
+        "email":email,
+        "position": position,
+        "date": date,
+        "time": time,
+        "concern": concern,
+      };
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    else {
+        if (upd == null) {
+          axios
+            .post("http://localhost:5000/appointment/add", newAppointment)
+            .then(() => alert("You have an Appointment"))
+            .catch((err) => alert(err));
+            console.log(newAppointment);
+        } else {
+          axios
+            .put(`http://localhost:5000/appointment/update/${upd._id}`, newAppointment)
+            .then(() => alert("Appointment is Updated"))
+            .catch((err) => alert(err));
+        }
+      }
+      setvalidated(true);
+};
   
   return (
     <Form noValidate validated={validated} onSubmit={onSubmit}>
@@ -67,10 +92,10 @@ const disablePastDays = () => {
                 onChange={(e) => setPosition(e.target.value)}
                 required
             >
-                <option>General Manager</option>
-                <option value="1">CR Manager</option>
-                <option value="2">HR Manager</option>
-                <option value="3">Financial Manager</option>
+                <option value="" selected disabled hidden>Post</option>
+                <option>CR Manager</option>
+                <option>HR Manager</option>
+                <option>Financial Manager</option>
             </Form.Select>
             <Form.Control.Feedback type="invalid">Select One</Form.Control.Feedback>
         </Form.Group>
@@ -96,7 +121,7 @@ const disablePastDays = () => {
 
         <Form.Group className="mb-3" controlId="formConcern">
             <Form.Label>Concern</Form.Label>
-            <Form.Control as="textarea" 
+            <Form.Control type="text"
             placeholder="type here" 
             value={concern}
             onChange={(e) => setConcern(e.target.value)}
@@ -108,7 +133,7 @@ const disablePastDays = () => {
       {upd != null ? "Done" : "Add"}
       </Button>
 </Form>
-  )
-}
+  );
+};
 
 export default AppForm

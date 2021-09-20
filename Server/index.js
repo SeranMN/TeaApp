@@ -18,6 +18,9 @@ app.get("/", (req, res) => {
     res.send("Hello Node!");
 });
 
+const appointmentApi = require("./src/api/appointment.api");
+app.use("/appointment", appointmentApi());
+
 app.listen(PORT, () => {
   console.log(`App listening at http://localhost:${PORT}`);
 });

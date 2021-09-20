@@ -2,12 +2,13 @@ import React from 'react'
 import Table from "react-bootstrap/Table";
 import { FaTrash } from "react-icons/fa";
 import { useState } from "react";
-import SearchBar from './SearchBar';
+import SearchBar from './AppSearchBar';
 import InputGroup from 'react-bootstrap/InputGroup'
 import { FormControl } from 'react-bootstrap';
 import { Button } from 'react-bootstrap'
 import {Form} from 'react-bootstrap'
-import DeleteModal from './DeleteModal';
+import AppDeleteModal from './AppDeleteModal';
+import Sidenavbar from './AppSidenavbar';
 
 const ApprManager = () => {
     const [modaldelete, setModalDelete] = useState(false)
@@ -45,6 +46,7 @@ const ApprManager = () => {
   return (
     
     <div>
+      <Sidenavbar/>
       <br/>
       <SearchBar/>
       <br/>
@@ -93,7 +95,7 @@ const ApprManager = () => {
         </tbody>
         ))}
       </Table>
-      <DeleteModal show={modaldelete}
+      <AppDeleteModal show={modaldelete}
         onHide={() => setModalDelete(false)}
         AppDelete={AppDelete}/>
 
