@@ -26,6 +26,7 @@ import FeedbackAdmin from './component/FeedbackAdmin';
 import ContactUs from './component/ContactUs';
 import ApprTable from './component/ApprTable';
 import PendingTable from './component/AppPendingTable';
+import ContactUsView from './component/ContactUsView';
 
 
 function App() {
@@ -99,14 +100,14 @@ function App() {
           <Route exact path = "/ContactUs.js">
       <ContactUs/>
     </Route>
-    <Route path = "/ContactUs.js">
-      <ContactUs/>
-    </Route>
     <Route exact path = "/PendingTable.js">
       <PendingTable/>
     </Route>
     <Route path = "/ApprTable.js">
       <ApprTable/>
+    </Route>
+    <Route path = "/ContactUsView.js">
+      <ContactUsView/>
     </Route>
       </Switch>
     </div>

@@ -35,7 +35,7 @@ const ApprTable = () => {
 
   return (
     <div>
-      {/*<Sidenavbar/>*/}
+      <Sidenavbar/>
     <div style={{ marginLeft: "220px", marginTop: "20px", marginRight: "10px"}}>
 
       <br/>

@@ -11,23 +11,13 @@ const ContactUs = () => {
   const [modalShow, setModalShow] = useState(false);
 
   return (
-    <Router>
     <div>
-    <Route path='/' exact render={(props) =>(
-       <>
          <Formbtn onClick={() => setModalShow(true)} />
          <BtnModal show = {modalShow} onHide = {() => setModalShow(false)} />
-         <Link to="/ContactUsView">
+         <Link to="/ContactUsView.js">
           <Button variant="success">View</Button>
-         </Link>   
-
-       </>
-     )}/>
-    <Route path="/ContactUsView" component={ContactUsView} />      
+         </Link>     
     </div>
-    </Router>
-    
-  )
-}
+  )}
 
 export default ContactUs

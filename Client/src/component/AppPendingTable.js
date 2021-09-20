@@ -36,12 +36,10 @@ const PendingTable = () => {
   return (
     <div>
       <Sidenavbar/>
-    <Router>
     <div style={{ marginLeft: "420px", marginTop: "20px", marginRight: "420px"}}>
       <h2><u> Appointments </u></h2>
       <br/>
       <br/>
-      <Route path='/' exact render={(props) =>(
         <>
         <Table striped bordered hover size="sm">
         <thead>
@@ -80,12 +78,9 @@ const PendingTable = () => {
                 />
 
         </>
-        )}/>
-        <Route path="/ApprTable" component={ApprTable} />
       <br/>
       <br/>
     </div>
-    </Router>
     </div>
   )
 }
