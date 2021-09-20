@@ -32,19 +32,15 @@ const Footer = () => {
               </Box>
               <Box>
                 <Link href="/" color="primary">
-                  Support
+                  My Order
                 </Link>
               </Box>
               <Box>
                 <Link href="/" color="primary">
-                  Privacy
+                  Contact Us
                 </Link>
               </Box>
-              <Box>
-                <Link href="/" color="primary">
-                  Privacy
-                </Link>
-              </Box>
+             
             </Grid>
             <Grid item xs={12} sm={4}>
               <Box style={{color:"white",fontWeight:"bold"}}>Share & Follow us On</Box>

@@ -35,18 +35,13 @@ export const sidebarData = [
     cName:'nav-text'
 },
 {
-    title:'Generate report',
+    title:'Report',
     path:'/report',
     icon:<TiDocumentText/>,
     cName:'nav-text'
 },
 
-{
-    title:'Settings',
-    path:'/settings',
-    icon:<FiSettings/>,
-    cName:'nav-text'
-},
+
 
 
 

@@ -51,9 +51,9 @@ const Out = ({}) => {
     return (
         <div>
             <Navbar/>
-            <Box display="flex"style={{width:"1200px"}}    marginLeft="230px" padding="3rem"  flexDirection="row" bgcolor="background.paper" >
+            <Box display="flex"style={{width:"1200px"}}    marginLeft="230px" padding="2rem"  flexDirection="row" bgcolor="background.paper" >
             <Box p={3}  marginBottom="40px"  bgcolor="grey.300"> 
-            <div className='form-content-left'><img className='image-container' src="/teah.jpg" alt="Logo" /></div> 
+            <div className='form-content-left'><img style={{width:"1000px",height:"670px",marginTop:"50px"}} className='image-container' src="/teah.jpg" alt="Logo" /></div> 
              </Box>
              <Box p={3} width="1000px"  marginBottom="40px" bgcolor="grey.300">   
         <form  className='add-form' onSubmit={onSubmit} >
