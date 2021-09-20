@@ -1,55 +1,119 @@
-import './App.css';
+     
+   
+import React from 'react';
+import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Supplier from "./component/Supplier";
+import DailySupply from "./component/DailySupply";
+import ReportTable from "./component/Report_Table";
+import FormerSuppliers from "./component/FormerSuppliers";
+import Employee from './component/Employee';
+import AdminDashBoard from "./component/AdminDashBoard"
+import Salary from './component/Salary';
+import Attendance from './component/Attendance';
+import FormerEmp from './component/FormerEmp';
+import AttendanceMark from './component/AttendanceMark';
+import Dashboard from './component/Pages/Dashboard';
+import Addstock from './component/Pages/Addstock';
+import In from './component/Pages/In';
+import Out from './component/Pages/Out';
+import Home from './component/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CusTable from './component/CusTable';
+import CusLogin from './component/CusLogin'
+import CusProfile from './component/CusProfile';
+import FeedbackAdmin from './component/FeedbackAdmin';
 import ContactUs from './component/ContactUs';
 import ApprTable from './component/ApprTable';
-import AppFormView from './component/AppFormView';
-import ViewBtn from './component/AppViewBtn';
-import ContactUsView from './component/ContactUsView';
 import PendingTable from './component/AppPendingTable';
-import ApprManager from './component/ApprManager';
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import Sidenavbar from './component/AppSidenavbar'
-import AppForm from './component/AppForm';
+
 
 function App() {
   return (
-    //<ContactUs/>
+    <div>
+      <Router>
+        <div className="App">
+          <Switch>
+            
+            <Route exact path = "/">
+            <Home/>
+            </Route>
+            <Route path='/Dashboard' exact component={Dashboard}/>
+        <Route path='/Addstock' exact component={Addstock}/>
+        <Route path='/In' exact component={In}/>
+        <Route path='/Out' exact component={Out}/>
+              <Route exact path="/Supplier.js">
+                <Supplier/>
+              </Route>
 
-  
-    <Router>
+              <Route path="/Report_Table.js">
+                <ReportTable />
+              </Route>
 
-<div className="App">
-   
- {/* <div >   
-   
-  <Switch>
-    <Route exact path = "/">
+              <Route path="/Report_Table.js">
+                <ReportTable/>
+              </Route>
+
+              <Route path="/FormerSuppliers.js">
+                <FormerSuppliers />
+              </Route>
+
+              <Route path="/DailySupply.js">
+                <DailySupply />
+              </Route>
+            
+           
+          <Route exact path = "/Admin.js">
+            <AdminDashBoard/>
+            </Route>
+          <Route path = "/Employee.js">
+            <Employee/>
+          </Route>
+          <Route path = "/Salary.js">
+            <Salary/>
+          </Route>
+          <Route path = "/Attendance.js">
+            <Attendance/>
+          </Route>
+          <Route path = "/FormerEmp.js">
+            <FormerEmp/>
+          
+          </Route>
+           <Route path = "/AttendanceMark.js">
+            <AttendanceMark/>
+          
+          </Route>
+
+          <Route exact path = "/CusLogin.js">
+            <CusLogin />
+          </Route>
+          <Route path = "/FeedbackAdmin.js">
+            <FeedbackAdmin />
+          </Route>
+          <Route path = "/CusTable.js">
+            <CusTable />
+          </Route>
+          <Route path = "/CusProfile.js">
+            <CusProfile />
+          </Route>
+          <Route exact path = "/ContactUs.js">
       <ContactUs/>
     </Route>
-    <Route path = "/">
+    <Route path = "/ContactUs.js">
       <ContactUs/>
     </Route>
-  </Switch>
-</div> */}
-
-{/* <Sidenavbar /> */}
- 
- <div >   
-  <Switch>
-    <Route exact path = "/">
+    <Route exact path = "/PendingTable.js">
       <PendingTable/>
     </Route>
     <Route path = "/ApprTable.js">
       <ApprTable/>
     </Route>
-  </Switch>
-</div>
-
-</div>
-  </Router> )
+      </Switch>
+    </div>
+     
+      </Router >
+        </div>
+  );
 }
-{/*<ViewBtn/>*/}
-{/*<ApprManager><ContactUs/><PendingTable/><ApprTable/><PendingTable/>*/}
+
 export default App;
-       
-   

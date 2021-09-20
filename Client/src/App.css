@@ -134,3 +134,51 @@ align-items: center;
 span{
   margin-left:16px;
 }
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+
+.loginform {
+  height: 435px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.profile {
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.report {
+  height: 80px;
+  width : 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 550px;
+}
+.profComo{
+  display: flex;
+  flex-direction: row;
+}
+
+.profTable{
+  width:60%;
+  margin-top: 20px;
+}
+
+.list-group-flush{
+  border: black;
+  border-style: none ;
+}
