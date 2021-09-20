@@ -1,9 +1,28 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal'
 import { Button } from 'react-bootstrap'
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 
 const Modaldelete = (props) => {
+  const onDelete = () =>{
+    
+    axios.delete(`http://localhost:5000/customer/delete/${props.profile._id}`)
+    .then(() => {
+        alert("Deleted")
+        navigate();
+      }).catch((err) => {
+        alert(err)
+      })
+      
+  }
+  const history = useHistory();
+  const navigate = () => {
+    history.push("/CusLogin.js");
+}
+
+  
     return (
         <Modal
         {...props}
@@ -16,10 +35,10 @@ const Modaldelete = (props) => {
         </Modal.Header>
         <Modal.Body>Are you sure you want to delete your account permanetly ?</Modal.Body>
         <Modal.Footer>
-          <Button variant="danger">
+          <Button variant="danger" onClick={onDelete}>
             Delete
           </Button>
-          <Button variant="primary">
+          <Button variant="primary" onClick={props.onHide}>
             Close
           </Button>
         </Modal.Footer>

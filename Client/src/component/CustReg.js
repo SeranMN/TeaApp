@@ -1,27 +1,64 @@
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { useState } from "react";
+import axios from "axios";
+const bcrypt = require('bcryptjs');
 
-const CustReg = ({det}) => {
-    const [validated, setvalidated] = useState(false)
-    const [fname, setFirstName] = useState();
-    const [lname, setLastName] = useState();
-    const [email, setEmail] = useState();
-    const [contactno, setContactNo] = useState();
-    const [nic, setNIC] = useState();
-    const [address, setAddress] = useState();
-    const [photo, setPhoto] = useState();
-    const [password, setPassword] = useState();
+const CustReg = () => {
+    const [validated, setvalidated] = useState(false);
+    const [fname, setFirstName] = useState("");
+    const [lname, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [contactno, setContactNo] = useState("");
+    const [nic, setNIC] = useState("");
+    const [address, setAddress] = useState("");
+    const [photo, setPhoto] = useState("");
+    const [password, setPassword] = useState("");
     const [cpassword, setConfirmPassword] = useState();
-    const [selectedPhoto, setSelectedPhoto] = useState();
+    const [selectedPhoto, setSelectedPhoto] = useState("");
 
 
 
-    const handleSubmit = (event) => {
+    const checkSubmit = (event) => {
+        event.preventDefault();
+        console.log(password);
+        const newCustomer = {
+            "firstName": fname,
+            "lastName": lname,
+            "email": email,
+            "contactNo": contactno,
+            "NIC": nic,
+            "address": address,
+        }
+
+        const newLogin = {
+            
+            "email": email,
+            "type": "admin",
+            "password": bcrypt.hashSync(password, bcrypt.genSaltSync()),
+            
+        }
+
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
           event.preventDefault();
           event.stopPropagation();
+        }
+        else {
+            if (cpassword == password){
+
+            axios
+                .post("http://localhost:5000/customer/register", newCustomer)
+                .then((data) => console.log(data))
+                .catch((err) => alert(err));
+
+            axios
+                .post("http://localhost:5000/login/add", newLogin)
+                .then(() => alert("Successfully Registered"))
+                .catch((err) => alert(err));
+            } else {
+                alert("Password Mismatch");
+            }
         }
         setvalidated(true);
       };
@@ -30,30 +67,23 @@ const CustReg = ({det}) => {
         if (e.target.files && e.target.files.length > 0) {
           setSelectedPhoto(e.target.files[0]);
         }
+        
         setPhoto(e.target.value);
     
       };
 
-      const checkPassword = () =>{
-          var v1 = document.getElementById("password").value;
-          var v2 = document.getElementById("cpassword").value;
-
-          if(v1==v2){
-              alert("Success");
-          } else {
-              alert("Password Mismatch");
-          }
-      }
+      
 
     return (
         <div className="regform">
-        <Form noValidate validated={validated} onSubmit={handleSubmit, checkPassword}>
+        <Form noValidate validated={validated} onSubmit= {checkSubmit}>
         <fieldset>
         <Form.Group className="mb-3" controlId="fname">
             <Form.Label>First Name</Form.Label>
             <Form.Control
                  placeholder="First Name" 
                  value={fname}
+                 onChange={(e) => setFirstName(e.target.value)}
                  required
             />
         </Form.Group>
@@ -63,6 +93,7 @@ const CustReg = ({det}) => {
             <Form.Control
                  placeholder="Last Name" 
                  value={lname}
+                 onChange={(e) => setLastName(e.target.value)}
                  required
             />
         </Form.Group>
@@ -74,6 +105,7 @@ const CustReg = ({det}) => {
                  placeholder="abcd@defg.com"
                  pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$" 
                  value={email}
+                 onChange={(e) => setEmail(e.target.value)}
                  required
             />
         </Form.Group>
@@ -84,6 +116,7 @@ const CustReg = ({det}) => {
                  placeholder=""
                  pattern="[0-9]{10}"
                  value={contactno}
+                 onChange={(e) => setContactNo(e.target.value)}
                  required
              />
         </Form.Group>
@@ -94,6 +127,7 @@ const CustReg = ({det}) => {
                  placeholder=""
                  pattern="^([0-9]{9}[x|X|v|V]|[0-9]{12})$"
                  value={nic}
+                 onChange={(e) => setNIC(e.target.value)}
                  required
 
         />
@@ -104,6 +138,7 @@ const CustReg = ({det}) => {
             <Form.Control
                  as= "textarea" 
                  value={address}
+                 onChange={(e) => setAddress(e.target.value)}
                  required
             />
         </Form.Group>
@@ -113,8 +148,9 @@ const CustReg = ({det}) => {
             <Form.Control
                  type="file"
                  value={photo}
-                 onChange={imageChange}
-                 required
+                 //onChange={imageChange}
+                 onChange={(e) => setPhoto(e.target.value)}
+                 //required
             />
             {selectedPhoto && (
             <div
@@ -138,6 +174,7 @@ const CustReg = ({det}) => {
                  placeholder="Enter a Password"
                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                  value={password} 
+                 onChange={(e) => setPassword(e.target.value)}
                  required
             />
         </Form.Group>
@@ -148,8 +185,9 @@ const CustReg = ({det}) => {
                  type="password" 
                  placeholder="Re-enter the Password" 
                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                 value={cpassword}
-                 required
+                 onChange={(e) => setConfirmPassword(e.target.value)}
+                 //value={}
+                 //required
             />
         </Form.Group>
 
@@ -165,7 +203,6 @@ const CustReg = ({det}) => {
 
 
         <Button variant="primary" type="submit">Submit</Button>
-
         </fieldset> 
         </Form>
         </div>

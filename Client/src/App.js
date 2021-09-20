@@ -1,26 +1,26 @@
-import Header from './component/Header';
+
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
-import Footer from './component/Footer';
+
 import CusTable from './component/CusTable';
-import CusLogin from './CusLogin';
-import CusProfile from './CusProfile';
+import CusLogin from './component/CusLogin'
+import CusProfile from './component/CusProfile';
 import FeedbackAdmin from './component/FeedbackAdmin';
-import Sidenavbar from "./component/Sidenavbar"
+import CustReg from './component/CustReg';
+
 
 function App() {
   return (
     <div className="App">
-    {/* <Header/>
-     <h1>Gangasiri Tea Factory</h1> */ }
-    { /*  <CusProfile /> */ }
+     
+     
      <Router>
-        <Sidenavbar /> 
+         
        <div >   
         <Switch>
-          <Route exact path = "/">
-            
+          <Route exact path = "/CusLogin.js">
+            <CusLogin />
           </Route>
           <Route path = "/FeedbackAdmin.js">
             <FeedbackAdmin />
@@ -28,13 +28,15 @@ function App() {
           <Route path = "/CusTable.js">
             <CusTable />
           </Route>
-          <Route path = "/.js">
-            
+          <Route path = "/CusProfile.js">
+            <CusProfile />
           </Route>
+          
         </Switch>
       </div>
-    </Router> 
-    { /* <Footer/> */ }
+    </Router>
+
+    
      
     </div>
   );

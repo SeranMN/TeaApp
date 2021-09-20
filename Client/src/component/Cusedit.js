@@ -2,38 +2,55 @@ import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { useState } from 'react'
+import axios from 'axios';
 
 const Cusedit = ({det}) => {
     const [validated, setvalidated] = useState(false)
-    const [fname, setFirstName] = useState(det != null ? (det.Name) : (''))
-    const [lname, setLastName] = useState(det != null ? (det.Home) : (''))
-    const [email, setEmail] = useState(det != null ? (det.Street) : (''))
-    const [contactno, setContactNo] = useState(det != null ? (det.City) : (''))
+    const [fname, setFirstName] = useState(det != null ? (det.firstName) : (''))
+    const [lname, setLastName] = useState(det != null ? (det.lastName) : (''))
+    const [email, setEmail] = useState(det != null ? (det.email) : (''))
+    const [contactno, setContactNo] = useState(det != null ? (det.contactNo) : (''))
     const [nic, setNIC] = useState(det != null ? (det.NIC) : (''))
-    const [address, setAddress] = useState(det != null ? (det.Mobile) : (''))
-    const [photo, setPhoto] = useState(det != null ? (det.Email) : (''))
+    const [address, setAddress] = useState(det != null ? (det.address) : (''))
+    //const [photo, setPhoto] = useState(det != null ? (det.photo) : (''))
     const [selectedphoto, setSelectedPhoto] = useState();
+    
 
     const handleSubmit = (event) => {
+
+        const updateCustomer = {
+            "firstName": fname,
+            "lastName": lname,
+            "email": email,
+            "contactNo": contactno,
+            "NIC": nic,
+            "address": address,
+        }
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
           event.preventDefault();
           event.stopPropagation();
         }
+        else{
+            axios
+                .put(`http://localhost:5000/customer/update/${email}`, updateCustomer)
+                .then(() => alert("Successfully Updated"))
+                .catch((err) => alert(err));
+        }
         setvalidated(true);
       };
 
-      const imageChange = (e) => {
+      /*const imageChange = (e) => {
         if (e.target.files && e.target.files.length > 0) {
           setSelectedPhoto(e.target.files[0]);
         }
         setPhoto(e.target.value);
     
-      };
+      };*/
 
     return (
         <div className="editform">
-        <Form>
+        <Form onSubmit = {handleSubmit}>
         <Form.Group className="mb-3" controlId="fname">
             <Form.Label>First Name</Form.Label>
             <Form.Control
@@ -87,7 +104,7 @@ const Cusedit = ({det}) => {
             <Form.Label>Address</Form.Label>
             <Form.Control
                  as= "textarea" 
-                 value="address"
+                 value={address}
                  onChange={(e) => setAddress(e.target.value)}
                  required
             />
@@ -98,8 +115,8 @@ const Cusedit = ({det}) => {
             <Form.Control
                  type="file" 
                  accept=""
-                 onChange={imageChange}
-                 required
+                 //onChange={imageChange}
+                 //required
             />
 
             {selectedphoto && (

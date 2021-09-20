@@ -1,24 +1,25 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal'
-import Cusedit from './Cusedit'
+import CustReg from './CustReg'
 import { ModalBody } from 'react-bootstrap'
 import { Button } from 'react-bootstrap'
+import Feedbackform from './Feedbackform'
 
-const Modalnew = (props) => {
+const ModalRegister = (props) => {
     return (
         <Modal
         {...props}
-        size=""
+        size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Update Details
+            Register
           </Modal.Title>
         </Modal.Header>
         <ModalBody>
-          <Cusedit />
+          <CustReg />
           
 
         </ModalBody>
@@ -29,4 +30,4 @@ const Modalnew = (props) => {
     )
 }
 
-export default Modalnew
+export default ModalRegister
