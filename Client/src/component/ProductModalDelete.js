@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 
 import ProductStock from "./ProductStock";
 import axios from "axios";
+import './productc.css'
 
 const ModleDelete1 = (props) => {
     

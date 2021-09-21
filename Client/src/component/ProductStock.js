@@ -12,6 +12,7 @@ import {useState, useEffect } from "react";
   import ModleDelete from "./proModleDelete";
  import axios from "axios";
  import proSearchBar from './proSearchBar';
+ import './productc.css'
  
 
 

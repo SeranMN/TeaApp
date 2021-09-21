@@ -11,6 +11,7 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import ModleDelete1 from "./ProductModalDelete";
 import ProductStock from './ProductStock';
 import proSearchBar from './proSearchBar';
+import './productc.css'
 // import PsModal from './PsModal';
     
       const MainContent2 = ({ProductID, Product, onClick }) => {
@@ -33,7 +34,7 @@ import proSearchBar from './proSearchBar';
                 });
             };
             getProducts();
-          });
+          },[]);
         // console.log(product_card);
         // const listItems = product_card.map((item)=>
         //    <div className="item" key="{item.id}">
@@ -50,10 +51,10 @@ import proSearchBar from './proSearchBar';
             <div className="item" key="{Product._id}">
                 <div className="card_img" >
                     {/* <img src={Product.thumb}/> */}
-                    <img src="./images/1.jpg"/>
+                    <img className="imagee" src="./images/1.jpg"/>
                </div>
                <div className="item_header">
-                    <h2>{Product.Name}</h2>
+                    <div className="hh2"><h2>{Product.Name}</h2></div>
                    <h2>{Product.weight}<span>{Product.currency="g"}</span></h2>
                    <p className="price"><span>{Product.currency="Rs"}</span>{Product.price}</p>
 
@@ -97,8 +98,8 @@ import proSearchBar from './proSearchBar';
         const [modalShow1, setModalShow1] = useState(false);
         const [modalShow2, setModalShow2] = useState(false);
         return (
-        <Router><div style={{ marginLeft: "180px", marginTop: "20px", marginRight: "5px"}}>
-                <Route path='/' exact render ={(props) =>(
+        <div style={{ marginLeft: "180px", marginTop: "20px", marginRight: "5px"}}>
+                
             
             <div> 
                 <h1>PRODUCTS</h1>
@@ -134,8 +135,7 @@ import proSearchBar from './proSearchBar';
                 {listItems} 
             </div></div> 
             
-                  )}/> 
-                <Route path="/ProductStock" component={ProductStock} />
+                  
                 <AModal
         show={modalShow1}
         onHide={() => setModalShow1(false)}
@@ -147,7 +147,7 @@ import proSearchBar from './proSearchBar';
         deleteProduct={deleteProduct}
       />
                 </div>
-         </Router>
+        
         )
     }
     

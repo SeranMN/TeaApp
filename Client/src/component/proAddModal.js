@@ -2,6 +2,7 @@ import React from 'react'
 import Modal from 'react-bootstrap/Modal'
 import { ModalBody } from 'react-bootstrap'
 import Add from './proAdd'
+import './productc.css'
  
 const AddModal = (props) => {
   return (

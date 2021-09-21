@@ -3,6 +3,7 @@
  import { ModalBody } from 'react-bootstrap'
  
 import Edit from './proEdit'
+import './productc.css'
  
 const AModal = (props) => {
   return (

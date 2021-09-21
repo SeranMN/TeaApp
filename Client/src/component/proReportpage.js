@@ -6,6 +6,7 @@ import {useState, useEffect } from "react";
 import { DropdownButton } from 'react-bootstrap';
 import { Dropdown } from 'react-bootstrap';
 import axios from 'axios';
+import './productc.css'
 
 const Reportpage = () => {
 

@@ -38,7 +38,7 @@ function App() {
      
       
 
-    <div>
+    <div> 
       <Router>
         <div className="App">
           <Switch>
@@ -116,9 +116,11 @@ function App() {
     <Route path = "/ContactUsView.js">
       <ContactUsView/>
     </Route>
-    <Route exact path = "/AdmnProductView.js">
+    {/* <Route  path = "/AdmnProductView.js">
             <MainContent2/>
-          </Route>
+          </Route> */}
+          <Route path="/AdmnProductView.js">
+            <MainContent2/> </Route>
           <Route path = "/CusProductView.js">
             <MainContent/>
           </Route>

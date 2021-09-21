@@ -6,6 +6,7 @@ import {useState, useEffect } from "react";
 import {TiShoppingCart} from "react-icons/ti";
 import proSearchBar from './proSearchBar';
 import Button from 'react-bootstrap/Button'
+import './productc.css'
 
 // import Button from './Button'
     
@@ -43,7 +44,7 @@ import Button from 'react-bootstrap/Button'
         const listItems = Products.map((Product)=>
            <div className="item" key="{Product._id}">
                <div className="card_img" >
-                   <img src="./images/1.jpg"/>
+                   <img className="imagee" src="./images/1.jpg"/>
               </div>
               <div className="item_header">
                    <h2>{Product.Name}</h2>
