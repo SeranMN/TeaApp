@@ -9,6 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Navbar from '../Navbarnavod';
+import Clockn from './Clockn';
 
 
 const StyledTableCell = withStyles((theme) => ({
@@ -40,7 +41,7 @@ const StyledTableCell = withStyles((theme) => ({
     createData('Green Tea', 50, '1A',status ),
     createData('Black Tea', 30, '2A',status ),
     createData('White Tea', 40, '3A',status ),
-    createData('Fruit Tea', 30, '4A', status)
+   
     
   ];
 
@@ -62,16 +63,19 @@ function Dashboard() {
         <div className='dashboard'>
 
           <Navbar/>
-          <h1>Dashboard</h1>
+          
+         <div style={{color:"black",fontWeight:"bold",marginTop:"30px",marginLeft:"200px",fontSize:"20px"}}> Dashboard</div>
+         <Clockn/>
          
-             <TableContainer component={Paper}>
-      <Table   className={classes.table} aria-label="customized table">
+         
+             <TableContainer  component={Paper}>
+      <Table  className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell>Product Name</StyledTableCell>
-            <StyledTableCell align="right">Available Amount (Kg)</StyledTableCell>
-            <StyledTableCell align="right">Secton&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Stock Status&nbsp;(g)</StyledTableCell>
+            <StyledTableCell align="center">Available Amount (Kg)</StyledTableCell>
+            <StyledTableCell align="center">Secton&nbsp;</StyledTableCell>
+            <StyledTableCell align="center">Stock Status&nbsp;</StyledTableCell>
           
           </TableRow>
         </TableHead>
@@ -79,11 +83,11 @@ function Dashboard() {
           {rows.map((row) => (
             <StyledTableRow key={row.productName}>
               <StyledTableCell component="th" scope="row">
-                {row.name}
+                {row.productName}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.availableStocks}</StyledTableCell>
-              <StyledTableCell align="right">{row.section}</StyledTableCell>
-              <StyledTableCell align="right">{row.stockstatus}</StyledTableCell>
+              <StyledTableCell align="center">{row.availableStocks}</StyledTableCell>
+              <StyledTableCell align="center">{row.section}</StyledTableCell>
+              <StyledTableCell align="center">{row.stockstatus}</StyledTableCell>
               
             </StyledTableRow>
           ))}

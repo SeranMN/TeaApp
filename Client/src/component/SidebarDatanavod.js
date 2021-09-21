@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaBars } from "react-icons/fa";
-import { AiFillHome } from "react-icons/ai";
+import { AiOutlineDashboard } from "react-icons/ai";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { ImEnter } from "react-icons/im";
 import { ImExit } from "react-icons/im";
@@ -13,11 +13,11 @@ export const sidebarData = [
 {
     title:'Dashboard',
     path:'/Dashboard',
-    icon:<AiFillHome/>,
+    icon:<AiOutlineDashboard/>,
     cName:'nav-text'
 },
 {
-    title:'Add Stock',
+    title:'Stock Details',
     path:'/Addstock',
     icon:<AiFillPlusCircle/>,
     cName:'nav-text'

@@ -63,7 +63,8 @@ import MuiAlert from '@mui/material/Alert';
 
         
         const [show, setShow] = useState(false);
-  
+
+    
         const handleClose = () => setShow(false);
         const handleShow = () => setShow(true);
 
@@ -101,7 +102,8 @@ import MuiAlert from '@mui/material/Alert';
             setproductName("");
             setsectionNo("");
             setdate("");
-            setamount("")
+            setamount("");
+            handleClose()
         }).catch((err)=>{alert(err)
            
         })}
@@ -162,13 +164,14 @@ import MuiAlert from '@mui/material/Alert';
               
             
             :
-          <center>
+          
+            <div style={{display:"flex",justifyContent:'center',marginLeft:"170px",marginTop:"30px",marginBottom:"30px"}}> 
             <Button style={{position:"absolute",marginTop:"10px"}} className={classes.btn1}   variant="contained" color="primary"onClick={handleShow}>
-            Add New Stock
+            Add New Product
             </Button>
+            </div> 
             
-            
-            </center>}
+           }
          {product&&
             <Button variant="contained" size="small" color="secondary" startIcon={<DeleteIcon />} onClick={()=>{setOpen(true)}}   >
               Delete
@@ -256,7 +259,7 @@ import MuiAlert from '@mui/material/Alert';
   }
                    
                     
-                       <Button  fullWidth style={{marginTop:"15px"}}  type='submit' variant="contained" color="secondary" onClick={handleClose} > 
+                       <Button  fullWidth style={{marginTop:"15px"}}  type='submit' variant="contained" color="secondary"   > 
                            {product?
                             "Edit" 
                            :

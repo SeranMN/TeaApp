@@ -51,6 +51,7 @@ const In = ({}) => {
     return (
         <div>
             <Navbar/>
+            <div style={{color:"black",fontWeight:"bold",marginTop:"30px",marginLeft:"200px",fontSize:"20px"}}> Stock In</div>
             <Box display="flex"style={{width:"1200px"}}    marginLeft="230px" padding="2rem"  flexDirection="row" bgcolor="background.paper" >
             <Box p={3}  marginBottom="40px"  bgcolor="grey.300"> 
             <div className='form-content-left'><img style={{width:"1000px",height:"670px",marginTop:"50px"}} className='image-container' src="/teah.jpg" alt="Logo" /></div> 
