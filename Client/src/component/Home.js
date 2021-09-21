@@ -1,15 +1,19 @@
 import React from 'react'
-import Header from './Header'
-import footer from './Footer'
+import Destinations from './Destinations'
+import Showcase from './Showcase'
 import Footer from './Footer'
-const home = () => {
+import './Homestyle.css'
+import Header from './Header'
+
+function Home() {
     return (
         <div>
-            <Header />
-            <Footer />
-            
+            <Header/>
+            <Showcase/>
+            <Destinations/>
+            <Footer/>
         </div>
     )
 }
 
-export default home
+export default Home

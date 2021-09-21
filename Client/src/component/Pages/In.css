@@ -1,0 +1,95 @@
+
+.title{
+  text-align: center;
+  font-size: 25px;
+ 
+}
+ 
+.image-container {
+ width :auto;
+  height: 720px;
+ object-fit: cover;
+ 
+} 
+
+.add-form {
+
+    max-width: 500px;
+    margin: 50px auto;
+    overflow: auto;
+    min-height: 500px;
+    border: 1px solid steelblue;
+    padding: 2px 30px 40px 20px ;
+    border-radius: 5px;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    
+  }
+  
+
+
+  .formcontrol {
+    margin: 26px 0;
+  }
+  
+  .formcontrol label {
+    display: block;
+    padding: 3px 7px;
+  }
+  
+  .formcontrol input {
+    width: 100%;
+    height: 40px;
+    margin: 5px;
+    padding: 3px 7px;
+    font-size: 17px;
+  }
+
+
+  .formnote {
+    margin: 26px 0;
+  }
+
+  .formnote label {
+    display: block;
+    padding: 3px 7px;
+  }
+  
+  .formnote input {
+    width: 100%;
+    height:30px;
+    margin: 5px;
+    padding: 3px 7px;
+    font-size: 17px;
+  }
+
+  .btn {
+    display: inline-block;
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: inherit;
+  }
+
+  .btn:focus {
+    outline: none;
+  }
+  
+  .btn:active {
+    transform: scale(0.98);
+  }
+  
+  .btn-block {
+    display: block;
+    width: 100%;
+    margin :auto;
+    
+  }
+  
+  

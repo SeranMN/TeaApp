@@ -1,6 +1,6 @@
+import React from 'react';
 import Header from "./component/Header";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Footer from "./component/Footer";
 import Supplier from "./component/Supplier";
@@ -10,12 +10,23 @@ import SupplierProfile from "./component/SupplierProfile";
 import ReportTable from "./component/Report_Table";
 import FormerSuppliers from "./component/FormerSuppliers";
 import Employee from './component/Employee';
-import Home from './component/Home'
 import AdminDashBoard from "./component/AdminDashBoard"
 import Salary from './component/Salary';
 import Attendance from './component/Attendance';
 import FormerEmp from './component/FormerEmp';
 import AttendanceMark from './component/AttendanceMark';
+import Navbar from './component/Navbarnavod';
+import Dashboard from './component/Pages/Dashboard';
+import Addstock from './component/Pages/Addstock';
+import In from './component/Pages/In';
+import Out from './component/Pages/Out';
+import Home from './component/Home';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import CusTable from './component/CusTable';
+import CusLogin from './component/CusLogin'
+import CusProfile from './component/CusProfile';
+import FeedbackAdmin from './component/FeedbackAdmin';
+import CustReg from './component/CustReg';
 
 function App() {
   return (
@@ -27,7 +38,10 @@ function App() {
             <Route exact path = "/">
             <Home/>
             </Route>
-            
+            <Route path='/Dashboard' exact component={Dashboard}/>
+        <Route path='/Addstock' exact component={Addstock}/>
+        <Route path='/In' exact component={In}/>
+        <Route path='/Out' exact component={Out}/>
               <Route exact path="/Supplier.js">
                 <Supplier/>
               </Route>
@@ -64,6 +78,19 @@ function App() {
            <Route path = "/AttendanceMark.js">
             <AttendanceMark/>
           
+          </Route>
+
+          <Route exact path = "/CusLogin.js">
+            <CusLogin />
+          </Route>
+          <Route path = "/FeedbackAdmin.js">
+            <FeedbackAdmin />
+          </Route>
+          <Route path = "/CusTable.js">
+            <CusTable />
+          </Route>
+          <Route path = "/CusProfile.js">
+            <CusProfile />
           </Route>
       </Switch>
      {/* <Footer/> */}
