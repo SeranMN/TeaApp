@@ -20,6 +20,8 @@ const OrderDetails = () => {
   const [orders, setOrders] = useState([]);
 
   const [number, setNumber] = useState(1);
+
+  const [orderdetails, setOrderDetails] = useState([])
   
   
   useEffect(()=>{
@@ -46,21 +48,23 @@ const OrderDetails = () => {
 
   const submit = (order) => {
     console.log(order)
-          axios.delete(`http://localhost:5000/order/delete/${order._id}`).then(() => 
+          axios.delete(`http://localhost:5000/order/delete/${orderdetails._id}`).then(() => 
             alert("Successfully Deleted")).catch((err) => alert(err))
         }
           // console.log(product._id)
         
       
-  useEffect(() => {
-   console.log(order)
-  }, [])
+  // useEffect(() => {
+  //  console.log(order)
+  // }, [])
  
   return (
     <div>
       {orders.map((order) => 
       
       <Card className="text-center" style={{marginLeft:"300px"}}>
+        
+       
         
       <Card.Header>Order {number} </Card.Header>
       
@@ -90,7 +94,10 @@ const OrderDetails = () => {
     
     <Box  p={1} display="flex" justifyContent="space-between">
     <Box  p={1} display="flex"  >
-    <Button variant="secondary" onClick={submit}>
+    <Button variant="secondary" onClick={() => {
+      submit();
+     setOrderDetails(order)}
+    }>
             Delete
           </Button>
           </Box>

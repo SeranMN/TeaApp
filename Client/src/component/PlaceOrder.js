@@ -69,6 +69,8 @@ const PlaceOrder = ({product, order}) => {
       setPostalCode("");
       setQuantity("");
       setSubTotal("");
+      handleClose()
+
 
   }).catch((err)=>{alert(err)
 
@@ -144,25 +146,28 @@ const PlaceOrder = ({product, order}) => {
             
            
             <Form.Label>Quantity</Form.Label>
-            <Row className="justify-content-md-center">
-          <Col xs lg="2">
+           
+          <div style={{display:"flex",justifyContent:"space-evenly"}}>
           <FiMinusCircle size={30} color={Color} onClick={decrease}/>
-          </Col>
-          <Col md="auto"><Form.Control type={Number} value={Quantity}  onChange={(e)=>setQuantity(e.target.value)} /> </Col>
-          <Col xs lg="2">
+          
+          <Form.Control style={{width:"40%"}} type={Number} value={Quantity}  onChange={(e)=>setQuantity(e.target.value)} />
+          
           <FiPlusCircle size={30} onClick={()=>{setQuantity(Quantity+1)
              setColor("black")}} />
-          </Col>
-          </Row>
+          </div>
             
-            <Form.Group as={Col} >
+            <Form.Group as={Col} style={{marginTop:"20px"}} >
             <Form.Label>Sub Total</Form.Label>
             <Form.Control type={Number}  value={"Rs. "+Quantity}  onChange={(e)=>setSubTotal(e.target.value)} disabled="disabled"/>
             </Form.Group>
             </Box>
             
   <Box flexGrow={1} p={1} bgcolor="grey.300">
-                  
+  <Row className="mb-3">
+    <Form.Group as={Col} > 
+    <Form.Label style={{marginLeft:"250px"}}>Shipping Details</Form.Label>
+    </Form.Group>
+    </Row>              
   <Row className="mb-3">
     <Form.Group as={Col} >
       <Form.Label>Email</Form.Label>
@@ -230,14 +235,7 @@ const PlaceOrder = ({product, order}) => {
 </Form>
 
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
+        
       </Modal>
 
       
