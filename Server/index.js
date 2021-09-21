@@ -18,6 +18,18 @@ app.get("/", (req, res) => {
     res.send("Hello Node!");
 });
 
+const appointmentApi = require("./src/api/appointment.api");
+app.use("/appointment", appointmentApi());
+const customerApi = require("./src/api/customer.api");
+app.use("/customer", customerApi());
+
+const feedbackApi = require("./src/api/feedback.api");
+app.use("/feedback", feedbackApi());
+
+const loginApi = require("./src/api/login.api");
+app.use("/login", loginApi());
+const stockApi = require("./src/api/stock.api");
+app.use("/stock", stockApi());
 const supplierAPI = require("./src/api/Supplier.api");
 app.use("/supplier", supplierAPI());
 
@@ -33,5 +45,3 @@ app.use("/formersupplier", formerSupplierAPI());
 app.listen(PORT, () => {
   console.log(`App listening at http://localhost:${PORT}`);
 });
-
-

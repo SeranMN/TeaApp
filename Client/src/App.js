@@ -1,10 +1,8 @@
+import React from "react";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Supplier from "./component/Supplier";
 import DailySupply from "./component/DailySupply";
-import RegEmpSupBtn from "./component/RegEmpSup_Btn";
-import SupplierProfile from "./component/SupplierProfile";
 import ReportTable from "./component/Report_Table";
 import FormerSuppliers from "./component/FormerSuppliers";
 import Employee from "./component/Employee";
@@ -13,6 +11,26 @@ import Salary from "./component/Salary";
 import Attendance from "./component/Attendance";
 import FormerEmp from "./component/FormerEmp";
 import AttendanceMark from "./component/AttendanceMark";
+import Employee from "./component/Employee";
+import AdminDashBoard from "./component/AdminDashBoard";
+import Salary from "./component/Salary";
+import Attendance from "./component/Attendance";
+import FormerEmp from "./component/FormerEmp";
+import AttendanceMark from "./component/AttendanceMark";
+import Dashboard from "./component/Pages/Dashboard";
+import Addstock from "./component/Pages/Addstock";
+import In from "./component/Pages/In";
+import Out from "./component/Pages/Out";
+import Home from "./component/Home";
+import "bootstrap/dist/css/bootstrap.min.css";
+import CusTable from "./component/CusTable";
+import CusLogin from "./component/CusLogin";
+import CusProfile from "./component/CusProfile";
+import FeedbackAdmin from "./component/FeedbackAdmin";
+import ContactUs from "./component/ContactUs";
+import ApprTable from "./component/ApprTable";
+import PendingTable from "./component/AppPendingTable";
+import ContactUsView from "./component/ContactUsView";
 
 function App() {
   return (
@@ -20,9 +38,11 @@ function App() {
       <Router>
         <div className="App">
           <Switch>
-            
-            <Route exact path="/">
-            </Route>
+            <Route exact path="/"></Route>
+            <Route path="/Dashboard" exact component={Dashboard} />
+            <Route path="/Addstock" exact component={Addstock} />
+            <Route path="/In" exact component={In} />
+            <Route path="/Out" exact component={Out} />
 
             <Route exact path="/Supplier.js">
               <Supplier />
@@ -32,12 +52,12 @@ function App() {
               <ReportTable />
             </Route>
 
-            <Route path="/Report_Table.js">
-              <ReportTable />
-            </Route>
-
             <Route path="/FormerSuppliers.js">
               <FormerSuppliers />
+            </Route>
+
+            <Route path="/DailySupply.js">
+              <DailySupply />
             </Route>
 
             <Route exact path="/Admin.js">
@@ -64,6 +84,38 @@ function App() {
               <AttendanceMark />
             </Route>
 
+            <Route exact path="/CusLogin.js">
+              <CusLogin />
+            </Route>
+
+            <Route path="/FeedbackAdmin.js">
+              <FeedbackAdmin />
+            </Route>
+
+            <Route path="/CusTable.js">
+              <CusTable />
+            </Route>
+
+            <Route path="/CusProfile.js">
+              <CusProfile />
+            </Route>
+
+            <Route exact path="/ContactUs.js">
+              <ContactUs />
+            </Route>
+
+            <Route exact path="/PendingTable.js">
+              <PendingTable />
+            </Route>
+
+            <Route path="/ApprTable.js">
+              <ApprTable />
+            </Route>
+
+            <Route path="/ContactUsView.js">
+              <ContactUsView />
+            </Route>
+            
           </Switch>
         </div>
       </Router>
