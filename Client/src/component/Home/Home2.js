@@ -1,60 +1,104 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Button, Table } from 'react-bootstrap';
-import { UserContext } from '../UserContext/UserContext';
+//import { UserContext } from '../UserContext/UserContext';
 import "./Home.css"
 import { Link } from 'react-router-dom';
-
-
+import axios from 'axios';
+import Read from '../Read/Read';
+//import ModalForm2 from './src/component/ModalForm2.js';
+import ModelForm2 from '../ModelForm2.js';
+//import Delivery from 'src/modal/Delivery.js';
 const Home2 = () => {
-    const [users, setUsers] = useContext(UserContext);
 
-    console.log(users);
+
+    //const [empDet,setEmpDet] = useState ('')
+    const [editForm1, showEditForm1] = useState(false);
+    const [type, settype] = useState("")
+    // const [users, setUsers] = useContext(UserContext);
+    const [Deliverys, setDelivery] = useState([]);
+    const [Deliverydetails, setDeliverydetails] = useState('')
+
+    useEffect(() => {
+        const getDeliverys = () => {
+            axios
+                .get("http://localhost:5000/Delivery/")
+                .then((res) => {
+                    setDelivery(res.data);
+                    console.log(res.data);
+                })
+                .catch((err) => {
+                    alert(err.msg);
+                });
+        };
+        getDeliverys();
+    }, []);
+
+    //console.log(users);
     return (
         <div>
-            
+
             <Link to="/create2">
-            <Button className="create_btn" varient="primary">Add Delivery</Button>
+                <Button className="create_btn" varient="primary">Add Delivery</Button>
             </Link>
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th width="1">Delivery ID 1</th>
-                        <th width="11">Name</th>
-                        <th width="110">Position</th>
-                        <th width="100">Salary</th>
+                    <th width="1">Registration No</th>
+                        <th width="11">Route</th>
+                        <th width="110">Date</th>
+                        <th width="100">Tea leaves</th>
                         <th width="100">Distance</th>
                         <th width="100">Driver</th>
                         <th width="200">Action</th>
+
                     </tr>
                 </thead>
-                <tbody>
-                    {
-                        users.map(user =>
-                            <tr>
-                                <td>{user.id}</td>
-                                <td>{user.name}</td>
-                                <td>{user.position}</td>
-                                <td>{user.salary}</td>
-                                <td>{user.distance}</td>
-                                <td>{user.driver}</td>
-                                <td>
-                                    <Link to={"/edit/"+user.id}>
-                                    <Button className="action_btn" variant="info">Edit</Button>
-                                    </Link>
-                                    <Link to={"/delete/"+user.id}>
-                                    <Button className="action_btn" variant="danger">Delete</Button>
-                                    </Link>
-                                    <Link to={"/read/"+user.id}>
-                                    <Button className="action_btn" variant="success">Read</Button>
-                                    </Link>
-                                </td>
-                            </tr>)
+                {Deliverys.map((Delivery) => (
+                    <tbody key={Delivery._id}>
 
-                    }
+                        <tr>
+                            <td>{Delivery.id1}</td>
+                            <td>{Delivery.route}</td>
+                            <td>{Delivery.date}</td>
+                            <td>{Delivery.tea}</td>
+                            <td>{Delivery.distance}</td>
+                            <td>{Delivery.driver}</td>
+                            <td>
+
+                                <Button className="action_btn" variant="info" onClick={() => {
+                                    showEditForm1(true)
+                                    setDeliverydetails(Delivery)
+                                    settype("Update")
+                                }} style={{ cursor: 'pointer' }}>Edit</Button>
 
 
-                </tbody>
+                                <Button className="action_btn" variant="danger"
+
+                                    onClick={() => {
+                                        showEditForm1(true)
+                                        setDeliverydetails(Delivery)
+                                        settype("Delete")
+                                    }}
+                                    style={{ cursor: 'pointer' }}> Delete</Button>
+
+                                <Button className="action_btn" variant="success" onClick={() => {
+                                    showEditForm1(true)
+                                    setDeliverydetails(Delivery)
+                                    settype("Details")
+                                }} style={{ cursor: 'pointer' }}
+                                >Read</Button>
+
+                            </td>
+                        </tr>
+
+
+
+
+                    </tbody>
+                ))}
             </Table>
+            <ModelForm2 show={editForm1} onHide={() => showEditForm1(false)} Delivery={Deliverydetails} type={type} />
+            <Read Deliverydetails={Deliverydetails} />
 
         </div>
     );

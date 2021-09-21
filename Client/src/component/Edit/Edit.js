@@ -1,102 +1,117 @@
 import React, { useContext, useState } from 'react'
-import { useParams } from 'react-router';
-import { UserContext } from '../UserContext/UserContext';
+//import { useParams } from 'react-router';
 import {Button} from 'react-bootstrap'
 import { Form, FormGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-const Edit = () => {
-    const [users, setUsers] = useContext(UserContext);
-    const {id} = useParams();
-    const user = users.filter(user => user.id == id);
+const Edit = ({det}) => {
+    console.log(det.vtype)
 
-    
-    const [name,setName] = useState(user[0].name);
-    const [position,setPosition] = useState(user[0].position);
-    const [salary,setSalary] = useState(user[0].salary);
-    const [owner,setOwner] = useState(user[0].owner);
+    const [id,setId] = useState(det.vid);
+    const [vtype,setName] = useState(det.vtype);
+    const [vmodel,setPosition] = useState(det.vmodel);
+    const [ftype,setSalary] = useState(det.ftype);
+    const [owner,setOwner] = useState(det.owner); 
 
+    const onupdate = (e) =>{
+        const newVehicle = {
+            vid:id,
+            vtype:vtype,
+            vmodel:vmodel,
+            ftype: ftype,
+            owner: owner,
+          };
+
+        axios
+        .put(`http://localhost:5000/Vehicle/update/${det._id}`, newVehicle )
+        .then(() => alert("Vehicle Updated"))
+        .catch((err) => alert(err));
+    }
+ 
     const editName = (e) =>{
         setName(e.target.value);
-        const edited_name = name;
-        user[0].name = edited_name;
+        /* const edited_name = vtype;
+        user[0].vtype = edited_name; */
     }
     const editPosition = (e) =>{
         setPosition(e.target.value);
-        const edited_position = position;
-        user[0].position = edited_position;
+        /* const edited_position = vmodel;
+        user[0].vmodel = edited_position; */
     }
     const editSalary = (e) =>{
         setSalary(e.target.value);
-        const edited_salary = salary;
-        user[0].salary = edited_salary;
+        /* const edited_salary = ftype;
+        user[0].ftype = edited_salary; */
     }
    const editOwner = (e) =>{
         setOwner(e.target.value);
-        const edited_owner = owner;
-        user[0].owner = edited_owner;
-    } 
-    const editUser = (e) => {
-        e.preventDefault();
-        setUsers([...users]);
-    };
+        /* const edited_owner = owner;
+        user[0].owner = edited_owner; */
+    }  
+     const editUser = (e) => {
+         /* e.preventDefault();
+        setUsers([...users]); 
+ */
+    }; 
     
+    //console.log(window.$vehicle)
     return (
         <div className="edit">
             
-            <Form >
+              <Form  onsubmit ={onupdate}>
                 <FormGroup>
                     <Form.Label>
-                        <h1>ID NO: {user[0].id }</h1>
+                        <h1>ID NO: {id }</h1>
                     </Form.Label>
                 </FormGroup>
                 <FormGroup>
-                    <Form.Label>Name</Form.Label>
+                    <Form.Label>Vehicle Type</Form.Label>
                     <Form.Control
                     type="text"
-                    name="name"
-                    value={name}
+                    name="vtype"
+                    value={vtype}
                     onChange={editName}
-                    placeholder={user[0].name}
+                    //placeholder={user[0].vtype}
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Form.Label>Position</Form.Label>
+                    <Form.Label>Vehicle Modal</Form.Label>
                     <Form.Control
                      type="text"
-                    name="position"
-                    value={position}
+                    name="vmodel"
+                    value={vmodel}
                     onChange={editPosition}
-                    placeholder={user[0].position} 
+                    //placeholder={user[0].vmodel} 
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Form.Label>Salary</Form.Label>
+                    <Form.Label>Fuel Type</Form.Label>
                     <Form.Control 
                     type="text"
-                    name="salary"
-                    value={salary}
+                    name="ftype"
+                    value={ftype}
                     onChange={editSalary}
-                    placeholder={user[0].salary}
+                    //placeholder={user[0].ftype}
                     />
                 </FormGroup>
                <FormGroup>
-                    <Form.Label>Owner</Form.Label>
+                    <Form.Label> Vehicle Owner</Form.Label>
                     <Form.Control 
                     type="text"
                     name="owner"
                     value={owner}
                     onChange={editOwner}
-                    placeholder={user[0].owner}
+                    //placeholder={user[0].owner}
                     />
                 </FormGroup> 
                 <br/>
-                <Link to="/home1">
-                <Button onSubmit={() =>editUser} variant="primary" type="submit">Edit Vehicle</Button>
+                
+                <Button onClick={onupdate} variant="primary" >Edit Vehicle</Button>
                 
                 <Button className="action_btn" variant="info">Back to Home </Button>
-                </Link>
-            </Form>
+                
+            </Form>  
         </div>
     )
 }

@@ -1,28 +1,33 @@
-//import Button from '@restart/ui/esm/Button';
+import Button from '@restart/ui/esm/Button';
 import React, { useContext } from 'react';
 import { useParams } from 'react-router';
 import { UserContext } from '../UserContext/UserContext';
-import {Button} from "react-bootstrap";
+import { useState, useEffect } from 'react';
+//import { Button} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import './Read.css';
 
-const Read= () => {
+const Read= (props) => {
 
-    const [users, setUsers] = useContext(UserContext);
-    const {id} = useParams();
+    // const [users, setUsers] = useContext(UserContext);
+    // const {id} = useParams();
+    //const {Vehicles, setVehicles} = useState([]);
 
-    const user = users.filter(user => user.id == id);
-    //console.log(user)
+    
+
+    // const user = users.filter(user => user.id == id);
+    console.log(props.vehicledetails)
     return (
-        <div className="read">
-            <h1>ID: {user[0].id}</h1>
-            <h1>Name: {user[0].name}</h1>
-            <h1>Position: {user[0].position}</h1>
-            <h1>Salary: {user[0].salary}</h1>
-            <h1>Owner: {user[0].owner}</h1>
+        <div {...props} className="read">
+            
+            {/* <h1>ID: {'CEB 2030'}</h1>
+            <h1>Vehicle Type: {props.vehicledetails.vtype}</h1>
+            <h1>Position: {props.vehicledetails.vmodel}</h1>
+            <h1>Salary: {props.vehicledetails.ftype}</h1>
+            <h1>Owner: {props.vehicledetails.owner}</h1>
             <Link to ="/home1">
                 <Button variant ="info">Back to Home</Button>
-            </Link>
+            </Link> */}
 
             
         </div>
@@ -30,3 +35,4 @@ const Read= () => {
 }
 
 export default Read
+

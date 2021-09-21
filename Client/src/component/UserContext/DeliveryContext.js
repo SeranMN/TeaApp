@@ -2,20 +2,20 @@ import { useState } from "react";
 import React from "react";
 import { createContext } from "react";
 
-export const DeliveryContext = createContext();
+export const UserContext = createContext();
 
 export const UserProvider = (props) =>{
-    const [users, setUsers] = useState ([
-        {id: "LY 3010", name:"Lorryyyy", position:"Prime mover", salary:"Diesel", distance:"chaminda", driver:"hk" },
-        {id: "LM 5503", name:"Truck", position:"Mahindra", salary:"Diesel" , distance:"kasun" , driver:"SD"},
-        {id: "CFK 7010", name:"Car", position:"Honda", salary:"Petrol" , distance:"sandun", driver:"Ak" }
+    const [users2, setUsers2] = useState ([
+        {id: "LY 3011", route:"360/2", date:"2021/02/03", tea:"170", distance:"19", driver:"Samantha" },
+        {id: "LM 5503", route:"148/3", date:"2021/05/20", tea:"200" , distance:"26" , driver:"Chandana"},
+        {id: "CFK 7010", route:"152", date:"2021/07/02", tea:"235" , distance:"29", driver:"Upali" }
 
     ]);
 
     return(
-        <DeliveryContext.Provider value={[users,setUsers]}>
+        <UserContext.Provider value={[users2,setUsers2]}>
             {props.children}
-        </DeliveryContext.Provider>
+        </UserContext.Provider>
     );
 };
 

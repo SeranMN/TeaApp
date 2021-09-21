@@ -1,17 +1,21 @@
 import React, { useContext } from 'react';
 import { Form, FormGroup } from 'react-bootstrap';
 //import { UserContext } from '../UserContext/UserContext';
-import { DeliveryContext} from '../UserContext/DeliveryContext';
+//import { DeliveryContext} from '../UserContext/DeliveryContext';
 import { useState } from 'react';
 import { Button} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
+//import { DeliveryContext2 } from '../UserContext/DeliveryContext2';
+import axios from 'axios';
+//import { UserContext } from '../UserContext/UserContext';
+
 
 const Create2 = () => {
-    const [users, setUsers] = useContext(DeliveryContext);
-    const [id,setId] = useState("");
-    const [name,setName] = useState("");
-    const [position,setPosition] = useState("");
-    const [salary,setSalary] = useState("");
+    //const [users2, setUsers2] = useContext(UserContext);
+    const [id1,setId] = useState("");
+    const [route,setName] = useState("");
+    const [date,setPosition] = useState("");
+    const [tea,setSalary] = useState("");
     const [distance,setDistance] = useState("");
     const [driver,setDriver] = useState("");
 
@@ -36,7 +40,21 @@ const Create2 = () => {
     } 
     const addUser= (e) =>{
         e.preventDefault();
-        setUsers([...users, {id:id, name:name, position:position, salary:salary, distance:distance, driver:driver}])
+        //setUsers2([...users2, {id1:id1, route:route, date:date, tea:tea, distance:distance, driver:driver}])
+
+        const newDelivery = {
+            id1:id1,
+            route:route,
+            date:date,
+            tea:tea,
+            distance:distance,
+            driver:driver
+          };
+
+        axios
+        .post("http://localhost:5000/Delivery/add", newDelivery )
+        .then(() => alert("Delivery Added"))
+        .catch((err) => alert(err));
     }
 
     return (
@@ -46,43 +64,43 @@ const Create2 = () => {
             <br/>
             <Form onSubmit= {addUser}>
                 <FormGroup>
-                    <Form.Label>ID</Form.Label>
+                    <Form.Label>Registration No</Form.Label>
                     <Form.Control
                      type="text"
-                    name="id"
-                    value={id}
+                    name="did"
+                    value={id1}
                     onChange={updateId}
                     placeholder="Enter ID" 
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Form.Label>Name</Form.Label>
+                    <Form.Label>Route</Form.Label>
                     <Form.Control
                     type="text"
-                    name="name"
-                    value={name}
+                    name="route"
+                    value={route}
                     onChange={updateName}
-                    placeholder="Enter Name" 
+                    placeholder="Enter route" 
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Form.Label>Position</Form.Label>
+                    <Form.Label>Date</Form.Label>
                     <Form.Control
                      type="text"
-                    name="position"
-                    value={position}
+                    name="date"
+                    value={date}
                     onChange={updatePosition}
-                    placeholder="Enter Position" 
+                    placeholder="Enter date" 
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Form.Label>Salary</Form.Label>
+                    <Form.Label>Tea Leaves[kg]</Form.Label>
                     <Form.Control 
                     type="text"
-                    name="salary"
-                    value={salary}
+                    name="tea"
+                    value={tea}
                     onChange={updateSalary}
-                    placeholder="Enter Salary"
+                    placeholder="Enter Tea Leaves[kg]"
                     />
                 </FormGroup>
                 <FormGroup>
@@ -106,9 +124,9 @@ const Create2 = () => {
                     />
                 </FormGroup>
                 <br/>
-                <Link to="/home2">
+               
                 <Button className="action_btn" variant="primary" type="submit">Add Delivery</Button>
-                
+                <Link to="/home2">
                 <Button className="action_btn" variant="info">Back to Home </Button>
                 </Link>
             </Form>

@@ -6,9 +6,9 @@ export const UserContext = createContext();
 
 export const UserProvider = (props) =>{
     const [users, setUsers] = useState ([
-        {id: "LY 3010", name:"Lorry", position:"Prime mover", salary:"Diesel", owner:"chaminda" },
-        {id: "LM 5503", name:"Truck", position:"Mahindra", salary:"Diesel" , owner:"kasun" },
-        {id: "CFK 7010", name:"Car", position:"Honda", salary:"Petrol" , owner:"sandun" }
+        {id: "LY 3010", vtype:"Lorry", vmodel:"Prime mover", ftype:"Diesel", owner:"chaminda" },
+        {id: "LM 5503", vtype:"Truck", vmodel:"Mahindra", ftype:"Diesel" , owner:"kasun" },
+        {id: "CFK 7010", vtype:"Car", vmodel:"Honda", ftype:"Petrol" , owner:"sandun" }
 
     ]);
 

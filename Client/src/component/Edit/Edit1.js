@@ -1,122 +1,146 @@
-import {Button} from 'react-bootstrap';
 import React, { useContext, useState } from 'react'
-import { Form } from 'react-bootstrap';
-import { useParams } from 'react-router';
+//import { useParams } from 'react-router';
+import {Button} from 'react-bootstrap'
+import { Form, FormGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../UserContext/UserContext';
+import axios from 'axios';
 
-const Edit1 = () => {
-    const [users, setUsers] = useContext(UserContext);
-    const {id} = useParams();
-    const user = users.filter((user) => user.id == id);
-    
+const Edit1 = ({det}) => {
+    console.log(det.vtype)
 
-    const [name, setName] = useState(user[0].name);
-    const [position, setPosition] = useState(user[0].position);
-    const [salary, setSalary] = useState(user[0].salary);
-    const [distance, setDistance] = useState(user[0].distance);
-    const [driver, setDriver] = useState(user[0].driver);
+    const [id1,setId] = useState(det.id1);
+    const [route,setName] = useState(det.route);
+    const [date,setPosition] = useState(det.date);
+    const [tea,setSalary] = useState(det.tea);
+    const [distance,setOwner] = useState(det.distance);
+    const [driver,setDriver] = useState(det.driver); 
 
+    const onupdate = (e) =>{
+        const newDelivery = {
+            id1:id1,
+            route:route,
+            date:date,
+            tea: tea,
+            distance: distance,
+            driver:driver,
+          };
+
+        axios
+        .put(`http://localhost:5000/Delivery/update/${det._id}`, newDelivery )
+        .then(() => alert("Delivery Updated"))
+        .catch((err) => alert(err));
+    }
+ 
     const editName = (e) =>{
         setName(e.target.value);
-        const edited_name = name;
-        user[0].name = edited_name;
+        /* const edited_name = vtype;
+        user[0].vtype = edited_name; */
     }
-    const editPosition = (e) => {
+    const editPosition = (e) =>{
         setPosition(e.target.value);
-        const edited_position = position;
-        user[0].position = edited_position;
+        /* const edited_position = vmodel;
+        user[0].vmodel = edited_position; */
     }
-    const editSalary = (e) => {
+    const editSalary = (e) =>{
         setSalary(e.target.value);
-        const edited_salary = salary;
-        user[0].salary = edited_salary;
+        /* const edited_salary = ftype;
+        user[0].ftype = edited_salary; */
     }
-    const editDistance = (e) => {
-        setDistance(e.target.value);
-        const edited_distance = distance;
-        user[0].distance = edited_distance;
-    }
-    const editDriver = (e) => {
+   const editOwner = (e) =>{
+        setOwner(e.target.value);
+        /* const edited_owner = owner;
+        user[0].owner = edited_owner; */
+    } 
+
+    const editDriver = (e) =>{
         setDriver(e.target.value);
-        const edited_driver = driver;
-        user[0].driver = edited_driver;
-    }
-    const editUser = (e) =>{
-        e.preventDefault();
-        setUsers([...users]);
-    }
+        /* const edited_owner = owner;
+        user[0].owner = edited_owner; */
+    } 
 
+
+
+
+
+    
+    
+     const editUser = (e) => {
+         /* e.preventDefault();
+        setUsers([...users]); 
+ */
+    }; 
+    
+    //console.log(window.$vehicle)
     return (
-        <div className="edit1">
-            <Form>
-                <Form.Group>
+        <div className="edit">
+            
+              <Form  onsubmit ={onupdate}>
+                <FormGroup>
                     <Form.Label>
-                        <h1>ID NO : {user[0].id}</h1>
+                        <h1>ID NO: {id1}</h1>
                     </Form.Label>
-                </Form.Group>
-
-                <Form.Group>
-                    <Form.Label>Name</Form.Label>
+                </FormGroup>
+                <FormGroup>
+                    <Form.Label>Route</Form.Label>
                     <Form.Control
                     type="text"
-                    name="name"
-                    value={name}
+                    name="route"
+                    value={route}
                     onChange={editName}
-                    placeholder={user[0].name}
-                     />
-                </Form.Group>
-
-                <Form.Group>
-                    <Form.Label>Position</Form.Label>
-                    <Form.Control
-                    type="text"
-                    name="position"
-                   value={position}
-                    onChange={editPosition}
-                    placeholder={user[0].position}
+                    //placeholder={user[0].vtype}
                     />
-                </Form.Group>
-
-                <Form.Group>
-                    <Form.Label>Salary</Form.Label>
+                </FormGroup>
+                <FormGroup>
+                    <Form.Label>Delivery Date</Form.Label>
                     <Form.Control
+                     type="text"
+                    name="date"
+                    value={date}
+                    onChange={editPosition}
+                    //placeholder={user[0].vmodel} 
+                    />
+                </FormGroup>
+                <FormGroup>
+                    <Form.Label>Tea leaves</Form.Label>
+                    <Form.Control 
                     type="text"
-                    name="salary"
-                    value={salary}
+                    name="tea"
+                    value={tea}
                     onChange={editSalary}
-                    placeholder={user[0].salary} />
-                </Form.Group>
-
-               <Form.Group>
-                    <Form.Label>Distance</Form.Label>
-                    <Form.Control
+                    //placeholder={user[0].ftype}
+                    />
+                </FormGroup>
+               <FormGroup>
+                    <Form.Label> Distance</Form.Label>
+                    <Form.Control 
                     type="text"
                     name="distance"
                     value={distance}
-                    onChange={editDistance}
-                    placeholder={user[0].distance} />
-                </Form.Group>
+                    onChange={editOwner}
+                    //placeholder={user[0].owner}
+                    />
+                </FormGroup> 
 
-                <Form.Group>
-                    <Form.Label>Driver</Form.Label>
-                    <Form.Control
+                <FormGroup>
+                    <Form.Label> Driver Name</Form.Label>
+                    <Form.Control 
                     type="text"
                     name="driver"
                     value={driver}
-                    onChange={editDriver}
-                    placeholder={user[0].driver} />
-                </Form.Group>
-
-               
-                    <Button  onSubmit={()=>editUser} variant="primary" type="submit">Edit Vehicle</Button>
-                    
-                    <Link to="/home2">
-                    <Button className = "actin_btn" variant="info">Back to Home</Button>
-                </Link>
-            </Form>
+                    onChange={editOwner}
+                    //placeholder={user[0].owner}
+                    />
+                </FormGroup> 
+                <br/>
+                
+                <Button onClick={onupdate} variant="primary" >Edit Vehicle</Button>
+                
+                <Button className="action_btn" variant="info">Back to Home </Button>
+                
+            </Form>  
         </div>
-    );
-};
+    )
+}
 
-export default Edit1;
+export default Edit1
+ 

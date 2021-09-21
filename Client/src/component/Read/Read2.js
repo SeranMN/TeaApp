@@ -6,7 +6,7 @@ import {Button} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import './Read.css';
 
-const Read= () => {
+const Read2= () => {
 
     const [users, setUsers] = useContext(UserContext);
     const {id} = useParams();
@@ -16,12 +16,12 @@ const Read= () => {
     return (
         <div className="read">
             <h1>ID: {user[0].id}</h1>
-            <h1>Name: {user[0].vtype}</h1>
-            <h1>Position: {user[0].position}</h1>
-            <h1>Salary: {user[0].salary}</h1>
-            <h1>Owner: {user[0].owner}</h1>
-            <h1>Owner: {user[0].driver}</h1>
-            <Link to ="/">
+            <h1>Route: {user[0].route}</h1>
+            <h1>Date: {user[0].date}</h1>
+            <h1>Tea Leaves: {user[0].tea}</h1>
+            <h1>Distance: {user[0].distance}</h1>
+            <h1>Driver: {user[0].driver}</h1>
+            <Link to ="/home2">
                 <Button variant ="info">Back to Home</Button>
             </Link>
 
@@ -30,4 +30,4 @@ const Read= () => {
     )
 }
 
-export default Read
+export default Read2

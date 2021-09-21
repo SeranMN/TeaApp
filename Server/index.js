@@ -1,23 +1,47 @@
 const express = require("express");
-const cors = require('cors');
-
+const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const dotenv = require('dotenv');
-const connectDB = require("./src/config/config");
+const cors = require("cors");
 const app = express();
+require("dotenv").config();
 
 
-const PORT = process.env.PORT || 5000;
+//import routes
 
-app.use(cors());
+
+//const PORT = process.env.PORT || 8070;
+//app middleware
 app.use(bodyParser.json());
+app.use(cors());
 
-connectDB();
 
-app.get("/", (req, res) => {
-    res.send("Hello Node!");
+
+
+
+const VehicleApi = require("./src/api/Vehicle.api.js");
+app.use("/Vehicle", VehicleApi());
+
+const DeliveryApi = require("./src/api/Delivery.api.js");
+app.use("/delivery", DeliveryApi());
+
+
+
+
+const PORT = 5000;
+const DB_URL = "mongodb+srv://aws123:aws12345@vehicle.41xpe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+
+mongoose.connect(DB_URL,{
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() =>{
+  console.log('DB Connected');
+})
+.catch((err) =>console.log('DB connection erro',err));
+
+app.listen(PORT, () =>{
+  console.log(`app is running on ${PORT}`);
 });
 
-app.listen(PORT, () => {
-  console.log(`App listening at http://localhost:${PORT}`);
-});
+
+

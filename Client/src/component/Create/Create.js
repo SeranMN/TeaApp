@@ -1,16 +1,17 @@
 import React, { useContext } from 'react';
 import { Form, FormGroup } from 'react-bootstrap';
-import { UserContext } from '../UserContext/UserContext';
+//import { UserContext } from '../UserContext/UserContext';
 import { useState } from 'react';
 import { Button} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Create = () => {
-    const [users, setUsers] = useContext(UserContext);
-    const [id,setId] = useState("");
-    const [name,setName] = useState("");
-    const [position,setPosition] = useState("");
-    const [salary,setSalary] = useState("");
+    //const [users, setUsers] = useContext(UserContext);
+    const [vid,setId] = useState("");
+    const [vtype,setName] = useState("");
+    const [vmodel,setPosition] = useState("");
+    const [ftype,setSalary] = useState("");
     const [owner,setOwner] = useState("");
 
     const updateId = (e) => {
@@ -31,7 +32,20 @@ const Create = () => {
     }
     const addUser= (e) =>{
         e.preventDefault();
-        setUsers([...users, {id:id, name:name, position:position, salary:salary, owner:owner}])
+        // setUsers([...users, {id:id, vtype:vtype, vmodel:vmodel, ftype:ftype, owner:owner}])
+        
+        const newVehicle = {
+            vid:vid,
+            vtype:vtype,
+            vmodel:vmodel,
+            ftype: ftype,
+            owner: owner,
+          };
+
+        axios
+        .post("http://localhost:5000/Vehicle/add", newVehicle )
+        .then(() => alert("Vehicle Added"))
+        .catch((err) => alert(err));
     }
 
     return (
@@ -44,44 +58,44 @@ const Create = () => {
                     <Form.Label>ID</Form.Label>
                     <Form.Control
                      type="text"
-                    name="id"
-                    value={id}
+                    name="vid"
+                    value={vid}
                     onChange={updateId}
                     placeholder="Enter ID" 
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Form.Label>Name</Form.Label>
+                    <Form.Label>Vehicle Type</Form.Label>
                     <Form.Control
                     type="text"
-                    name="name"
-                    value={name}
+                    name="vtype"
+                    value={vtype}
                     onChange={updateName}
-                    placeholder="Enter Name" 
+                    placeholder="Enter vehicle type" 
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Form.Label>Position</Form.Label>
+                    <Form.Label>Vehicle Model</Form.Label>
                     <Form.Control
                      type="text"
-                    name="position"
-                    value={position}
+                    name="vmodel"
+                    value={vmodel}
                     onChange={updatePosition}
-                    placeholder="Enter Position" 
+                    placeholder="Enter vehicle Model" 
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Form.Label>Salary</Form.Label>
+                    <Form.Label>Fuel Type</Form.Label>
                     <Form.Control 
                     type="text"
-                    name="salary"
-                    value={salary}
+                    name="ftype"
+                    value={ftype}
                     onChange={updateSalary}
-                    placeholder="Enter Salary"
+                    placeholder="Enter Fuel Type"
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Form.Label>Owner</Form.Label>
+                    <Form.Label> Vehicle Owner</Form.Label>
                     <Form.Control 
                     type="text"
                     name="owner"
