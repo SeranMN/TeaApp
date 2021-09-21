@@ -2,6 +2,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import axios from "axios";
+import bcrypt from "bcryptjs";
 
 const SupplierForm = ({ det }) => {
   const [validated, setvalidated] = useState(false);
@@ -24,6 +25,13 @@ const SupplierForm = ({ det }) => {
       email: email,
       image: image,
     };
+      const newLogin = {
+        email: email,
+        type: "supplier",
+        //password: bcrypt.hashSync(password, bcrypt.genSaltSync()),
+        password: password,
+      };
+    
 
     // const formData = new FormData();
     // formData.append("name", name);
@@ -32,31 +40,36 @@ const SupplierForm = ({ det }) => {
     // formData.append("mobile", mobile);
     // formData.append("email", email);
     // formData.append("image",image)
-
+    
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
-    } else {
-      if (password == cpassword) {
-        if (det == null) {
+    }
+    else {
+      if (det == null) {
+        if (password == cpassword) {
           axios
             .post("http://localhost:5000/supplier/add", newSupplier)
             .then(() => alert("Supplier Added"))
             .catch((err) => alert(err));
-        } else {
+
           axios
-            .put(
-              `http://localhost:5000/supplier/update/${det._id}`,
-              newSupplier
-            )
-            .then(() => alert("Supplier Updated"))
+            .post("http://localhost:5000/login/add", newLogin)
+            .then(() => alert("Successfully Registered"))
             .catch((err) => alert(err));
+        } else {
+          alert("Password Mismatch");
         }
-      } else {
-        alert("Password Mismatch");
+      }else{
+             axios
+
+               .put(`http://localhost:5000/supplier/update/${det._id}`,newSupplier)
+               .then(() => alert("Supplier Updated"))
+               .catch((err) => alert(err));
+           }
       }
-    }
+    
     setvalidated(true);
   };
 
@@ -93,6 +106,7 @@ const SupplierForm = ({ det }) => {
           placeholder="Residental Address"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
+          required
         />
       </Form.Group>
 

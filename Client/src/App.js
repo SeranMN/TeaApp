@@ -11,12 +11,6 @@ import Salary from "./component/Salary";
 import Attendance from "./component/Attendance";
 import FormerEmp from "./component/FormerEmp";
 import AttendanceMark from "./component/AttendanceMark";
-import Employee from "./component/Employee";
-import AdminDashBoard from "./component/AdminDashBoard";
-import Salary from "./component/Salary";
-import Attendance from "./component/Attendance";
-import FormerEmp from "./component/FormerEmp";
-import AttendanceMark from "./component/AttendanceMark";
 import Dashboard from "./component/Pages/Dashboard";
 import Addstock from "./component/Pages/Addstock";
 import In from "./component/Pages/In";
@@ -38,7 +32,7 @@ function App() {
       <Router>
         <div className="App">
           <Switch>
-            <Route exact path="/"></Route>
+            <Route exact path="/"><Home/></Route>
             <Route path="/Dashboard" exact component={Dashboard} />
             <Route path="/Addstock" exact component={Addstock} />
             <Route path="/In" exact component={In} />
@@ -115,7 +109,7 @@ function App() {
             <Route path="/ContactUsView.js">
               <ContactUsView />
             </Route>
-            
+
           </Switch>
         </div>
       </Router>
