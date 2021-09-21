@@ -19,7 +19,7 @@ const Delect2 = ({Delivery}) => {
         //const user = users.filter(user => user.id != id);
         //setUsers(user);
         console.log(Delivery._id)
-        axios.delete(`http://localhost:5000/Vehicle/delete/${Delivery._id}`).then(() => {
+        axios.delete(`http://localhost:5000/delivery/delete/${Delivery._id}`).then(() => {
         alert("Deleted")
       }).catch((err) => {
         alert(err)

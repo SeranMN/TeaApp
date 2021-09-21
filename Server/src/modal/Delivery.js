@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const deliverySchema = new Schema({
 
-     did: {
+     id1: {
          type :String,
          required: true
      },

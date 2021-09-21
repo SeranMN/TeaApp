@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { Form, FormGroup } from 'react-bootstrap';
-//import { UserContext } from '../UserContext/UserContext';
 import { useState } from 'react';
 import { Button} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Navbar from '../Navbar';
 
 const Create = () => {
-    //const [users, setUsers] = useContext(UserContext);
+    
     const [vid,setId] = useState("");
     const [vtype,setName] = useState("");
     const [vmodel,setPosition] = useState("");
@@ -32,7 +32,7 @@ const Create = () => {
     }
     const addUser= (e) =>{
         e.preventDefault();
-        // setUsers([...users, {id:id, vtype:vtype, vmodel:vmodel, ftype:ftype, owner:owner}])
+        
         
         const newVehicle = {
             vid:vid,
@@ -50,6 +50,7 @@ const Create = () => {
 
     return (
         <div>
+            <Navbar/>
            
             <h1>Register New Vehicle</h1>
             <br/>

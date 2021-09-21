@@ -4,17 +4,17 @@ import '../App.css'
 
 const Navbar = () => {
     return (
-        <div className="Navbar">
+        <div className="vNavbar">
 
-            <div className="leftSide">
-                <div className="links">
+            <div className="vleftSide">
+                <div className="vlinks">
                     <a href="/home1">Vehicles</a>
                     &nbsp
                     <a href="/home2">Delivery</a>
                     
                 </div>
             </div>
-            <div className="rightSide">
+            <div className="vrightSide">
                 <input type="text" placeholder="search.." />
                 <button>Search</button>
 

@@ -7,6 +7,7 @@ import axios from 'axios';
 import Read from '../Read/Read';
 //import ModalForm from './src/component/ModalForm.js';
 import ModalForm from '../ModalForm.js';
+import Navbar from '../Navbar';
 const Home = () => {
 
 
@@ -35,6 +36,7 @@ const Home = () => {
     //console.log(users);
     return (
         <div>
+            <Navbar/>
 
             <Link to="/create">
                 <Button className="create_btn" varient="primary">Add Vehicle</Button>

@@ -1,9 +1,9 @@
-.app{
+.vapp{
   max-width:80% ;
   margin: auto;
 }
 
-.Navbar{
+.vNavbar{
   background-color: #021E39;
   width: 100%;
   height: 80px;
@@ -16,25 +16,25 @@ button:hover {
   cursor: pointer;
 }
 
-.Navbar .leftSide{
+.vNavbar .vleftSide{
   flex: 50%;
   display: flex;
   justify-content: left;
   align-items: center;
 }
 
-.Navbar .leftSide .links{
+.vNavbar .vleftSide .vlinks{
   max-height: 80px;
 }
 
-.Navbar .leftSide .links a {
+.vNavbar .vleftSide .vlinks a {
   text-decoration: none;
   color: white;
   font-size: 25px;
   margin-left: 15px;
 }
 
-.Navbar .rightSide{
+.vNavbar .vrightSide{
   flex: 50%;
   display: flex;
   justify-content: flex-end;
@@ -42,7 +42,7 @@ button:hover {
   padding: 25px;
 }
 
-.rightSide input{
+.vrightSide input{
   width: 220px;
   height: 32px;
   border: none;
@@ -51,7 +51,7 @@ button:hover {
   color: black;
 }
 
-.rightSide button{
+.vrightSide button{
   height: 34px;
   width: 70px;
   font-size: 16px;

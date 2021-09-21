@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 //import { DeliveryContext2 } from '../UserContext/DeliveryContext2';
 import axios from 'axios';
 //import { UserContext } from '../UserContext/UserContext';
+import Navbar from '../Navbar';
 
 
 const Create2 = () => {
@@ -52,13 +53,15 @@ const Create2 = () => {
           };
 
         axios
-        .post("http://localhost:5000/Delivery/add", newDelivery )
+        .post("http://localhost:5000/delivery/add", newDelivery )
         .then(() => alert("Delivery Added"))
         .catch((err) => alert(err));
     }
 
     return (
+        
         <div>
+            <Navbar/>
            
             <h1>Add New Delivery </h1>
             <br/>
@@ -124,6 +127,8 @@ const Create2 = () => {
                     />
                 </FormGroup>
                 <br/>
+
+               
                
                 <Button className="action_btn" variant="primary" type="submit">Add Delivery</Button>
                 <Link to="/home2">

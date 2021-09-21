@@ -26,7 +26,7 @@ const Edit1 = ({det}) => {
           };
 
         axios
-        .put(`http://localhost:5000/Delivery/update/${det._id}`, newDelivery )
+        .put(`http://localhost:5000/delivery/update/${det._id}`, newDelivery )
         .then(() => alert("Delivery Updated"))
         .catch((err) => alert(err));
     }

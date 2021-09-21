@@ -8,6 +8,7 @@ import Read from '../Read/Read';
 //import ModalForm2 from './src/component/ModalForm2.js';
 import ModelForm2 from '../ModelForm2.js';
 //import Delivery from 'src/modal/Delivery.js';
+import Navbar from '../Navbar';
 const Home2 = () => {
 
 
@@ -21,7 +22,7 @@ const Home2 = () => {
     useEffect(() => {
         const getDeliverys = () => {
             axios
-                .get("http://localhost:5000/Delivery/")
+                .get("http://localhost:5000/delivery")
                 .then((res) => {
                     setDelivery(res.data);
                     console.log(res.data);
@@ -36,6 +37,7 @@ const Home2 = () => {
     //console.log(users);
     return (
         <div>
+            <Navbar/>
 
             <Link to="/create2">
                 <Button className="create_btn" varient="primary">Add Delivery</Button>
@@ -43,13 +45,13 @@ const Home2 = () => {
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                    <th width="1">Registration No</th>
-                        <th width="11">Route</th>
-                        <th width="110">Date</th>
+                    <th width="80">Registration No</th>
+                        <th width="50">Route</th>
+                        <th width="100">Date</th>
                         <th width="100">Tea leaves</th>
                         <th width="100">Distance</th>
                         <th width="100">Driver</th>
-                        <th width="200">Action</th>
+                        <th width="100">Action</th>
 
                     </tr>
                 </thead>

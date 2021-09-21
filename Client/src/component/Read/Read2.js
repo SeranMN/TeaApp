@@ -5,6 +5,7 @@ import { UserContext } from '../UserContext/UserContext';
 import {Button} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import './Read.css';
+//import Navbar from '../component/Navbar';
 
 const Read2= () => {
 
@@ -14,6 +15,8 @@ const Read2= () => {
     const user = users.filter(user => user.id == id);
     //console.log(user)
     return (
+<div>
+        
         <div className="read">
             <h1>ID: {user[0].id}</h1>
             <h1>Route: {user[0].route}</h1>
@@ -27,6 +30,8 @@ const Read2= () => {
 
             
         </div>
+        </div>
+
     )
 }
 
