@@ -19,7 +19,7 @@ const EmployeeTable = ({ employees }) => {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>empID</th>
+           
             
             <th>Name</th>
           

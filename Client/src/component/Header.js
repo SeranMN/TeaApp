@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import { Link } from 'react-router-dom'
 const Header = () => {
+  const token = JSON.parse(sessionStorage.getItem("token"));
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
   <Container>
@@ -27,9 +28,12 @@ const Header = () => {
     <Nav>
      
               <Nav.Link eventKey={2} >
-                <Link to ="/Admin.js">
+                {token != null ? (<Link to="/CusProfile.js">
+                {token.name}
+                </Link>):( <Link to ="/CusLogin.js">
                   Login
-                </Link>
+                </Link>)}
+               
       </Nav.Link>
    
     </Nav>

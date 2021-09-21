@@ -6,16 +6,25 @@ import { useHistory } from 'react-router-dom';
 
 
 const Modaldelete = (props) => {
-  const onDelete = () =>{
+  const opp = () =>{
+  if (props.type == "delete") {
+  
     
-    axios.delete(`http://localhost:5000/customer/delete/${props.profile._id}`)
-    .then(() => {
-        alert("Deleted")
-        navigate();
-      }).catch((err) => {
-        alert(err)
-      })
+      axios.delete(`http://localhost:5000/customer/delete/${props.profile._id}`)
+        .then(() => {
+          alert("Deleted")
+          navigate();
+        }).catch((err) => {
+          alert(err)
+        })
       
+    
+  } else {
+    
+        sessionStorage.removeItem("token");
+        history.push("/CusLogin.js")
+
+    }
   }
   const history = useHistory();
   const navigate = () => {
@@ -33,10 +42,12 @@ const Modaldelete = (props) => {
         <Modal.Header closeButton>
           <Modal.Title>Delete Account</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Are you sure you want to delete your account permanetly ?</Modal.Body>
+        <Modal.Body>{props.type == "delete" ? ("Are you sure you want to delete your account permanetly ?") :
+          ("Do you want to logout")}</Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={onDelete}>
-            Delete
+          <Button variant="danger" onClick={opp}>
+            {props.type == "delete" ?
+              ("Delete") : ("Logout")}
           </Button>
           <Button variant="primary" onClick={props.onHide}>
             Close

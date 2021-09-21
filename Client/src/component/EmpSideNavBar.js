@@ -5,22 +5,26 @@ import { Link } from "react-router-dom";
 import { empsidenavbarData } from "./EmpSidebarData";
 import "./Navbar.css";
 import { IconContext } from "react-icons";
+import Modaldelete from "./CusModaldelete";
+
 
 const EmpSideNavBar = () => {
+  const token = JSON.parse(sessionStorage.getItem("token"));
+  const [modalDelete, setModalDelete] = React.useState(false);
+   const[modleType,setModaltype] = useState("")
+  
   return (
     <div>
       <IconContext.Provider value={{ color: "#fff" }}>
         <div className="navbar">
-          <Link to="#" className="menu-bars">
-            {/* <FaBars onClick={showsidebar} /> */}
-          </Link>
+          
+            
+       
         </div>
         <nav className={"nav-menu active"}>
           <ul className="nav-menu-items">
             <li className="navbar-toggle">
-              {/* <Link to="#" className="menu-bars">
-                <AiOutlineClose />
-              </Link> */}
+             <h3 onClick={() => { setModalDelete(true); setModaltype("logout") }} >{ token.name}</h3>
             </li>
             {empsidenavbarData.map((item, index) => {
               return (
@@ -34,7 +38,13 @@ const EmpSideNavBar = () => {
             })}
           </ul>
         </nav>
-      </IconContext.Provider>
+      </IconContext.Provider >
+         <Modaldelete
+                        show={modalDelete}
+                        type = {modleType}
+                onHide={() => setModalDelete(false)}
+               
+                />
     </div>
   );
 };
