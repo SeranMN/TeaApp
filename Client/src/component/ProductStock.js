@@ -12,6 +12,7 @@ import {useState, useEffect } from "react";
   import ModleDelete from "./proModleDelete";
  import axios from "axios";
  import proSearchBar from './proSearchBar';
+ import Navbar from './ProductSidenavbar';
  import './productc.css'
  
 
@@ -38,9 +39,10 @@ const ProductStock = ({ProductStockID, ProductStock, onClick }) => {
       getProductStocks();
     });
     return (
+      <div> <Navbar/>
         <div style={{ marginLeft: "220px", marginTop: "20px", marginRight: "10px"}}>
         
-            <h3 style={{marginLeft: "750px", marginTop: "10px"}}>PRODUCT STOCK</h3>
+            <h3 >PRODUCT STOCK</h3>
             <hr></hr> 
             <proSearchBar/>
             <Button variant="primary" onClick={() => setModalShowp(true)}>ADD STOCK</Button>
@@ -100,7 +102,7 @@ const ProductStock = ({ProductStockID, ProductStock, onClick }) => {
         onHide={() => setModaldelete(false)}
         deleteProductStock={deleteProductStock}
       />
-            
+          </div>  
         </div>
     )
 }

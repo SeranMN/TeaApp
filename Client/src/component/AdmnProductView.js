@@ -11,6 +11,7 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import ModleDelete1 from "./ProductModalDelete";
 import ProductStock from './ProductStock';
 import proSearchBar from './proSearchBar';
+import Navbar from './ProductSidenavbar';
 import './productc.css'
 // import PsModal from './PsModal';
     
@@ -66,28 +67,7 @@ import './productc.css'
                         setModaldelete1(true);
                         setdeleteProduct(Product);
                       }}><FaTrash/>&nbsp;&nbsp;Delete</Button>  
-                   {/* <span>
-                    <FaPencilAlt
-                      onClick={() => {
-                        setModalShow1(true);
-                        setSupplierDet(Product);
-                      }}
-                      style={{ cursor: "pointer" }}
-                      title="Edit Supplier"
-                    />
-                  </span> */}
-                 
-                   {/* <span>
-                   <FaTrash
-                      onClick={() => {
-                        setModaldelete1(true);
-                        setdeleteProduct(Product);
-                      }}
-                      style={{ cursor: "pointer", color: "red" }}
-                      title="Delete Product "
-                    />
-                 
-                  </span> */}
+                  
 
                </div>
 
@@ -98,6 +78,7 @@ import './productc.css'
         const [modalShow1, setModalShow1] = useState(false);
         const [modalShow2, setModalShow2] = useState(false);
         return (
+          <div> <Navbar/>
         <div style={{ marginLeft: "180px", marginTop: "20px", marginRight: "5px"}}>
                 
             
@@ -108,22 +89,8 @@ import './productc.css'
             
             <Button className="btn" variant="primary" onClick={() => setModalShow(true)}>ADD PRODUCT</Button>
             <AddModal show = {modalShow} onHide = {() => setModalShow(false)} />
-            
-                                {/* <div>
-                                <Button className="btn2" onClick={() => {props.history.push('/ProductStock');}}>Prodct Stock</Button>
-                                </div> */}
-
-            
-                    <>
-                       
-                        
-                       
-                       {/* <Link to="/ProductStock">Product stock</Link> */}
-                       
-                    </>
-
-               
-            
+            <>
+                    </>           
              </div>
              
             
@@ -147,7 +114,7 @@ import './productc.css'
         deleteProduct={deleteProduct}
       />
                 </div>
-        
+                </div>
         )
     }
     

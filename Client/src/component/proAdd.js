@@ -63,6 +63,7 @@ const handleSubmit = (event) => {
             <Form.Control 
             type="text" 
             placeholder="Product ID"
+           
             value={productid}
            onChange={(e) => setProductID(e.target.value)}
           required

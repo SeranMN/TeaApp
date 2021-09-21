@@ -1,7 +1,7 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
-
+import Navbar from './ProductSidenavbar';
 import {useState, useEffect } from "react";
 import { DropdownButton } from 'react-bootstrap';
 import { Dropdown } from 'react-bootstrap';
@@ -27,10 +27,10 @@ const Reportpage = () => {
         getProductStocks();
       });
     return (
-        <div>
+        <div><Navbar/>
             <div style={{ marginLeft: "220px", marginTop: "20px", marginRight: "10px"}}>
 
-<h3 style={{marginLeft: "750px", marginTop: "10px"}}>PRODUCT STOCK</h3>
+<h3>PRODUCT REPORT</h3>
 <hr></hr> 
 <DropdownButton id="dropdown-basic-button" title="Select Month">
 <Dropdown.Item href="#/action-1">Action</Dropdown.Item>

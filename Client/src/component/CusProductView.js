@@ -7,6 +7,8 @@ import {TiShoppingCart} from "react-icons/ti";
 import proSearchBar from './proSearchBar';
 import Button from 'react-bootstrap/Button'
 import './productc.css'
+import Header from './Header'
+import Footer from './Footer'
 
 // import Button from './Button'
     
@@ -59,15 +61,15 @@ import './productc.css'
 
         )
         return (
-          
-             <div><h1>Products</h1><hr></hr> <proSearchBar />
+         
+             <div>
+                <Header/>
+               <h1>PRODUCTS</h1><hr></hr> <proSearchBar />
             <div className="main_content">
-                
-                  
-               
-                 
-                {listItems} 
-            </div></div>
+               {listItems} 
+            </div>
+             <Footer/>
+            </div>
         )
     }
     
