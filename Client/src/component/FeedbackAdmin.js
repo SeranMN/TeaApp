@@ -23,7 +23,7 @@ const FeedbackAdmin = ({}) => {
         });
     };
     getFeedback();
-  });
+  },[]);
 
   return (
     

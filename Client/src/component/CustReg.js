@@ -34,7 +34,7 @@ const CustReg = () => {
         const newLogin = {
             
             "email": email,
-            "type": "admin",
+            "type": "customer",
             "password": bcrypt.hashSync(password, bcrypt.genSaltSync()),
             
         }

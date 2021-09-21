@@ -21,7 +21,7 @@ const CusTable = ({ CustomerID, customer, onClick }) => {
         });
     };
     getCustomers();
-  });
+  },[]);
 
   return (
     <div

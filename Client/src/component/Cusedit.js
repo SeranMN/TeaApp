@@ -83,7 +83,7 @@ const Cusedit = ({det}) => {
         <Form.Group className="mb-3" controlId="contactno">
             <Form.Label>Contact No.</Form.Label>
             <Form.Control
-                pattern="[0-9]{10}"
+                pattern="[0-9]{9}"
                 value={contactno}
                 onChange={(e) => setContactNo(e.target.value)}
                 required
