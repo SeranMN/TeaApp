@@ -4,10 +4,10 @@ import { Button } from "react-bootstrap";
 import employee from "../Img/employee.png";
 import sup from "../Img/supplier.png"
 import Container from 'react-bootstrap/Container'
-import stock from '../Img/stock.png'
+
 import vehicle from '../Img/vehicle.png'
 import customer from '../Img/cus.png'
-import product from '../Img/product.png'
+
 import order from '../Img/order.png'
 import appointment from '../Img/appointment.png'
 import { Link } from "react-router-dom"
@@ -58,7 +58,7 @@ const AdminDashBoard = () => {
         <Col >
          <Link to = "/Dashboard">
           <Card bg="success" text="light" style={{ width: "18rem" , height :"25rem"}}>
-              <Card.Img variant="top" src={stock} />
+              <Card.Img variant="top"  />
             <Card.Body>
               <Card.Title>Stock Management</Card.Title>
             </Card.Body>
@@ -67,7 +67,7 @@ const AdminDashBoard = () => {
           </Col>
           <Col >
           <Card bg="success" text="light" style={{ width: "18rem", height :"25rem" }}>
-              <Card.Img variant="top" src={product} />
+              <Card.Img variant="top"  />
             <Card.Body>
               <Card.Title>product Management</Card.Title>
             </Card.Body>

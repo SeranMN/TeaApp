@@ -151,6 +151,9 @@ const SupplierForm = ({ det }) => {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
+        <Form.Control.Feedback type="invalid">
+          Please insert Valid Email Address
+        </Form.Control.Feedback>
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
         </Form.Text>
@@ -169,12 +172,13 @@ const SupplierForm = ({ det }) => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <Form.Control.Feedback type="valid">
-              Looks Good!
-            </Form.Control.Feedback>
+            <Form.Text className="text-muted">
+              Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters
+            </Form.Text>
           </div>
-        ) :
-        ("")}
+        ) : (
+          ""
+        )}
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formrePassword">
@@ -190,8 +194,9 @@ const SupplierForm = ({ det }) => {
               required
             />
           </div>
-        ) :
-        ("")}
+        ) : (
+          ""
+        )}
       </Form.Group>
 
       <Form.Group controlId="formImage" className="mb-3">
