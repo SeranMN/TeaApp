@@ -22,6 +22,10 @@ const dailySupplySchema = new Schema({
     type: String,
     required: true,
   },
+  month: {
+    type: Number,
+    required: true,
+  }
 });
 
 const dailySupply = mongoose.model("dailysupply", dailySupplySchema);

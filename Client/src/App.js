@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Supplier from "./component/Supplier";
 import DailySupply from "./component/DailySupply";
-import ReportTable from "./component/Report_Table";
+import ReportTable from "./component/Sup_Report_Table";
 import FormerSuppliers from "./component/FormerSuppliers";
 import Employee from "./component/Employee";
 import AdminDashBoard from "./component/AdminDashBoard";

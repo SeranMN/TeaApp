@@ -25,12 +25,6 @@ const SupplierForm = ({ det }) => {
       email: email,
       image: image,
     };
-      const newLogin = {
-        email: email,
-        type: "supplier",
-        //password: bcrypt.hashSync(password, bcrypt.genSaltSync()),
-        password: password,
-      };
     
 
     // const formData = new FormData();
@@ -49,6 +43,14 @@ const SupplierForm = ({ det }) => {
     else {
       if (det == null) {
         if (password == cpassword) {
+          
+          const newLogin = {
+            email: email,
+            type: "supplier",
+            password: bcrypt.hashSync(password, bcrypt.genSaltSync()),
+            //password: password,
+          };
+
           axios
             .post("http://localhost:5000/supplier/add", newSupplier)
             .then(() => alert("Supplier Added"))

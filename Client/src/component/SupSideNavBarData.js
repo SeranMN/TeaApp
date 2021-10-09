@@ -9,7 +9,7 @@ export const sidenavbarData = [
     cName: "nav-text",
   },
   {
-    title: "Generate Invoice",
+    title: "Supplying Details",
     path: "/Report_Table.js",
     icon: <FaFileInvoiceDollar />,
     cName: "nav-text",

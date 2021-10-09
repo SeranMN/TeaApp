@@ -18,6 +18,7 @@ const DailySupplyForm = ({ det }) => {
       weight: weight,
       vehicle: vehicle,
       deo: deo,
+      month: new Date().getMonth(),
     };
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
