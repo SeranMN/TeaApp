@@ -11,22 +11,13 @@ import { FiPlusCircle } from 'react-icons/fi';
 import { FiMinusCircle} from 'react-icons/fi';
 import Box from '@material-ui/core/Box';
 import axios from 'axios';
-import OrderDetails from './OrderDetails';
-import {TiShoppingCart} from "react-icons/ti";
 
-
-const PlaceOrder = ({Products, order, product}) => {
+const EditOrder = ({order}) => {
 
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
-    
-    const ProductName = product.Name
-    const UnitPrice = product.price
-    const ProductId = product._id
-    
 
     const [Email, setEmail] = useState("")
     const [FirstName, setFirstName] = useState("")
@@ -36,19 +27,17 @@ const PlaceOrder = ({Products, order, product}) => {
     const [City, setCity] = useState("")
     const [Region, setRegion] = useState("")
     const [PostalCode, setPostalCode] = useState("")
-    const [Quantity, setQuantity] = useState(1)
+    const [Quantity, setQuantity] = useState()
     const [SubTotal, setSubTotal] = useState()
     const [Color, setColor] = useState("grey")
     const [OrderId, setOrderId] = useState("")
-    
-
+    const [ProductName, setProductName] = useState("")
+    const [UnitPrice, setUnitPrice] = useState()
 
     const onSubmit = (e) => {
-      e.preventDefault()
-      console.log(Email,FirstName,LastName,Address,ContactNo,City,Region,PostalCode,Quantity)
-      console.log(SubTotal)
+        e.preventDefault()
 
-      const Order = {"firstName":FirstName,
+        const Order = {"firstName":FirstName,
                       "lastName":LastName,
                       "email":Email,
                       "address":Address,
@@ -61,74 +50,69 @@ const PlaceOrder = ({Products, order, product}) => {
                       "productName":ProductName,
                       "unitPrice":UnitPrice,}
   
+
     
-
-    axios.post("http://localhost:5000/order/add", Order).then (()=>{
-    
-      alert("order.added")
-
-      setFirstName("");
-      setLastName("");
-      setEmail("");
-      setAddress("");
-      setContactNo("");
-      setCity("");
-      setRegion("");
-      setPostalCode("");
-      setQuantity("");
-      setSubTotal("");
-      handleClose()
-
-
-  }).catch((err)=>{alert(err)
-
-  })
-
-} 
-    
+        axios.put(`http://localhost:5000/order/update/${OrderId}`, Order).then(() => 
   
-
-    const decrease = () => {
-    
-      if (Quantity > 1){
-      setQuantity(Quantity-1)
-      {setColor("black")} 
+          alert("Succesfully Updated")).catch((err) => alert(err))
+          handleClose()
+    }
       
+      
+      useEffect(() => {
+        
+        setOrderId(order._id);
+        setFirstName(order.firstName);
+        setLastName(order.lastName);
+        setEmail(order.email);
+        setAddress(order.address);
+        setContactNo(order.contactNo);
+        setCity(order.city);
+        setRegion(order.region);
+        setPostalCode(order.postalCode);
+        setQuantity(order.quantity);
+        setSubTotal(order.subTotal);
+        console.log(order.firstName);
+        setProductName(order.productName);
+        setUnitPrice(order.unitPrice);
+        
+
+      }, [show])
+
+      const decrease = () => {
+    
+        if (Quantity > 1){
+        setQuantity(Quantity-1)
+        {setColor("black")} 
+        
+        }
+       if (Quantity <= 2){
+        {setColor("grey")} 
+       }
       }
-     if (Quantity <= 2){
-      {setColor("grey")} 
-     }
-    }
-    useEffect(() => {
-      console.log (SubTotal)
-    }, [SubTotal])
-
-    const handleTotal = (Quantity)=>{
-      setQuantity(Quantity)
+      useEffect(() => {
+        console.log (SubTotal)
+      }, [SubTotal])
+  
+      const handleTotal = (Quantity)=>{
+        setQuantity(Quantity)
+        
+        setSubTotal(Quantity*UnitPrice)
+  
+        
+      }
       
-      setSubTotal(Quantity*UnitPrice)
+  
+      useEffect(() => {
+        handleTotal(Quantity)
+        
+      }, [Quantity])
 
-      
-    }
-    
-
-    useEffect(() => {
-      handleTotal(Quantity)
-      
-    }, [Quantity])
-    
     return (
         <div>
-
-        {Products&&
-        <Button className="btn1" style={{margin:"30px 10px 4px 3px"}} variant="warning" onClick={handleShow} ><TiShoppingCart/></Button>
-        }
-
-          {/* // :
-            // <Button variant="primary" onClick={handleShow} >
-            // Add to Cart
-            // </Button>  */}
-          
+            {order&&
+           <Button  variant="primary" onClick={handleShow} >Edit</Button> 
+            }
 
         <Modal size="xl" show={show} onHide={handleClose} >
         <Modal.Header closeButton>
@@ -146,8 +130,7 @@ const PlaceOrder = ({Products, order, product}) => {
         
             <h5>Product Name : {ProductName}</h5>
             <h5>Unit Price : Rs.{UnitPrice}</h5>
-            <h5>ProductId : {ProductId}</h5>
-            
+           
            
             <Form.Label>Quantity</Form.Label>
            
@@ -211,7 +194,6 @@ const PlaceOrder = ({Products, order, product}) => {
     <Form.Group as={Col} >
       <Form.Label>Region</Form.Label>
       <Form.Select value={Region} onChange={(e)=>setRegion(e.target.value)} > 
-        <option>Select Region</option>
         <option>Sri Lanka</option>
         <option>Dubai</option>
         <option>Australia</option>
@@ -232,7 +214,7 @@ const PlaceOrder = ({Products, order, product}) => {
   </Form.Group>
   
   <Button style={{marginLeft:"620px"}} variant="primary" type="submit">
-    Place Order
+    Submit
   </Button>
   </Box>
   </Box>
@@ -242,11 +224,11 @@ const PlaceOrder = ({Products, order, product}) => {
         </Modal.Body>
         
       </Modal>
-
       
+            
         </div>
+
     )
 }
 
-
-export default PlaceOrder
+export default EditOrder

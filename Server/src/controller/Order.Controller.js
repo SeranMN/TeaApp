@@ -57,6 +57,26 @@ const deleteOrder = async (req, res) => {
     }
 
   };
+
+  const Searchorder = async (req, res) => {
+
+    console.log(req.params.id)
+
+    await Order.find({'productName': { $regex: '.*' + req.params.id + '.*' } },(err,result)=>{
+
+        if(err){
+
+            console.log(err);
+
+        }else{
+
+            res.send(result);
+
+        }
+
+    })
+
+};
             
 
 
@@ -67,6 +87,7 @@ const deleteOrder = async (req, res) => {
         getAllOrder,
         updateOrder,
         deleteOrder,
+        Searchorder,
         
 
     }

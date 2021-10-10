@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button'
 import axios from 'axios'
 import { useEffect } from 'react';
 // import { Navbar } from 'react-bootstrap';
-import Navbar from './Navbar';
+import Navbar from './NavbarAshen';
 import Box from '@material-ui/core/Box';
 
 
@@ -57,12 +57,14 @@ const OrderAdmin = () => {
     <Box p={1}  padding="3rem" bgcolor="grey.300" >
     <Card.Img style={{ width: '18rem' }} variant="top" src="/blacktea.jpg" />
     </Box>
-    <Box  p={1} bgcolor="grey.300" width="60%">
-
-    <Card.Title>Order details</Card.Title>
-    <Card.Text> 
-    <h6> Quantity:{order.quantity}</h6> <h6>  Total Price:Rs.{order.subTotal} </h6>
-      </Card.Text>
+    <Box  p={1} bgcolor="grey.300" width="60%"  >
+     
+      <Card.Title>Order details</Card.Title>
+        <Card.Text> 
+        <h6> Quantity:{order.quantity}</h6> 
+        <h6>  Total Price:Rs.{order.subTotal} </h6>
+        </Card.Text>
+     
     <Card.Title>Shipping details</Card.Title>
     <Card.Text>
       <h6> {order.firstName} {order.lastName} </h6>
@@ -77,14 +79,14 @@ const OrderAdmin = () => {
      <Box  p={1} display="flex" justifyContent="space-between">
     <Box  p={1} display="flex"  >
     <Button variant="secondary" onClick={handleClose}>
-            Delete
+            Decline
           </Button>
           </Box>
 
           <Box  p={1} display="flex"  >
           { order&&
           <Button variant="primary" onClick={handleClose}>
-            Edit
+            Approve
           </Button>
           }
           </Box>

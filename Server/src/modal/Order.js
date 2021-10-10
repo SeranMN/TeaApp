@@ -5,45 +5,54 @@ const orderschema = new schema({
     
     firstName: {
         type: String,
-        required:true
+        //required:true
     },
     lastName: {
         type: String,
-        required:true
+        //required:true
     },
     address: {
         type: String,
-        required:true
+        //required:true
     },
     email: {
-        type: String,
+        //type: String,
         
     },
     contactNo: {
         type: Number,
-        required:true
+        //required:true
     },
     
     city: {
         type: String,
-        required:true
+        //required:true
     },
     region: {
         type: String,
-        required:true
+        //required:true
     },
     postalCode: {
         type: Number,
-        required:true    
+        //required:true    
     },
     quantity: {
         type: Number,
-        required:true    
+        //required:true    
     },
     subTotal: {
         type: Number,
-        required:true    
+        //required:true    
     },
+    productName: {
+        type: String,
+       //required:true    
+    },
+    unitPrice: {
+        type: String,
+        //required:true    
+    },
+
 
     
 })

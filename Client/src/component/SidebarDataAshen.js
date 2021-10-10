@@ -12,41 +12,19 @@ import { FiSettings } from "react-icons/fi";
 export const sidebarData = [
 {
     title:'Dashboard',
-    path:'/',
+    path:'/OrderAdmin',
     icon:<AiFillHome/>,
-    cName:'nav-text'
-},
-{
-    title:'Add Stock',
-    path:'/Addstock',
-    icon:<AiFillPlusCircle/>,
-    cName:'nav-text'
-},
-{
-    title:'In',
-    path:'/In',
-    icon:<ImEnter/>,
-    cName:'nav-text'
-},
-{
-    title:'Out',
-    path:'/Out',
-    icon:<ImExit/>,
-    cName:'nav-text'
-},
-{
-    title:'Generate report',
-    path:'/report',
-    icon:<TiDocumentText/>,
     cName:'nav-text'
 },
 
 {
-    title:'Settings',
-    path:'/settings',
-    icon:<FiSettings/>,
+    title:'Report',
+    path:'/OrderReport',
+    icon:<TiDocumentText/>,
     cName:'nav-text'
 },
+
+
 
 
 

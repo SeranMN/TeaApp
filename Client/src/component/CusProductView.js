@@ -7,6 +7,7 @@ import {TiShoppingCart} from "react-icons/ti";
 import proSearchBar from './proSearchBar';
 import Button from 'react-bootstrap/Button'
 import './productc.css'
+import PlaceOrder from './PlaceOrder';
 
 // import Button from './Button'
     
@@ -23,6 +24,7 @@ import './productc.css'
         //            <p className="price"><span>{item.currency}</span>{item.price}</p>
         //            <div className="btn">Add to cart</div>
         const [Products, setProduct] = useState([]);
+        
 
         useEffect(() => {
             const getProducts = () => {
@@ -37,11 +39,16 @@ import './productc.css'
                 });
             };
             getProducts();
-          });
+          },[]);
 
           
         console.log(product_card);
-        const listItems = Products.map((Product)=>
+       
+        
+        return (
+          
+             <div><h1>Products</h1><hr></hr> <proSearchBar />
+        {Products.map((Product)=>
            <div className="item" key="{Product._id}">
                <div className="card_img" >
                    <img className="imagee" src="./images/1.jpg"/>
@@ -51,22 +58,22 @@ import './productc.css'
                   <h2>{Product.weight}<span>{Product.currency="g"}</span></h2>
                   <p className="price"><span>{Product.currency="Rs"}</span>{Product.price}</p>
                   {/* <div className="btn1" ><TiShoppingCart/></div> */}
-                  <Button className="btn1" style={{margin:"30px 10px 4px 3px"}} variant="warning" ><TiShoppingCart/></Button>
+                 
+                  
+                  
+                  <PlaceOrder Products={Products}  product={Product}/>
 
                </div>
 
-           </div>
+           </div>)}
 
-        )
-        return (
-          
-             <div><h1>Products</h1><hr></hr> <proSearchBar />
             <div className="main_content">
-                
+           
                   
                
-                 
-                {listItems} 
+            
+
+                
             </div></div>
         )
     }

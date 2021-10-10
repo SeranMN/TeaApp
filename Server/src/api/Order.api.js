@@ -5,6 +5,7 @@ module.exports = function () {
     router.post("/add", orderController.createOrder);
     router.put("/update/:id", orderController.updateOrder);
     router.delete("/delete/:id", orderController.deleteOrder);
+    router.get("/search/:id", orderController.Searchorder);
    
     return router
 }
