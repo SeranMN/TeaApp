@@ -67,7 +67,7 @@ const EmpForm = ({ det }) => {
       } else {
         axios
           .put(`http://localhost:5000/employee/update/${det._id}`, newEmployee)
-          .then(() =>alert("Updated"))
+          .then(() =>handleClick())
           .catch((err) => alert(err));
       }
     }

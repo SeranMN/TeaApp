@@ -34,6 +34,9 @@ app.use("/supplier", supplierAPI());
 const employeeApi = require("./src/api/employee.api");
 app.use("/employee", employeeApi());
 
+const atendanceApi = require("./src/api/Attendance.Api")
+app.use("/attendance",atendanceApi())
+
 app.listen(PORT, () => {
   console.log(`App listening at http://localhost:${PORT}`);
 });

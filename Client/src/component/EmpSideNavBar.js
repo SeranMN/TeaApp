@@ -9,9 +9,7 @@ import Modaldelete from "./CusModaldelete";
 
 
 const EmpSideNavBar = () => {
-  const token = JSON.parse(sessionStorage.getItem("token"));
-  const [modalDelete, setModalDelete] = React.useState(false);
-   const[modleType,setModaltype] = useState("")
+  
   
   return (
     <div>
@@ -24,7 +22,7 @@ const EmpSideNavBar = () => {
         <nav className={"nav-menu active"}>
           <ul className="nav-menu-items">
             <li className="navbar-toggle">
-             <h3 onClick={() => { setModalDelete(true); setModaltype("logout") }} >{ token.name}</h3>
+            
             </li>
             {empsidenavbarData.map((item, index) => {
               return (
@@ -39,12 +37,7 @@ const EmpSideNavBar = () => {
           </ul>
         </nav>
       </IconContext.Provider >
-         <Modaldelete
-                        show={modalDelete}
-                        type = {modleType}
-                onHide={() => setModalDelete(false)}
-               
-                />
+        
     </div>
   );
 };
