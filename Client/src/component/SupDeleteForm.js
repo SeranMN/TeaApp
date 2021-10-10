@@ -3,16 +3,10 @@ import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
+import swal from "sweetalert";
 
 const SupDeleteForm = ({supplier,supply }) => {
   const [validated, setValidated] = useState(false);
-
-  const newFormerSupplier = {
-    name: supplier.name,
-    address: supplier.address,
-    mobile: supplier.mobile,
-    email: supplier.email,
-  };
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -20,27 +14,31 @@ const SupDeleteForm = ({supplier,supply }) => {
       event.preventDefault();
       event.stopPropagation();
     } else {
-      if (supplier != null){
+      if (supplier != null) {
+        
+      const newFormerSupplier = {
+        name: supplier.name,
+        address: supplier.address,
+        mobile: supplier.mobile,
+        email: supplier.email,
+      };
+
         axios
           .delete(`http://localhost:5000/supplier/delete/${supplier._id}`)
-          .then(() => {
-            alert("Deleted");
-          })
+          .then(() => swal("Successfull", "Supplier Deleted Successfully!", "success",{timer: 3000}))
           .catch((err) => {
             alert(err);
           });
         
          axios
            .post("http://localhost:5000/formersupplier/add", newFormerSupplier)
-           .then(() => alert("Former Supplier Added"))
+           .then((data) => console.log(data))
            .catch((err) => alert(err));
       }
       else {
          axios
            .delete(`http://localhost:5000/dailysupply/delete/${supply._id}`)
-           .then(() => {
-             alert("Deleted");
-           })
+           .then(() => swal("Successfull!", "Supply Deleted Successfully!", "success",{timer: 3000}))
            .catch((err) => {
              alert(err);
            });

@@ -27,7 +27,7 @@ const SuppliersTable = ({ SupplierID, supplier, onClick }) => {
         });
     };
     getSuppliers();
-  },[]);
+  }, []);
   
   return (
     <div>

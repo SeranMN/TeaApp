@@ -2,6 +2,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import axios from "axios";
+import swal from "sweetalert";
 
 const DailySupplyForm = ({ det }) => {
   const [validated, setvalidated] = useState(false);
@@ -28,12 +29,14 @@ const DailySupplyForm = ({ det }) => {
       if (det == null) {
         axios
           .post("http://localhost:5000/dailysupply/add", newSupply)
-          .then(() => alert("Supply Added"))
+          .then(() => swal("Successfull!", "Supply Added Successfully!", "success"))
           .catch((err) => alert(err));
       } else {
         axios
           .put(`http://localhost:5000/dailysupply/update/${det._id}`, newSupply)
-          .then(() => alert("Supply Updated"))
+          .then(() =>
+            swal("Successfull!", "Supplier Updated Successfully!", "success")
+          )
           .catch((err) => alert(err));
       }
     }

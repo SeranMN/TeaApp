@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import axios from "axios";
 import bcrypt from "bcryptjs";
+import swal from "sweetalert";
 
 const SupplierForm = ({ det }) => {
   const [validated, setvalidated] = useState(false);
@@ -17,6 +18,7 @@ const SupplierForm = ({ det }) => {
   const [selectedImage, setSelectedImage] = useState();
 
   const handleSubmit = (event) => {
+   // event.preventDefault();
     const newSupplier = {
       name: name,
       address: address,
@@ -53,21 +55,31 @@ const SupplierForm = ({ det }) => {
 
           axios
             .post("http://localhost:5000/supplier/add", newSupplier)
-            .then(() => alert("Supplier Added"))
+            .then((data) => console.log(data))
             .catch((err) => alert(err));
 
           axios
             .post("http://localhost:5000/login/add", newLogin)
-            .then(() => alert("Successfully Registered"))
+            .then(() => swal("Successfull!", "Supplier Added Successfully!", "success",{timer: 3000}))
             .catch((err) => alert(err));
         } else {
-          alert("Password Mismatch");
+         swal("Error!", "Password Mismatch!", "error");
         }
       }else{
              axios
 
-               .put(`http://localhost:5000/supplier/update/${det._id}`,newSupplier)
-               .then(() => alert("Supplier Updated"))
+               .put(
+                 `http://localhost:5000/supplier/update/${det._id}`,
+                 newSupplier
+               )
+               .then(() =>
+                 swal(
+                   "Successfull!",
+                   "Supplier Updated Successfully!",
+                   "success",
+                   {timer:3000 }
+                 )
+               )
                .catch((err) => alert(err));
            }
       }
