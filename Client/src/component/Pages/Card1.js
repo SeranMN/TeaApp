@@ -58,12 +58,14 @@ const handleClose2 = (event, reason) => {
   
 
   useEffect(()=>{
+    
     function getstocks(){
     axios.get("http://localhost:5000/stock/").then((res)=>{
       
       setproducts(res.data);
     }).catch((err)=> { 
       alert(err.message);
+      console.log(err.message);
     })
   }
   getstocks()
@@ -106,7 +108,7 @@ const handleClose2 = (event, reason) => {
     <Box display="flex" flexWrap="wrap" marginLeft="260px" padding="3rem"  flexDirection="row" bgcolor="background.paper" >
     {products.map((product)=>
 
-
+        
     // <div  style={{ width: '400px',marginBottom:"25px",flexBasis:"30%",display:"flex" }}  >    
 
    

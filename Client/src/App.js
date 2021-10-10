@@ -20,6 +20,7 @@ import Dashboard from './component/Pages/Dashboard';
 import Addstock from './component/Pages/Addstock';
 import In from './component/Pages/In';
 import Out from './component/Pages/Out';
+import ReportNavod from './component/Pages/ReportNavod'
 import Home from './component/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -37,6 +38,7 @@ function App() {
         <Route path='/Addstock' exact component={Addstock}/>
         <Route path='/In' exact component={In}/>
         <Route path='/Out' exact component={Out}/>
+        <Route path='/ReportNavod' exact component={ReportNavod}/>
               <Route exact path="/Supplier.js">
                 <Supplier/>
               </Route>

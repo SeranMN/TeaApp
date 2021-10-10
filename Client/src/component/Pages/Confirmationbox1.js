@@ -26,14 +26,16 @@ const useStyles = makeStyles({
 
 
 
-const Confirmationbox=({open,handleClose,product,deleteProduct,productName,Amount,Date,Note,setProductName,setAmount,setDate,setNote})=> {
+const Confirmationbox1=({open,handleClose,productName,Amount,Date,Note,setProductName,setAmount,setDate,setNote})=> {
  
   
   
         const classes =useStyles();
         const [open1, setOpen1] = React.useState(false);
+        const [open2, setOpen2] = React.useState(false);
         const[pid,setpid]=useState()
         const[existingAmount,setExistingAmount]=useState("")
+
         const handleClick1 = () => {
           setOpen1(true);
         };
@@ -45,16 +47,29 @@ const Confirmationbox=({open,handleClose,product,deleteProduct,productName,Amoun
       
           setOpen1(false);
       };
+
+
+      const handleClick2 = () => {
+        setOpen2(true);
+      };
+
+      const handleClose2 = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setOpen2(false);
+    };
       
     const handleclick=()=>{
-      
-    const newstockin={
+    const newstockout={
       "productName":productName,
       "Amount":Amount,
       "Date":Date,
       "SpecialNote":Note
      }
-      axios.post("http://localhost:5000/stockin/add",newstockin).then(()=>{
+     if(existingAmount-Amount>=0){
+      axios.post("http://localhost:5000/stockout/add",newstockout).then(()=>{
         handleClick1()
         setProductName("");
         setAmount("");
@@ -64,8 +79,9 @@ const Confirmationbox=({open,handleClose,product,deleteProduct,productName,Amoun
      
   })
     handleClose()
-
-     let total=(parseFloat(existingAmount)+parseFloat(Amount))
+    
+    
+    let total=(parseFloat(existingAmount)-parseFloat(Amount))
      console.log(total)
      const updatestock={
        "Amount":total,
@@ -77,7 +93,13 @@ const Confirmationbox=({open,handleClose,product,deleteProduct,productName,Amoun
      handleClose()
 
    
-   }  
+   }
+   else{
+    handleClick2()
+    handleClose()
+    console.log("err")
+
+   } }
 useEffect(() => {
   console.log("abc", productName)
   if (productName) {
@@ -95,8 +117,9 @@ useEffect(() => {
     }
     getamount()
   }
-}, [open])
-   
+}, [open]) 
+
+
   return (
     <>
       <Snackbar open={open1} autoHideDuration={3000} onClose={handleClose1} anchorOrigin={{
@@ -106,6 +129,18 @@ useEffect(() => {
         
         <Alert onClose={handleClose1} severity="success" sx={{ width: '100%' }}>
           `Sucessfully Added`
+        </Alert>
+
+        </Snackbar>
+
+
+        <Snackbar open={open2} autoHideDuration={3000} onClose={handleClose2} anchorOrigin={{
+            vertical: "top",
+            horizontal: "center"
+        }}>
+        
+        <Alert onClose={handleClose2} severity="error" sx={{ width: '100%' }}>
+          `Insufficient Amount`
         </Alert>
 
         </Snackbar>
@@ -132,14 +167,11 @@ useEffect(() => {
            No
           </Button>
          
-          {product?
-          <Button onClick={()=>deleteProduct(product)} color="secondary" variant="outlined" autoFocus>
-            Yes
-          </Button>:
+         
            <Button onClick={handleclick} color="secondary" variant="outlined" autoFocus>
            Yes
-         </Button>
-          }
+           </Button>
+        
         </DialogActions>
       </Dialog>
      
@@ -149,4 +181,4 @@ useEffect(() => {
     </>
   );
 }
-export default Confirmationbox
+export default Confirmationbox1

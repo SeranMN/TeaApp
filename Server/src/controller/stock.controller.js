@@ -33,12 +33,12 @@ const updateStock = async (req, res) => {
    console.log("req",req)
     if (req.body) {
         let id = req.params.id;
-        console.log(id+"sc")
+        //console.log(id+"sc")
         await Stock.findByIdAndUpdate(id, req.body)
-            .then(data => {
+            .then((data) => {
                 res.status(200).send(data);
             })
-            .catch(err => {
+            .catch((err) => {
                 res.send(error);
             });
     }
@@ -52,11 +52,50 @@ const deleteStock = async (req, res) => {
     }
 }
 
+const updateStockin = async (req, res) => {
+    console.log(req.body)
+     if (req.body) {
+         let id = req.params.id;
+        
+         await Stock.findOneAndUpdate({productID:id},req.body)
+             .then((data) => {
+                 res.status(200).send(data);
+             })
+             .catch(err => {
+                 res.send(error);
+             });
+     }}
+
+const getamountbyid = async (req, res) => {
+    
+    await Stock.find({'ProductName':req.params.productID}).then((data)=>res.status(200).send(data)
+    )
+    .catch(error => {
+    res.send(error);
+    });
+    
+         
+        
+}     
+
+const Searchstock = async (req, res) => {
+    console.log(req.params.id)
+    await Stock.find({'productName': { $regex: '.*' + req.params.id + '.*' } },(err,result)=>{
+        if(err){
+            console.log(err);
+        }else{
+            res.send(result);
+        }
+    })
+};
+
 module.exports = {
     createStock,
     getAllStock,
     updateStock,
     deleteStock,
-    
+    updateStockin,
+    getamountbyid,
+    Searchstock
 
 }

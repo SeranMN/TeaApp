@@ -36,7 +36,7 @@ export const sidebarData = [
 },
 {
     title:'Report',
-    path:'/report',
+    path:'/ReportNavod',
     icon:<TiDocumentText/>,
     cName:'nav-text'
 },

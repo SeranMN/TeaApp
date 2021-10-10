@@ -54,8 +54,8 @@ import MuiAlert from '@mui/material/Alert';
         const[productID,setproductID]=useState('')
         const[productName,setproductName]=useState('')
         const[sectionNo,setsectionNo]=useState('')
-        const[amount,setamount]=useState('')
         const[date,setdate]=useState('')
+        const[amount,setAmount]=useState('')
         const[pid,setPID]=useState('')
         const[confirm,setConfirm]=useState(false)
         const [open, setOpen] = React.useState(false);
@@ -84,14 +84,21 @@ import MuiAlert from '@mui/material/Alert';
             e.preventDefault()
 
 
-        console.log(productID,productName,sectionNo,amount,date)
+        console.log(productID,productName,sectionNo,date)
       
             const newstock={
             "productID":productID,
             "ProductName":productName,
             "SectionNo":sectionNo,
-            "amount":amount,
-            "Date":date
+            "Date":date,
+            "Amount":0
+        }
+        const newstock1={
+            "productID":productID,
+            "ProductName":productName,
+            "SectionNo":sectionNo,
+            "Date":date,
+            "Amount":amount
         }
 
         if(!product){
@@ -102,7 +109,6 @@ import MuiAlert from '@mui/material/Alert';
             setproductName("");
             setsectionNo("");
             setdate("");
-            setamount("");
             handleClose()
         }).catch((err)=>{alert(err)
            
@@ -111,9 +117,9 @@ import MuiAlert from '@mui/material/Alert';
            
            console.log(pid)
            console.log(newstock)
-        axios.put(`http://localhost:5000/stock/update/${pid}`, newstock).then(() => 
+        axios.put(`http://localhost:5000/stock/update/${pid}`, newstock1).then(() => 
         handleClick()).catch((err) => alert(err))
-
+        handleClose()
 
        } 
  
@@ -125,6 +131,8 @@ import MuiAlert from '@mui/material/Alert';
                 setPID(product._id)
                 setproductID(product.productID) 
                 setproductName(product.ProductName)
+                setAmount(product.Amount)
+                console.log(product.Amount)
                 setsectionNo(product.SectionNo)
                 setdate(product.Date)
              }
@@ -237,26 +245,8 @@ import MuiAlert from '@mui/material/Alert';
                         onChange={(e) =>setsectionNo(e.target.value)}
                     />
                     </FormControl>
-                    { !product&&
-                        
-                   
-                    <FormControl>
-                      
-                    <InputLabel className={classes.lbl}>Initial stock Amount</InputLabel>
-                    <TextField
-                        id="outlined-helperText"
-                        type="number"
-                        variant="outlined"
-                        className={classes.field}
-                        required
-                        InputProps={{
-                            endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
-                        }}
-                        value={amount}
-                        onChange={(e) => setamount(e.target.value)}
-                    />
-                    </FormControl>
-  }
+                    
+  
                    
                     
                        <Button  fullWidth style={{marginTop:"15px"}}  type='submit' variant="contained" color="secondary"   > 

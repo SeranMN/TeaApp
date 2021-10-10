@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 
 
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -11,8 +11,21 @@ import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Navbar from '../Navbarnavod';
-
-
+import Confirmationbox1 from './Confirmationbox1';
+import StockoutHistory from './StockoutHistory';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import axios from 'axios';
+import { styled, alpha } from '@mui/material/styles';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import InputBase from '@mui/material/InputBase';
+import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -24,13 +37,26 @@ const useStyles = makeStyles((theme) => ({
       textAlign: 'center',
       color: theme.palette.text.secondary,
     },
+    bx:{
+      marginLeft:300,
+      marginTop:50,
+      maxWidth: 1150,
+      textAlign:'left',
+     
+    },
+    typ:{
+      color:'black',
+    
+    }
   }));
   
+ 
 
 
 const Out = ({}) => {
     const classes = useStyles();
-    const[productID,setproductID] = useState('')
+    const[products,setproducts]=useState([])
+    const[productName,setProductName] = useState('')
     const[Amount,setAmount] = useState('')
     const[Date,setDate] = useState('')
     const[Note,setNote] = useState('')
@@ -41,18 +67,56 @@ const Out = ({}) => {
         e.preventDefault()
         setOpen(true);
        
-        console.log(productID,Amount,Date,Note)
+        console.log(productName,Amount,Date,Note)
         
     
     }
+    useEffect(()=>{
     
+        function getstocks(){
+        axios.get("http://localhost:5000/stock/").then((res)=>{
+          
+          setproducts(res.data);
+        }).catch((err)=> { 
+          alert(err.message);
+          console.log(err.message);
+        })
+      }
+      getstocks()
+    
+      },[])
               
     
     return (
         <div>
             <Navbar/>
-            <div style={{color:"black",fontWeight:"bold",marginTop:"30px",marginLeft:"200px",fontSize:"20px"}}> Stock Out</div>
-            <Box display="flex"style={{width:"1200px"}}    marginLeft="230px" padding="2rem"  flexDirection="row" bgcolor="background.paper" >
+            <StockoutHistory/>
+            <Box className={classes.bx}   sx={{ flexGrow: 1 }}>
+      <AppBar style={{backgroundColor:"#e4e4e4"}} position="static" className={classes.ap}>
+        <Toolbar>
+          <img
+            src='/ggg.png'
+            width="40"
+            height="40"
+            className="d-inline-block align-top"
+            alt="React Bootstrap logo"
+            />
+        
+          <Typography className={classes.typ}
+            variant="h6"
+            noWrap
+            marginLeft="30px"
+            component="div"
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+          >
+           Stock Out
+          </Typography>
+        
+        </Toolbar>
+      </AppBar>
+    </Box>
+            
+            <Box display="flex"style={{width:"1200px"}}    marginLeft="270px" padding="2rem"  flexDirection="row" bgcolor="background.paper" >
             <Box p={3}  marginBottom="40px"  bgcolor="grey.300"> 
             <div className='form-content-left'><img style={{width:"1000px",height:"670px",marginTop:"50px"}} className='image-container' src="/teah.jpg" alt="Logo" /></div> 
              </Box>
@@ -62,20 +126,29 @@ const Out = ({}) => {
             <div className='title'>Stock Out </div>
             <div className='formcontrol'>
                  
-                    <label className='form-label'>
-                        Product ID
+            <FormControl sx={{ m: 1, minWidth: 450 }}>
+            <label className='form-label'>
+                        Product Name
 
-                    </label>
-                    <input
-                        type='text'
-                        name='productID'
-                        className='form-input'
-                        placeholder=' product ID'
-                        value={productID}
-                        onChange={(e) => setproductID(e.target.value)}
-                        required
-                    
-                    />
+            </label>
+        <Select
+          labelId="demo-simple-select-helper-label"
+          id="demo-simple-select-helper"
+          value={productName}
+          label="ProductName"
+          required
+          onChange={(e)=>setProductName(e.target.value)}
+        >
+
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          {products.map((product)=>
+            <MenuItem value={product.ProductName}>{product.ProductName}</MenuItem>
+          )}
+        </Select>
+       
+      </FormControl>
                   
             </div>
                 <div className='formnote'>    
@@ -91,7 +164,7 @@ const Out = ({}) => {
                          style={{marginLeft: '7px'}}
                          
                         InputProps={{
-                            
+                          inputProps: { min: 1 },   
 
                          endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
                          }}
@@ -146,7 +219,7 @@ const Out = ({}) => {
             </form>
             </Box>
                     
-            <Confirmationbox open={open} handleClose={()=>setOpen(false)} />
+            <Confirmationbox1 open={open} handleClose={()=>setOpen(false)}  productName={productName} Amount={Amount} Date={Date} Note={Note} setProductName={setProductName} setAmount={setAmount} setDate={setDate} setNote={setNote}  />
             </Box>
             </div>             
     )

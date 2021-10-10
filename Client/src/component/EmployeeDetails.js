@@ -17,7 +17,7 @@ const EmployeeDetails = ({ onClick, tot }) => {
       })
     }
     getEmployeee();
-  })
+  },[])
 
   return (
     <>
