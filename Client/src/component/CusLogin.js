@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import bcrypt from 'bcryptjs';
+import swal from 'sweetalert';
 
 
 const CusLogin = () => {
@@ -41,12 +42,12 @@ const CusLogin = () => {
                     }
                 sessionStorage.setItem("token",JSON.stringify(token));
                 navigate();
-                alert("Login Successful");
+                swal("Success!", "Login Successful", "success");
                 } else {
-                    alert("Invalid Password");
+                    swal("Error !", "Invalid Password", "error");
                 }
             } else {
-                    alert("Invalid Email");
+                swal("Error !", "Invalid Email", "error");
                 
             }
         })
@@ -70,42 +71,55 @@ const CusLogin = () => {
 
 
     return (
-        <div className="loginform"> 
-            <Form onSubmit = {handleSubmit}> 
-            <fieldset>
-            <legend>Login</legend>
-            <Form.Group className="mb-3" controlId="email">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control 
-                    type="email" 
-                    placeholder="Enter email" 
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}/>
+        <div style = {{
+                backgroundImage: `url("https://s1.1zoom.me/b5057/817/Tea_Kettle_Lemons_Cup_542436_3840x2400.jpg")`,
+                height: "100vh",
+                backgroundSize: "cover",}}> 
 
-                <Form.Text className="text-muted">
-                </Form.Text>
-            </Form.Group>
+            <br />
+            <div className="loginform" > 
+                <Form onSubmit = {handleSubmit}> 
+                <h3>Login</h3>
+                <Form.Group className="mb-3" controlId="email">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control 
+                        type="email" 
+                        placeholder="Enter email" 
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}/>
 
-            <Form.Group className="mb-3" controlId="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control 
-                    type="password" 
-                    placeholder="Password" 
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}/>
-            </Form.Group>
+                    <Form.Control.Feedback type="invalid">
+                        Please insert an valid Email
+                    </Form.Control.Feedback>
 
-            <br/>
-            <Button variant="primary" type="submit">
-                Submit
-            </Button>
-            <br/><br/>
-            <h5>Don't have an account ? </h5>
-            <Button onClick={() => setModalShow(true)}>Sign Up</Button>
-            </fieldset>
-            </Form>
+                    <Form.Text className="text-muted">
+                    </Form.Text>
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="password">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control 
+                        type="password" 
+                        placeholder="Password" 
+                        required
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}/>
+                    
+                    <Form.Control.Feedback type="invalid">
+                        Please enter a valid password
+                    </Form.Control.Feedback>
+                </Form.Group>
+
+                <br/>
+                <Button variant="success" type="submit">
+                    Login
+                </Button>
+                <br/><br/>
+                <h5>Don't have an account ? </h5>
+                <Button variant="success" onClick={() => setModalShow(true)}>Sign Up</Button>
+                </Form>
+            </div>
             <ModalRegister
                 show={modalShow}
                 onHide={() => setModalShow(false)}

@@ -3,16 +3,17 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { useState } from 'react'
 import axios from 'axios';
+import swal from 'sweetalert';
 
 const Cusedit = ({det}) => {
     const [validated, setvalidated] = useState(false)
-    const [fname, setFirstName] = useState(det != null ? (det.firstName) : (''))
-    const [lname, setLastName] = useState(det != null ? (det.lastName) : (''))
-    const [email, setEmail] = useState(det != null ? (det.email) : (''))
-    const [contactno, setContactNo] = useState(det != null ? (det.contactNo) : (''))
-    const [nic, setNIC] = useState(det != null ? (det.NIC) : (''))
-    const [address, setAddress] = useState(det != null ? (det.address) : (''))
-    //const [photo, setPhoto] = useState(det != null ? (det.photo) : (''))
+    const [fname, setFirstName] = useState(det.firstName)
+    const [lname, setLastName] = useState(det.lastName)
+    const [email, setEmail] = useState(det.email)
+    const [contactno, setContactNo] = useState(det.contactNo)
+    const [nic, setNIC] = useState(det.NIC)
+    const [address, setAddress] = useState(det.address)
+    //const [photo, setPhoto] = useState(det.photo)
     const [selectedphoto, setSelectedPhoto] = useState();
     
 
@@ -34,7 +35,7 @@ const Cusedit = ({det}) => {
         else{
             axios
                 .put(`http://localhost:5000/customer/update/${email}`, updateCustomer)
-                .then(() => alert("Successfully Updated"))
+                .then(() => swal("Updated!", "Successfully Updated", "success"))
                 .catch((err) => alert(err));
         }
         setvalidated(true);
@@ -78,6 +79,9 @@ const Cusedit = ({det}) => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
             />
+            <Form.Control.Feedback type="invalid">
+                Please enter a valid email address.
+            </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="contactno">
@@ -88,6 +92,9 @@ const Cusedit = ({det}) => {
                 onChange={(e) => setContactNo(e.target.value)}
                 required
             />
+            <Form.Control.Feedback type="invalid">
+                Please enter a valid phone number.
+            </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="nic">
@@ -98,6 +105,9 @@ const Cusedit = ({det}) => {
                 onChange={(e) => setNIC(e.target.value)}
                 required
             />
+            <Form.Control.Feedback type="invalid">
+                Please enter a valid NIC number.
+            </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="address">

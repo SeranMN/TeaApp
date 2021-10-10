@@ -50,18 +50,28 @@
 
 
 .loginform {
-  height: 435px;
+  height: 550px;
+  width: 500px;
   display: flex;
+  margin: 0 auto;
   justify-content: center;
   align-items: center;
+  border: 2px solid green;
+  margin-top: 50px;
+  background-color:rgba(0, 0, 0, 0.562);
+  color: white;
 }
 
 
 .profile {
   height: 800px;
+  Width: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 3px solid green;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.562);
 }
 
 .report {
