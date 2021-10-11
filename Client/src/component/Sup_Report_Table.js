@@ -1,11 +1,11 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
 import { FaFileAlt } from "react-icons/fa";
 import SideNavBar from "./SupSideNavBar";
 import MaterialTable from "material-table";
 import PrintIcon from "@material-ui/icons/Print";
-import Clear from "@material-ui/icons/Clear";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import axios from "axios";
@@ -110,11 +110,17 @@ const ReportTable = ({ SupplierID, invoice, onClick }) => {
           columns={columns}
           data={reportData}
           options={{
-            headerStyle: { backgroundColor: "black", color: "white" },            
+            headerStyle: { backgroundColor: "#060b26", color: "white" },
           }}
           actions={[
             {
-              icon: () => <PrintIcon />, // you can pass icon too
+              icon: () => (
+                <Button variant="outline-primary">
+                  {" "}
+                  Generate Report &nbsp;
+                  <PrintIcon />
+                </Button>
+              ), // you can pass icon too
               tooltip: "Export to Pdf",
               onClick: () => downloadPdf(),
               isFreeAction: true,

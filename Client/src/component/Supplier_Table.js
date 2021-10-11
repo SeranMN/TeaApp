@@ -1,9 +1,13 @@
 import Table from "react-bootstrap/Table";
-import {FaPencilAlt,FaTrash,} from "react-icons/fa";
+import Button from "react-bootstrap/Button";
+import { FaPencilAlt, FaTrash, } from "react-icons/fa";
+import PrintIcon from "@material-ui/icons/Print";
 import { useState, useEffect } from "react";
 import ModleSupplier from "./ModleSupplier";
 import ModleDelete from "./SupModleDelete";
 import SupplierProfileSideBar from "./SupplierProfile_SideBar";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 import axios from "axios";
 
 
@@ -13,6 +17,25 @@ const SuppliersTable = ({ SupplierID, supplier, onClick }) => {
   const [suppliers, setSupplier] = useState([]);
   const [supplierDet, setSupplierDet] = useState('')
   const [supplierdelete, setSupplierDelete] = useState('')
+
+  const columns = [
+    { title: "Name", field: "name" },
+    { title: "Address", field: "address" },
+    { title: "NIC", field: "nic" },
+    { title: "Mobile", field: "mobile" },
+    { title: "Email", field: "email" },
+  ];
+
+  const downloadPdf = () => {
+    const doc = new jsPDF();
+    doc.text("All Suppliers", 90, 10);
+    doc.autoTable({
+      theme: "striped",
+      columns: columns.map((col) => ({ ...col, dataKey: col.field })),
+      body: suppliers,
+    });
+    doc.save("Suppliers.pdf");
+  };
 
   useEffect(() => {
     const getSuppliers = () => {
@@ -30,11 +53,12 @@ const SuppliersTable = ({ SupplierID, supplier, onClick }) => {
   }, []);
   
   return (
+    <>
+      <Button variant="outline-primary" onClick={() => downloadPdf()}><PrintIcon/>&nbsp;&nbsp; Generate Report </Button>
     <div>
       <Table striped bordered hover>
         <thead>
           <tr>
-            {/* <th>SupplierID</th> */}
             <th>Name</th>
             <th>Address</th>
             <th>NIC</th>
@@ -46,7 +70,6 @@ const SuppliersTable = ({ SupplierID, supplier, onClick }) => {
         {suppliers.map((supplier) => (
           <tbody key={supplier._id}>
             <tr>
-              {/* <td>{supplier.SupplierID}</td> */}
               <td>{supplier.name}</td>
               <td>{supplier.address}</td>
               <td>{supplier.nic}</td>
@@ -94,7 +117,8 @@ const SuppliersTable = ({ SupplierID, supplier, onClick }) => {
       {/* <SupplierProfileSideBar
         supplierDet={supplierDet}
       /> */}
-    </div>
+      </div>
+      </>
   );
 };
 
