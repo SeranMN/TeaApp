@@ -1,4 +1,4 @@
-import {React,useState} from 'react'
+import React,{useState} from 'react'
 import Modal from 'react-bootstrap/Modal'
 import { Placeholder } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form'
@@ -11,6 +11,12 @@ import { FiPlusCircle } from 'react-icons/fi';
 import { FiMinusCircle} from 'react-icons/fi';
 import Box from '@material-ui/core/Box';
 import axios from 'axios';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+   });
 
 const EditOrder = ({order}) => {
 
@@ -34,6 +40,21 @@ const EditOrder = ({order}) => {
     const [ProductName, setProductName] = useState("")
     const [UnitPrice, setUnitPrice] = useState()
 
+    
+    const [open, setOpen] = React.useState(false);
+
+    const handleClick1 = () => {
+      setOpen(true);
+    };
+  
+    const handleClose1 = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setOpen(false);
+    };
+
     const onSubmit = (e) => {
         e.preventDefault()
 
@@ -54,7 +75,7 @@ const EditOrder = ({order}) => {
     
         axios.put(`http://localhost:5000/order/update/${OrderId}`, Order).then(() => 
   
-          alert("Succesfully Updated")).catch((err) => alert(err))
+          handleClick1()).catch((err) => alert(err))
           handleClose()
     }
       
@@ -110,6 +131,16 @@ const EditOrder = ({order}) => {
 
     return (
         <div>
+
+        <Snackbar open={open} autoHideDuration={3000} onClose={handleClose1} anchorOrigin={{
+            vertical: "top",
+            horizontal: "center"
+        }}>
+           <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          Successfully Updated!
+        </Alert>
+        </Snackbar>
+
             {order&&
            <Button  variant="primary" onClick={handleShow} >Edit</Button> 
             }
@@ -182,7 +213,11 @@ const EditOrder = ({order}) => {
 
   <Form.Group className="mb-3" >
     <Form.Label>Contact No</Form.Label>
-    <Form.Control value={ContactNo} onChange={(e)=>setContactNo(e.target.value)} required/>
+    <Form.Control value={ContactNo} title="Must include 10 digits without Country Code"
+          pattern="[0-9]{9}" onChange={(e)=>setContactNo(e.target.value)} required/>
+      <Form.Control.Feedback type="invalid">
+          Please insert Valid Mobile Number
+      </Form.Control.Feedback>
   </Form.Group>
 
   <Row className="mb-3">
@@ -205,7 +240,7 @@ const EditOrder = ({order}) => {
 
     <Form.Group as={Col} >
       <Form.Label>Postal code</Form.Label>
-      <Form.Control value={PostalCode} onChange={(e)=>setPostalCode(e.target.value)} required/>
+      <Form.Control value={PostalCode} pattern="[0-9]{5}" onChange={(e)=>setPostalCode(e.target.value)} required/>
     </Form.Group>
   </Row>
 

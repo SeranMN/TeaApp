@@ -17,6 +17,12 @@ import Typography from '@mui/material/Typography';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+   });
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -95,6 +101,21 @@ const OrderDetails = () => {
   const [orderdetails, setOrderDetails] = useState([])
 
   const [searchTerm, setSearchTerm] = useState("");
+
+  const [open, setOpen] = React.useState(false);
+
+    const handleClick1 = () => {
+      setOpen(true);
+    };
+  
+    const handleClose1 = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setOpen(false);
+    };
+    
   
   
   useEffect(()=>{
@@ -168,7 +189,8 @@ const OrderDetails = () => {
   const submit1 = (order) => {
     console.log(order)
           axios.delete(`http://localhost:5000/order/delete/${order._id}`).then(() => 
-            alert("Successfully Deleted")).catch((err) => alert(err))
+            handleClick1()).catch((err) => alert(err))
+            
         }
           // console.log(product._id)
         
@@ -180,6 +202,15 @@ const OrderDetails = () => {
   return (
     <div>
       <Header/>
+
+      <Snackbar open={open} autoHideDuration={3000} onClose={handleClose1} anchorOrigin={{
+            vertical: "top",
+            horizontal: "center"
+        }}>
+           <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          SuccesFully Deleted!
+        </Alert>
+        </Snackbar>
 
       <Box className={classes.bx}   sx={{ flexGrow: 1 }}>
       <AppBar style={{backgroundColor:"#e4e4e4"}} position="static" className={classes.ap}>
@@ -219,40 +250,57 @@ const OrderDetails = () => {
 
       {orders.map((order) => 
       
-      <Card className="text-center" style={{marginLeft:"150px",marginBottom:"50px",marginTop:"20px",marginRight:"30px",maxWidth:"1200px"}}>
+      <Card className="text-center" style={{marginLeft:"150px",marginBottom:"50px",marginTop:"40px",marginRight:"30px",maxWidth:"1200px", backgroundColor: "#e0e0e0"}}>
         
        
         
-      <Card.Header>Order {number} </Card.Header>
+      <Card.Header>Order:{order._id} </Card.Header>
       
     <Card.Body >
+    <div style={{display:"flex", justifyContent:"flex-end"}}>
+            <div  style={
+                                      order.status === "Approved"
+                                        ? { borderRight: "15px solid #0cce26",paddingRight: "8px" }
+                                        : order.status == "Declined"
+                                        ? { borderRight: "15px solid red",paddingRight: "8px" }
+                                        : { borderRight: "15px solid orange",paddingRight: "8px" }
+                                    }>{order.status} </div>
+            </div>
 
-    <Box display="flex" justifyContent="center" m={1} p={1} bgcolor="background.paper" width="100%"> 
+
+    <Box display="flex" justifyContent="center" m={1} p={1}  width="100%"> 
+    
     <Box p={1}  padding="3rem" bgcolor="grey.300" >
     <Card.Img style={{ width: '18rem' }} variant="top" src="/blacktea.jpg" />
     </Box>
-    <Box  p={1} bgcolor="grey.300" width="60%">
-
-    <Card.Title>Order details</Card.Title>
+    
+    <Box p={1} display="flex" justifyContent="space-evenly" bgcolor="grey.300" width="60%"  >
+    <Box border="solid" padding="50px">                             
+    <Card.Title> <h4>Order details</h4> </Card.Title>
     <Card.Text> 
     <h6> ProductName:{order.productName}</h6> 
     <h6> Quantity:{order.quantity}</h6> <h6>  Total Price:Rs.{order.subTotal} </h6>
       </Card.Text>
-    <Card.Title>Shipping details</Card.Title>
+      </Box>
+      <Box border="solid" padding="50px">
+    <Card.Title> <h4>Shipping details</h4> </Card.Title>
+    
     <Card.Text>
       <h6> {order.firstName} {order.lastName} </h6>
       <h6> {order.email} </h6>
       <h6> {order.address} </h6>
-      <h6> {order.contactNo} </h6>
+      <h6> +94{order.contactNo} </h6>
       <h6> {order.city} </h6>
       <h6> {order.region} </h6>
       <h6> {order.postalCode} </h6>
     
     </Card.Text>
-    
+    </Box>
+    </Box>
+    </Box>
     <Box  p={1} display="flex" justifyContent="space-between">
     <Box  p={1} display="flex"  >
-    <Button variant="secondary" onClick={() => {
+    <Button variant="danger" onClick={() => {
       
       submit1(order);
      }
@@ -265,8 +313,7 @@ const OrderDetails = () => {
               <EditOrder order={order}/>
           </Box>
           </Box>
-          </Box>
-          </Box>
+         
   </Card.Body>
   
   <Card.Footer className="text-muted">2 days ago</Card.Footer>

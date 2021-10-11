@@ -16,7 +16,7 @@ const orderschema = new schema({
         //required:true
     },
     email: {
-        //type: String,
+        type: String,
         
     },
     contactNo: {
@@ -49,6 +49,10 @@ const orderschema = new schema({
        //required:true    
     },
     unitPrice: {
+        type: String,
+        //required:true    
+    },
+    status: {
         type: String,
         //required:true    
     },

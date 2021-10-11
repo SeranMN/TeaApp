@@ -77,6 +77,21 @@ const deleteOrder = async (req, res) => {
     })
 
 };
+
+    
+  const setStatus = async (req, res) => {
+
+    console.log(req.params.id)
+
+    await Order.findByIdAndUpdate(req.params.id,req.body)
+    .then((data) => {
+        res.status(200).send(data);
+      })
+      .catch((err) => {
+        res.status(500).send(err);
+      });
+
+};
             
 
 
@@ -88,6 +103,7 @@ const deleteOrder = async (req, res) => {
         updateOrder,
         deleteOrder,
         Searchorder,
+        setStatus,
         
 
     }

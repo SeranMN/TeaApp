@@ -1,4 +1,4 @@
-import {React,useState} from 'react'
+import React,{useState} from 'react'
 import Modal from 'react-bootstrap/Modal'
 import { Placeholder } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form'
@@ -13,7 +13,12 @@ import Box from '@material-ui/core/Box';
 import axios from 'axios';
 import OrderDetails from './OrderDetails';
 import {TiShoppingCart} from "react-icons/ti";
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+   });
 
 const PlaceOrder = ({Products, order, product}) => {
 
@@ -40,8 +45,22 @@ const PlaceOrder = ({Products, order, product}) => {
     const [SubTotal, setSubTotal] = useState()
     const [Color, setColor] = useState("grey")
     const [OrderId, setOrderId] = useState("")
-    
 
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleClick1 = () => {
+      setOpen(true);
+    };
+  
+    const handleClose1 = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setOpen(false);
+    };
+    
 
     const onSubmit = (e) => {
       e.preventDefault()
@@ -59,13 +78,14 @@ const PlaceOrder = ({Products, order, product}) => {
                       "quantity":Quantity,
                       "subTotal":SubTotal, 
                       "productName":ProductName,
-                      "unitPrice":UnitPrice,}
+                      "unitPrice":UnitPrice,
+                        "status":"Pending",}
   
     
 
     axios.post("http://localhost:5000/order/add", Order).then (()=>{
     
-      alert("order.added")
+      handleClick1()
 
       setFirstName("");
       setLastName("");
@@ -120,6 +140,16 @@ const PlaceOrder = ({Products, order, product}) => {
     return (
         <div>
 
+          
+        <Snackbar open={open} autoHideDuration={3000} onClose={handleClose1} anchorOrigin={{
+            vertical: "top",
+            horizontal: "center"
+        }}>
+           <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          This is a success message!
+        </Alert>
+        </Snackbar>
+
         {Products&&
         <Button className="btn1" style={{margin:"30px 10px 4px 3px"}} variant="warning" onClick={handleShow} ><TiShoppingCart/></Button>
         }
@@ -141,14 +171,18 @@ const PlaceOrder = ({Products, order, product}) => {
           
         <Container>
         <Box display="flex" justifyContent="center" m={1} p={1} bgcolor="background.paper" width="100%">
-        <Box p={1}  padding="3rem" bgcolor="grey.300" width="60%">
-          
+        <Box p={1}  padding="3rem" bgcolor="grey.300" width="40%">
+        <Row className="mb-3">
+    <Form.Group as={Col} > 
+    <Form.Label style={{marginLeft:"100px"}}>Order Details</Form.Label>
+    </Form.Group>
+    </Row>
+        
         
             <h5>Product Name : {ProductName}</h5>
             <h5>Unit Price : Rs.{UnitPrice}</h5>
-            <h5>ProductId : {ProductId}</h5>
+            {/* <h5>ProductId : {ProductId}</h5> */}
             
-           
             <Form.Label>Quantity</Form.Label>
            
           <div style={{display:"flex",justifyContent:"space-evenly"}}>
@@ -199,7 +233,11 @@ const PlaceOrder = ({Products, order, product}) => {
 
   <Form.Group className="mb-3" >
     <Form.Label>Contact No</Form.Label>
-    <Form.Control value={ContactNo} onChange={(e)=>setContactNo(e.target.value)} required/>
+    <Form.Control value={ContactNo} title="Must include 10 digits without Country Code"
+          pattern="[0-9]{9}" onChange={(e)=>setContactNo(e.target.value)} required/>
+      <Form.Control.Feedback type="invalid">
+          Please insert Valid Mobile Number
+      </Form.Control.Feedback>
   </Form.Group>
 
   <Row className="mb-3">
@@ -223,7 +261,7 @@ const PlaceOrder = ({Products, order, product}) => {
 
     <Form.Group as={Col} >
       <Form.Label>Postal code</Form.Label>
-      <Form.Control value={PostalCode} onChange={(e)=>setPostalCode(e.target.value)} required/>
+      <Form.Control value={PostalCode} pattern="[0-9]{5}" onChange={(e)=>setPostalCode(e.target.value)} required/>
     </Form.Group>
   </Row>
 
@@ -231,7 +269,7 @@ const PlaceOrder = ({Products, order, product}) => {
     <Form.Check type="checkbox" label="Check me out" />
   </Form.Group>
   
-  <Button style={{marginLeft:"620px"}} variant="primary" type="submit">
+  <Button style={{marginLeft:"500px"}} variant="primary"  type="submit">
     Place Order
   </Button>
   </Box>

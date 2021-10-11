@@ -6,6 +6,7 @@ module.exports = function () {
     router.put("/update/:id", orderController.updateOrder);
     router.delete("/delete/:id", orderController.deleteOrder);
     router.get("/search/:id", orderController.Searchorder);
+    router.put("/status/:id", orderController.setStatus);
    
     return router
 }
