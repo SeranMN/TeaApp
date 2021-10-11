@@ -7,11 +7,15 @@ import ModalFeedback from './ModalFeedback.js'
 import Modalpassword from './CusModalpassword.js'
 import Modaldelete from './CusModaldelete.js';
 import axios from 'axios';
+import Header from './Header.js';
+import { useHistory } from 'react-router-dom';
 
-
+ 
 
 const CusProfile = () => {
-
+   const  history = useHistory()
+    
+        const[modleType,setModaltype] = useState("")
             const [modalShow, setModalShow] = React.useState(false);
             const [modalFeedback, setModalFeedback] = React.useState(false);
             const [modalPassword, setModalPassword] = React.useState(false);
@@ -32,7 +36,8 @@ const CusProfile = () => {
             },[]);
             console.log(profiledetails);
             return (
-            <div>
+                <div>
+                    <Header/>
                  <h3>User Profile</h3>
                 <Profile profile = {profiledetails.data} />
 
@@ -41,7 +46,7 @@ const CusProfile = () => {
                     Update Details
                 </Button>
                 &nbsp;&nbsp;
-                <Button variant="warning" onClick={() => setModalDelete(true)}>
+                    <Button variant="warning" onClick={() => { setModalDelete(true); setModaltype("delete")}}>
                     Delete Account
                 </Button>
                 &nbsp;&nbsp;
@@ -52,6 +57,9 @@ const CusProfile = () => {
                 <Button variant="secondary" onClick={() => setModalPassword(true)}>
                     Change Password
                 </Button>
+                <Button variant="danger" onClick={() => { setModalDelete(true); setModaltype("logout")}}>
+                    Logout
+                </Button>
                 <br /><br />
                 <Modalnew
                 show={modalShow}
@@ -59,7 +67,8 @@ const CusProfile = () => {
                 profile = {profiledetails}
                 />
                 <Modaldelete
-                show={modalDelete}
+                        show={modalDelete}
+                        type = {modleType}
                 onHide={() => setModalDelete(false)}
                 profile = {profiledetails}
                 />

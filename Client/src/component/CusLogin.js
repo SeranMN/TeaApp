@@ -6,32 +6,52 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import bcrypt from 'bcryptjs';
+import Header from './Header.js';
 
 
 const CusLogin = () => {
+ 
 
     const [modalShow, setModalShow] = useState(false);
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [signin, setSignin] = useState();
+    //const [type,setType] = useState('')
 
     const history = useHistory();
-
-    const navigate = () => {
-        history.push("/CusProfile.js");
+    const navigate = (type) => {
+        if (type == "customer") {
+            history.push("/CusProfile.js");
+        } else if (type == "General Manager") {
+            history.push("/Admin.js");
+        } else if (type == "Supliar Manager") {
+            history.push("/Supplier.js")
+        } else if (type == "Stock Keeper") {
+            history.push("/Dashboard")
+        } else if (type == "Data Entry Operator") {
+            history.push("/Dailysupply.js")
+        } else if (type == "Customer Relation Manger") {
+            history.push("/CusTable.js")
+        } else if (type == "HR Manager") {
+             history.push("/Employee.js")
+        }
+        else if (type == "Receptionist") {
+             history.push("//PendingTable.js")
+        }
     }
-
+  
     const handleSubmit = (e) =>{
         e.preventDefault();
 
         axios.get(`http://localhost:5000/login/${email}`)
         .then ((res) => {
-            console.log(res.data.data.password);
-            if (res.data){
+            
+            if (res.data.data != null){
                 let hashPass = res.data.data.password;
                 console.log(password);
                 const isValid = bcrypt.compareSync(password, hashPass);
-                if(isValid){
+                if (isValid) {
+                    
                     console.log(res.data);
                     const token ={
                         id: res.data.data._id,
@@ -39,9 +59,16 @@ const CusLogin = () => {
                         email:res.data.data.email,
                         type:res.data.data.type
                     }
+                    
+         
+                
+        
+
+                    //setType(res.data.data.type)
                 sessionStorage.setItem("token",JSON.stringify(token));
-                navigate();
-                alert("Login Successful");
+                
+                    alert("Login Successful");
+                    navigate(res.data.data.type);
                 } else {
                     alert("Invalid Password");
                 }
@@ -51,26 +78,19 @@ const CusLogin = () => {
             }
         })
         //.catch ((err) => {alert(err.msg)})
-        
-        
+          
     }
+    
+    
 
-    // useEffect(() => {
-    //     if(signin){
-    //     //console.log(signin.data.password);
-    //     //console.log(password);
-    //     if(signin.data.password == password){
-    //         alert("Successful");
-    //      } else {
-    //          alert("Failed");
-    //      }
-    //     console.log(signin);
-    //     }
-    // }, [signin])
+   
 
 
     return (
-        <div className="loginform"> 
+        <>
+            <Header/>
+        <div className="loginform">
+           
             <Form onSubmit = {handleSubmit}> 
             <fieldset>
             <legend>Login</legend>
@@ -110,7 +130,8 @@ const CusLogin = () => {
                 show={modalShow}
                 onHide={() => setModalShow(false)}
             /> 
-        </div>
+            </div>
+            </>
      );
 }
  
