@@ -43,7 +43,10 @@ const employeeApi = require("./src/api/employee.api");
 app.use("/employee", employeeApi());
 
 const atendanceApi = require("./src/api/Attendance.Api")
-app.use("/attendance",atendanceApi())
+app.use("/attendance", atendanceApi());
+
+const formerEmpAPI = require("./src/api/formerEmp.api")
+app.use("/formerEmp",formerEmpAPI())
 
 app.listen(PORT, () => {
   console.log(`App listening at http://localhost:${PORT}`);

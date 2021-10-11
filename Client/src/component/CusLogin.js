@@ -36,7 +36,7 @@ const CusLogin = () => {
              history.push("/Employee.js")
         }
         else if (type == "Receptionist") {
-             history.push("//PendingTable.js")
+             history.push("/PendingTable.js")
         }
     }
   

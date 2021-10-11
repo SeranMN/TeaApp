@@ -40,7 +40,8 @@ const Modaldelete = (props) => {
         centered
       >
         <Modal.Header closeButton>
-          <Modal.Title>Delete Account</Modal.Title>
+          <Modal.Title>{props.type == "delete" ? ("Delete Account ?") :
+          ("Logout")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>{props.type == "delete" ? ("Are you sure you want to delete your account permanetly ?") :
           ("Do you want to logout")}</Modal.Body>

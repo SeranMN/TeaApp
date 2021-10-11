@@ -114,6 +114,7 @@ const EmpForm = ({ det }) => {
                 required
                 type="text"
                 placeholder="Enter NIC"
+                 pattern="^([0-9]{9}[x|X|v|V]|[0-9]{12})$"
                 value={nic}
                 onChange={(e) => setNic(e.target.value)}
               />
@@ -152,6 +153,7 @@ const EmpForm = ({ det }) => {
                 required
                 type="Number"
                 placeholder="Enter mobile No"
+                pattern="[0-9]{10}"
                 value={mobNo}
                 onChange={(e) => setmobNo(e.target.value)}
               />

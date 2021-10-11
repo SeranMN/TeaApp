@@ -1,10 +1,24 @@
-import React from "react";
+import { React,useEffect }from "react";
 import { Row, Col, Button, Table } from "react-bootstrap";
 import Clock from "./Clock";
 import { Link } from "react-router-dom";
 import EmpSideNavBar from "./EmpSideNavBar";
-
+import axios from "axios";
 const Attendance = () => {
+  const date = new Date().toISOString();
+  console.log(date)
+  
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/attendance/${date}`)
+      .then((res) => {
+        if (res.data) {
+          console.log(res.data)
+        }
+      })
+
+    
+  }, [])
   return (
     <>
           <EmpSideNavBar />
