@@ -4,7 +4,7 @@ import { FaUserPlus } from 'react-icons/fa';
 
 const SupplierBtn = ({ onclick }) => {
     return (
-        <Button style={{marginLeft: "80%"}} variant="success" onClick={onclick}><FaUserPlus/> Add New Supplier</Button>
+        <Button style={{marginLeft: "80%"}} variant="success" onClick={onclick}><FaUserPlus/>&nbsp;&nbsp;Add New Supplier</Button>
       
     );
 };

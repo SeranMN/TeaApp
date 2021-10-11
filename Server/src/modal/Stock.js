@@ -4,26 +4,30 @@ const schema = mongoose.Schema;
 const stockschema = new schema({
     productID: {
         type: String,
-        required:true
+        unique:true,
+        
+        
     },
     ProductName: {
         type: String,
-   
-        required:true
+        unique:true,
+        
+        
     },
     SectionNo: {
         type: String,
-        required:true
+        
+    },
+    Amount:{
+        type:String,
+        
+
     },
    
     
-    amount: {
-        type: Number,
-        required:true
-    },
     Date: {
         type:String ,
-        required:true
+       
     },
     
 })

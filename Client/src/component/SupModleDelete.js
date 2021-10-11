@@ -4,10 +4,9 @@ import SupDeleteForm from "./SupDeleteForm";
 import Button from "react-bootstrap/Button";
 import DailySupplyTable from "./DailySupply_Table";
 import SuppliersTable from "./Supplier_Table";
-import axios from "axios"
+import axios from "axios";
 
 const ModleDelete = (props) => {
-  
   return (
     <Modal
       {...props}
@@ -15,20 +14,23 @@ const ModleDelete = (props) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header>
+      <Modal.Header closeButton>
         <Modal.Title>
-          {props.dailysupplyDelete != null
+          {props.dailysupplydelete != null
             ? "Delete Supply"
             : "Delete Supplier"}
         </Modal.Title>
       </Modal.Header>
       <ModalBody>
-        <SupDeleteForm supplier={props.supplierdelete} />
+        {props.supplierdelete != null ? (
+          <SupDeleteForm supplier={props.supplierdelete} />
+        ) : (
+          <SupDeleteForm supply={props.dailysupplydelete} />
+        )}
+        
       </ModalBody>
-
-      <Modal.Footer></Modal.Footer>
     </Modal>
   );
 };
 
-export default ModleDelete
+export default ModleDelete;

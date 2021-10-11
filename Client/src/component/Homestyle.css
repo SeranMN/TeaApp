@@ -39,7 +39,7 @@
     background: url('https://images.pexels.com/photos/4543934/pexels-photo-4543934.jpeg?cs=srgb&dl=pexels-quang-nguyen-vinh-4543934.jpg&fm=jpg')
     /* background: url('https://images.pexels.com/photos/5635372/pexels-photo-5635372.jpeg?cs=srgb&dl=pexels-tom-fisk-5635372.jpg&fm=jpg') */
       no-repeat center/cover;
-    height: 650px;
+    height: 720px;
   }
   
   .showcase .showcase-overlay {
@@ -48,7 +48,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 650px;
+    height: 720px;
     text-align: center;
     color: #fff;
   }

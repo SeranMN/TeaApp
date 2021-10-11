@@ -26,6 +26,10 @@ app.use("/product", ProductAPI());
 app.use("/productStock", ProductStockAPI());
 const appointmentApi = require("./src/api/appointment.api");
 app.use("/appointment", appointmentApi());
+
+const apprappointmentApi = require("./src/api/apprAppointment.api");
+app.use("/apprAppointment", apprappointmentApi());
+
 const customerApi = require("./src/api/customer.api");
 app.use("/customer", customerApi());
 
@@ -36,11 +40,26 @@ const loginApi = require("./src/api/login.api");
 app.use("/login", loginApi());
 const stockApi = require("./src/api/stock.api");
 app.use("/stock", stockApi());
+
+const stockinApi = require("./src/api/stockin.api");
+app.use("/stockin", stockinApi());
+
+const stockoutApi = require("./src/api/stockout.api");
+app.use("/stockout", stockoutApi());
+
 const supplierAPI = require("./src/api/Supplier.api");
 app.use("/supplier", supplierAPI());
 
 const employeeApi = require("./src/api/employee.api");
 app.use("/employee", employeeApi());
+
+const dailySupplyAPI = require("./src/api/DailySupply.api");
+app.use("/dailysupply", dailySupplyAPI());
+
+const formerSupplierAPI = require("./src/api/FormerSupplier.api");
+app.use("/formersupplier", formerSupplierAPI());
+const atendanceApi = require("./src/api/Attendance.Api")
+app.use("/attendance",atendanceApi())
 
 app.listen(PORT, () => {
   console.log(`App listening at http://localhost:${PORT}`);

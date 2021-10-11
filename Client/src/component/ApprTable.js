@@ -10,6 +10,13 @@ import {Form} from 'react-bootstrap'
 import AppDeleteModal from './AppDeleteModal';
 import axios from 'axios';
 import Sidenavbar from './AppSidenavbar';
+import MaterialTable from "material-table";
+import PrintIcon from "@material-ui/icons/Print";
+import Clear from "@material-ui/icons/Clear";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import { Checkbox } from '@material-ui/core';
 
 
 
@@ -18,10 +25,35 @@ const ApprTable = () => {
   const [appointments, setAppointments] = useState([]);
   const [DeleteAppointment, setDeleteAppointment] = useState('');
 
+  const columns = [
+
+    { title: "Appointment_ID", field: "_id", },
+    { title: "Appointers Name", field: "name", },
+    { title: "Email", field: "email", },
+    { title: "Officer's Position", field: "position", },
+    { title: "Date", field: "date", },
+    { title: "Time", field: "time", },
+    { title: "Concern", field: "concern", },
+    // { title: "Done",  },
+    // { title: "Delete", field: "", }
+  ]
+
+  const downloadPdf = () => {
+    const doc = new jsPDF();
+    doc.text("Appointments", 70, 10);
+    doc.autoTable({
+      theme: "striped",
+      columns: columns.map((col) => ({ ...col, dataKey: col.field })),
+      body: appointments,
+    });
+    doc.save("TeaFactory_Appointments.pdf");
+  };
+
+
   useEffect(() => {
     const getAppointments = () => {
       axios
-        .get("http://localhost:5000/appointment")
+        .get("http://localhost:5000/apprAppointment")
         .then((res) => {
           setAppointments(res.data);
           console.log(res.data);
@@ -39,11 +71,32 @@ const ApprTable = () => {
     <div style={{ marginLeft: "220px", marginTop: "20px", marginRight: "10px"}}>
 
       <br/>
-      <SearchBar/>
+      {/* <SearchBar/> */}
       <br/>
       <br/>
 
-      <Table striped bordered hover>
+      <MaterialTable
+          title="Appointments"
+          columns={columns}
+          data={appointments}
+          options={{
+            headerStyle: { backgroundColor: "#060b26", color: "white" },                       
+          }}
+          actions={[
+            {
+              icon: () => <PrintIcon />,
+              tooltip: "Generate Report",
+              onClick: () => downloadPdf(),
+              isFreeAction: true,
+            },
+            {
+              icon:Checkbox,
+              selection: true,
+            }
+          ]}
+      />
+
+      {/* <Table striped bordered hover>
         <thead>
           <tr>
             <th>AppointmentID</th>
@@ -85,14 +138,14 @@ const ApprTable = () => {
           </tr>
         </tbody>
         ))}
-      </Table>
+      </Table> */}
       <AppDeleteModal show={modaldelete}
         onHide={() => setModalDelete(false)}
         DeleteAppointment={DeleteAppointment}/>
 
       <br/>
       <br/>
-      <div className="RepGe">
+      {/* <div className="RepGe">
         <InputGroup className="mb-3">
         <Form.Select
                 aria-label="Floating label select example"
@@ -107,7 +160,7 @@ const ApprTable = () => {
           Generate Report
         </Button>
         </InputGroup>
-      </div>
+      </div> */}
       <br/>
       <br/>
     </div>

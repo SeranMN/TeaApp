@@ -32,19 +32,15 @@ const Footer = () => {
               </Box>
               <Box>
                 <Link href="/" color="primary">
-                  Support
+                  My Order
                 </Link>
               </Box>
               <Box>
                 <Link href="/" color="primary">
-                  Privacy
+                  Contact Us
                 </Link>
               </Box>
-              <Box>
-                <Link href="/" color="primary">
-                  Privacy
-                </Link>
-              </Box>
+             
             </Grid>
             <Grid item xs={12} sm={4}>
               <Box style={{color:"white",fontWeight:"bold"}}>Share & Follow us On</Box>
@@ -85,7 +81,7 @@ const Footer = () => {
             </Grid>
           </Grid>
           <Box style={{color:"black"}} textAlign="center" pt={{ xs: 5, sm: 10 }} pb={{ xs: 5, sm: 0 }}>
-            Material UI Workshop &reg; {new Date().getFullYear()}
+            Copyright &reg; {new Date().getFullYear()}
           </Box>
         </Container>
       </Box>

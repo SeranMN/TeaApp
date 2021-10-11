@@ -22,6 +22,10 @@ const supplierSchema = new Schema({
     type: String,
     required: true,
   },
+  image: {
+    type: String,
+    // required: true,
+  },
 });
 
 const Supplier = mongoose.model("Supplier", supplierSchema);
