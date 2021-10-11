@@ -9,7 +9,7 @@ import vehicle from '../Img/vehicle.png'
 import customer from '../Img/cus.png'
 import product from '../Img/product.png'
 import order from '../Img/order.png'
-import appointment from '../Img/appointment.png'
+import appoinment from '../Img/appointment.png'
 import { Link } from "react-router-dom"
 import Header from "./Header";
 
@@ -84,12 +84,14 @@ const AdminDashBoard = () => {
           </Card>
           </Col>
           <Col >
+          
           <Card bg="success" text="light" style={{ width: "18rem", height :"25rem" }}>
-              <Card.Img variant="top" src={appointment} style = {{height:"18rem"}} />
+              <Card.Img variant="top" src={appoinment} style = {{height:"18rem"}} />
             <Card.Body>
               <Card.Title>appointment Management</Card.Title>
             </Card.Body>
           </Card>
+          
           </Col>
         
       </Row>
