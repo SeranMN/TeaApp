@@ -28,7 +28,7 @@ const setLeaveTime = async (req, res) => {
 };
 const getAtendancebyid = async (req, res) => {
   let nic = req.params.id;
- 
+ console.log(req.params.id)
   await Attendance.find({
    nic: nic,
 

@@ -16,6 +16,7 @@ const AttendanceMark = () => {
   const [atendDetails, setAtendDetails] = useState();
   const [Attendance, setAttendance] = useState();
   const [type, setType] = useState()
+ 
   const find = () => {
      setmodalShow(true);
     axios
