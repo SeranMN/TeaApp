@@ -30,7 +30,7 @@ export const sidebarData = [
 },
 {
     title:'My Appointments',
-    path:'',
+    path:'./AppPendingTable.js',
     icon:<FaCalendarCheck/>,
     cName:'nav-text'
 },

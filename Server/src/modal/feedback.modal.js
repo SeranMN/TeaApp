@@ -5,7 +5,7 @@ const FeedbackSchema = new mongoose.Schema({
     email: { type: String, required: true},
     feedbackType: { type: String, required: true},
     description: {type:String, required: true},
-    //rating: {type:Number, required: true},
+    rating: {type:Number, required: true},
 });
 
 const Feedback = mongoose.model('feedback', FeedbackSchema);

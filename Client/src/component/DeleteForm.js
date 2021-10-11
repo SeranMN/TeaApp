@@ -3,16 +3,17 @@ import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
+
 const DeleteForm = ({ employee }) => {
   const [validated, setValidated] = useState(false);
-
+console.log(employee._id)
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     } else {
-      axios.delete(`http://localhost:5000/employee/delete/:${employee._id}`).then(() => {
+      axios.delete(`http://localhost:5000/employee/delete/${employee._id}`).then(() => {
         alert("Deleted")
       }).catch((err) => {
         alert(err)
@@ -22,7 +23,9 @@ const DeleteForm = ({ employee }) => {
     setValidated(true);
   };
   return (
+
     <>
+      
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Employee No.</Form.Label>

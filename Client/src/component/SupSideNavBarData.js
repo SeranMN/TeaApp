@@ -1,5 +1,5 @@
 import React from "react";
-import { FaUsers, FaCalendarCheck, FaHistory, FaFileInvoiceDollar } from "react-icons/fa";
+import { FaUsers, FaCalendarCheck, FaHistory, FaIndustry } from "react-icons/fa";
 
 export const sidenavbarData = [
   {
@@ -9,14 +9,14 @@ export const sidenavbarData = [
     cName: "nav-text",
   },
   {
-    title: "Generate Invoice",
+    title: "Supplying Details",
     path: "/Report_Table.js",
-    icon: <FaFileInvoiceDollar />,
+    icon: <FaIndustry />,
     cName: "nav-text",
   },
   {
     title: "My Appointments",
-    path: "/Report_Table.js",
+    path: "/PendingTable.js",
     icon: <FaCalendarCheck />,
     cName: "nav-text",
   },

@@ -1,11 +1,10 @@
-     
-   
-import React from 'react';
+import React from "react";
+import Header from "./component/Header";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Supplier from "./component/Supplier";
 import DailySupply from "./component/DailySupply";
-import ReportTable from "./component/Report_Table";
+import ReportTable from "./component/Sup_Report_Table";
 import FormerSuppliers from "./component/FormerSuppliers";
 import Employee from './component/Employee';
 import AdminDashBoard from "./component/AdminDashBoard"
@@ -17,6 +16,7 @@ import Dashboard from './component/Pages/Dashboard';
 import Addstock from './component/Pages/Addstock';
 import In from './component/Pages/In';
 import Out from './component/Pages/Out';
+import ReportNavod from './component/Pages/ReportNavod'
 import Home from './component/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CusTable from './component/CusTable';
@@ -27,63 +27,72 @@ import ContactUs from './component/ContactUs';
 import ApprTable from './component/ApprTable';
 import PendingTable from './component/AppPendingTable';
 import ContactUsView from './component/ContactUsView';
+import ProductStock from './component/ProductStock';
+import Reportpage from './component/proReportpage';
+import MainContent2 from './component/AdmnProductView';
+import MainContent from './component/CusProductView';
 
 
 function App() {
   return (
-    <div>
+     
+     
+     
+      
+
+    <div> 
       <Router>
         <div className="App">
           <Switch>
-            
-            <Route exact path = "/">
-            <Home/>
+            <Route exact path="/">
+              <Home />
             </Route>
-            <Route path='/Dashboard' exact component={Dashboard}/>
-        <Route path='/Addstock' exact component={Addstock}/>
-        <Route path='/In' exact component={In}/>
-        <Route path='/Out' exact component={Out}/>
-              <Route exact path="/Supplier.js">
-                <Supplier/>
-              </Route>
-
-              <Route path="/Report_Table.js">
-                <ReportTable />
-              </Route>
-
-              <Route path="/Report_Table.js">
-                <ReportTable/>
-              </Route>
-
-              <Route path="/FormerSuppliers.js">
-                <FormerSuppliers />
-              </Route>
-
-              <Route path="/DailySupply.js">
-                <DailySupply />
-              </Route>
-            
-           
-          <Route exact path = "/Admin.js">
-            <AdminDashBoard/>
+            <Route path="/Dashboard" exact component={Dashboard} />
+            <Route path="/Addstock" exact component={Addstock} />
+            <Route path="/In" exact component={In} />
+            <Route path="/Out" exact component={Out} />
+            <Route exact path="/Supplier.js">
+              <Supplier />
             </Route>
-          <Route path = "/Employee.js">
-            <Employee/>
-          </Route>
-          <Route path = "/Salary.js">
-            <Salary/>
-          </Route>
-          <Route path = "/Attendance.js">
-            <Attendance/>
-          </Route>
-          <Route path = "/FormerEmp.js">
-            <FormerEmp/>
-          
-          </Route>
-           <Route path = "/AttendanceMark.js">
-            <AttendanceMark/>
-          
-          </Route>
+            
+        <Route path='/ReportNavod' exact component={ReportNavod}/>
+              
+
+            <Route path="/Report_Table.js">
+              <ReportTable />
+            </Route>
+
+            <Route path="/FormerSuppliers.js">
+              <FormerSuppliers />
+            </Route>
+
+            <Route path="/DailySupply.js">
+              <DailySupply />
+            </Route>
+
+            <Route exact path="/Admin.js">
+              <AdminDashBoard />
+            </Route>
+
+            <Route path="/Employee.js">
+              <Employee />
+            </Route>
+
+            <Route path="/Salary.js">
+              <Salary />
+            </Route>
+
+            <Route path="/Attendance.js">
+              <Attendance />
+            </Route>
+
+            <Route path="/FormerEmp.js">
+              <FormerEmp />
+            </Route>
+
+            <Route path="/AttendanceMark.js">
+              <AttendanceMark />
+            </Route>
 
           <Route exact path = "/CusLogin.js">
             <CusLogin />
@@ -109,11 +118,27 @@ function App() {
     <Route path = "/ContactUsView.js">
       <ContactUsView/>
     </Route>
+    {/* <Route  path = "/AdmnProductView.js">
+            <MainContent2/>
+          </Route> */}
+          <Route path="/AdmnProductView.js">
+            <MainContent2/> </Route>
+          <Route path = "/CusProductView.js">
+            <MainContent/>
+          </Route>
+          <Route path = "/ProductStock.js">
+            <ProductStock/>
+          </Route>
+           <Route path = "/proReportpage.js">
+             <Reportpage/>
+           </Route>
       </Switch>
     </div>
      
       </Router >
         </div>
+      
+    
   );
 }
 
