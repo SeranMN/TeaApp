@@ -4,19 +4,17 @@ import { Button } from "react-bootstrap";
 import employee from "../Img/employee.png";
 import sup from "../Img/supplier.png"
 import Container from 'react-bootstrap/Container'
-import stock from '../Img/stock.png'
+import product from '../Img/product.png'
 import vehicle from '../Img/vehicle.png'
 import customer from '../Img/cus.png'
-import product from '../Img/product.png'
+import stock from '../Img/stock.png'
 import order from '../Img/order.png'
-import appointment from '../Img/appointment.png'
+import appoinment from '../Img/appointment.png'
 import { Link } from "react-router-dom"
-import Header from "./Header";
 
 const AdminDashBoard = () => {
   return (
     <div>
-      <Header/>
     <Container>
       <Row md={1} md={4} className="g-4" >
           <Col>
@@ -60,7 +58,7 @@ const AdminDashBoard = () => {
         <Col >
          <Link to = "/Dashboard">
           <Card bg="success" text="light" style={{ width: "18rem" , height :"25rem"}}>
-              <Card.Img variant="top" src={stock} />
+              <Card.Img variant="top" src={stock}  />
             <Card.Body>
               <Card.Title>Stock Management</Card.Title>
             </Card.Body>
@@ -84,12 +82,14 @@ const AdminDashBoard = () => {
           </Card>
           </Col>
           <Col >
+          
           <Card bg="success" text="light" style={{ width: "18rem", height :"25rem" }}>
-              <Card.Img variant="top" src={appointment} style = {{height:"18rem"}} />
+              <Card.Img variant="top" src={appoinment} style = {{height:"18rem"}} />
             <Card.Body>
               <Card.Title>appointment Management</Card.Title>
             </Card.Body>
           </Card>
+          
           </Col>
         
       </Row>

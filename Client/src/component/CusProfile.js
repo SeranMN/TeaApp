@@ -7,11 +7,15 @@ import ModalFeedback from './ModalFeedback.js'
 import Modalpassword from './CusModalpassword.js'
 import Modaldelete from './CusModaldelete.js';
 import axios from 'axios';
+import Header from './Header.js';
+import { useHistory } from 'react-router-dom';
 
-
+ 
 
 const CusProfile = () => {
-
+   const  history = useHistory()
+    
+        const[modleType,setModaltype] = useState("")
             const [modalShow, setModalShow] = React.useState(false);
             const [modalFeedback, setModalFeedback] = React.useState(false);
             const [modalPassword, setModalPassword] = React.useState(false);
@@ -37,7 +41,9 @@ const CusProfile = () => {
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: "cover" }}>
                     
-                <h3>User Profile</h3>
+                <div>
+                    <Header/>
+                 <h3>User Profile</h3>
                 <Profile profile = {profiledetails.data} />
 
                 <Button variant="primary" onClick={() => setModalShow(true)}>
@@ -55,16 +61,18 @@ const CusProfile = () => {
                 <Button variant="secondary" onClick={() => setModalPassword(true)}>
                     Change Password
                 </Button>
-
-                <br /> <br />
-                
+                <Button variant="danger" onClick={() => { setModalDelete(true); setModaltype("logout")}}>
+                    Logout
+                </Button>
+                <br /><br />
                 <Modalnew
                 show={modalShow}
                 onHide={() => setModalShow(false)}
                 profile = {profiledetails}
                 />
                 <Modaldelete
-                show={modalDelete}
+                        show={modalDelete}
+                        type = {modleType}
                 onHide={() => setModalDelete(false)}
                 profile = {profiledetails}
                 />
@@ -76,6 +84,7 @@ const CusProfile = () => {
                 show={modalPassword}
                 onHide={() => setModalPassword(false)}
                 />
+            </div>
             </div>
             )
             

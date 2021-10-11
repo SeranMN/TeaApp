@@ -1,42 +1,36 @@
 import Table from "react-bootstrap/Table";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ModleDaily from "./SupModleDaily";
 import ModleDelete from "./SupModleDelete";
+import axios from "axios";
 
 const DailySupplyTable = ({ SupplierID, dailySupply, onClick }) => {
   const [modalShow, setModalShow] = useState(false);
   const [modaldelete, setModalDelete] = useState(false)
-  const [dailysuplies, setDailySuply] = useState([
-    {
-      SupplierID: "S001",
-      Date: "2021-08-21",
-      Weight: "50",
-      DeliveredVehicle: "LY-3654",
-      DataEntryOfficer: "DE002",
-    },
-
-    {
-      SupplierID: "S002",
-      Date: "2021-08-21",
-      Weight: "150",
-      DeliveredVehicle: "LA-8546",
-      DataEntryOfficer: "DE002",
-    },
-
-    {
-      SupplierID: "S003",
-      Date: "2021-08-21",
-      Weight: "80",
-      DeliveredVehicle: "LY-3654",
-      DataEntryOfficer: "DE001",
-    },
-  ]);
+  const [dailysuplies, setDailySuply] = useState([]);
   const [dailysupplyDet, setDailySupplyDet] = useState('')
-  const [dailysupplyDelete, setDailySupplyDelete] = useState('')
-  //console.log(dailySupply)
+  const [dailysupplydelete, setDailySupplyDelete] = useState('')
+
+  useEffect(() => {
+    const getSupplies = () => {
+      axios
+        .get("http://localhost:5000/dailysupply")
+        .then((res) => {
+          setDailySuply(res.data);
+          console.log(res.data);
+        })
+        .catch((err) => {
+          alert(err.msg);
+        });
+    };
+    getSupplies();
+  });
+
   return (
-    <div>
+    <div
+      style={{ marginLeft: "220px", marginRight: "220px" }}
+    >
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -49,13 +43,13 @@ const DailySupplyTable = ({ SupplierID, dailySupply, onClick }) => {
           </tr>
         </thead>
         {dailysuplies.map((dailySupply) => (
-          <tbody key={dailySupply.SupplierID}>
+          <tbody key={dailySupply._id}>
             <tr>
-              <td>{dailySupply.SupplierID}</td>
-              <td>{dailySupply.Date}</td>
-              <td>{dailySupply.Weight}</td>
-              <td>{dailySupply.DeliveredVehicle}</td>
-              <td>{dailySupply.DataEntryOfficer}</td>
+              <td>{dailySupply.supID}</td>
+              <td>{new Date(dailySupply.date).toDateString()}</td>
+              <td>{dailySupply.weight}</td>
+              <td>{dailySupply.vehicle}</td>
+              <td>{dailySupply.deo}</td>
               <td>
                 <div>
                   <span>
@@ -71,7 +65,10 @@ const DailySupplyTable = ({ SupplierID, dailySupply, onClick }) => {
                   &nbsp;&nbsp;&nbsp;
                   <span>
                     <FaTrash
-                      onClick={() => { setModalDelete(true); setDailySupplyDelete(dailySupply) }}
+                      onClick={() => {
+                        setModalDelete(true);
+                        setDailySupplyDelete(dailySupply);
+                      }}
                       style={{ cursor: "pointer", color: "red" }}
                       title="Delete Record"
                     />
@@ -87,10 +84,11 @@ const DailySupplyTable = ({ SupplierID, dailySupply, onClick }) => {
         onHide={() => setModalShow(false)}
         supplyDet={dailysupplyDet}
       />
-      <ModleDelete show={modaldelete}
+      <ModleDelete
+        show={modaldelete}
         onHide={() => setModalDelete(false)}
-        dailysupplyDelete={dailysupplyDelete}/>
-      
+        dailysupplydelete={dailysupplydelete}
+      />
     </div>
   );
 };
