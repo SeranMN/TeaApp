@@ -13,7 +13,6 @@ import Sidenavbar from './AppSidenavbar';
 import AppDeleteModal from './AppDeleteModal';
 import swal from 'sweetalert';
 import ApprModal from './ApprModal';
-import emailjs from 'emailjs-com';
 
 
 const PendingTable = () => {
@@ -24,9 +23,6 @@ const PendingTable = () => {
     const [DeleteAppointment, setDeleteAppointment] = useState('');
     const [ApprAppointment, setApprAppointment] = useState('');
     const [modalAppr, setModalAppr] = useState(false);
-
-    function message(e) {
-    }
 
     useEffect(() => {
       const getAppointments = () => {
