@@ -6,24 +6,48 @@ import { empsidenavbarData } from "./EmpSidebarData";
 import "./Navbar.css";
 import { IconContext } from "react-icons";
 import Modaldelete from "./CusModaldelete";
+import cup from '../Img/teacu.png'
+import {FiLogOut} from "react-icons/fi"
 
 
 const EmpSideNavBar = () => {
-  
-  
+  const [modalDelete, setModalDelete] = React.useState(false);
+  const[modleType,setModaltype] = useState("")
+  const token =JSON.parse(sessionStorage.getItem("token"));
+
+  const logout=()=>{
+     setModalDelete(true); 
+     setModaltype("logout")
+  }
+ 
   return (
     <div>
       <IconContext.Provider value={{ color: "#fff" }}>
-        <div className="navbar">
+        <div className='navbar'>
+          
+                    <div style={{color:"white",marginLeft:"300px",fontSize:"20px"}}>Employee Management</div>
+                    <div style={{color:"white",marginLeft:"840px",fontSize:"20px"}}>{token.email}</div>
+                    <div style={{color:"white",marginRight:"30px",fontSize:"25px"}}><FiLogOut onClick={logout}/></div>
+                </div>
           
             
-       
-        </div>
+    
         <nav className={"nav-menu active"}>
           <ul className="nav-menu-items">
-            <li className="navbar-toggle">
-            
-            </li>
+          <li className='navbar-toggle'>
+                            <div>
+                            <img
+                                src={cup}
+                                width="40"
+                                height="40"
+                                className="d-inline-block align-top"
+                                alt="React Bootstrap logo"
+                            />
+                            </div>
+                            <div style={{color:"#659834",fontSize:"20px"}}>Gangasiri Tea</div>
+
+
+                        </li>
             {empsidenavbarData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
@@ -37,7 +61,12 @@ const EmpSideNavBar = () => {
           </ul>
         </nav>
       </IconContext.Provider >
-        
+      <Modaldelete
+                        show={modalDelete}
+                        type = {modleType}
+                onHide={() => setModalDelete(false)}
+               
+            />
     </div>
   );
 };

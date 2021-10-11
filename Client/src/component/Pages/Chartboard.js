@@ -5,19 +5,19 @@ import axios from "axios";
 
 
 const Chartboard = () => {
-    const [chartData, setChartData] = useState({});
-    const[products,setproducts]=useState([]);
+  const [chartData, setChartData] = useState({});
+  const [products, setproducts] = useState([]);
 
 
-   const chart = () => {
+  const chart = () => {
     let productName = [];
     let Amount = [];
     axios.get("http://localhost:5000/stock/")
       .then(res => {
         console.log(res);
         for (const dataObj of res.data) {
-            productName.push(dataObj.ProductName);
-            Amount.push(parseInt(dataObj.Amount));
+          productName.push(dataObj.ProductName);
+          Amount.push(parseInt(dataObj.Amount));
         }
         setChartData({
           labels: productName,
@@ -27,7 +27,7 @@ const Chartboard = () => {
               data: Amount,
               backgroundColor: ["#060B26"],
               borderWidth: 4
-              
+
             }
           ]
         });
@@ -41,14 +41,14 @@ const Chartboard = () => {
   useEffect(() => {
     chart();
   }, []);
-  
 
-    return (
-        <div >
-     
-      <div style={{marginLeft:"400px",maxWidth:"800px",marginTop:"20px"}}>
+
+  return (
+    <div >
+
+      <div style={{ marginLeft: "400px", maxWidth: "800px", marginTop: "20px" }}>
         <Line
-         
+
           data={chartData}
           options={{
             responsive: true,
@@ -78,7 +78,7 @@ const Chartboard = () => {
         />
       </div>
     </div>
-    )
+  )
 }
 
 export default Chartboard

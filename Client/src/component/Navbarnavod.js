@@ -7,17 +7,27 @@ import './Navbarnavod.css'
 import { IconContext } from 'react-icons';
 import cup from '../Img/teacu.png'
 import {FiLogOut} from "react-icons/fi"
+import Modaldelete from './CusModaldelete';
 
 function Navbar() {
     const [sidebar, setsidebar] = useState(true);
     // const showsidebar = () => setsidebar(!sidebar);
+    const [modalDelete, setModalDelete] = React.useState(false);
+    const[modleType,setModaltype] = useState("")
+    const token =JSON.parse(sessionStorage.getItem("token"));
+
+    const logout=()=>{
+       setModalDelete(true); 
+       setModaltype("logout")
+    }
 
     return (
         <>
             <IconContext.Provider value={{ color: '#fff' }}>
                 <div className='navbar'>
                     <div style={{color:"white",marginLeft:"300px",fontSize:"20px"}}>Stock Management</div>
-                    <div style={{color:"white",marginRight:"30px",fontSize:"20px"}}><FiLogOut/></div>
+                    <div style={{color:"white",marginLeft:"840px",fontSize:"20px"}}>{token.email}</div>
+                    <div style={{color:"white",marginRight:"30px",fontSize:"20px"}}><FiLogOut onClick={logout}/></div>
                 </div>
                 <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                     <ul className='nav-menu-items' >
@@ -55,6 +65,12 @@ function Navbar() {
 
                 </nav>
             </IconContext.Provider>
+            <Modaldelete
+                        show={modalDelete}
+                        type = {modleType}
+                onHide={() => setModalDelete(false)}
+               
+            />
         </>
     );
 }
