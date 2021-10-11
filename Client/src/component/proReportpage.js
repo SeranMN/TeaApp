@@ -3,10 +3,12 @@ import { Table } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 import Navbar from './ProductSidenavbar';
 import {useState, useEffect } from "react";
-import { DropdownButton } from 'react-bootstrap';
-import { Dropdown } from 'react-bootstrap';
 import axios from 'axios';
 import './productc.css'
+import MaterialTable from 'material-table'
+import PrintIcon from '@material-ui/icons/Print'
+import jsPDF from 'jspdf'
+import 'jspdf-autotable'
 
 const Reportpage = () => {
 
@@ -26,46 +28,47 @@ const Reportpage = () => {
         };
         getProductStocks();
       });
+
+  
+    const columns = [
+      { title: "ProductID", field: "ProductID", },
+      { title: "Quantity", field: "Quantity", },
+      { title: "Date", field: "Date", }
+     ]
+  
+
+    const downloadPdf = () => {
+      const doc = new jsPDF()
+      doc.text("Product Stock Details", 20, 10)
+      doc.autoTable({
+        theme: "grid",
+        columns: columns.map(col => ({ ...col, dataKey: col.field })),
+        body: ProductStocks
+      })
+      doc.save('table.pdf')
+    }
     return (
         <div><Navbar/>
             <div style={{ marginLeft: "220px", marginTop: "20px", marginRight: "10px"}}>
 
-<h3>PRODUCT REPORT</h3>
-<hr></hr> 
-<DropdownButton id="dropdown-basic-button" title="Select Month">
-<Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-<Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-<Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-</DropdownButton>
-<hr></hr>
-<Table striped bordered hover>
-        <thead>
-          <tr>
-            
-            <th>ProductID</th>
-            <th>Quantity</th>
-            <th>Date</th>
-            
-          </tr>
-        </thead>
-        {ProductStocks.map((ProductStock) => (
-          <tbody key={ProductStock._id}>
-
-          
-    <tr>
-    <td>{ProductStock.ProductID}</td>
-    <td>{ProductStock.Quantity}</td>
-    <td>{ProductStock.Date}</td>
-     
-    
-   
-            </tr>
-          </tbody>
-        
-        ))}
-      </Table>
-<Button style={{marginLeft: "750px"}} variant="primary" >Print PDF</Button>
-</div>
+                <h3 align="center">PRODUCT REPORT</h3>
+                <hr></hr>
+                <MaterialTable
+                   title="Product Stock Details"
+                   columns={columns}
+                   data={ProductStocks}
+                   options={{
+                      paging:false}}
+                   actions={[
+                       {
+                         icon: () => <PrintIcon />,
+                         tooltip: "Export to Pdf",
+                         onClick: () => downloadPdf(),
+                         isFreeAction: true
+                       }
+                    ]}
+                />
+            </div>
 
         </div>
     )

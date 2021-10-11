@@ -1,6 +1,7 @@
 const ProductStock = require("../modal/productStock.modal");
 const mongoose = require("mongoose");
-//Create a Food Item
+
+//Create a Product stock Item
 const createProductStock = async (req, res) => {
     if (req.body) {
       const productStock = new ProductStock(req.body);
@@ -15,7 +16,7 @@ const createProductStock = async (req, res) => {
     }
   };
 
-//get All Food Items
+//get All Product stock Items
 const getAllProductStocks = async (req, res) => {
     await ProductStock.find()
         .then((data) => {
@@ -27,7 +28,7 @@ const getAllProductStocks = async (req, res) => {
 };
 
 
-//delete Food Item
+//delete Product stock Item
 const deleteProductStock = async (req, res) => {
   await ProductStock.findByIdAndDelete(req.params.id)
     .then(() => {
@@ -40,7 +41,6 @@ const deleteProductStock = async (req, res) => {
 
 module.exports = {
     createProductStock,
-    //getProductFromName,
     getAllProductStocks,
     deleteProductStock,
     
