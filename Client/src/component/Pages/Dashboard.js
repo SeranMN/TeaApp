@@ -19,7 +19,7 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-
+import Chartboard from './Chartboard';
 
 
 
@@ -58,7 +58,7 @@ const StyledTableCell = withStyles((theme) => ({
       marginTop:300,
       width:"75%",
       position:"absolute",
-      top:0
+      top:350
       
     },
     bx:{
@@ -109,6 +109,7 @@ function Dashboard() {
         <div className='dashboard'>
 
           <Navbar/>
+          
       <Box className={classes.bx}   sx={{ flexGrow: 1 }}>
       <AppBar style={{backgroundColor:"#e4e4e4"}} position="static" className={classes.ap}>
         <Toolbar>
@@ -133,7 +134,7 @@ function Dashboard() {
         </Toolbar>
       </AppBar>
     </Box>
-          
+    <Chartboard/> 
          
         
         

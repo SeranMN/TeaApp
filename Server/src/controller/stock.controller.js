@@ -4,13 +4,25 @@ const { db } = require('../modal/Stock');
 
 const createStock = async (req, res) => {
     if(req.body){
-        const stock =new Stock(req.body);
-        await stock.save()
-        .then(data => res.status(200).send({ data: data }))
-            .catch((err) => {
-                res.status(200).send(err);
+        await Stock.findOne({ productID: req.body.productID }, async (err, result) => {
+            if (err) {
+                console.log(err);
+            }else{
+                if (!result) {
+                    const stock =new Stock(req.body);
+                    await stock.save()
+                    .then(data => res.status(200).send({ data: data }))
+                    .catch((err) => {
+                    res.status(200).send(err);
+                    
             })
-        
+        }
+        else {
+            console.log("Stock Already Exist");
+            res.send({ message: "Stock Already Exist" });
+        }
+        }
+        })
 
     }
 

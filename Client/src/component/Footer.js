@@ -81,7 +81,7 @@ const Footer = () => {
             </Grid>
           </Grid>
           <Box style={{color:"black"}} textAlign="center" pt={{ xs: 5, sm: 10 }} pb={{ xs: 5, sm: 0 }}>
-            Material UI Workshop &reg; {new Date().getFullYear()}
+            Copyright &reg; {new Date().getFullYear()}
           </Box>
         </Container>
       </Box>

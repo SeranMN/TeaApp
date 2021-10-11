@@ -96,6 +96,11 @@ useEffect(() => {
     getamount()
   }
 }, [open])
+
+const onClickDelete=(product)=>{
+  deleteProduct(product);
+  handleClose()
+}
    
   return (
     <>
@@ -133,7 +138,7 @@ useEffect(() => {
           </Button>
          
           {product?
-          <Button onClick={()=>deleteProduct(product)} color="secondary" variant="outlined" autoFocus>
+          <Button onClick={()=>onClickDelete(product)} color="secondary" variant="outlined" autoFocus>
             Yes
           </Button>:
            <Button onClick={handleclick} color="secondary" variant="outlined" autoFocus>

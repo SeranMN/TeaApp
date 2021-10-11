@@ -15,7 +15,6 @@ import Salary from './component/Salary';
 import Attendance from './component/Attendance';
 import FormerEmp from './component/FormerEmp';
 import AttendanceMark from './component/AttendanceMark';
-import Navbar from './component/Navbarnavod';
 import Dashboard from './component/Pages/Dashboard';
 import Addstock from './component/Pages/Addstock';
 import In from './component/Pages/In';

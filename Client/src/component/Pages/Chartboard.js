@@ -1,52 +1,84 @@
-import * as React from 'react';
-import Paper from '@material-ui/core/Paper';
-import {
-  Chart,
-  BarSeries,
-  Title,
-  ArgumentAxis,
-  ValueAxis,
-} from '@devexpress/dx-react-chart-material-ui';
-import { Animation } from '@devexpress/dx-react-chart';
+import React, { useState, useEffect } from "react";
+import { Line } from "react-chartjs-2";
+import axios from "axios";
 
-const data = [
-  { year: '1950', population: 2.525 },
-  { year: '1960', population: 3.018 },
-  { year: '1970', population: 3.682 },
-  { year: '1980', population: 4.440 },
-  { year: '1990', population: 5.310 },
-  { year: '2000', population: 6.127 },
-  { year: '2010', population: 6.930 },
-];
 
-export default class Demo extends React.PureComponent {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      data,
-    };
-  }
+const Chartboard = () => {
+    const [chartData, setChartData] = useState({});
+    const[products,setproducts]=useState([]);
 
-  render() {
-    const { data: chartData } = this.state;
+
+   const chart = () => {
+    let productName = [];
+    let Amount = [];
+    axios.get("http://localhost:5000/stock/")
+      .then(res => {
+        console.log(res);
+        for (const dataObj of res.data) {
+            productName.push(dataObj.ProductName);
+            Amount.push(parseInt(dataObj.Amount));
+        }
+        setChartData({
+          labels: productName,
+          datasets: [
+            {
+              label: "level of thiccness",
+              data: Amount,
+              backgroundColor: ["#060B26"],
+              borderWidth: 4
+              
+            }
+          ]
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    console.log(productName, Amount);
+  };
+
+  useEffect(() => {
+    chart();
+  }, []);
+  
 
     return (
-      <Paper>
-        <Chart
+        <div >
+     
+      <div style={{marginLeft:"400px",maxWidth:"800px",marginTop:"20px"}}>
+        <Line
+         
           data={chartData}
-        >
-          <ArgumentAxis />
-          <ValueAxis max={7} />
-
-          <BarSeries
-            valueField="population"
-            argumentField="year"
-          />
-          <Title text="World population" />
-          <Animation />
-        </Chart>
-      </Paper>
-    );
-  }
+          options={{
+            responsive: true,
+            title: { text: "THICCNESS SCALE", display: true },
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    autoSkip: true,
+                    maxTicksLimit: 10,
+                    beginAtZero: true
+                  },
+                  gridLines: {
+                    display: false
+                  }
+                }
+              ],
+              xAxes: [
+                {
+                  gridLines: {
+                    display: false
+                  }
+                }
+              ]
+            }
+          }}
+        />
+      </div>
+    </div>
+    )
 }
+
+export default Chartboard

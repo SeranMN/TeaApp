@@ -73,6 +73,7 @@ const handleClose2 = (event, reason) => {
   },[products])
 
   
+  
   const deleteProduct=(product)=>{
      
     axios.delete(`http://localhost:5000/stock/delete/${product._id}`).then(() => 

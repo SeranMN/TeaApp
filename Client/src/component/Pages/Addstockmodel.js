@@ -103,14 +103,21 @@ import MuiAlert from '@mui/material/Alert';
 
         if(!product){
         
-        axios.post("http://localhost:5000/stock/add",newstock).then(()=>{
-            handleClick()
+        axios.post("http://localhost:5000/stock/add",newstock).then((res)=>{
+            if(res.data.message){
+                alert(res.data.message)
+
+            }
+            else{
+                handleClick()
+            }
+            
             setproductID("");
             setproductName("");
             setsectionNo("");
             setdate("");
             handleClose()
-        }).catch((err)=>{alert(err)
+        }).catch((err)=>{console.log(err)
            
         })}
        else if(product){
@@ -191,13 +198,26 @@ import MuiAlert from '@mui/material/Alert';
                     {product?
                     <Modal.Title>Edit</Modal.Title>
                     :
-                    <Modal.Title>Add New Stock</Modal.Title>
+                    <Modal.Title>Add New Product</Modal.Title>
                     }                 
                 </Modal.Header>
                 <Modal.Body>
                 <form onSubmit={onsubmit} >
                     <FormControl>
                     <InputLabel className={classes.lbl}>Product ID </InputLabel>
+
+                    {product?
+                    <TextField
+                    id="outlined-helperText"
+                    variant="outlined"
+                    disabled
+                    className={classes.field}
+                    required
+                    value={productID}
+                    onChange ={(e) => setproductID(e.target.value)}
+                    />
+                    
+                    :
                     
                     <TextField
                         id="outlined-helperText"
@@ -207,6 +227,7 @@ import MuiAlert from '@mui/material/Alert';
                         value={productID}
                         onChange ={(e) => setproductID(e.target.value)}
                     />
+                    } 
                     </FormControl>
 
                     <FormControl>
