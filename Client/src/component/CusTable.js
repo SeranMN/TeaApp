@@ -4,9 +4,9 @@ import axios from "axios";
 import Sidenavbar from './CusSidenavbar'
 import MaterialTable from "material-table";
 import PrintIcon from "@material-ui/icons/Print";
-import Clear from "@material-ui/icons/Clear";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import Button from 'react-bootstrap/Button';
 
 const CusTable = ({ CustomerID, customer, onClick }) => {
   const [customers, setCustomer] = useState([]);
@@ -67,8 +67,7 @@ const CusTable = ({ CustomerID, customer, onClick }) => {
           }}
           actions={[
             {
-              icon: () => <PrintIcon />, 
-              tooltip: "Generate Report",
+              icon: () => <Button> Generate Report &nbsp;<PrintIcon /></Button>, 
               onClick: () => downloadPdf(),
               isFreeAction: true,
             },

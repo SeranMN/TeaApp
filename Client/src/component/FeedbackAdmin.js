@@ -5,22 +5,30 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Sidenavbar from "./CusSidenavbar";
 import { CSVLink } from 'react-csv';
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+import PrintIcon from "@material-ui/icons/Print";
 
 const FeedbackAdmin = ({}) => {
   const [feedbacks, setFeedback] = useState([]);
 
-  const headers = [
-    { label: 'Product ID', key: 'productID' },
-    { label: 'Email', key: 'Email' },
-    { label: 'Feedback Type', key: 'feedbackType' },
-    { label: 'Description', key: 'description' },
-    { label: 'Rating', key: 'rating' }
+  const columns = [
+    { title: 'Product ID', field: 'productID' },
+    { title: 'Email', field: 'email' },
+    { title: 'Feedback Type', field: 'feedbackType' },
+    { title: 'Description', field: 'description' },
+    { title: 'Rating', field: 'rating' }
   ];
 
-  const csvReport = {
-    filename: 'Tea_Factory.csv',
-    header : headers,
-    data : feedbacks
+  const downloadPdf = () => {
+    const doc = new jsPDF();
+    doc.text("Feedbacks", 70, 10);
+    doc.autoTable({
+      theme: "striped",
+      columns: columns.map((col) => ({ ...col, dataKey: col.field })),
+      body: feedbacks,
+    });
+    doc.save("TeaFactory_Feedbacks.pdf");
   };
 
   useEffect(() => {
@@ -47,9 +55,9 @@ const FeedbackAdmin = ({}) => {
       <h3>Feedbacks</h3>
       <div className="report" style={{ marginLeft: "850px"}}>
         
-          <CSVLink {...csvReport}> 
-            <Button variant="outline-primary"> Generate Report </Button>
-          </CSVLink>
+          
+          <Button variant="outline-primary" onClick={() =>downloadPdf()}> Generate Report &nbsp; <PrintIcon /> </Button>
+          
           
       </div>
       <br />
