@@ -1,33 +1,33 @@
 const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
-const supplierSchema = new Schema({
-  name: {
+const dailySupplySchema = new Schema({
+  supID: {
     type: String,
     required: true,
   },
-  address: {
+  date: {
     type: String,
     required: true,
   },
-  nic: {
+  weight: {
+    type: Number,
+    required: true,
+  },
+  vehicle: {
     type: String,
     required: true,
   },
-  mobile: {
+  deo: {
     type: String,
     required: true,
   },
-  email: {
-    type: String,
+  month: {
+    type: Number,
     required: true,
-  },
-  image: {
-    type: String,
-    // required: true,
-  },
+  }
 });
 
-const Supplier = mongoose.model("Supplier", supplierSchema);
+const dailySupply = mongoose.model("dailysupply", dailySupplySchema);
 
-module.exports = Supplier;
+module.exports = dailySupply;

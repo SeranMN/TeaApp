@@ -1,16 +1,12 @@
 const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
-const supplierSchema = new Schema({
+const formersupplierSchema = new Schema({
   name: {
     type: String,
     required: true,
   },
   address: {
-    type: String,
-    required: true,
-  },
-  nic: {
     type: String,
     required: true,
   },
@@ -22,12 +18,8 @@ const supplierSchema = new Schema({
     type: String,
     required: true,
   },
-  image: {
-    type: String,
-    // required: true,
-  },
 });
 
-const Supplier = mongoose.model("Supplier", supplierSchema);
+const FormerSupplier = mongoose.model("FormerSupplier", formersupplierSchema);
 
-module.exports = Supplier;
+module.exports = FormerSupplier;

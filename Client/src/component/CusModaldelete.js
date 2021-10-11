@@ -3,6 +3,7 @@ import Modal from 'react-bootstrap/Modal'
 import { Button } from 'react-bootstrap'
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import swal from 'sweetalert';
 
 
 const Modaldelete = (props) => {
@@ -10,13 +11,13 @@ const Modaldelete = (props) => {
   if (props.type == "delete") {
   
     
-      axios.delete(`http://localhost:5000/customer/delete/${props.profile._id}`)
-        .then(() => {
-          alert("Deleted")
-          navigate();
-        }).catch((err) => {
-          alert(err)
-        })
+    axios.delete(`http://localhost:5000/customer/delete/${props.profile._id}`)
+    .then(() => {
+      swal("Deleted!", "Successfully Deleted", "success");
+        navigate();
+      }).catch((err) => {
+        alert(err)
+      })
       
     
   } else {

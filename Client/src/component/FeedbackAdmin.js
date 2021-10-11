@@ -1,14 +1,35 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-import InputGroup from "react-bootstrap/InputGroup";
-import { FormControl } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Sidenavbar from "./CusSidenavbar";
+import { CSVLink } from 'react-csv';
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+import PrintIcon from "@material-ui/icons/Print";
 
 const FeedbackAdmin = ({}) => {
   const [feedbacks, setFeedback] = useState([]);
+
+  const columns = [
+    { title: 'Product ID', field: 'productID' },
+    { title: 'Email', field: 'email' },
+    { title: 'Feedback Type', field: 'feedbackType' },
+    { title: 'Description', field: 'description' },
+    { title: 'Rating', field: 'rating' }
+  ];
+
+  const downloadPdf = () => {
+    const doc = new jsPDF();
+    doc.text("Feedbacks", 70, 10);
+    doc.autoTable({
+      theme: "striped",
+      columns: columns.map((col) => ({ ...col, dataKey: col.field })),
+      body: feedbacks,
+    });
+    doc.save("TeaFactory_Feedbacks.pdf");
+  };
 
   useEffect(() => {
     const getFeedback = () => {
@@ -23,26 +44,21 @@ const FeedbackAdmin = ({}) => {
         });
     };
     getFeedback();
-  });
+  },[]);
+
 
   return (
-    
-    <div style={{ marginLeft: "220px", marginRight: "10px" }}>
+    <div>
       <Sidenavbar />
+    <div style={{ marginLeft: "220px", marginRight: "10px" }}>
       <br />
       <h3>Feedbacks</h3>
-      <br />
-      <div className="report" style={{ marginLeft: "400px" }}>
-        <InputGroup className="mb-3">
-          <FormControl
-            placeholder="Enter Product ID"
-            aria-label=""
-            aria-describedby="basic-addon2"
-          />
-          <Button variant="outline-primary" id="button-addon2">
-            Generate Report
-          </Button>
-        </InputGroup>
+      <div className="report" style={{ marginLeft: "850px"}}>
+        
+          
+          <Button variant="outline-primary" onClick={() =>downloadPdf()}> Generate Report &nbsp; <PrintIcon /> </Button>
+          
+          
       </div>
       <br />
       <Table striped bordered hover>
@@ -53,7 +69,7 @@ const FeedbackAdmin = ({}) => {
             <th>Email</th>
             <th>Feedback Type</th>
             <th>Description</th>
-            {/* <th>Rating</th> */}
+            <th>Rating</th>
           </tr>
         </thead>
 
@@ -65,11 +81,12 @@ const FeedbackAdmin = ({}) => {
               <td>{feedback.email}</td>
               <td>{feedback.feedbackType}</td>
               <td>{feedback.description}</td>
-              {/* <td>{feedback.rating/td> */}
+              <td>{feedback.rating}</td>
             </tr>
           </tbody>
         ))}
       </Table>
+    </div>
     </div>
   
   );

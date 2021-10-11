@@ -3,7 +3,6 @@ import Modal from 'react-bootstrap/Modal'
 import CustReg from './CustReg'
 import { ModalBody } from 'react-bootstrap'
 import { Button } from 'react-bootstrap'
-import Feedbackform from './Feedbackform'
 
 const ModalRegister = (props) => {
     return (
@@ -24,7 +23,7 @@ const ModalRegister = (props) => {
 
         </ModalBody>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
+          <Button variant="success" onClick={props.onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
     )

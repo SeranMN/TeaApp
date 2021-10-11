@@ -1,20 +1,44 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
+import axios from "axios";
+import swal from "sweetalert";
 
 const DailySupplyForm = ({ det }) => {
   const [validated, setvalidated] = useState(false);
-  const [supID, setSupID] = useState(det != null ? det.SupplierID : "");
-  const [date, setDate] = useState(det != null ? det.Date : (""));
-  const [weight, setWeight] = useState(det != null ? det.Weight : (""));
-  const [vehicle, setVehicle] = useState(det != null ? det.DeliveredVehicle : (""));
-  const [deo, setDEO] = useState(det != null ? det.DataEntryOfficer : (""));
+  const [supID, setSupID] = useState(det != null ? det.supID : "");
+  const [date, setDate] = useState(det != null ? det.date : (""));
+  const [weight, setWeight] = useState(det != null ? det.weight : (""));
+  const [vehicle, setVehicle] = useState(det != null ? det.vehicle : (""));
+  const [deo, setDEO] = useState(det != null ? det.deo : (""));
 
   const handleSubmit = (event) => {
+    const newSupply = {
+      supID: supID,
+      date: date,
+      weight: weight,
+      vehicle: vehicle,
+      deo: deo,
+      month: new Date().getMonth(),
+    };
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+    } else {
+      if (det == null) {
+        axios
+          .post("http://localhost:5000/dailysupply/add", newSupply)
+          .then(() => swal("Successfull!", "Supply Added Successfully!", "success"))
+          .catch((err) => alert(err));
+      } else {
+        axios
+          .put(`http://localhost:5000/dailysupply/update/${det._id}`, newSupply)
+          .then(() =>
+            swal("Successfull!", "Supplier Updated Successfully!", "success")
+          )
+          .catch((err) => alert(err));
+      }
     }
     setvalidated(true);
   };
@@ -93,9 +117,9 @@ const DailySupplyForm = ({ det }) => {
           <option value="" selected disabled hidden>
             Select Vehicle
           </option>
-          <option value="1">LY-3654</option>
-          <option value="2">LA-8546</option>
-          <option value="3">LG-2284</option>
+          <option >LY-3654</option>
+          <option >LA-8546</option>
+          <option >LG-2284</option>
         </Form.Select>
         <Form.Control.Feedback type="invalid">
           Please Select Delivery Vehicle Number
@@ -113,9 +137,9 @@ const DailySupplyForm = ({ det }) => {
           <option value="" selected disabled hidden>
             Select Your Employee ID
           </option>
-          <option value="1">DE001</option>
-          <option value="2">DE002</option>
-          <option value="3">DE003</option>
+          <option >DE001</option>
+          <option >DE002</option>
+          <option >DE003</option>
         </Form.Select>
         <Form.Control.Feedback type="invalid">
           Please select Your Employee ID

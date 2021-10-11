@@ -36,17 +36,21 @@ const CusProfile = () => {
             },[]);
             console.log(profiledetails);
             return (
+            <div style = {{
+                backgroundImage: `url("https://vistapointe.net/images/tea-plantation-1.jpg")`,
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: "cover" }}>
+                    
                 <div>
                     <Header/>
                  <h3>User Profile</h3>
                 <Profile profile = {profiledetails.data} />
 
-                <br/><br />
                 <Button variant="primary" onClick={() => setModalShow(true)}>
                     Update Details
                 </Button>
                 &nbsp;&nbsp;
-                    <Button variant="warning" onClick={() => { setModalDelete(true); setModaltype("delete")}}>
+                <Button variant="danger" onClick={() => setModalDelete(true)}>
                     Delete Account
                 </Button>
                 &nbsp;&nbsp;
@@ -80,6 +84,7 @@ const CusProfile = () => {
                 show={modalPassword}
                 onHide={() => setModalPassword(false)}
                 />
+            </div>
             </div>
             )
             
