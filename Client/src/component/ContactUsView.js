@@ -9,7 +9,8 @@ import { FaTrash, FaEdit } from "react-icons/fa";
 import axios from 'axios';
 import AppBtnModal from './AppBtnModal'
 import AppDeleteModal from './AppDeleteModal';
-
+import Header from './Header';
+import Footer from './Footer'
 const ContactUsView = ({AppointmentID, appointment, onClick}) => {
   const [viewModalShow, setViewModalShow] = useState(false);
   const [ModalDelete, setModalDelete] = useState(false);
@@ -35,7 +36,10 @@ const ContactUsView = ({AppointmentID, appointment, onClick}) => {
 
     
   return (
+    <>
+      <Header/>
     <Card>
+      
       <Card.Header as="h5">Appointments</Card.Header>
       <Card.Body>
       <Table striped bordered hover size="sm">
@@ -102,8 +106,11 @@ const ContactUsView = ({AppointmentID, appointment, onClick}) => {
         onHide={() => setModalDelete(false)}
         DeleteAppointment = {DeleteAppointment}
       />
-  </Card.Body>
-</Card>
+      </Card.Body>
+      
+      </Card>
+      <Footer/>
+      </>
   )
 }
 
