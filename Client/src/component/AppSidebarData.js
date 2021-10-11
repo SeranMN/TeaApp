@@ -11,7 +11,7 @@ export const SidebarData = [
     
     {
         title:'Pending',
-        path:'/',
+        path:'/PendingTable.js',
         icon:<AiFillQuestionCircle/>,
         cName:'nav-text'
     },

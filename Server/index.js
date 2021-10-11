@@ -20,6 +20,10 @@ app.get("/", (req, res) => {
 
 const appointmentApi = require("./src/api/appointment.api");
 app.use("/appointment", appointmentApi());
+
+const apprappointmentApi = require("./src/api/apprAppointment.api");
+app.use("/apprAppointment", apprappointmentApi());
+
 const customerApi = require("./src/api/customer.api");
 app.use("/customer", customerApi());
 

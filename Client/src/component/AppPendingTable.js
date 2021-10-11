@@ -10,13 +10,23 @@ import { BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import ApprTable from './ApprTable';
 import axios from 'axios';
 import Sidenavbar from './AppSidenavbar';
+import AppDeleteModal from './AppDeleteModal';
+import swal from 'sweetalert';
+import ApprModal from './ApprModal';
+import emailjs from 'emailjs-com';
 
 
 const PendingTable = () => {
     const [viewmodalShow, setViewModalShow] = useState(false);
     const [appointments, setAppointments] = useState([]);
     const [viewAppointment, setViewAppointment] = useState('');
+    const [modaldelete, setModalDelete] = useState(false)
+    const [DeleteAppointment, setDeleteAppointment] = useState('');
+    const [ApprAppointment, setApprAppointment] = useState('');
+    const [modalAppr, setModalAppr] = useState(false);
 
+    function message(e) {
+    }
 
     useEffect(() => {
       const getAppointments = () => {
@@ -58,11 +68,11 @@ const PendingTable = () => {
             </td>
             <td><ButtonToolbar aria-label="Toolbar with button groups">
                 <ButtonGroup className="me-2" aria-label="First group"></ButtonGroup>
-                <Link to='/ApprTable'>
-                  <Button variant="success" >Approve</Button>
-                </Link>
+                  <Button variant="success" onClick={() => 
+                      {setModalAppr(true); setApprAppointment(appointment);}}>Approve</Button>
                 <ButtonGroup className="me-2" aria-label="Second group">
-                    <Button variant="danger">Deny</Button> 
+                    <Button variant="danger"onClick={() => 
+                      {setModalDelete(true);setDeleteAppointment(appointment);}}>Deny</Button> 
                 </ButtonGroup>
                 </ButtonToolbar>
             </td>
@@ -70,6 +80,16 @@ const PendingTable = () => {
         </tbody>
         ))}
       </Table>
+
+      <AppDeleteModal show={modaldelete}
+        onHide={() => setModalDelete(false)}
+        DeleteAppointment={DeleteAppointment}
+        />
+
+      <ApprModal show={modalAppr}
+        onHide={() => setModalAppr(false)}
+        ApprAppointment={ApprAppointment}
+        />
 
       <ViewModalAdmin 
                 show = {viewmodalShow} 
