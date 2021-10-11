@@ -67,7 +67,7 @@ const CusLogin = () => {
 
                     //setType(res.data.data.type)
                 sessionStorage.setItem("token",JSON.stringify(token));
-                navigate();
+                navigate(res.data.data.type);
                 swal("Success!", "Login Successful", "success");
                 } else {
                     swal("Error !", "Invalid Password", "error");

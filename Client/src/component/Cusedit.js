@@ -34,7 +34,7 @@ const Cusedit = ({det}) => {
         }
         else{
             axios
-                .put(`http://localhost:5000/customer/update/${email}`, updateCustomer)
+                .put(`http://localhost:5000/customer/update/${det._id}`, updateCustomer)
                 .then(() => swal("Updated!", "Successfully Updated", "success"))
                 .catch((err) => alert(err));
         }
