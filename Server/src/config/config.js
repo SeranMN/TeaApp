@@ -6,6 +6,7 @@ const URI = "mongodb://localhost:27017/teaApp?readPreference=primary&appname=Mon
 const connectDB = async () => {
     await mongoose.connect(URI);
     console.log("Database Connected");
+    
 }
 
 

@@ -21,7 +21,7 @@ const SupplierProfileTable = ({Date,profile}) => {
     ]);
     return (
         <div className="profTable">
-            <h1><i><u>My Records</u></i></h1>
+            <h1 style={{marginLeft: "33%"}}><i><u>My Records</u></i></h1>
             <br/><br/>
         <Table striped bordered hover>
           <thead>

@@ -96,10 +96,7 @@
  cursor: pointer;
  }
  
- .pbtn1:hover{
-   
-   background-color: #ffa600;
- }
+ 
  
   
  
@@ -107,11 +104,16 @@
    width: 200px;
    height: 35px;
    font-size: 14px;
-   border-radius: 35px;
+   border-radius: 5px;
    display: flex;
-   margin-left: 0%;
+   margin-left: 42%;
+   background-color: rgb(19, 144, 228);
  }
+ .pbtn:hover{
    
+  background-color: #0059ff;
+}
+ 
  .text-centerr{
    display: flex;
    justify-content: space-between;
@@ -121,25 +123,46 @@
  .pbtn1{
    width: 260px;
    height: 35px;
-   font-size: 14px;
-   border-radius: 35px;
+   font-size: 18px;
+   border-radius: 12px;
    display: flex;
-  margin-left: 10%;
+  margin-left: 3%;
   
  }
+ .pbtn1:hover{
+   
+  background-color: #ff9100;
+}
  .pbtn2{
    margin-left: 1%;
   }
-  .pbtn3{
+  .pbtnEdit{
    width: 250px;
    height: 35px;
-   font-size: 14px;
-   border-radius: 35px;
+   font-size: 16px;
+   border-radius: 12px;
    display: flex;
    margin-left: 3%;
  }
+ .pbtnEdit:hover{
    
- 
+  background-color: #fffb00f1;
+}
+
+.pbtnDelete{
+  width: 250px;
+  height: 35px;
+  font-size: 16px;
+  border-radius: 12px;
+  display: flex;
+  margin-left: 3%;
+}
+  
+.pbtnDelete:hover{
+  
+ background-color: #f54a06;
+}
+
   
   .background-image {
    background-image: url("../background.png");
