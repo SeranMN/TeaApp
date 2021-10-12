@@ -63,6 +63,7 @@ const Create = () => {
                     value={vid}
                     onChange={updateId}
                     placeholder="Enter ID" 
+                    required
                     />
                 </FormGroup>
                 <FormGroup>
@@ -72,7 +73,8 @@ const Create = () => {
                     name="vtype"
                     value={vtype}
                     onChange={updateName}
-                    placeholder="Enter vehicle type" 
+                    placeholder="Enter vehicle type"
+                    required 
                     />
                 </FormGroup>
                 <FormGroup>
@@ -83,6 +85,7 @@ const Create = () => {
                     value={vmodel}
                     onChange={updatePosition}
                     placeholder="Enter vehicle Model" 
+                    required
                     />
                 </FormGroup>
                 <FormGroup>
@@ -93,6 +96,7 @@ const Create = () => {
                     value={ftype}
                     onChange={updateSalary}
                     placeholder="Enter Fuel Type"
+                    required
                     />
                 </FormGroup>
                 <FormGroup>
@@ -103,6 +107,7 @@ const Create = () => {
                     value={owner}
                     onChange={updateOwner}
                     placeholder="Enter Owner"
+                    required
                     />
                 </FormGroup>
                 <br/>

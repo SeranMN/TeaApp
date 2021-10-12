@@ -17,6 +17,8 @@ import Edit from './component/Edit/Edit';
 import Edit1 from './component/Edit/Edit1';
 import Home2 from './component/Home/Home2';
 import Report from './component/Report';
+import Reportview from './component/Reportview';
+
 
 //import Delivery from './component/Create/Delivery';
 //import Edit1 from './component/Edit/Edit1';
@@ -54,6 +56,10 @@ function App() {
                 <Route path="/home2"> <Home2 /> </Route>
                 
                 <Route path="/home2/"><Home2 /></Route>
+
+                <Route path="/reportt/"><Report/></Route>
+                 <Route path="/report/"><Reportview/></Route> 
+
 
 
               </Switch>

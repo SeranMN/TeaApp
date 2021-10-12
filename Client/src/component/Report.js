@@ -7,6 +7,11 @@ import { useRef } from 'react';
 import Home from './Home/Home';
 
 
+
+
+
+
+
 function Report() {
 
     const pdfExportComponent = React.useRef(null);
@@ -27,12 +32,27 @@ function Report() {
             <PDFExport ref={pdfExportComponent} paperSize="A4">
                 <div ref={contentArea}>
             <div>
-                <h1>nnnnnnnnnnnnnnnnnnn</h1>
-                <Button primary={true} onClick={handleExportWithComponent}> Export Component</Button>
-                <Button onClick={handleExportWithComponent}>Export Method</Button>
+                
+
+                
+
+
+                
+
+
+
+
+
+
+                
             </div>
             </div>
             </PDFExport>
+            <div>
+                
+                <Button primary={true} onClick={handleExportWithComponent}> Export Full Report</Button>
+                <Button onClick={handleExportWithComponent}>Export Method</Button>
+            </div>
         </div>
         </div>
     )
