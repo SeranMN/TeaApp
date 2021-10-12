@@ -8,6 +8,7 @@ module.exports = function () {
     //router.get("/count",employeeController.countEmployee)
     router.get("/id/:id", employeeController.getEmployeeByID);
     router.get("/search/:id", employeeController.serachEmployee);
+    router.get("/email/:id", employeeController.getEmployeeByEmail);
     return router
 }
 

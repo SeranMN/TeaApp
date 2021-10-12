@@ -47,6 +47,15 @@ const deleteUser = async (req, res) => {
       .catch((err) => {
         res.status(500).send(err);
       });
+};
+  const deleteUserbyEmail = async (req, res) => {
+    await Login.findOneAndDelete({ email: req.params.id })
+      .then(() => {
+        res.status(200).send({ status: "Deleted" });
+      })
+      .catch((err) => {
+        res.status(500).send(err);
+      });
   };
 
 
@@ -54,7 +63,8 @@ module.exports = {
     add,
     userLogin,
     updateUser,
-    deleteUser,
+  deleteUser,
+    deleteUserbyEmail
 
     
 }

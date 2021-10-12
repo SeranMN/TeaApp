@@ -8,17 +8,20 @@ import { IconContext } from "react-icons";
 import Modaldelete from "./CusModaldelete";
 import cup from '../Img/teacu.png'
 import {FiLogOut} from "react-icons/fi"
+import { useHistory } from 'react-router-dom';
 
 
 const EmpSideNavBar = () => {
   const [modalDelete, setModalDelete] = React.useState(false);
   const[modleType,setModaltype] = useState("")
-  const token =JSON.parse(sessionStorage.getItem("token"));
-
+  const token = JSON.parse(sessionStorage.getItem("token"));
+  
   const logout=()=>{
      setModalDelete(true); 
      setModaltype("logout")
   }
+    const history = useHistory();
+
  
   return (
     <div>
@@ -26,7 +29,7 @@ const EmpSideNavBar = () => {
         <div className='navbar'>
           
                     <div style={{color:"white",marginLeft:"300px",fontSize:"20px"}}>Employee Management</div>
-                    <div style={{color:"white",marginLeft:"840px",fontSize:"20px"}}>{token.email}</div>
+                    <div style={{color:"white",marginLeft:"840px",fontSize:"20px"}} onClick={()=>history.push("/empProf.js")}>{token.email}</div>
                     <div style={{color:"white",marginRight:"30px",fontSize:"25px"}}><FiLogOut onClick={logout}/></div>
                 </div>
           

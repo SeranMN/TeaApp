@@ -30,7 +30,7 @@ const Header = () => {
               <Nav.Link eventKey={2} >
                 {token != null ? (<Link to="/CusProfile.js">
                 {token.name}
-                </Link>):( <Link to ="/CusLogin.js">
+                </Link>):( <Link to ="/CusLogin.js" style={{textDecoration:"none",color:"white"}}>
                   Login
                 </Link>)}
                

@@ -37,6 +37,7 @@ import OrderAdmin from './component/OrderAdmin';
 import OrderReport from './component/OrderReport';
 
 
+import EmpProf from "./component/EmpProf";
 
 
 function App() {
@@ -137,6 +138,9 @@ function App() {
           </Route>
            <Route path = "/proReportpage.js">
              <Reportpage/>
+            </Route>
+            <Route path = "/empProf.js">
+             <EmpProf/>
            </Route>
            <Route  path='/ProductPurchase' exact component={ProductPurchase}/>
            <Route path='/OrderDetails' exact component={OrderDetails}/>

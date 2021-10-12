@@ -61,7 +61,10 @@ app.use("/dailysupply", dailySupplyAPI());
 const formerSupplierAPI = require("./src/api/FormerSupplier.api");
 app.use("/formersupplier", formerSupplierAPI());
 const atendanceApi = require("./src/api/Attendance.Api")
-app.use("/attendance",atendanceApi())
+app.use("/attendance", atendanceApi());
+
+const formerEmpAPI = require("./src/api/formerEmp.api")
+app.use("/formerEmp",formerEmpAPI())
 
 app.listen(PORT, () => {
   console.log(`App listening at http://localhost:${PORT}`);

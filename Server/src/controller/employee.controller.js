@@ -62,6 +62,13 @@ const getEmployeeByID = async (req, res) => {
       res.send(error);
     });
 };
+const getEmployeeByEmail = async (req, res) => {
+  await Employee.findOne({ email: req.params.id })
+    .then((data) => res.status(200).send(data))
+    .catch((error) => {
+      res.send(error);
+    });
+};
 const serachEmployee = async (req, res) => {
   console.log(req.params.id);
 
@@ -84,4 +91,5 @@ module.exports = {
   deleteEmployee,
   getEmployeeByID,
   serachEmployee,
+  getEmployeeByEmail
 };

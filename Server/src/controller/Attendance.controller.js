@@ -36,9 +36,20 @@ const getAtendancebyid = async (req, res) => {
     .then((data) => res.status(200).send(data))
     .catch((err) => res.send(err));
 };
+const getAtendancebyDate = async (req, res) => {
+  let date = req.params.id;
+ console.log(req.params.id)
+  await Attendance.find({
+   date: date,
+
+  })
+    .then((data) => res.status(200).send(data))
+    .catch((err) => res.send(err));
+}; 
 
 module.exports = {
   setArrivedTime,
   setLeaveTime,
   getAtendancebyid,
+  getAtendancebyDate
 };
