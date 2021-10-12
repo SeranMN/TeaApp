@@ -7,6 +7,8 @@ import {TiShoppingCart} from "react-icons/ti";
 import Button from 'react-bootstrap/Button'
 import './productc.css'
 import PlaceOrder from './PlaceOrder';
+import Header from './Header';
+import Footer from './Footer';
 
 // import Button from './Button'
     
@@ -46,7 +48,10 @@ import PlaceOrder from './PlaceOrder';
         
         return (
           
-             <div><h1>Products</h1><hr></hr> 
+             <div>
+               <Header/>
+               <h1>Products</h1><hr></hr> 
+             
            <div className="main_content">   
         {Products.map((Product)=>
         
@@ -72,8 +77,9 @@ import PlaceOrder from './PlaceOrder';
             
            
 </div>  
-               
-        </div>  
+        <Footer/>       
+        </div> 
+
 
                 
            
