@@ -6,14 +6,26 @@ import {useState, useEffect } from "react";
 import {TiShoppingCart} from "react-icons/ti";
 import Button from 'react-bootstrap/Button'
 import './productc.css'
-import Header from './Header'
-import Footer from './Footer'
+import PlaceOrder from './PlaceOrder';
+import Header from './Header';
+import Footer from './Footer';
 
-
+// import Button from './Button'
     
      const MainContent = () => {
-        
+        // console.log(product_card);
+        // const listItems = product_card.map((item)=>
+        //    <div className="item" key="{item.id}">
+        //        <div className="card_img" >
+        //            <img src={item.thumb}/>
+        //        </div>
+        //        <div className="item_header">
+        //            <h2>{item.product_name}</h2>
+        //            <h2>{item.weight}</h2>
+        //            <p className="price"><span>{item.currency}</span>{item.price}</p>
+        //            <div className="btn">Add to cart</div>
         const [Products, setProduct] = useState([]);
+        
 
         useEffect(() => {
             const getProducts = () => {
@@ -28,46 +40,50 @@ import Footer from './Footer'
                 });
             };
             getProducts();
-          });
+          },[]);
 
           
         console.log(product_card);
-        const listItems = Products.map((Product)=>
-           <div className="item" key="{Product._id}">
+       
+        
+        return (
+          
+             <div>
+               <Header/>
+               <h1>Products</h1><hr></hr> 
+             
+           <div className="main_content">   
+        {Products.map((Product)=>
+        
+           <div  className="item" key="{Product._id}">
                <div className="card_img" >
                    <img className="imagee" src="./images/1.jpg"/>
               </div>
               <div className="item_header">
                    <h2>{Product.Name}</h2>
-                   <h2>{Product.weight}<spann>{Product.currency="g"}</spann></h2>
-                   <p className="price"><spann>{Product.currency="Rs"}</spann>{Product.price}</p>
+                  <h2>{Product.weight}<span>{Product.currency="g"}</span></h2>
+                  <p className="price"><span>{Product.currency="Rs"}</span>{Product.price}</p>
+                  {/* <div className="btn1" ><TiShoppingCart/></div> */}
+                 
                   
-                  <Button className="pbtn1" style={{margin:"30px 10px 4px 3px"}} variant="warning" >
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<TiShoppingCart/>
-                  </Button>
+                  
+                  <PlaceOrder Products={Products}  product={Product}/>
 
                </div>
+               </div>
+               
+           )}
 
-           </div>
+            
+           
+</div>  
+        <Footer/>       
+        </div> 
 
-        )
-        return (
-         
-            <div>
-              <Header/>
-               <h1>PRODUCTS</h1>
-               <hr></hr>
-            <div className="main_content">
-               {listItems} 
-            </div>
-              <Footer/>
-            </div>
+
+                
+           
         )
     }
     
     export default MainContent
-    
-
-
-

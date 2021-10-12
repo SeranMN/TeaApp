@@ -10,7 +10,6 @@ const Modaldelete = (props) => {
   const opp = () =>{
   if (props.type == "delete") {
   
-    
     axios.delete(`http://localhost:5000/customer/delete/${props.profile._id}`)
     .then(() => {
       swal("Deleted!", "Successfully Deleted", "success");

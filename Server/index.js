@@ -22,6 +22,8 @@ app.get("/", (req, res) => {
     res.send("Hello Node!");
 });
 
+const orderApi = require("./src/api/Order.api");
+app.use("/order", orderApi());
 app.use("/product", ProductAPI());
 app.use("/productStock", ProductStockAPI());
 const appointmentApi = require("./src/api/appointment.api");

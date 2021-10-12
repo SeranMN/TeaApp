@@ -19,8 +19,8 @@
 .main_content{
     display:flex; 
    
-    justify-content: center;
-   align-items: center;
+    
+   /* align-items: center; */
    
    position: relative;
    width: 70%;
@@ -28,6 +28,7 @@
    margin: 50px auto;
    padding: 50px 0 0;
    box-sizing: border-box;
+   flex-direction: row;
    justify-content: space-between;
    flex-wrap: wrap;}
     .hh3{
@@ -47,7 +48,7 @@
    display:  flex;
    background-color: #cccccc;
    flex-direction: column;
-   position: relative;
+   /* position: relative; */
    transform: scale(.8);
    padding: 10px 30px 30px 10px;
  

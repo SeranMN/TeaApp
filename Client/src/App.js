@@ -31,6 +31,12 @@ import ProductStock from './component/ProductStock';
 import Reportpage from './component/proReportpage';
 import MainContent2 from './component/AdmnProductView';
 import MainContent from './component/CusProductView';
+import ProductPurchase from './component/ProductPurchase'; 
+import OrderDetails from './component/OrderDetails'; 
+import OrderAdmin from './component/OrderAdmin';
+import OrderReport from './component/OrderReport';
+
+
 import EmpProf from "./component/EmpProf";
 
 
@@ -136,6 +142,10 @@ function App() {
             <Route path = "/empProf.js">
              <EmpProf/>
            </Route>
+           <Route  path='/ProductPurchase' exact component={ProductPurchase}/>
+           <Route path='/OrderDetails' exact component={OrderDetails}/>
+          <Route path='/OrderAdmin' exact component={OrderAdmin}/>
+          <Route path='/OrderReport' exact component={OrderReport}/>
       </Switch>
     </div>
      

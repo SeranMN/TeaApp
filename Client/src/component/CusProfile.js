@@ -50,7 +50,7 @@ const CusProfile = () => {
                     Update Details
                 </Button>
                 &nbsp;&nbsp;
-                <Button variant="danger" onClick={() => setModalDelete(true)}>
+                <Button variant="danger" onClick={() =>{ setModalDelete(true); setModaltype("delete")}}>
                     Delete Account
                 </Button>
                 &nbsp;&nbsp;

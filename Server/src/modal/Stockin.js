@@ -18,7 +18,7 @@ const stockinschema = new schema({
 
     SpecialNote: {
         type: String,
-        required:true
+       
     },
     
 })
