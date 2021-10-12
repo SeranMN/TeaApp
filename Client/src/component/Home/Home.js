@@ -178,7 +178,7 @@ const Home = () => {
             <div>
                 
                 <Button primary={true} onClick={handleExportWithComponent}> Export Full Report</Button>
-                <Button onClick={handleExportWithComponent}>Export Method</Button>
+                {/* <Button onClick={handleExportWithComponent}>Export Method</Button> */}
             </div>
         </div>
         </div>
