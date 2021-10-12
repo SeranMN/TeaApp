@@ -66,10 +66,29 @@ const deleteVehicle = async (req, res) => {
     });
 };
 
+//Search Vehicle
+const searchVehicle = async (req, res) => {
+  console.log(req.params.id);
+
+  await Vehicle.find(
+    { name: { $regex: ".*" + req.params.id + ".*" } },
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+};
+
+
 module.exports = {
   addVehicle,
   getallVehicles,
   getoneVehicle,
   updateVehicle,
   deleteVehicle,
+  searchVehicle,
+  
 };

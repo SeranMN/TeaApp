@@ -49,24 +49,12 @@ const ModelForm2=(props) => {
             <h4>  Dilivery ID : {props.Delivery.id1}</h4>
             <br/>
             <h4> Route : {props.Delivery.route}</h4>
-
             <h4> Date : {props.Delivery.date}</h4>
             <h4> Tea Leaves : {props.Delivery.tea}</h4>
             <h4> Distance : {props.Delivery.distance}</h4>
             <h4> Driver : {props.Delivery.driver}</h4>
 
-            {/* <h6>NIC : {props.employee.nic}</h6>
-
-            <h6>Address : {props.employee.address}</h6>
-
-            <h6>Email : {props.employee.email}</h6>
-
-            <h6>Designation : {props.employee.type}</h6>
-
-            <h6>Mobile No : {props.employee.mobno}</h6>
-
-            <h6>joinedDate : {props.employee.joinedDate}</h6>
- */}
+           
           </>
 
         )}

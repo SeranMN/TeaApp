@@ -16,6 +16,7 @@ import Create2 from './component/Create/Create2';
 import Edit from './component/Edit/Edit';
 import Edit1 from './component/Edit/Edit1';
 import Home2 from './component/Home/Home2';
+import Report from './component/Report';
 
 //import Delivery from './component/Create/Delivery';
 //import Edit1 from './component/Edit/Edit1';

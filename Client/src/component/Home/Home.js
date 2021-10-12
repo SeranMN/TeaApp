@@ -1,20 +1,18 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Button, Table } from 'react-bootstrap';
-//import { UserContext } from '../UserContext/UserContext';
 import "./Home.css"
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Read from '../Read/Read';
-//import ModalForm from './src/component/ModalForm.js';
 import ModalForm from '../ModalForm.js';
 import Navbar from '../Navbar';
+import Report from '../Report';
 const Home = () => {
 
 
-    //const [empDet,setEmpDet] = useState ('')
+    
     const [editForm, showEditForm] = useState(false);
     const [type, settype] = useState("")
-    // const [users, setUsers] = useContext(UserContext);
     const [vehicles, setVehicle] = useState([]);
     const [vehicledetails, setVehicleDetails] = useState('')
 
@@ -33,16 +31,50 @@ const Home = () => {
         getVehicles();
     }, []);
 
+    // function myFunction() {
+    //     var input, filter, table, tr, td, i, txtValue;
+    //     input = document.getElementById("myInput");
+    //     filter = input.value.toUpperCase();
+    //     table = document.getElementById("myTable");
+    //     tr = table.getElementsByTagName("tr");
+    //     for (i = 0; i < tr.length; i++) {
+    //         td = tr[i].getElementsByTagName("td")[0];
+    //         if (td) {
+    //             txtValue = td.textContent || td.innerText;
+    //             if (txtValue.toUpperCase().indexOf(filter) > -1) {
+    //                 tr[i].style.display = "";
+    //             } else {
+    //                 tr[i].style.display = "none";
+    //             }
+    //         }
+    //     }
+    // }
     //console.log(users);
     return (
         <div>
-            <Navbar/>
+            <Navbar />
+            <br/>
+            <Report/>
 
             <Link to="/create">
                 <Button className="create_btn" varient="primary">Add Vehicle</Button>
             </Link>
             <Table striped bordered hover>
+
                 <thead>
+                    <tr>
+                        {/* <div className="vrightSide">
+                            <input type="text"
+                                placeholder="search.."
+                                type="text"
+                                name="vid"
+                                id="myInput"
+                                placeholder="Enter ID"
+                            />
+                            <button id="myInput" onClick={myFunction()}>Search</button>
+
+                        </div> */}
+                    </tr>
                     <tr>
                         <th width="100">Registration No</th>
                         <th width="115">Vehicle Type</th>
@@ -96,10 +128,13 @@ const Home = () => {
                     </tbody>
                 ))}
             </Table>
+        
             <ModalForm show={editForm} onHide={() => showEditForm(false)} vehicle={vehicledetails} type={type} />
             <Read vehicledetails={vehicledetails} />
 
         </div>
+        
+        
     );
 };
 
