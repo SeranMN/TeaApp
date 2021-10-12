@@ -4,6 +4,8 @@ import EmpSideNavBar from "./EmpSideNavBar";
 import axios from "axios";
 import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
+import CardGroup from 'react-bootstrap/CardGroup'
+
 
 import { Form, FormControl, InputGroup, Button } from "react-bootstrap";
 
@@ -52,14 +54,15 @@ const Salary = () => {
       <EmpSideNavBar/>
     
     
-               <div style={{display : "flex", marginLeft: "220px"}}>
-      
+      <div style={{ display: "flex", marginLeft: "220px",marginTop:"50px" }}>
+  <CardGroup>
+  <Card  style={{ padding:"100px",marginLeft:"20px",marginRight:"20px" }}  bg={"light"}>
    
-          <div style={{ margin: "20px" }}>
-            <Form noValidate validated={validated} onSubmit={onSubmit}>
+    <Card.Body>
+     <Form noValidate validated={validated} onSubmit={onSubmit}>
               <InputGroup className="mb-2">
                 <InputGroup.Text>Employee ID</InputGroup.Text>
-                <FormControl required id="inlineFormInputGroup" onChange = {(e)=> setID(e.target.value)} />
+                <FormControl required id="inlineFormInputGroup" onChange = {(e)=> setID(e.target.value)} size="xl"/>
               </InputGroup>
               <InputGroup className="mb-2">
                 <InputGroup.Text>Worked Date</InputGroup.Text>
@@ -70,22 +73,33 @@ const Salary = () => {
                 Submit
               </Button>
                       </Form>
-            <br />
-            <Card style={{ width: '18rem' }}>
-  <ListGroup variant="flush">
+      
+    </Card.Body>
+    
+  </Card>
+  <Card style={{ padding:"100px",marginLeft:"100px",marginRight:"20px" }} bg={"light"}>
+   
+    <Card.Body>
+      
+     
+        <ListGroup variant="flush">
     <ListGroup.Item style={{fontSize:"25px"}} >{details}</ListGroup.Item>
                 <ListGroup.Item>Basic Salary: {salary}</ListGroup.Item>
                 <ListGroup.Item>OT: {OT}</ListGroup.Item>
     <ListGroup.Item>Total: {salary+OT }</ListGroup.Item>
   </ListGroup>
-</Card>
-             <h2></h2>
-            <h2></h2>
-            <h2></h2>
-            <h2></h2>
+      
+    </Card.Body>
+    
+  </Card>
+  </CardGroup>
+      
+   
+      
+             
           </div>
        
-      </div>
+      
       </>
   );
 };

@@ -31,7 +31,7 @@ import ProductStock from './component/ProductStock';
 import Reportpage from './component/proReportpage';
 import MainContent2 from './component/AdmnProductView';
 import MainContent from './component/CusProductView';
-
+import EmpProf from "./component/EmpProf";
 
 
 function App() {
@@ -132,6 +132,9 @@ function App() {
           </Route>
            <Route path = "/proReportpage.js">
              <Reportpage/>
+            </Route>
+            <Route path = "/empProf.js">
+             <EmpProf/>
            </Route>
       </Switch>
     </div>
