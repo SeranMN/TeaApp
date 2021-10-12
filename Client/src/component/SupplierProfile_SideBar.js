@@ -1,12 +1,37 @@
 import React from 'react'
 import Card from "react-bootstrap/Card";
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-const SupplierProfileSideBar = ({SupplierID,detail,onClick}) => {
+const SupplierProfileSideBar = (supplierDet) => {
+
+  const [supplierprofs, setSupplierProfs] = useState([]);
+
+   useEffect(() => {
+     const getSuppliers = () => {
+       axios
+         .get(`http://localhost:5000/supplier/get/${supplierDet._id}`)
+         .then((res) => {
+           setSupplierProfs(res.data);
+           console.log(res.data);
+         })
+         .catch((err) => {
+           alert(err.msg);
+         });
+     };
+     getSuppliers();
+   });
 
   return (
     <div className="sideBar">
-      <Card bg="dark" text="light" style={{ width: "18rem", height: "40rem" }}>
+      <Card
+        bg="dark"
+        text="light"
+        style={{ width: "18rem", height: "40rem" }}
+      >
+        {supplierprofs.map((supplierprof) => (
+          <div>
         <Card.Img
           variant="top"
           alt="pp"
@@ -14,6 +39,7 @@ const SupplierProfileSideBar = ({SupplierID,detail,onClick}) => {
           width="200px"
           height="300px"
         />
+
         <Card.Body>
           <Card.Title color="grey">Dishan Abeywickrama</Card.Title>
         </Card.Body>
@@ -28,10 +54,11 @@ const SupplierProfileSideBar = ({SupplierID,detail,onClick}) => {
             <ListGroupItem variant="dark">dishanabey@gmail.com</ListGroupItem>
           </ListGroup>
         </Card.Body>
+        </div>
+          ))}
       </Card>
     </div>
   );
-      
-}
+};
 
 export default SupplierProfileSideBar;

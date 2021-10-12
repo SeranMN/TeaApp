@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import Card from 'react-bootstrap/Card'
 import axios from 'axios';
-
 import { useState } from 'react';
-
+import { FaEnvelope } from "react-icons/fa";
+import { ImLocation2, ImPhone } from "react-icons/im";
+import { BsPersonSquare } from "react-icons/bs";
 
 const Profile = ({profile}) => {
 
@@ -20,35 +21,37 @@ const Profile = ({profile}) => {
                 })
                 .catch ((err) => {alert(err.msg)})
             },[]);
-            console.log(profiledetails.firstName);
+            
     
     return (
         <div className="profile"> 
            
             <div>
+            
             <Card style={{ width: '22rem' }}>
                 <Card.Img variant="top" src="./Img/userimg.png" />
                 <Card.Body>
-                    <Card.Title>{profiledetails.firstName}</Card.Title>
+                    <Card.Title>{profiledetails.firstName}{" "}{profiledetails.lastName}</Card.Title>
                 </Card.Body>
             </Card>
-            <br /><br />
+            <br />
             <Card>
-                <Card.Body>lasalt@gmail.com</Card.Body>
+                <Card.Body><FaEnvelope />{" "}{profiledetails.email}</Card.Body>
             </Card>
             <Card>
-                <Card.Body>No.32, Samanala Mawatha, Thihagoda, Matara.</Card.Body>
+                <Card.Body><ImLocation2 />{" "}{profiledetails.address}</Card.Body>
             </Card>
             <Card>
-                <Card.Body>982746890V</Card.Body>
+                <Card.Body><BsPersonSquare />{" "}{profiledetails.NIC}</Card.Body>
             </Card>
             <Card>
-                <Card.Body>0712345689</Card.Body>
+                <Card.Body><ImPhone />{" "}{profiledetails.contactNo}</Card.Body>
             </Card>
             </div>
             
         </div>
     )
 }
+
 
 export default Profile

@@ -35,13 +35,13 @@ const getAllCustomers = async (req, res) => {
 const updateCustomer = async (req, res) => {
     console.log(req.body)
     if (req.body) {
-        let id = req.body.id;
-        await Customer.findOneAndUpdate(id, req.body)
+        let id = req.params.id;
+        await Customer.findByIdAndUpdate(id, req.body)
             .then(data => {
                 res.status(200).send(data);
             })
             .catch(err => {
-                res.send(error);
+                res.send(err);
             });
     }
 }

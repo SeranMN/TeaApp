@@ -2,6 +2,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { useState } from "react";
 import axios from "axios";
+import swal from 'sweetalert';
 const bcrypt = require('bcryptjs');
 
 const CustReg = () => {
@@ -20,7 +21,6 @@ const CustReg = () => {
 
 
     const checkSubmit = (event) => {
-        event.preventDefault();
         console.log(password);
         const newCustomer = {
             "firstName": fname,
@@ -54,10 +54,13 @@ const CustReg = () => {
 
             axios
                 .post("http://localhost:5000/login/add", newLogin)
-                .then(() => alert("Successfully Registered"))
-                .catch((err) => alert(err));
+                .then(() =>
+                    swal("Submitted!", "Successfully Registered", "success"))
+                .catch((err) =>
+                     alert(err));
             } else {
-                alert("Password Mismatch");
+                swal("Error !", "Password Mismatch", "error");
+    
             }
         }
         setvalidated(true);
@@ -77,7 +80,6 @@ const CustReg = () => {
     return (
         <div className="regform">
         <Form noValidate validated={validated} onSubmit= {checkSubmit}>
-        <fieldset>
         <Form.Group className="mb-3" controlId="fname">
             <Form.Label>First Name</Form.Label>
             <Form.Control
@@ -108,6 +110,9 @@ const CustReg = () => {
                  onChange={(e) => setEmail(e.target.value)}
                  required
             />
+            <Form.Control.Feedback type="invalid">
+                Please enter a valid email address.
+            </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="contactno">
@@ -119,6 +124,9 @@ const CustReg = () => {
                  onChange={(e) => setContactNo(e.target.value)}
                  required
              />
+             <Form.Control.Feedback type="invalid">
+                Please enter a valid phone number.
+            </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="nic">
@@ -131,6 +139,9 @@ const CustReg = () => {
                  required
 
         />
+        <Form.Control.Feedback type="invalid">
+            Please enter a valid NIC number.
+        </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="address">
@@ -177,6 +188,9 @@ const CustReg = () => {
                  onChange={(e) => setPassword(e.target.value)}
                  required
             />
+            <Form.Control.Feedback type="invalid">
+                Password must contain at least 8 characters with at least one uppercase letter and a digit.
+            </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="cpassword">
@@ -186,8 +200,7 @@ const CustReg = () => {
                  placeholder="Re-enter the Password" 
                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                  onChange={(e) => setConfirmPassword(e.target.value)}
-                 //value={}
-                 //required
+                 required
             />
         </Form.Group>
 
@@ -202,8 +215,7 @@ const CustReg = () => {
 
 
 
-        <Button variant="primary" type="submit">Submit</Button>
-        </fieldset> 
+        <Button variant="success" type="submit">Submit</Button>
         </Form>
         </div>
  
