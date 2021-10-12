@@ -41,7 +41,7 @@ function Navbar() {
                                 alt="React Bootstrap logo"
                             />
                             </div>
-                            <div style={{color:"#659834",fontSize:"20px"}}>Gangasiri Tea</div>
+                            <div style={{color:"#659834",fontSize:"20px",marginLeft:"20px"}}>Gangasiri Tea</div>
 
 
                         </li>
