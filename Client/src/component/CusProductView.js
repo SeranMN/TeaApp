@@ -48,7 +48,20 @@ import Footer from './Footer';
         
         return (
           
-             <div>
+          <div>
+            <div style = {{
+
+
+
+            backgroundImage: `url("https://cdn.luxe.digital/media/2020/06/27103947/best-premium-tea-brands-luxe-digital.jpg")`,
+
+           
+
+            //  height: "200vh",
+
+           
+
+            backgroundSize: "cover",}}>
                <Header/>
                <h1>Products</h1><hr></hr> 
              
@@ -77,7 +90,8 @@ import Footer from './Footer';
             
            
 </div>  
-        <Footer/>       
+              <Footer />
+        </div>      
         </div> 
 
 
