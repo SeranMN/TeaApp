@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  FaUsers,
-  FaCalendarCheck,
-  FaHistory,
-  FaIndustry,
-} from "react-icons/fa";
+import {FaIndustry} from "react-icons/fa";
 
 export const dssidenavbarData = [
   {
