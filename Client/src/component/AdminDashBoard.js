@@ -74,12 +74,14 @@ const AdminDashBoard = () => {
           </Card>
           </Col>
           <Col >
+          <Link to = "/OrderAdmin">
           <Card bg="success" text="light" style={{ width: "18rem", height :"25rem" }}>
               <Card.Img variant="top" src={order} />
             <Card.Body>
               <Card.Title>Orders Management</Card.Title>
             </Card.Body>
           </Card>
+          </Link>
           </Col>
           <Col >
           

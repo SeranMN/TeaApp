@@ -39,6 +39,9 @@ const CusLogin = () => {
         else if (type == "Receptionist") {
              history.push("/PendingTable.js")
         }
+        else if (type == "Order Manager") {
+            history.push("/OrderAdmin")
+       }
     }
   
     const handleSubmit = (e) =>{

@@ -19,7 +19,7 @@ export const sidebarData = [
 // },
 {
     title:'PRODUCT',
-    path:'./',
+    path:'./AdmnProductView.js',
     icon:<AiFillPlusCircle/>,
     cName:'nav-text'
 },

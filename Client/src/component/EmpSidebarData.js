@@ -6,32 +6,34 @@ import { ImEnter } from "react-icons/im";
 import { ImExit } from "react-icons/im";
 import { TiDocumentText } from "react-icons/ti";
 import { FiSettings } from "react-icons/fi";
-
-
+import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import AddAlarmIcon from '@mui/icons-material/AddAlarm';
+import HomeIcon from '@mui/icons-material/Home';
 
 export const empsidenavbarData = [
   {
     title: "Dashboard",
     path: "/Employee.js",
-    icon: <AiFillHome />,
+    icon: <HomeIcon />,
     cName: "nav-text",
   },
   {
     title: "Attendance",
     path: "/Attendance.js",
-    icon: <AiFillPlusCircle />,
+    icon: <AddAlarmIcon />,
     cName: "nav-text",
   },
   {
     title: "Salary",
     path: "./Salary.js",
-    icon: <ImEnter />,
+    icon: <AttachMoneyIcon/>,
     cName: "nav-text",
   },
   {
     title: "Former Employees",
     path: "/FormerEmp.js",
-    icon: <ImExit />,
+    icon: < AccessTimeFilledIcon/>,
     cName: "nav-text",
   },
 ];
