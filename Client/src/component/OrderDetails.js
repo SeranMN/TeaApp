@@ -19,6 +19,7 @@ import Toolbar from '@mui/material/Toolbar';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import OrderConfirmBox from './OrderConfirmBox';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -103,6 +104,8 @@ const OrderDetails = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const [open, setOpen] = React.useState(false);
+
+  const [open2, setOpen2] = React.useState(false);
 
     const handleClick1 = () => {
       setOpen(true);
@@ -189,7 +192,8 @@ const OrderDetails = () => {
   const submit1 = (order) => {
     console.log(order)
           axios.delete(`http://localhost:5000/order/delete/${order._id}`).then(() => 
-            handleClick1()).catch((err) => alert(err))
+            
+          handleClick1()).catch((err) => alert(err))
             
         }
           // console.log(product._id)
@@ -211,6 +215,7 @@ const OrderDetails = () => {
           SuccesFully Deleted!
         </Alert>
         </Snackbar>
+        
 
       <Box className={classes.bx}   sx={{ flexGrow: 1 }}>
       <AppBar style={{backgroundColor:"#e4e4e4"}} position="static" className={classes.ap}>
@@ -300,20 +305,20 @@ const OrderDetails = () => {
     </Box>
     <Box  p={1} display="flex" justifyContent="space-between">
     <Box  p={1} display="flex"  >
-    <Button variant="danger" onClick={() => {
-      
-      submit1(order);
-     }
-    }>
+
+    <Button variant="danger" onClick={() => {setOpen2(true)}}>
             Delete
           </Button>
+    
           </Box>
 
           <Box  p={1} display="flex"  >
               <EditOrder order={order}/>
           </Box>
           </Box>
-         
+
+          <OrderConfirmBox open2={open2} handleClose2={()=>setOpen2(false)} submit1={submit1} order={order} />
+
   </Card.Body>
   
   <Card.Footer className="text-muted">2 days ago</Card.Footer>

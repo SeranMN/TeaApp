@@ -146,7 +146,7 @@ const PlaceOrder = ({Products, order, product}) => {
             horizontal: "center"
         }}>
            <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-          This is a success message!
+          Order Added SuccesFully!
         </Alert>
         </Snackbar>
 
@@ -234,7 +234,7 @@ const PlaceOrder = ({Products, order, product}) => {
   <Form.Group className="mb-3" >
     <Form.Label>Contact No</Form.Label>
     <Form.Control value={ContactNo} title="Must include 10 digits without Country Code"
-          pattern="[0-9]{9}" onChange={(e)=>setContactNo(e.target.value)} required/>
+          pattern="[0-9]{10}" onChange={(e)=>setContactNo(e.target.value)} required/>
       <Form.Control.Feedback type="invalid">
           Please insert Valid Mobile Number
       </Form.Control.Feedback>
