@@ -38,7 +38,7 @@ const updateAppointment = async (req, res) => {
     console.log(req.body)
     if (req.body) {
         let id = req.params.id;
-        await Appointment.findOneAndUpdate(id, req.body)
+        await Appointment.findByIdAndUpdate(id, req.body)
             .then(data => {
                 res.status(200).send(data);
             })
