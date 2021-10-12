@@ -2,6 +2,7 @@ import React from "react";
 import Modal from "react-bootstrap/Modal";
 import { Button, ModalBody } from "react-bootstrap";
 import axios from "axios";
+import swal from 'sweetalert';
 const AttendanceModal = (props) => {
   const time = new Date().toLocaleTimeString();
   const date = new Date().toLocaleDateString();
@@ -24,7 +25,7 @@ const AttendanceModal = (props) => {
       
       
         axios.post("http://localhost:5000/attendance/arived", arived).then(
-          alert("You have arived at " + time)
+         swal("Arrived","You have arived at " + time,"success")
         ).catch((err) => {
           alert(err)
       
@@ -34,7 +35,7 @@ const AttendanceModal = (props) => {
       } else {
      
         axios.put(`http://localhost:5000/attendance/leave/${props.Attendance._id}`, { leavedTime: time }).then(
-          alert("You have leaved at " + time)
+          swal("Leaved","You have Leaved at " + time,"success")
         ).catch((err) => alert(err));
 
       }

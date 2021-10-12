@@ -1,0 +1,34 @@
+.conctus {
+    background: url('http://missambivert.com/wp-content/uploads/2018/07/how-much-green-tea-to-lose-weight.jpg')
+    no-repeat center/cover;
+    height: 720px;
+  }
+  
+  .conctus .conctus-overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    height: 720px;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .conctus .conctus-overlay h2 {
+    font-size: 30px;
+    padding-bottom: 5px;
+  }
+
+.conctview {
+  background: url('https://preview.pixlr.com/images/800wm/1318/2/1318105087.jpg')
+  no-repeat center/cover;
+  height: 720px;
+}
+
+.conctview .conctus-overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  height: 720px;
+  text-align: center;
+  color: #fff;
+}

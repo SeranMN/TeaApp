@@ -121,7 +121,7 @@ const disablePastDays = () => {
 
         <Form.Group className="mb-3" controlId="formConcern">
             <Form.Label>Concern</Form.Label>
-            <Form.Control type="text"
+            <Form.Control as="textarea"
             placeholder="type here" 
             value={concern}
             onChange={(e) => setConcern(e.target.value)}

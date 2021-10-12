@@ -46,56 +46,74 @@ const Edit = ({det}) => {
  
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
-      {/* <Form.Group className="mb-3" controlId="formHorizontalName"> */}
-      <Form.Group className="mb-3" controlId="formProductID">
+      
+        <Form.Group className="mb-3" controlId="formProductID">
             <Form.Label>
                 Product ID
             </Form.Label>
-            
             <Form.Control 
-            type="text" 
-            placeholder="Product ID"
-            value={productid}
-           onChange={(e) => setProductID(e.target.value)}
-          required
-           /></Form.Group>
-        {/* <Form.Group className="mb-3" controlId="formHorizontalName"> */}
+              type="text" 
+              placeholder="Enter Product ID"
+              value={productid}
+              onChange={(e) => setProductID(e.target.value)}
+              required
+           />
+           <Form.Control.Feedback type="invalid">
+             Please insert valid Product ID
+           </Form.Control.Feedback>
+        </Form.Group>
+        
         <Form.Group className="mb-3" controlId="formName">
             <Form.Label>
                 Name
             </Form.Label>
-            
             <Form.Control 
-            type="text" 
-            placeholder="Name" 
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+              type="text" 
+              placeholder="Enter Product Name" 
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+           <Form.Control.Feedback type="invalid">
+             Please insert Product Name
+           </Form.Control.Feedback>
         </Form.Group>
  
         <Form.Group className="mb-3" controlId="formWeight">
-        {/* <Form.Group className="mb-3" controlId="formHorizontalPosition"> */}
+        
             <Form.Label>
-             Weight
-        </Form.Label>
+             Weight (g)
+            </Form.Label>
             <Form.Control 
-            type="text" 
-            placeholder="Weight" 
-            value={weight}
-            onChange={(e) => setWeight(e.target.value)}
+              type="number" 
+              min="0"
+              placeholder="Enter Weight in grams"
+              pattern="[0-9]" 
+              value={weight}
+              onChange={(e) => setWeight(e.target.value)}
+              required
             />
+           <Form.Control.Feedback type="invalid">
+             Please insert weight
+           </Form.Control.Feedback>
         </Form.Group>
  
         <Form.Group className="mb-3" controlId="formPrice">
-        {/* <Form.Group className="mb-3" controlId="formHorizontalPosition"> */}
+        
             <Form.Label>
              Price
-        </Form.Label>
+           </Form.Label>
             <Form.Control 
-            type="text" 
-            placeholder="Price" 
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}/>
+              type="number" 
+              min="0"
+              placeholder="Enter Price" 
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              required
+            />
+           <Form.Control.Feedback type="invalid">
+             Please insert Price
+           </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="formFile" className="mb-3">

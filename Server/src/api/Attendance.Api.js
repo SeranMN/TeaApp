@@ -6,6 +6,6 @@ module.exports = function () {
     router.put("/leave/:id", attendanceController.setLeaveTime);
     // router.delete("/delete/:id", employeeController.deleteEmployee);
     // //router.get("/count",employeeController.countEmployee)
-    // router.get("/id/:id", employeeController.getEmployeeByID);
+     router.get("/date/:id", attendanceController.getAtendancebyDate);
     return router
 }

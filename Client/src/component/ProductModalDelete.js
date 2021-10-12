@@ -1,5 +1,5 @@
 import Modal from "react-bootstrap/Modal";
-import { ModalBody } from "react-bootstrap";
+import { ModalBody, ModalFooter } from "react-bootstrap";
 
 import Button from "react-bootstrap/Button";
 
@@ -32,9 +32,12 @@ const ModleDelete1 = (props) => {
         </Modal.Title>
       </Modal.Header>
       <ModalBody>
-      <Button onClick={deletePro}  variant="danger">Delete</Button> 
-        
+      
+      Are you sure,do you want to delete this product.<br/>
       </ModalBody>
+      <ModalFooter>
+      <Button onClick={deletePro}  variant="danger">Delete</Button> 
+      </ModalFooter>
     </Modal>
   );
 };

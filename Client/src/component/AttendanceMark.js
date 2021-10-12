@@ -62,7 +62,15 @@ const AttendanceMark = () => {
   };
 
   return (
-    <div style={{ marginLeft: "220px", marginTop: "20px" }}>
+    <div style = {{
+
+                backgroundImage: `url("https://images.pexels.com/photos/4543934/pexels-photo-4543934.jpeg?cs=srgb&dl=pexels-quang-nguyen-vinh-4543934.jpg&fm=jpg")`,
+
+                height: "100vh",
+
+                backgroundSize: "cover"}}>
+      <div style={{ marginLeft: "220px", marginRight: "220px" }}>
+        <h1 >Attendance Mark</h1>
       <Clock />
 
       {/* {useEffect(() => { */}
@@ -100,7 +108,9 @@ const AttendanceMark = () => {
           </Button>
         </Form>
       </div>
-    </div>
+      </div>
+      </div>
+  
   );
 };
 

@@ -10,7 +10,9 @@ import axios from 'axios';
 import AppBtnModal from './AppBtnModal'
 import AppDeleteModal from './AppDeleteModal';
 import Header from './Header';
-import Footer from './Footer'
+import Footer from './Footer';
+
+
 const ContactUsView = ({AppointmentID, appointment, onClick}) => {
   const [viewModalShow, setViewModalShow] = useState(false);
   const [ModalDelete, setModalDelete] = useState(false);
@@ -36,15 +38,18 @@ const ContactUsView = ({AppointmentID, appointment, onClick}) => {
 
     
   return (
-    <>
+    <div>
       <Header/>
-    <Card>
-      
-      <Card.Header as="h5">Appointments</Card.Header>
+
+    <section className='conctview'>
+    <div className='conctus-overlay'>
+
+    <Card text="dark" style={{marginTop: "220px", marginRight: "70px", width:"1150px", height:"450px", backgroundColor:"rgba(0, 0, 0, 0.4)", border:"solid", display: "flex", flexDirection: "column"}}>
+      <Card.Header as="h5" style={{color: "white", fontSize:"25px"}}>Appointments</Card.Header>
       <Card.Body>
       <Table striped bordered hover size="sm">
         <thead>
-          <tr>
+          <tr style={{fontSize:"20px"}}>
             <th>AppointmentID</th>
             <th>Name</th>
             <th>Officer</th>
@@ -57,7 +62,7 @@ const ContactUsView = ({AppointmentID, appointment, onClick}) => {
         </thead>
         {appointments.map((appointment) => (
         <tbody key={appointment._id}>
-          <tr>
+          <tr style={{color: "white"}}>
             <td>{appointment._id}</td>
             <td>{appointment.name}</td>
             <td>{appointment.position}</td>
@@ -106,11 +111,12 @@ const ContactUsView = ({AppointmentID, appointment, onClick}) => {
         onHide={() => setModalDelete(false)}
         DeleteAppointment = {DeleteAppointment}
       />
-      </Card.Body>
-      
-      </Card>
-      <Footer/>
-      </>
+  </Card.Body>
+</Card>
+</div>
+</section>
+<Footer/>
+    </div>
   )
 }
 

@@ -129,8 +129,9 @@ const Employee = () => {
   return (
     <>
       <EmpSideNavBar />
+       
       <div
-        style={{ marginLeft: "220px", marginTop: "20px", marginRight: "50px" }}
+        style={{ marginLeft: "220px", marginTop: "15px", marginRight: "50px" }}
       >
         <Row>
           <div style={{ margin: "20px" }}></div>
@@ -170,17 +171,16 @@ const Employee = () => {
                     onChange={handleChange}
                   />
                 </Search>
-              </Toolbar>
-            </AppBar>
-          </Box>
-
-          <div style={{ margin: "20px" }}>
-            <Empbtn onClick={() => setModalShow(true)} />
+                 <Empbtn onClick={() => setModalShow(true)} />
             <Button onClick={() => setReportModal(true)}>
               {" "}
               Generate Report{" "}
             </Button>
-          </div>
+              </Toolbar>
+            </AppBar>
+          </Box>
+
+         
           <br />
           <Modle
             show={modalShow}
