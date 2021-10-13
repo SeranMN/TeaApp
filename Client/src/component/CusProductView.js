@@ -47,43 +47,49 @@ import Footer from './Footer';
        
         
         return (
-          
-             <div>
-               <Header/>
-               <h1>Products</h1><hr></hr> 
-             
-           <div className="main_content">   
-        {Products.map((Product)=>
-        
-           <div  className="item" key="{Product._id}">
-               <div className="card_img" >
-                   <img className="imagee" src="./images/1.jpg"/>
+          <>
+            <div
+              style={{
+                backgroundImage: `url("https://cdn.luxe.digital/media/2020/06/27103947/best-premium-tea-brands-luxe-digital.jpg")`,
+
+                //  height: "200vh",
+
+                backgroundSize: "cover",
+              }}
+            >
+              <div>
+                <Header />
+                <h1>Products</h1>
+                <hr></hr>
+
+                <div className="main_content">
+                  {Products.map((Product) => (
+                    <div className="item" key="{Product._id}">
+                      <div className="card_img">
+                        <img className="imagee" src="./images/1.jpg" />
+                      </div>
+                      <div className="item_header">
+                        <h2>{Product.Name}</h2>
+                        <h2>
+                          {Product.weight}
+                          <span>{(Product.currency = "g")}</span>
+                        </h2>
+                        <p className="price">
+                          <span>{(Product.currency = "Rs")}</span>
+                          {Product.price}
+                        </p>
+                        {/* <div className="btn1" ><TiShoppingCart/></div> */}
+
+                        <PlaceOrder Products={Products} product={Product} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <Footer />
               </div>
-              <div className="item_header">
-                   <h2>{Product.Name}</h2>
-                  <h2>{Product.weight}<span>{Product.currency="g"}</span></h2>
-                  <p className="price"><span>{Product.currency="Rs"}</span>{Product.price}</p>
-                  {/* <div className="btn1" ><TiShoppingCart/></div> */}
-                 
-                  
-                  
-                  <PlaceOrder Products={Products}  product={Product}/>
-
-               </div>
-               </div>
-               
-           )}
-
-            
-           
-</div>  
-        <Footer/>       
-        </div> 
-
-
-                
-           
-        )
+            </div>{" "}
+          </>
+        );
     }
     
     export default MainContent
