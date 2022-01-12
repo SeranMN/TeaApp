@@ -142,6 +142,7 @@ const EmpForm = ({ det }) => {
               <Form.Label>Email address</Form.Label>
               <Form.Control
                 type="email"
+                pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-z]{2,}|[.][\w-]{2,}[.][a-z]{2,})$"
                 placeholder="Enter email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -151,7 +152,7 @@ const EmpForm = ({ det }) => {
               <Form.Label>Mobile No</Form.Label>
               <Form.Control
                 required
-                type="Number"
+                type="text"
                 placeholder="Enter mobile No"
                 pattern="[0-9]{10}"
                 value={mobNo}

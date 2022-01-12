@@ -51,6 +51,13 @@ const Salary = () => {
   };
   return (
     <>
+       <div style = {{
+
+                backgroundImage: `url("https://images.pexels.com/photos/3305/numbers-money-calculating-calculation.jpg?cs=srgb&dl=pexels-breakingpic-3305.jpg&fm=jpg")`,
+
+                height: "100vh",
+
+                backgroundSize: "cover"}}>
       <EmpSideNavBar/>
     
     
@@ -99,7 +106,7 @@ const Salary = () => {
              
           </div>
        
-      
+      </div>
       </>
   );
 };
